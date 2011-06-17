@@ -1,0 +1,17 @@
+libosmocore (0.3.0) natty; urgency=low
+
+  * New upstream version of libosmocore
+
+ -- Harald Welte <laforge@gnumonks.org>  Tue, 10 May 2011 17:28:24 +0200
+
+libosmocore (0.1.27) natty; urgency=low
+
+  * New upstream version of libosmocore.
+
+ -- Holger Hans Peter Freyther <holger@freyther.de>  Thu, 13 Jan 2011 18:07:36 +0800
+
+libosmocore (0.1.17-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Harald Welte <laforge@gnumonks.org>  Tue, 24 Aug 2010 10:55:04 +0200
