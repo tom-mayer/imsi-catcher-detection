@@ -38,7 +38,8 @@
 extern struct log_target *stderr_target;
 extern void *l23_ctx;
 
-char *logname = "/var/log/osmocom.log";
+//HACK: /var/log/osmocom.log, - for putting everything to stdout
+char *logname = "-";
 int RACH_MAX = 2;
 
 int _scan_work(struct osmocom_ms *ms)
