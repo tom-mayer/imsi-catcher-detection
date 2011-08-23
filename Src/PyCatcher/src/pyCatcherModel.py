@@ -1,3 +1,5 @@
+import datetime
+
 class BaseStationInformation: 
     def __init__ (self):
         self.arcfn = 0
@@ -23,13 +25,15 @@ class BaseStationInformation:
         self.s4 = fileobject.readline().split(' ')
         return self
 
-    def __str__ (self):
-        return 'foo' + self.arcfn 
+    def get_tree_data(self):
+        return [self.bsic,  self.arcfn, self.rxlev, datetime.datetime.now().strftime("%H:%M:%S")]
         
 class BaseStationInformationList:
     def __init__(self):
-        self.base_station_list
+        self.base_station_list = []
         
     def add_station(self):
         pass
     
+    def get_dot_code(self):
+        pass
