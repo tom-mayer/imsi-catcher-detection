@@ -1,0 +1,8 @@
+#!/bin/zsh
+pdflatex Master.tex
+bibtex Master
+makeindex -s Master.ist -t Master.alg -o Master.acr Master.acn
+makeindex -s Master.ist -t Master.glg -o Master.gls Master.glo
+makeindex -s Master.ist -t Master.slg -o Master.syi Master.syg
+pdflatex Master.tex
+pdflatex Master.tex

@@ -1,0 +1,30 @@
+import datetime
+import gtk
+
+class BaseStationInformation: 
+    def __init__ (self):
+        self.country = 'Nowhere'
+        self.provider = 'Carry'
+        self.arfcn = 0
+        self.rxlev = 0
+        self.neighbours = []
+        
+        def get_list_model():
+            return [self.provider, self.arfcn, self.rxlev, datetime.datetime.now().strftime('%I:%M %p')]
+        
+class BaseStationInformationList:
+    def __init__(self):
+        self._base_station_list = []
+        
+    def add_station(self, base_station):
+        self._base_station_list.append(base_station)
+    
+    def get_dot_code(self):
+        pass
+    
+    def get_list_store(self):
+        store = gtk.ListStore(str,str,str,str)
+        for item in self._base_station_list:
+            store.append(item.get_list_model())
+        return store
+    
