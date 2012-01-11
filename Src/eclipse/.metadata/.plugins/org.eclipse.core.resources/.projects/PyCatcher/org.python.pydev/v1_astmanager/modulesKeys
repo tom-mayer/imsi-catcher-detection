@@ -1,0 +1,8 @@
+MODULES_MANAGER_V2
+driverConnector|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/driverConnector.py
+main|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/main.py
+pyCatcherController|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/pyCatcherController.py
+pyCatcherModel|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/pyCatcherModel.py
+pyCatcherSettings|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/pyCatcherSettings.py
+pyCatcherView|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/pyCatcherView.py
+xdot|/home/tom/imsi-catcher-detection/Src/PyCatcher/src/xdot.py
