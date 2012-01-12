@@ -1,7 +1,9 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Growth of mobile GSM subscriptions. Compiled from \cite {GSM2009,GSM_history2011,GSM_stats2011}}}{4}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The 3GPP Logo}}{4}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces The main components of a GSM network.}}{5}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Evolution of mobile phones over the last decades.}}{6}
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Growth of mobile GSM subscriptions. Compiled from \cite {GSM2009,GSM_history2011,GSM_stats2011}}}{4}
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces The 3GPP Logo}}{5}
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces The main components of a GSM network.}}{6}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Evolution of mobile phones over the last decades.}}{7}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Structure of the IMSI.}}{8}
+\addvspace {10\p@ }

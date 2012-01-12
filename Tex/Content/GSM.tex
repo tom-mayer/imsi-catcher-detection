@@ -162,13 +162,13 @@ A subset of other parameters stored on the \gls{eeprom}of the card can be seen i
 
 \begin{table}
 \centering
-\begin{tabular}{@{}ll@{}}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{.8\textwidth}@{}}
 \toprule
 Parameter		&Description\\
 \midrule
 \multicolumn{2}{l}{Security Related}\\
 \midrule
-A3/A8			&Algorithms required for authentication and generation the session key\\
+A3/A8			&Algorithms required for authentication and generation of the session key\\
 Ki				&Secret key\\
 Kc				&Session key, generated from a random number and Ki vie A8\\
 PIN				&Secret numeric password to use a SIM card\\
@@ -197,7 +197,14 @@ This can be done since the card itself has a microprocessor that manages the sec
 Key functions, like running the GSM key algorithm, verifying a \gls{pin} or reading a file can be accessed through the microprocessor via a communication protocol.
 A brief description of the protocol and functionalities can be found in \cite{kommsys2006}.
 
+\begin{figure}
+\centering
+\caption{Structure of the IMSI.}
+\label{fig:IMSI}
+\end{figure}
+
 The \gls{imsi} as described in GSM 23.003\cite{GSM23003} uniquely identifies a subscriber.
+The structure can be see in Figure \ref{fig:IMSI}.
 It has at most 15 digits and is divided into three parts, \gls{mcc},\gls{mnc} and \gls{msin}, of which only the last part is the personal identification number of the subscriber.
 The first two are also called \gls{hni}.
 The three digit \gls{mcc} describes the country code, the area of domicile of the mobile subscriber.
@@ -225,7 +232,7 @@ Poland		&260\\
 \bottomrule
 \end{tabular}
 }
-\hspace{1cm}
+\hspace{.5cm}
 \subtable{
 \begin{tabular}{lll}
 \toprule
@@ -248,6 +255,7 @@ A1			&Austria		&01, 09\\
 \subsection{Basestation Subsystem}
 \label{sec:bss}
 %TODO: maybe more references to gsm-ts?
+
 \subsection{Network Subsystem}
 \label{sec:nss}
 The most important task of the \gls{nss} is to establish connections and route calls between different locations.
@@ -258,6 +266,8 @@ The \gls{smsc} is also part of this subsystem handling text messages.
 A possible arrangement of these components is displayed in Figure \ref{fig:gsm_network}.
 
 \subsubsection{Mobile Switching Center}
+
+
 \subsubsection{Home Location Register}
 The \gls{hlr} is the central database in which all personal subscriber related data is stored.
 The entries can be divided into two classes, permanent administrative and temporary data.
@@ -269,10 +279,29 @@ Additional services, called Supplementary Services like call forwarding or displ
 It is up to the provider if these services are available freely or bound to a fee.
 The temporary data enfolds the current \gls{vlr} and \gls{msc} address as well as the \gls{msrn} which is essentially a temporary location dependent ISDN number.
 
- 
 \subsubsection{Visitor Location Register}
+As can be seen in Figure \ref{fig:gsm_network} there can be multiple \gls{vlr}s, one for each area in a network.
+These registers can be seen as caches for data located in the \ref{hlr}.
+Thus their are intended to reduce signaling between the \gls{msc} and the \gls{hlr}.
+Each time a subscriber enters a new area, that is services by a new \gls{msc}, data for this subscriber is transferred to the respective \gls{vlr} from the \gls{hlr} through the D-Interface (\cf Section \ref{sec:interfaces}).
+Such data includes the \gls{imsi} and the \gls{msisdn} as well as authentication data and information on which services are available to the respective subscriber.
+Additionally the subscriber is assigned a temporary \gls{imsi}, called \gls{tmsi} and information in which \gls{la} the \gls{ms} was registered last.
+In this way the regular \gls{imsi} is not used and can thus not be harvested by tapping into the radio channel.
+While it is possible to operate the \gls{vlr} as a standalone entity, in most cases it is implemented as a software component of the respective \gls{msc}.
+
 \subsubsection{Equipment Identification Register}
+The \gls{eir} is a database that contains the \gls{imei} of registered \gls{ms}.
+It is used to determine whether a particular \gls{ms} is allowed to participate in communications.
+For that purpose a white, a gray and a black list.
+\gls{imei} on the white list are allowed, while equipment that is gray-listed will be checked.
+The blacklist is used to refuse access to \eg stolen equipment that has been reported to the provider.
+In Germany only the providers Vodafone and E-Plus support blacklisting of \gls{imei}\cite{blacklisting}.
+Different companies like Airwide Solutions offer centralised lists for providers in their \gls{ceir}.
+
 \subsubsection{Authentication Center}
+The \gls{ac} is the network component responsible for authenticating mobile subscribers.
+This authentication is not only done once when the subscriber connects to the network, but rather on many occasions \eg the start of a call or other significant events to avoid misuse by a third party.
+
 
 \subsection{Intelligent Network}
 The two subsystems above are necessary for the correct operation of a \gls{gsm} network.
@@ -293,9 +322,12 @@ Since these services were defined as additional and thus no specification existe
 To standardize these services, \gls{3gpp} and \gls{etsi} defined the \gls{camel} protocol in TS 23.078\cite{GSM23078}.
 \gls{camel} specifies a protocol much like \gls{http} that regulates how the different components of a \gls{gsm} network exchange information.
 As such it is not an application itself but rather a framework to build vendor independent, portable services.
+
 \subsection{The Cellular Principle}
 \section{The $U_m$ Interface}
 \label{sec:Um}
+\subsection{Interfaces}
+\label{sec:interfaces}
 \subsection{Layers}
 \subsection{The Radio Channel}
 \subsection{Logical Channels}

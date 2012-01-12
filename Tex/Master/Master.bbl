@@ -31,6 +31,11 @@ Numbering, addressing and identification.
   \url{http://www.3gpp.org/ftp/Specs/archive/23_series/23.003/23003-a30.zip},
   2011.
 
+\bibitem{blacklisting}
+Equipment identity register.
+\newblock
+  \url{http://en.wikipedia.org/wiki/Central_Equipment_Identity_Register}, 2012.
+
 \bibitem{3gpp_Proposal2000}
 {\sc Chaudhury, P., Mohr, W., and Onoe, S.}
 \newblock The 3gpp proposal for imt-2000.

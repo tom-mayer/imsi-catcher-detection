@@ -4,22 +4,24 @@
 \contentsline {chapter}{\numberline {2}GSM}{3}
 \contentsline {section}{\numberline {2.1}A Historical Perspective}{3}
 \contentsline {section}{\numberline {2.2}The GSM Network}{5}
-\contentsline {subsection}{\numberline {2.2.1}Mobile Station}{6}
-\contentsline {subsection}{\numberline {2.2.2}Basestation Subsystem}{8}
-\contentsline {subsection}{\numberline {2.2.3}Network Subsystem}{8}
-\contentsline {subsubsection}{Mobile Switching Center}{8}
-\contentsline {subsubsection}{Home Location Register}{8}
-\contentsline {subsubsection}{Visitor Location Register}{9}
-\contentsline {subsubsection}{Equipment Identification Register}{9}
-\contentsline {subsubsection}{Authentication Center}{9}
-\contentsline {subsection}{\numberline {2.2.4}Intelligent Network}{9}
-\contentsline {subsection}{\numberline {2.2.5}The Cellular Principle}{9}
-\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{9}
-\contentsline {subsection}{\numberline {2.3.1}Layers}{9}
-\contentsline {subsection}{\numberline {2.3.2}The Radio Channel}{9}
-\contentsline {subsection}{\numberline {2.3.3}Logical Channels}{9}
-\contentsline {section}{\numberline {2.4}IMSI-Catcher}{9}
-\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{9}
-\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{9}
-\contentsline {subsection}{\numberline {2.4.3}Law situation in Germany}{9}
+\contentsline {subsection}{\numberline {2.2.1}Mobile Station}{7}
+\contentsline {subsection}{\numberline {2.2.2}Basestation Subsystem}{10}
+\contentsline {subsection}{\numberline {2.2.3}Network Subsystem}{10}
+\contentsline {subsubsection}{Mobile Switching Center}{11}
+\contentsline {subsubsection}{Home Location Register}{11}
+\contentsline {subsubsection}{Visitor Location Register}{11}
+\contentsline {subsubsection}{Equipment Identification Register}{12}
+\contentsline {subsubsection}{Authentication Center}{12}
+\contentsline {subsection}{\numberline {2.2.4}Intelligent Network}{12}
+\contentsline {subsection}{\numberline {2.2.5}The Cellular Principle}{13}
+\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{13}
+\contentsline {subsection}{\numberline {2.3.1}Interfaces}{13}
+\contentsline {subsection}{\numberline {2.3.2}Layers}{13}
+\contentsline {subsection}{\numberline {2.3.3}The Radio Channel}{13}
+\contentsline {subsection}{\numberline {2.3.4}Logical Channels}{13}
+\contentsline {section}{\numberline {2.4}IMSI-Catcher}{13}
+\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{13}
+\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{13}
+\contentsline {subsection}{\numberline {2.4.3}Law situation in Germany}{13}
+\contentsline {chapter}{Bibliography}{I}
 \contentsline {chapter}{Acronyms}{III}

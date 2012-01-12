@@ -6,47 +6,48 @@ Warning--to sort, need author or key in GSM0207
 Warning--to sort, need author or key in GSM0505
 Warning--to sort, need author or key in ISO7810
 Warning--to sort, need author or key in GSM23003
+Warning--to sort, need author or key in blacklisting
 Warning--to sort, need author or key in GSM23078
 Warning--can't use both author and editor fields in GSM2009
-You've used 17 entries,
+You've used 18 entries,
             2253 wiz_defined-function locations,
-            628 strings with 6270 characters,
-and the built_in function-call counts, 3483 in all, are:
-= -- 329
-> -- 90
+            633 strings with 6392 characters,
+and the built_in function-call counts, 3646 in all, are:
+= -- 345
+> -- 91
 < -- 0
-+ -- 44
++ -- 45
 - -- 26
-* -- 186
-:= -- 512
-add.period$ -- 43
-call.type$ -- 17
-change.case$ -- 65
+* -- 192
+:= -- 530
+add.period$ -- 45
+call.type$ -- 18
+change.case$ -- 68
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 146
-empty$ -- 387
+cite$ -- 25
+duplicate$ -- 153
+empty$ -- 410
 format.name$ -- 26
-if$ -- 780
+if$ -- 821
 int.to.chr$ -- 0
-int.to.str$ -- 17
+int.to.str$ -- 18
 missing$ -- 10
-newline$ -- 80
+newline$ -- 84
 num.names$ -- 16
-pop$ -- 115
+pop$ -- 123
 preamble$ -- 1
-purify$ -- 51
+purify$ -- 53
 quote$ -- 0
-skip$ -- 111
+skip$ -- 118
 stack$ -- 0
-substring$ -- 121
-swap$ -- 26
+substring$ -- 126
+swap$ -- 27
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 62
-warning$ -- 6
+type$ -- 66
+warning$ -- 7
 while$ -- 20
-width$ -- 19
-write$ -- 154
-(There were 6 warnings)
+width$ -- 20
+write$ -- 162
+(There were 7 warnings)

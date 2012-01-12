@@ -2,15 +2,18 @@
 % Document Class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper, twoside, 11pt]{book} 
+\documentclass[a4paper, twoside, DIV=10,fontsize=12pt,bibliography=totoc, BCOR=15mm, headinclude=true, footinclude=false]{scrbook} 
+%chapterprefix=true/false
+%appendixprefix=true/false
+\addtokomafont{sectioning}{\rmfamily\bfseries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Includes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Sake of correction
-\usepackage{a4wide}
-
+\usepackage{titlepage}
+%\usepackage{a4wide}
+%\usepackage{caption}
 \usepackage{appendix}
 %\usepackage{ngerman}
 \usepackage[english]{babel}
@@ -23,6 +26,7 @@
 \usepackage{listings}
 %\usepackage{apacite}
 %\usepackage{apacite-deutsch}
+%\usepackage{tablex}
 \usepackage{times, helvet,courier}
 \usepackage{esvect}
 \usepackage[T1]{fontenc}
@@ -41,6 +45,7 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{subfigure}
+\usepackage[headsepline, automark]{scrpage2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Styles for Programming Language Highlighting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,6 +68,7 @@
 \newtheorem{example}{Example}
 
 \newcommand{\eg}{e.g.\ }
+\newcommand{\cf}{cf.\ }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Glossary and Listings Style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,13 +105,12 @@
 \begin{document}
 
 \input{Titlepage}
-\pagestyle{empty}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\pagestyle{empty}
 \begin{center}
  \textbf{Abstract:}
 \end{center}
@@ -118,7 +123,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
-\pagestyle{headings}
+\pagestyle{scrheadings}
 \pagenumbering{roman}
 \listoffigures
 \listoftables
