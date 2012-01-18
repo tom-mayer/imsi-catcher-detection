@@ -2,7 +2,7 @@
 % Document Class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper, twoside, DIV=10,fontsize=12pt,bibliography=totoc, BCOR=15mm, headinclude=true, footinclude=false]{scrbook} 
+\documentclass[a4paper, twoside, DIV=10,fontsize=12pt,bibliography=totoc, BCOR=15mm, headinclude=true, footinclude=false, cleardoubleplain]{scrbook} 
 %chapterprefix=true/false
 %appendixprefix=true/false
 \addtokomafont{sectioning}{\rmfamily\bfseries}
@@ -122,13 +122,13 @@
 % Create ListOfTables and ListOfFigures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage{\pagestyle{empty}\cleardoublepage}
-\pagestyle{scrheadings}
+\clearpage{\pagestyle{scrplain}\cleardoublepage}
+%\pagestyle{scrheadings}
 \pagenumbering{roman}
 \listoffigures
 \listoftables
 \tableofcontents
-\clearpage{\pagestyle{empty}\cleardoublepage}
+\clearpage{\pagestyle{scrplain}\cleardoublepage}
 \pagenumbering{arabic}
 
 

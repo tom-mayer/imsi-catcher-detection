@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  12 JAN 2012 16:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  18 JAN 2012 13:28
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -44,9 +44,19 @@ Package tocbasic Info: omitting babel extension for `lof'
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lot' on input line 119.
+
+
+Class scrbook Warning: You've used obsolete option `cleardoubleplain'.
+(scrbook)              Usage of this option indicates an old document and
+(scrbook)              changes compatibility level using
+(scrbook)              `cleardoublepage=plain,version=first'.
+(scrbook)              If you don't want this, you should simply replace
+(scrbook)              usage of option `cleardoubleplain' by `cleardoublepage=p
+lain'.
+
+Class scrbook Info: Switching compatibility level to `first'.
 Class scrbook Info: File `scrsize12pt.clo' used to setup font sizes on input li
 ne 1272.
-
 (/usr/share/texmf-texlive/tex/latex/koma-script/scrsize12pt.clo
 File: scrsize12pt.clo 2009/07/24 v3.04a KOMA-Script font size class option (12p
 t)
@@ -1087,15 +1097,7 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
 
-[6] [7] [8] [9] [10]
-
-LaTeX Warning: Reference `hlr' on page 11 undefined on input line 284.
-
-[11] [12]) [13] [14
-
-
-
-] (./Master.bbl
+[6] [7] [8] [9] [10] [11] [12] [13]) [14] (./Master.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 4--8
 \T1/pcr/m/n/12 http : / / www . 3gpp . org / ftp / Specs / archive / 05 _ serie
 s /
@@ -1146,6 +1148,9 @@ Underfull \hbox (badness 3668) in paragraph at lines 55--58
 [1
 
 
+
+
+
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 76--79
 \T1/pcr/m/n/12 http : / / www . 3gpp . org / ftp / Specs / html-[]info / 25321 
@@ -1158,31 +1163,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--79
 
 
 ] [4]) (./Master.gls) [5]
-(./Master.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+(./Master.aux) ) 
 Here is how much of TeX's memory you used:
- 22630 strings out of 493848
- 431811 string characters out of 1152824
- 649352 words of memory out of 3000000
- 25317 multiletter control sequences out of 15000+50000
- 71741 words of font info for 92 fonts, out of 3000000 for 9000
+ 22633 strings out of 493848
+ 431894 string characters out of 1152824
+ 648402 words of memory out of 3000000
+ 25321 multiletter control sequences out of 15000+50000
+ 70628 words of font info for 91 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,12n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
-sr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-tex
-live/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw
-/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></
-usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (27 pages, 242834 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/s
+hare/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/f
+onts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on Master.pdf (27 pages, 231470 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
+ 133 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -20,7 +20,7 @@ In the same year the committee submitted the first detailed specification for th
 The acronym was reinterpreted in 1991, after the committee became a part of the \gls{etsi} in 1989 to \emph{Global System for Mobile Communications}.
 In the very same year the specifications for \gls{dcs1800} were also submitted.
 These were essentially the same specifications, translated in the 1800MHz range and the foundation for the USA's 1900MHz band.
-Under the umbrella of the \gls{etsi}, many \gls{stc}s began to work on different aspects of mobile communication, like network aspects (SMG 03) or security aspects (SMG 10).
+Under the umbrella of the \gls{etsi}, many \glspl{stc} began to work on different aspects of mobile communication, like network aspects (SMG 03) or security aspects (SMG 10).
 SMG 05 dealt with future networks and especially with UMTS specifications, which eventually became an independent body inside the \gls{etsi}.
 
 In 1992 many European countries had operational mobile telephone networks.
@@ -122,7 +122,7 @@ Figure \ref{fig:phones} shows the evolution of the mobile phone over the last de
 \end{figure}
 What hasn't changed is the basic distinction between \gls{me} and \gls{sim}, the parts of which a \gls{ms} consists.
 
-It is hard to get a tight grip on what \gls{me} is.
+It is hard to deliver a consistent definition for what a \gls{me} is.
 GSM Recommendation 02.07 \cite{GSM0207} summarizes the mandatory and optional features of a \gls{ms}.
 Some of the most important mandatory features are \cite{protocols1999}:
 \begin{itemize}
@@ -133,13 +133,13 @@ Some of the most important mandatory features are \cite{protocols1999}:
 	\item Display capability for short messages and dialed numbers, as well as available \gls{plmn}s.
 	\item Capable of doing emergency calls without \gls{sim} card.
 	\item Machine fixed \gls{imei}.
-	In a strict sense, this disqualifies many modern mobile phones, since the \gls{imei} is not burned into the device itself but is rather part of the software or firmware respectively.
-	Tools like \emph{ZiPhone}\footnote{\url{http://www.ziphone.org/}} for iOS devices\footnote{\url{http://www.apple.com/ios/}}, especially iPhone\footnote{\url{http://www.apple.com/iphone/}}, can change this supposedly unchangable identifier.
+	In a strict sense, this disqualifies many modern mobile phones, since the \gls{imei} is not fixed onto the device itself but is rather part of the software or firmware respectively.
+	Tools like \emph{ZiPhone}\footnote{\url{http://www.ziphone.org/}} for iOS devices\footnote{\url{http://www.apple.com/ios/}}, especially iPhone, can change this supposedly unchangeable identifier.
 \end{itemize}
 
 The range of devices complying to these specifications is rather large, so categorizing can be challenging.
 The intuitive approach would be to establish buckets by device type, but there are so many different devices as well as hybrid devices out there that this approach would not only be impracticable, but also too ambiguous.
-Does a smartphone belong into the same category as a \gls{pda} or in the category of mobile phones.
+Does a smartphone belong into the same category as a \gls{pda} or in the category of basic mobile phones; and what would a basic mobile phone be?
 
 Another way to categorize different \gls{me}s is by supported frequency band and power class rating according to GSM  05.05\cite{GSM0505}.
 Most mobile phones and smartphones belong to power class 4 and 5, which are for handheld devices.
@@ -150,7 +150,6 @@ The supported band is also common category, since it describes in which countrie
 However it is more common nowadays that \gls{me} supports two bands or even all three bands.
 These are called dual-band and tri-band devices respectively.
 
-%SIM format and data
 As the name suggests, the \gls{sim} card is essentially a data storage that holds user specific data.
 This separation is interesting for the GSM user since it allows him/her to exchange the \gls{me} without having to contact the provider.
 Thus it can be used on different frequency bands and is one of the preconditions for roaming.
@@ -273,7 +272,7 @@ The \gls{hlr} is the central database in which all personal subscriber related d
 The entries can be divided into two classes, permanent administrative and temporary data.
 Part of this administrative data is which services a subscriber has access to and which are prohibited (\eg roaming in certain networks).
 The data itself is indexed with the customer's \gls{imsi}, to which multiple telephone numbers can be registered.
-Since these \gls{msisdn} are independent from the \gls{imsi} a subscriber can change his telephone number and thus also move the telephone number along should he/she decide to switch to a new provider.
+Since these \glspl{msisdn} are independent from the \gls{imsi} a subscriber can change his telephone number and thus also move the telephone number along should he/she decide to switch to a new provider.
 Basic services that access is stored for in the \gls{hlr} are amongst others the ability to receive and send telephone calls, use data services or send text messages.
 Additional services, called Supplementary Services like call forwarding or display of phone numbers during calls can also be set or unset in this database.
 It is up to the provider if these services are available freely or bound to a fee.
@@ -281,27 +280,63 @@ The temporary data enfolds the current \gls{vlr} and \gls{msc} address as well a
 
 \subsubsection{Visitor Location Register}
 As can be seen in Figure \ref{fig:gsm_network} there can be multiple \gls{vlr}s, one for each area in a network.
-These registers can be seen as caches for data located in the \ref{hlr}.
-Thus their are intended to reduce signaling between the \gls{msc} and the \gls{hlr}.
-Each time a subscriber enters a new area, that is services by a new \gls{msc}, data for this subscriber is transferred to the respective \gls{vlr} from the \gls{hlr} through the D-Interface (\cf Section \ref{sec:interfaces}).
-Such data includes the \gls{imsi} and the \gls{msisdn} as well as authentication data and information on which services are available to the respective subscriber.
+These registers can be seen as caches for data located in the \gls{hlr}.
+Thus their are intended to reduce signalling between the \gls{msc} and the \gls{hlr}.
+Each time a subscriber enters a new area, that is serviced by a new \gls{msc}, data for this subscriber is transferred to the respective \gls{vlr} from the \gls{hlr} through the D-Interface (\cf Section \ref{sec:interfaces}).
+Such data includes the \gls{imsi} and the \gls{msisdn} as well as authentication data and information on which services are available to that particular subscriber.
 Additionally the subscriber is assigned a temporary \gls{imsi}, called \gls{tmsi} and information in which \gls{la} the \gls{ms} was registered last.
 In this way the regular \gls{imsi} is not used and can thus not be harvested by tapping into the radio channel.
-While it is possible to operate the \gls{vlr} as a standalone entity, in most cases it is implemented as a software component of the respective \gls{msc}.
+While it is possible to operate the \gls{vlr} as a standalone entity, in most cases it is implemented as a software component of the individual \gls{msc}.
 
 \subsubsection{Equipment Identification Register}
-The \gls{eir} is a database that contains the \gls{imei} of registered \gls{ms}.
+The \gls{eir} is a database that contains the \glspl{imei} of registered \glspl{ms}.
 It is used to determine whether a particular \gls{ms} is allowed to participate in communications.
-For that purpose a white, a gray and a black list.
-\gls{imei} on the white list are allowed, while equipment that is gray-listed will be checked.
+For that purpose a white, a grey and a black list are used.
+\glspl{imei} on the white list are allowed, while equipment that is grey-listed will be checked.
 The blacklist is used to refuse access to \eg stolen equipment that has been reported to the provider.
-In Germany only the providers Vodafone and E-Plus support blacklisting of \gls{imei}\cite{blacklisting}.
-Different companies like Airwide Solutions offer centralised lists for providers in their \gls{ceir}.
+In Germany only the providers Vodafone and E-Plus support blacklisting of \glspl{imei}\cite{blacklisting}.
+Different companies like Airwide Solutions (now aquired by Manivir)\footnote{\url{http://www.mavenir.com/}} offer centralised lists for providers in their \glspl{ceir}.
 
+\begin{figure}
+\centering
+\caption{Authentication procedure}
+\label{fig:authentication}
+\end{figure}
 \subsubsection{Authentication Center}
 The \gls{ac} is the network component responsible for authenticating mobile subscribers.
-This authentication is not only done once when the subscriber connects to the network, but rather on many occasions \eg the start of a call or other significant events to avoid misuse by a third party.
+It is a part of the \gls{hlr} and the only place, apart form the customer's \gls{sim} card where the secret key \gls{ki} is stored.
+The authentication is not only done once when the subscriber connects to the network, but rather on many occasions \eg the start of a call or other significant events to avoid misuse by a third party.
+This authentication routine is a key based challenge-response procedure outlined in Figure \ref{fig:authentication}.
+The steps of the procedure can be summarized as follows:
+\begin{enumerate}
+	\item User connects to the network or triggers an event that needs authentication at the \gls{msc}.
+ 	
+ 	In the first case the \gls{imsi} is part of the authentication request and the \gls{ac} starts with searching for the corresponding \gls{ki} and authentication algorithm A3.
+	An authentication triplet is build using \gls{ki} which consists of the components:
+	\begin{itemize}
+		\item RAND: a 128 bit random number.
+		\item SRES: a 32 bit number called signed response, which is generated by A3 with \gls{ki} and RAND as inputs.
+		\item Kc: the ciphering key that is used to cypher the data during transmission.
+		It is also generated with \gls{ki} and RAND.
+	\end{itemize}
+	To save signalling bandwidth, usually more than one authentication triplet is generated and returned to the \gls{msc} by the \gls{ac}.
+	It should be noted that, since a separate cyphering key is used, the secret key never leaves the \gls{ac}.
+	
+	In the second case, either a previously generated authentication triplet is used, or new authentication triplets are requested.
+	\item RAND is transmitted to the \gls{ms} by the \gls{msc} where the signed response SRES* is created by the \gls{sim} card using A3, \gls{ki} and RAND.
+	
+	\item An authentication response containing SRES* is sent back to the \gls{msc}.
+	
+	\item If SRES and SRES* are the same, the subscriber is authenticated.
+\end{enumerate}
 
+Remarkable properties of this procedure are that by using a cyphering key that is generated by a random number and a secret key, the secret key itself never leaves the \gls{ac}.
+Apart from that the use of a random number prevents replay attacks on SRES.
+It should also be noted that this way of authenticating only works for authenticating the subscriber to the network.
+It is a one way authentication.
+The subscriber needs to trust the network.
+This is a design flaw that IMSI-Catchers use to lure \gls{ms} into their fake network.
+In \gls{umts} networks that flaw was fixed and the authentication procedure was made mutual.
 
 \subsection{Intelligent Network}
 The two subsystems above are necessary for the correct operation of a \gls{gsm} network.

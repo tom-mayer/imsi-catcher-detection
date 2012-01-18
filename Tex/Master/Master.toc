@@ -12,16 +12,16 @@
 \contentsline {subsubsection}{Visitor Location Register}{11}
 \contentsline {subsubsection}{Equipment Identification Register}{12}
 \contentsline {subsubsection}{Authentication Center}{12}
-\contentsline {subsection}{\numberline {2.2.4}Intelligent Network}{12}
-\contentsline {subsection}{\numberline {2.2.5}The Cellular Principle}{13}
-\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{13}
-\contentsline {subsection}{\numberline {2.3.1}Interfaces}{13}
-\contentsline {subsection}{\numberline {2.3.2}Layers}{13}
-\contentsline {subsection}{\numberline {2.3.3}The Radio Channel}{13}
-\contentsline {subsection}{\numberline {2.3.4}Logical Channels}{13}
-\contentsline {section}{\numberline {2.4}IMSI-Catcher}{13}
-\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{13}
-\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{13}
-\contentsline {subsection}{\numberline {2.4.3}Law situation in Germany}{13}
+\contentsline {subsection}{\numberline {2.2.4}Intelligent Network}{13}
+\contentsline {subsection}{\numberline {2.2.5}The Cellular Principle}{14}
+\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{14}
+\contentsline {subsection}{\numberline {2.3.1}Interfaces}{14}
+\contentsline {subsection}{\numberline {2.3.2}Layers}{14}
+\contentsline {subsection}{\numberline {2.3.3}The Radio Channel}{14}
+\contentsline {subsection}{\numberline {2.3.4}Logical Channels}{14}
+\contentsline {section}{\numberline {2.4}IMSI-Catcher}{14}
+\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{14}
+\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{14}
+\contentsline {subsection}{\numberline {2.4.3}Law situation in Germany}{14}
 \contentsline {chapter}{Bibliography}{I}
 \contentsline {chapter}{Acronyms}{III}
