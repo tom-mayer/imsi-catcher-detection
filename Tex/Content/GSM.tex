@@ -251,13 +251,24 @@ A1			&Austria		&01, 09\\
 \label{tab:countrycodes}
 \end{table}
 
-\subsection{Basestation Subsystem}
+\subsection{Base Station Subsystem}
 \label{sec:bss}
-%TODO: maybe more references to gsm-ts?
+The \gls{bss} is the part of the network that provides the hard- and software for physically connecting \glspl{ms} to the providers network.
+Its main components are the \gls{bsc}, the \gls{bts} and the \gls{trau}.
+Connecting of a mobile subscriber works via radio, which is why this subsystem is sometimes also called the radio network \cite{kommsys2006}.
+Inside the radio network of a certain area, there is one \gls{bsc} that connects to multiple \gls{bts} and one \gls{trau}.
+While the Transceiver station act as receiver for radio signals the controller coordinates the different receivers and relays the incoming signals  to the core network.
+Since signals inside the core network are transmitted at other rates than in the radio network, rates need to be adapted, which is done by the \gls{trau}.
+
+\subsubsection{The Cellular Principle}
+\subsubsection{Baste Station Controller}
+\subsubsection{Base Transceiver Station}
+\subsubsection{Frequencies}
+\subsubsection{Transcoding rate and Adaption Unit}
 
 \subsection{Network Subsystem}
 \label{sec:nss}
-The most important task of the \gls{nss} is to establish connections and route calls between different locations.
+The most important task of the \gls{nss} or Network Switching Subsystem is to establish connections and route calls between different locations.
 This is done by so called \gls{msc}, that can route a call either to another \gls{msc}, into the \gls{pstn} or another provider's network.
 Apart from routing, the \gls{nss} also provides the means to administer subscribers inside the network.
 Facilities to support this task are the \gls{hlr}, the \gls{vlr}, the \gls{eir} as well as the \gls{ac} that will now be described in further detail.
@@ -265,7 +276,55 @@ The \gls{smsc} is also part of this subsystem handling text messages.
 A possible arrangement of these components is displayed in Figure \ref{fig:gsm_network}.
 
 \subsubsection{Mobile Switching Center}
+The \gls{msc} is the component that does the actual routing of calls and is thus the core component of the \gls{nss}.
+Thus it basically works like any other \gls{isdn} exchange device with additional functionality to manage mobility
+Since it would be the amount of signalling inside a \gls{plmn} would be far to big for a single \gls{msc}, there is one for every \gls{la}.
+Amongst others its most important tasks are \gls{cc} and Mobility Management.
 
+\gls{cc} entrails registration when the subscriber connects to the network as well as routing the calls or text messages from one registered subscriber to another. 
+This routing can include transmitting calls to landlines or to networks of other providers.
+\glspl{msc} that bind the provider's networks to other provider's networks or the \gls{pstn} are called Gateway \glspl{msc}.
+
+The above part is also true for pure landline switching centres.
+What sets a mobile switching centre apart is called Mobility Management.
+Since the participants can freely move around in the network  and thus cannot be identified the same way as a fixed landline participant, authentication before using the offered services is important.
+Another consequence of mobility is, that the network has to keep track of where a subscriber is and through which \gls{msc} it can be reached.
+This is done via  Location Updates.
+Also during calls if the subscriber leaves the respective service area of the switching centre, then the call needs to be transferred without being interrupted.
+A procedure called Handover achieves just that.
+
+For this central role to work it is necessary to be connected to all the other components of the \gls{nss}.
+This is done via different connectors called Interfaces.
+A brief description of what the different interfaces in a GSM network are and what their respective function is can be seen in Table \ref{tab:interfaces}.
+
+\begin{table}
+\centering
+\begin{tabular}{lll}
+\toprule
+Name			&Between					&Function\\
+\midrule
+$A$				&MSC $\leftrightarrow$ BSS	&BSS management data for Mobility Management\\
+				&							&and Call Control\\
+$B$				&MSC $\leftrightarrow$ VLR	&MSC receives data about MSs in the current area\\
+				&							& and sends data from Location Updates\\
+$C$				&MSC $\leftrightarrow$ HLR	&MSC can request routing data during call setup\\
+				&							&and send \eg charging information\\
+$D$				&HLR $\leftrightarrow$ VLR	&Exchange of location-dependent subscriber data\\
+				&							&and updating the HLR (MSRN \etc)\\
+$E$				&MSC $\leftrightarrow$ MSC	&Executing a Handover when subscriber changes\\
+				&							&to a new MSC\\
+$F$				&MSC $\leftrightarrow$ EIR	&Checking white-/grey- and blacklists before\\
+				&							&giving access to the network\\
+\midrule
+$A_\text{bis}$	&BSC $\leftrightarrow$ BTS	&BSC receives data from MS via the BTS\\
+$U_m$			&BTS $\leftrightarrow$ MS	&Registration procedure, call data \etc as well\\
+				&							&as broadcast information about the network\\
+				&							&and the base station\\
+\bottomrule
+\end{tabular}
+\caption{Interfaces inside the core network (upper part) and the radio network (lower part)}
+\label{tab:interfaces}
+\end{table}
 
 \subsubsection{Home Location Register}
 The \gls{hlr} is the central database in which all personal subscriber related data is stored.
@@ -279,10 +338,10 @@ It is up to the provider if these services are available freely or bound to a fe
 The temporary data enfolds the current \gls{vlr} and \gls{msc} address as well as the \gls{msrn} which is essentially a temporary location dependent ISDN number.
 
 \subsubsection{Visitor Location Register}
-As can be seen in Figure \ref{fig:gsm_network} there can be multiple \gls{vlr}s, one for each area in a network.
+As can be seen in Figure \ref{fig:gsm_network} there can be multiple \glspl{vlr}, one for each area in a network.
 These registers can be seen as caches for data located in the \gls{hlr}.
 Thus their are intended to reduce signalling between the \gls{msc} and the \gls{hlr}.
-Each time a subscriber enters a new area, that is serviced by a new \gls{msc}, data for this subscriber is transferred to the respective \gls{vlr} from the \gls{hlr} through the D-Interface (\cf Section \ref{sec:interfaces}).
+Each time a subscriber enters a new area, that is serviced by a new \gls{msc}, data for this subscriber is transferred to the respective \gls{vlr} from the \gls{hlr}.
 Such data includes the \gls{imsi} and the \gls{msisdn} as well as authentication data and information on which services are available to that particular subscriber.
 Additionally the subscriber is assigned a temporary \gls{imsi}, called \gls{tmsi} and information in which \gls{la} the \gls{ms} was registered last.
 In this way the regular \gls{imsi} is not used and can thus not be harvested by tapping into the radio channel.
@@ -358,11 +417,8 @@ To standardize these services, \gls{3gpp} and \gls{etsi} defined the \gls{camel}
 \gls{camel} specifies a protocol much like \gls{http} that regulates how the different components of a \gls{gsm} network exchange information.
 As such it is not an application itself but rather a framework to build vendor independent, portable services.
 
-\subsection{The Cellular Principle}
 \section{The $U_m$ Interface}
 \label{sec:Um}
-\subsection{Interfaces}
-\label{sec:interfaces}
 \subsection{Layers}
 \subsection{The Radio Channel}
 \subsection{Logical Channels}

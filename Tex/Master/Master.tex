@@ -2,9 +2,12 @@
 % Document Class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper, twoside, DIV=10,fontsize=12pt,bibliography=totoc, BCOR=15mm, headinclude=true, footinclude=false, cleardoubleplain]{scrbook} 
+\documentclass[a4paper, twoside, DIV=10,fontsize=12pt,bibliography=totoc, BCOR=15mm, headinclude=true, 
+	footinclude=false, cleardoubleplain]{scrbook} 
 %chapterprefix=true/false
 %appendixprefix=true/false
+
+%fix ugly koma headings
 \addtokomafont{sectioning}{\rmfamily\bfseries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,11 +67,11 @@
 % Selfdefined Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% example environment
 \newtheorem{example}{Example}
 
 \newcommand{\eg}{e.g.\ }
 \newcommand{\cf}{cf.\ }
+\newcommand{\etc}{etc.\ }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Glossary and Listings Style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,15 +125,15 @@
 % Create ListOfTables and ListOfFigures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage{\pagestyle{scrplain}\cleardoublepage}
+\clearpage{\thispagestyle{scrplain}\cleardoublepage}
 %\pagestyle{scrheadings}
 \pagenumbering{roman}
 \listoffigures
 \listoftables
 \tableofcontents
-\clearpage{\pagestyle{scrplain}\cleardoublepage}
+\clearpage{\thispagestyle{scrplain}\cleardoublepage}
 \pagenumbering{arabic}
-
+\pagestyle{scrheadings}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,6 +154,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliographystyle{acm}
+%always remove nocite before compiling final version
 \nocite{*}
 \bibliography{../Content/Bibliography}
 
@@ -168,7 +172,5 @@
 \printglossary[type=\acronymtype,style=long]
 
 %Print the glossary
-\printglossary[style=altlist,title=Glossary]
-
-
+%\printglossary[style=altlist,title=Glossary]
 \end{document}
