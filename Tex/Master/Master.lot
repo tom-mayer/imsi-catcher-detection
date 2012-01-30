@@ -1,6 +1,7 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Subset of data stored on a SIM card. Adopted from \cite {protocols1999}}}{9}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Mobile Country and Network Codes. (R) denotes that the MCC is reserved but not operational as of yet, whereas (T) denotes a operational test network.}}{10}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Interfaces inside the core network (upper part) and the radio network (lower part)}}{12}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Subset of data stored on a SIM card. Adopted from \cite {protocols1999}}}{8}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Mobile Country and Network Codes. (R) denotes that the MCC is reserved but not operational as of yet, whereas (T) denotes a operational test network.}}{9}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Frequencies in the different bands \cite {kommsys2006}.}}{11}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Interfaces inside the core network (upper part) and the radio network (lower part)}}{14}

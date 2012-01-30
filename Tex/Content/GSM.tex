@@ -2,8 +2,9 @@
 \label{ch:gsm}
 This chapter will give short overview of some important aspects of \gls{gsm}.
 The first section will give a brief historical summary on the evolution of \gls{gsm} and how it came to be what it is today.
-In section \ref{sec:network} the system architecture and its components as well as protocol basics will be explained that are essential to understand how an IMSI-catcher operates.
-Section \ref{sec:catcher} will describe how an IMSI-catcher works and how it differs from the system components it replaces.
+In Section \ref{sec:network} the system architecture and its components as well as protocol basics will be explained that are essential to understand which place in the network an IMSI-catcher tries to take over.
+The $U_m$ interface will be described in detail in Section \ref{sec:Um} since this is the entry point for gathering information from IMSI-catchers.
+Section \ref{sec:catcher} will finally explain how an IMSI-catcher works and how it differs from the system components it replaces as well as state from a technical and law perspective why these devices have become a threat to all-day privacy. 
  
 \section{A Historical Perspective}
 The acronym GSM was originally derived fom \emph{Group Sp\'{e}ciale Mobile}.
@@ -115,11 +116,6 @@ The three subsystems as well as the \gls{ms} will now be discussed in greater de
 \label{sec:ms}
 With the advent of portable microprocessors in the 80's mobile phones became possible.
 Advance in technology up to today yielded smaller mobile phones with more functionality year by year to a point where not the technology itself was the limiting factor for size, but the user interface, \eg button and display sizes.
-Figure \ref{fig:phones} shows the evolution of the mobile phone over the last decades.
-\begin{figure}
-\caption{Evolution of mobile phones over the last decades.}
-\label{fig:phones}
-\end{figure}
 What hasn't changed is the basic distinction between \gls{me} and \gls{sim}, the parts of which a \gls{ms} consists.
 
 It is hard to deliver a consistent definition for what a \gls{me} is.
@@ -145,10 +141,10 @@ Another way to categorize different \gls{me}s is by supported frequency band and
 Most mobile phones and smartphones belong to power class 4 and 5, which are for handheld devices.
 Class 4 devices have and output of 2/33 W/dBm and class 5 0.8/29 W/dBm.
 Classes with higher output are typically installed devices, \eg in cars.
-These classes differ for the different frequency bands, since output needed in higher frequency bands (1800/1900 MHz) is less compared to the 900MHz band.
+These classes differ for the different frequency bands, since output needed in higher frequency bands (1800/1900 MHz) is less compared to the 900MHz band, or the north american 850MHz band.
 The supported band is also common category, since it describes in which countries a mobile phone can be used.
-However it is more common nowadays that \gls{me} supports two bands or even all three bands.
-These are called dual-band and tri-band devices respectively.
+However it is more common nowadays that \gls{me} supports two bands or even all four bands.
+These are called dual-band, tri-band and quad-band devices respectively.
 
 As the name suggests, the \gls{sim} card is essentially a data storage that holds user specific data.
 This separation is interesting for the GSM user since it allows him/her to exchange the \gls{me} without having to contact the provider.
@@ -196,14 +192,7 @@ This can be done since the card itself has a microprocessor that manages the sec
 Key functions, like running the GSM key algorithm, verifying a \gls{pin} or reading a file can be accessed through the microprocessor via a communication protocol.
 A brief description of the protocol and functionalities can be found in \cite{kommsys2006}.
 
-\begin{figure}
-\centering
-\caption{Structure of the IMSI.}
-\label{fig:IMSI}
-\end{figure}
-
 The \gls{imsi} as described in GSM 23.003\cite{GSM23003} uniquely identifies a subscriber.
-The structure can be see in Figure \ref{fig:IMSI}.
 It has at most 15 digits and is divided into three parts, \gls{mcc},\gls{mnc} and \gls{msin}, of which only the last part is the personal identification number of the subscriber.
 The first two are also called \gls{hni}.
 The three digit \gls{mcc} describes the country code, the area of domicile of the mobile subscriber.
@@ -260,11 +249,107 @@ Inside the radio network of a certain area, there is one \gls{bsc} that connects
 While the Transceiver station act as receiver for radio signals the controller coordinates the different receivers and relays the incoming signals  to the core network.
 Since signals inside the core network are transmitted at other rates than in the radio network, rates need to be adapted, which is done by the \gls{trau}.
 
-\subsubsection{The Cellular Principle}
-\subsubsection{Baste Station Controller}
+Before discussing the individual components of this subsystem, it is important to understand how the frequencies in the radio network are used, and what architectural impacts this sparse resource has on the network and the components itself.
+
+\subsubsection{Frequencies and the Cellular Principle}
+\begin{figure}
+\caption{Mapping of functional entities on the 900Mhz band.}
+\label{fig:frequency}
+\end{figure}
+
+A frequency band as shown in Figure \ref{fig:frequency} is distributed into different functional entities.
+The band is divided into a range for the uplink, the part that is used by the \gls{ms} to upload data into the network and the downlink, that is utilised by the network to send data back.
+In the 900MHz band each of these has a width of 25MHz.
+For other bands the numbers differ and can be seen in Table \ref{tab:frequencies} but the functionality is the same.
+These bands themselves are furthermore divided into channels, each spanning 200kHz, which accounts for 125 channels on 25MHz.
+
+Each of which is identified by its \gls{arfcn}.
+This is a simple numbering scheme, given to those 200kHz channels.
+The frequencies and \glspl{arfcn} are connected as follows:
+\begin{align}
+F_\text{Uplink} 	&= \text{Start}_\text{Band} + 0.2 \cdot (\text{ARFCN} -(\text{Start}_\text{ARFCN} -1))\\
+F_\text{Downlink}   &= F_\text{Uplink} + \text{Offset}_\text{Band}
+\end{align}
+In case of the 900MHz Band this would be:
+\begin{align}
+F_\text{Uplink}		&=890 + 0.2 \cdot (\text{ARFCN} - (1-1))\\
+					&=890 + 0.2 \cdot \text{ARFCN}\\
+F_\text{Downlink}	&=F_\text{Uplink} + 45
+\end{align}
+A short overview of the \glspl{arfcn} can also be seen in Table \ref{tab:frequencies}.
+
+An additional method which is called time multiplexing, which will be explained in further detail in Section\ref{sec:Um}, makes is possible to map $125 \cdot 8 = 1000$ channels that could be used for voice transmission onto that band.
+Some of these channels need to be used for signalling.
+Even though the number by itself seems high it would never suffice to service a large urban area.
+This is one of the reasons why another frequency band in the 1800MHz range has been opened, with 75MHz up- and downlink supporting 375 channels.
+That by itself would also never suffice to service the huge number of subscribers, therefore the GSM network like any other modern mobile radio network is based on a cellular architecture which makes it possible to reuse frequencies.
+The range of one receiver station is drastically reduced to service only a small area.
+This is called the cell of the \gls{bts}, which in theory can be approximated by a hexagon.
+Each of these cells is assigned a different frequency, to avoid interference.
+However after a certain distance, the frequency reuse distance $D$, is covered, the exact same frequency can be used again by another \gls{bts}.
+$D$ is chosen large enough so that interference doesn't have an impact on overall call quality.
+Figure \ref{fig:cells} shows such an arrangement.
+Also a comparison with realistic cells can be seen, which differ in their appearance from the optimized hexagon model.
+The borders are blurred because of interference, reflection- and shadowing effects, and cells in the more urban areas are smaller than cells on the countryside, where the density of subscribers is less and thus can be handled by fewer \glspl{bts}.
+The band has been divided into 7 frequency ranges, which are only reused (cells with the same number) after distance $D$ is covered.
+For an arbitrary division of the frequency band into $k$ partitions and a cell radius of $R$ geometric derivations from the hexagon model yield for the frequency reuse distance $D$ \cite{GSM2009}:
+\begin{align}
+D	&=R\cdot\sqrt{3k}
+\end{align}
+
+This procedure raises the number of effectively usable by a large factor.
+However certain disadvantages \cite{protocols1999} come with this procedure as well.
+Increasing the amount of receivers automatically increases the cost of infrastructure for the provider.
+Due to the nature of the mobility of subscribers, this increases the amount of Handovers needed, since it is more likely that a subscriber leaves a small cell during an active call.
+Also an update of the location of a subscribers needs to be done more often, to ensure reachability for incoming calls.
+These inflict increased signalling load on the network itself.
+
+\begin{table}
+\caption{Frequencies in the different bands \cite{kommsys2006}.}
+\label{tab:frequencies}
+\end{table}
+
+\begin{figure}
+\caption{Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite{GSM2009}.}
+\label{fig:cells}
+\end{figure}
+
 \subsubsection{Base Transceiver Station}
-\subsubsection{Frequencies}
+Also called Base Stations are the entry points to the network for subscribers.
+Theoretically a \gls{bts} can serve a cell of 35 km radius, however this is decreased by interference, reflection- and shadowing effects.
+The limiting factor here are the number of subscribers itself and the \gls{me} that is used by them.
+A single station can only serve a limited number of users which yields a radius as low as 100 m for a single \gls{bts} \cite{kommsys2006} in dense urban housing areas.
+On the countryside where population is less dense, the limiting factor can also be transmission power of the \gls{me}.
+Therefore cells with a radius above 15km are seldom seen.
+
+%TODO: subfig
+\begin{figure}
+	\caption{Common base station configurations. Compiled from \cite{protocols1999}.}
+	\label{fig:configurations}
+\end{figure}
+
+\glspl{bts} and their corresponding cells can have different configurations depending on load, or morph structure of the surroundings.
+The main configurations will now be discussed shortly.
+In a \emph{standard configuration} every base base station has its own \gls{ci}, it is a one to one mapping of cells to \gls{bts}.
+This is an cost effective way of providing service to a rural or sparse settled area.
+An comparative illustration of configurations can be found in Figure \ref{fig:configurations}.
+The \emph{umbrella configuration} is build around one central \gls{bts} that is on high ground compared to its neighbours and has a higher transmission power.
+Thus the notion of this particular base station wrapping all the others in the area.
+Due to interference the frequency used by the wrapping base station cannot be used by the others.
+Nevertheless in some scenarios like alongside highways in urban areas this makes sense.
+A car that moves fast from one cell to the next may need a lot of Handovers thus inflicting a large amount of signalling load on the network.
+These fast moving subscribers are assigned to the umbrella station, that way less to no Handovers are needed.
+This configuration however is not defined in the \gls{gsm} specifications and needs additional software in the \gls{bsc}, thus it is considered a proprietary function \cite{protocols1999}.
+The \emph{sectorized configuration} has become the de facto standard for urban areas.
+In the other configurations a single \gls{bts} covers always a 360$^\circ$ area, and a certain distance is kept to its next neighbour to avoid interference in overlapping areas.
+The idea is to use antennas which only cover a certain angle, like 180$^\circ$ or 120$^\circ$ dividing a cell into two or three sectors respectively.
+Main advantages are that each single \gls{bts} has to deal with less subscribers and that in a three sector configuration frequencies can be reused inside a cell, which is  a great advantage for these densely settled areas.
+
+\subsubsection{Baste Station Controller}
+
+
 \subsubsection{Transcoding rate and Adaption Unit}
+
 
 \subsection{Network Subsystem}
 \label{sec:nss}
@@ -276,25 +361,25 @@ The \gls{smsc} is also part of this subsystem handling text messages.
 A possible arrangement of these components is displayed in Figure \ref{fig:gsm_network}.
 
 \subsubsection{Mobile Switching Center}
-The \gls{msc} is the component that does the actual routing of calls and is thus the core component of the \gls{nss}.
-Thus it basically works like any other \gls{isdn} exchange device with additional functionality to manage mobility
-Since it would be the amount of signalling inside a \gls{plmn} would be far to big for a single \gls{msc}, there is one for every \gls{la}.
+The \gls{msc} is the component that does the actual routing of calls and therefore the core component of the \gls{nss}.
+It basically works like any other \gls{isdn} exchange device with additional functionality to manage mobility.
+Since the amount of signalling inside a \gls{plmn} would be far to big for a single \gls{msc}, there is one for every \gls{la}.
 Amongst others its most important tasks are \gls{cc} and Mobility Management.
 
 \gls{cc} entrails registration when the subscriber connects to the network as well as routing the calls or text messages from one registered subscriber to another. 
-This routing can include transmitting calls to landlines or to networks of other providers.
+This routing can include transmission of calls to landlines or to networks of other providers.
 \glspl{msc} that bind the provider's networks to other provider's networks or the \gls{pstn} are called Gateway \glspl{msc}.
 
 The above part is also true for pure landline switching centres.
-What sets a mobile switching centre apart is called Mobility Management.
+What sets a mobile switching centre apart from these is called Mobility Management.
 Since the participants can freely move around in the network  and thus cannot be identified the same way as a fixed landline participant, authentication before using the offered services is important.
 Another consequence of mobility is, that the network has to keep track of where a subscriber is and through which \gls{msc} it can be reached.
-This is done via  Location Updates.
-Also during calls if the subscriber leaves the respective service area of the switching centre, then the call needs to be transferred without being interrupted.
+This is done via  Location Updates, that update the current location in the databases for other \glspl{msc} to look up.
+Also during calls if the subscriber leaves the respective service area of the switching centre, the call needs to be transferred without being interrupted.
 A procedure called Handover achieves just that.
 
 For this central role to work it is necessary to be connected to all the other components of the \gls{nss}.
-This is done via different connectors called Interfaces.
+This is done via different connecitons called Interfaces.
 A brief description of what the different interfaces in a GSM network are and what their respective function is can be seen in Table \ref{tab:interfaces}.
 
 \begin{table}
@@ -325,6 +410,9 @@ $U_m$			&BTS $\leftrightarrow$ MS	&Registration procedure, call data \etc as wel
 \caption{Interfaces inside the core network (upper part) and the radio network (lower part)}
 \label{tab:interfaces}
 \end{table}
+
+The $U_m$ interface will be of special interest to this project since it is the source for gathering broadcast information about the network and the respective base stations without directly registering with them.
+The interface itself and how to harvest information will be explained in detail in Section \ref{sec:Um}.
 
 \subsubsection{Home Location Register}
 The \gls{hlr} is the central database in which all personal subscriber related data is stored.
@@ -395,7 +483,7 @@ It should also be noted that this way of authenticating only works for authentic
 It is a one way authentication.
 The subscriber needs to trust the network.
 This is a design flaw that IMSI-Catchers use to lure \gls{ms} into their fake network.
-In \gls{umts} networks that flaw was fixed and the authentication procedure was made mutual.
+In \gls{umts} networks that flaw was fixed and the authentication procedure was made mutual \cite{kommsys2006}.
 
 \subsection{Intelligent Network}
 The two subsystems above are necessary for the correct operation of a \gls{gsm} network.
