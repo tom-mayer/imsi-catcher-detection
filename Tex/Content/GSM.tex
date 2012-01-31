@@ -240,117 +240,6 @@ A1			&Austria		&01, 09\\
 \label{tab:countrycodes}
 \end{table}
 
-\subsection{Base Station Subsystem}
-\label{sec:bss}
-The \gls{bss} is the part of the network that provides the hard- and software for physically connecting \glspl{ms} to the providers network.
-Its main components are the \gls{bsc}, the \gls{bts} and the \gls{trau}.
-Connecting of a mobile subscriber works via radio, which is why this subsystem is sometimes also called the radio network \cite{kommsys2006}.
-Inside the radio network of a certain area, there is one \gls{bsc} that connects to multiple \gls{bts} and one \gls{trau}.
-While the Transceiver station act as receiver for radio signals the controller coordinates the different receivers and relays the incoming signals  to the core network.
-Since signals inside the core network are transmitted at other rates than in the radio network, rates need to be adapted, which is done by the \gls{trau}.
-
-Before discussing the individual components of this subsystem, it is important to understand how the frequencies in the radio network are used, and what architectural impacts this sparse resource has on the network and the components itself.
-
-\subsubsection{Frequencies and the Cellular Principle}
-\begin{figure}
-\caption{Mapping of functional entities on the 900Mhz band.}
-\label{fig:frequency}
-\end{figure}
-
-A frequency band as shown in Figure \ref{fig:frequency} is distributed into different functional entities.
-The band is divided into a range for the uplink, the part that is used by the \gls{ms} to upload data into the network and the downlink, that is utilised by the network to send data back.
-In the 900MHz band each of these has a width of 25MHz.
-For other bands the numbers differ and can be seen in Table \ref{tab:frequencies} but the functionality is the same.
-These bands themselves are furthermore divided into channels, each spanning 200kHz, which accounts for 125 channels on 25MHz.
-
-Each of which is identified by its \gls{arfcn}.
-This is a simple numbering scheme, given to those 200kHz channels.
-The frequencies and \glspl{arfcn} are connected as follows:
-\begin{align}
-F_\text{Uplink} 	&= \text{Start}_\text{Band} + 0.2 \cdot (\text{ARFCN} -(\text{Start}_\text{ARFCN} -1))\\
-F_\text{Downlink}   &= F_\text{Uplink} + \text{Offset}_\text{Band}
-\end{align}
-In case of the 900MHz Band this would be:
-\begin{align}
-F_\text{Uplink}		&=890 + 0.2 \cdot (\text{ARFCN} - (1-1))\\
-					&=890 + 0.2 \cdot \text{ARFCN}\\
-F_\text{Downlink}	&=F_\text{Uplink} + 45
-\end{align}
-A short overview of the \glspl{arfcn} can also be seen in Table \ref{tab:frequencies}.
-
-An additional method which is called time multiplexing, which will be explained in further detail in Section\ref{sec:Um}, makes is possible to map $125 \cdot 8 = 1000$ channels that could be used for voice transmission onto that band.
-Some of these channels need to be used for signalling.
-Even though the number by itself seems high it would never suffice to service a large urban area.
-This is one of the reasons why another frequency band in the 1800MHz range has been opened, with 75MHz up- and downlink supporting 375 channels.
-That by itself would also never suffice to service the huge number of subscribers, therefore the GSM network like any other modern mobile radio network is based on a cellular architecture which makes it possible to reuse frequencies.
-The range of one receiver station is drastically reduced to service only a small area.
-This is called the cell of the \gls{bts}, which in theory can be approximated by a hexagon.
-Each of these cells is assigned a different frequency, to avoid interference.
-However after a certain distance, the frequency reuse distance $D$, is covered, the exact same frequency can be used again by another \gls{bts}.
-$D$ is chosen large enough so that interference doesn't have an impact on overall call quality.
-Figure \ref{fig:cells} shows such an arrangement.
-Also a comparison with realistic cells can be seen, which differ in their appearance from the optimized hexagon model.
-The borders are blurred because of interference, reflection- and shadowing effects, and cells in the more urban areas are smaller than cells on the countryside, where the density of subscribers is less and thus can be handled by fewer \glspl{bts}.
-The band has been divided into 7 frequency ranges, which are only reused (cells with the same number) after distance $D$ is covered.
-For an arbitrary division of the frequency band into $k$ partitions and a cell radius of $R$ geometric derivations from the hexagon model yield for the frequency reuse distance $D$ \cite{GSM2009}:
-\begin{align}
-D	&=R\cdot\sqrt{3k}
-\end{align}
-
-This procedure raises the number of effectively usable by a large factor.
-However certain disadvantages \cite{protocols1999} come with this procedure as well.
-Increasing the amount of receivers automatically increases the cost of infrastructure for the provider.
-Due to the nature of the mobility of subscribers, this increases the amount of Handovers needed, since it is more likely that a subscriber leaves a small cell during an active call.
-Also an update of the location of a subscribers needs to be done more often, to ensure reachability for incoming calls.
-These inflict increased signalling load on the network itself.
-
-\begin{table}
-\caption{Frequencies in the different bands \cite{kommsys2006}.}
-\label{tab:frequencies}
-\end{table}
-
-\begin{figure}
-\caption{Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite{GSM2009}.}
-\label{fig:cells}
-\end{figure}
-
-\subsubsection{Base Transceiver Station}
-Also called Base Stations are the entry points to the network for subscribers.
-Theoretically a \gls{bts} can serve a cell of 35 km radius, however this is decreased by interference, reflection- and shadowing effects.
-The limiting factor here are the number of subscribers itself and the \gls{me} that is used by them.
-A single station can only serve a limited number of users which yields a radius as low as 100 m for a single \gls{bts} \cite{kommsys2006} in dense urban housing areas.
-On the countryside where population is less dense, the limiting factor can also be transmission power of the \gls{me}.
-Therefore cells with a radius above 15km are seldom seen.
-
-%TODO: subfig
-\begin{figure}
-	\caption{Common base station configurations. Compiled from \cite{protocols1999}.}
-	\label{fig:configurations}
-\end{figure}
-
-\glspl{bts} and their corresponding cells can have different configurations depending on load, or morph structure of the surroundings.
-The main configurations will now be discussed shortly.
-In a \emph{standard configuration} every base base station has its own \gls{ci}, it is a one to one mapping of cells to \gls{bts}.
-This is an cost effective way of providing service to a rural or sparse settled area.
-An comparative illustration of configurations can be found in Figure \ref{fig:configurations}.
-The \emph{umbrella configuration} is build around one central \gls{bts} that is on high ground compared to its neighbours and has a higher transmission power.
-Thus the notion of this particular base station wrapping all the others in the area.
-Due to interference the frequency used by the wrapping base station cannot be used by the others.
-Nevertheless in some scenarios like alongside highways in urban areas this makes sense.
-A car that moves fast from one cell to the next may need a lot of Handovers thus inflicting a large amount of signalling load on the network.
-These fast moving subscribers are assigned to the umbrella station, that way less to no Handovers are needed.
-This configuration however is not defined in the \gls{gsm} specifications and needs additional software in the \gls{bsc}, thus it is considered a proprietary function \cite{protocols1999}.
-The \emph{sectorized configuration} has become the de facto standard for urban areas.
-In the other configurations a single \gls{bts} covers always a 360$^\circ$ area, and a certain distance is kept to its next neighbour to avoid interference in overlapping areas.
-The idea is to use antennas which only cover a certain angle, like 180$^\circ$ or 120$^\circ$ dividing a cell into two or three sectors respectively.
-Main advantages are that each single \gls{bts} has to deal with less subscribers and that in a three sector configuration frequencies can be reused inside a cell, which is  a great advantage for these densely settled areas.
-
-\subsubsection{Baste Station Controller}
-
-
-\subsubsection{Transcoding rate and Adaption Unit}
-
-
 \subsection{Network Subsystem}
 \label{sec:nss}
 The most important task of the \gls{nss} or Network Switching Subsystem is to establish connections and route calls between different locations.
@@ -505,11 +394,193 @@ To standardize these services, \gls{3gpp} and \gls{etsi} defined the \gls{camel}
 \gls{camel} specifies a protocol much like \gls{http} that regulates how the different components of a \gls{gsm} network exchange information.
 As such it is not an application itself but rather a framework to build vendor independent, portable services.
 
+\subsection{Base Station Subsystem}
+\label{sec:bss}
+The \gls{bss} is the part of the network that provides the hard- and software for physically connecting \glspl{ms} to the providers network.
+Its main components are the \gls{bsc}, the \gls{bts} and the \gls{trau}.
+Connecting of a mobile subscriber works via radio, which is why this subsystem is sometimes also called the radio network \cite{kommsys2006}.
+Inside the radio network of a certain area, there is one \gls{bsc} that connects to multiple \gls{bts} and one \gls{trau}.
+While the Transceiver station act as receiver for radio signals the controller coordinates the different receivers and relays the incoming signals  to the core network.
+Since signals inside the core network are transmitted at other rates than in the radio network, rates need to be adapted, which is done by the \gls{trau}.
+
+Before discussing the individual components of this subsystem, it is important to understand how the frequencies in the radio network are used, and what architectural impacts this sparse resource has on the network and the components itself.
+
+\subsubsection{Frequencies and the Cellular Principle}
+\begin{figure}
+\caption{Mapping of functional entities on the 900Mhz band.}
+\label{fig:frequency}
+\end{figure}
+
+A frequency band as shown in Figure \ref{fig:frequency} is distributed into different functional entities.
+The band is divided into a range for the uplink, the part that is used by the \gls{ms} to upload data into the network and the downlink, that is utilised by the network to send data back.
+In the 900MHz band each of these has a width of 25MHz.
+For other bands the numbers differ and can be seen in Table \ref{tab:frequencies} but the functionality is the same.
+These bands themselves are furthermore divided into channels, each spanning 200kHz, which accounts for 125 channels on 25MHz.
+
+Each of which is identified by its \gls{arfcn}.
+This is a simple numbering scheme, given to those 200kHz channels.
+The frequencies and \glspl{arfcn} are connected as follows:
+\begin{align}
+F_\text{Uplink} 	&= \text{Start}_\text{Band} + 0.2 \cdot (\text{ARFCN} -(\text{Start}_\text{ARFCN} -1))\\
+F_\text{Downlink}   &= F_\text{Uplink} + \text{Offset}_\text{Band}
+\end{align}
+In case of the 900MHz Band this would be:
+\begin{align}
+F_\text{Uplink}		&=890 + 0.2 \cdot (\text{ARFCN} - (1-1))\\
+					&=890 + 0.2 \cdot \text{ARFCN}\\
+F_\text{Downlink}	&=F_\text{Uplink} + 45
+\end{align}
+A short overview of the \glspl{arfcn} can also be seen in Table \ref{tab:frequencies}.
+
+An additional method which is called time multiplexing, which will be explained in further detail in Section\ref{sec:Um}, makes is possible to map $125 \cdot 8 = 1000$ channels that could be used for voice transmission onto that band.
+Some of these channels need to be used for signalling.
+Even though the number by itself seems high it would never suffice to service a large urban area.
+This is one of the reasons why another frequency band in the 1800 MHz range has been opened, with 75 MHz up- and downlink supporting 375 channels.
+That by itself would also never suffice to service the huge number of subscribers, therefore the GSM network like any other modern mobile radio network is based on a cellular architecture which makes it possible to reuse frequencies.
+The range of one receiver station is drastically reduced to service only a small area.
+This is called the cell of the \gls{bts}, which in theory can be approximated by a hexagon.
+Each of these cells is assigned a different frequency, to avoid interference.
+However after a certain distance, the frequency reuse distance $D$, is covered, the exact same frequency can be used again by another \gls{bts}.
+$D$ is chosen large enough so that interference doesn't have an impact on overall call quality.
+Figure \ref{fig:cells} shows such an arrangement.
+Also a comparison with realistic cells can be seen, which differ in their appearance from the optimized hexagon model.
+The borders are blurred because of interference, reflection- and shadowing effects, and cells in the more urban areas are smaller than cells on the countryside, where the density of subscribers is less and thus can be handled by fewer \glspl{bts}.
+The band has been divided into 7 frequency ranges, which are only reused (cells with the same number) after distance $D$ is covered.
+For an arbitrary division of the frequency band into $k$ partitions and a cell radius of $R$ geometric derivations from the hexagon model yield for the frequency reuse distance $D$ \cite{GSM2009}:
+\begin{align}
+D	&=R\cdot\sqrt{3k}
+\end{align}
+
+This procedure raises the number of effectively usable by a large factor.
+However certain disadvantages \cite{protocols1999} come with this procedure as well.
+Increasing the amount of receivers automatically increases the cost of infrastructure for the provider.
+Due to the nature of the mobility of subscribers, this increases the amount of Handovers needed, since it is more likely that a subscriber leaves a small cell during an active call.
+Also an update of the location of a subscribers needs to be done more often, to ensure reachability for incoming calls.
+These inflict increased signalling load on the network itself.
+
+\begin{table}
+\caption{Frequencies in the different bands \cite{kommsys2006}.}
+\label{tab:frequencies}
+\end{table}
+
+\begin{figure}
+\caption{Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite{GSM2009}.}
+\label{fig:cells}
+\end{figure}
+
+\subsubsection{Base Transceiver Station}
+Also called Base Stations are the entry points to the network for subscribers.
+Theoretically a \gls{bts} can serve a cell of 35 km radius, however this is decreased by interference, reflection- and shadowing effects.
+The limiting factor here are the number of subscribers itself and the \gls{me} that is used by them.
+A single station can only serve a limited number of users which yields a radius as low as 100 m for a single \gls{bts} \cite{kommsys2006} in dense urban housing areas.
+On the countryside where population is less dense, the limiting factor can also be transmission power of the \gls{me}.
+Therefore cells with a radius above 15 km are seldom seen.
+
+%TODO: subfig
+\begin{figure}
+	\caption{Common base station configurations. Compiled from \cite{protocols1999}.}
+	\label{fig:configurations}
+\end{figure}
+
+\glspl{bts} and their corresponding cells can have different configurations depending on load, or morph structure of the surroundings.
+The main configurations will now be discussed shortly.
+In a \emph{standard configuration} every base base station has its own \gls{ci}, it is a one to one mapping of cells to \gls{bts}.
+This is an cost effective way of providing service to a rural or sparse settled area.
+An comparative illustration of configurations can be found in Figure \ref{fig:configurations}.
+The \emph{umbrella configuration} is build around one central \gls{bts} that is on high ground compared to its neighbours and has a higher transmission power.
+Thus the notion of this particular base station wrapping all the others in the area.
+Due to interference the frequency used by the wrapping base station cannot be used by the others.
+Nevertheless in some scenarios like alongside highways in urban areas this makes sense.
+A car that moves fast from one cell to the next may need a lot of Handovers thus inflicting a large amount of signalling load on the network.
+These fast moving subscribers are assigned to the umbrella station, that way less to no Handovers are needed.
+This configuration however is not defined in the \gls{gsm} specifications and needs additional software in the \gls{bsc}, thus it is considered a proprietary function \cite{protocols1999}.
+The \emph{sectorized configuration} has become the de facto standard for urban areas.
+In the other configurations a single \gls{bts} covers always a 360$^\circ$ area, and a certain distance is kept to its next neighbour to avoid interference in overlapping areas.
+The idea is to use antennas which only cover a certain angle, like 180$^\circ$, 120$^\circ$ or 60$^\circ$ dividing a cell into two, three or six sectors respectively each having its own \gls{bts}.
+Main advantages are that each single \gls{bts} has to deal with less subscribers and that in a multi-sector configuration frequencies can be reused inside a cell, which is  a great advantage for these densely settled areas.
+
+\subsubsection{Baste Station Controller}
+The \gls{bsc} is the central unit in the \gls{bss}.
+It can be compared to a digital exchange in a standard telephone network with additional mobile extensions.
+The design idea was to remove all radio related load from the \gls{msc} into the radio subsystem.
+Therefore a \gls{bsc} manages the multitude \glspl{bts} in the \gls{bss}.
+
+First and foremost it is a switching centre.
+This means it has to switch incoming traffic channels from the \gls{msc} over the A-interface to channels on the outgoing A$_\text{bis}$-interface which leads over the \gls{bts} and thus the air interface to different \glspl{ms}.
+As a result the initialisation and maintenance of signalling and voice channels are its main tasks.
+What channels are and how they are established is explained in Section \ref{sec:channels}.
+For the sake of functional explanation of the \gls{bsc} it will suffice to regard a channels as a communication line for a particular purpose like receiving or sending voice data or another channel for sending broadcast information.
+Due to the nature of a mobile network certain other tasks have to be performed like Handovers and power management \cite{kommsys2006}.
+We will now look at the different tasks in more detail.
+
+A \emph{signalling channel} is needed when a subscriber wants to start a call or send a text message.
+The \gls{ms} sends a channel request message to the \gls{bsc} which needs to check if any \glspl{sdcch} are free.
+If there are free channels, one of those channels is activated via the \gls{bts} and an immediate assignment message is sent via the \gls{agch} containing the number of the assigned channel.
+From this point on the \gls{ms} can sent data on the assigned channel that reach the \gls{msc}.
+For incoming calls a prior step has to be taken.
+The \gls{msc} sends a message to the \gls{bsc} that contains the \gls{imsi}, \gls{tmsi} and \gls{la} of the subscriber that is being called or texted.
+This message is forwarded to and broadcasted by all cells in that \gls{la} on the \gls{pch}.
+As soon as this message arrives at the respective \gls{ms} it requests a channel with the procedure outlined above.
+
+After a signalling channel is found that way, a \emph{voice channel} can be initialised.
+The \gls{msc} sends an assignment request message to the \gls{bsc} after the start of the call has been determined on the previously assigned \gls{sdcch} between the \gls{msc} and the \gls{ms}.
+A free \gls{tch} is assigned and the \gls{ms} can tune in to this channel and send an acknowledgement to the \gls{bsc}, which in turn sends an acknowledgement that the assignment has been completed to the \gls{ms} and the \gls{msc}.
+
+\emph{Power management} is an essential part for heightened mobility.
+Basis for power management is that continuous measurements have to be done.
+These signal quality measurements are taken by the \gls{bts} and forwarded to the \gls{bsc}.
+If transmission strength has to be turned up or can be turned down, the \gls{bsc} informs the \gls{bts} which in turn distributes the information periodically to the connected mobile phones via a \gls{sacch}.
+Minimisation of transmission power has the advantage of longer uptime for \glspl{ms} since the battery will be less strained.
+
+As mentioned before a \emph{Handover} is necessary when a subscriber leaves the area of a cell and needs to be assigned to another one or if the reception of the current cell at the subscriber's end is far worse than those of neighbouring cells.
+A Handover takes place during an active call therefore first of all a \gls{tch} in the target cell has to be activated.
+Once this is done the new cell address and frequency is sent to the \gls{ms} over the \gls{facch} along with a command that triggers the Handover.
+After synchronising with the new cell an acknowledgement is sent by the base station to the controller to switch the voice connection to the new cell.
+What remains is freeing the old \gls{tch} for further use with other subscribers.
+
+\subsubsection{Transcoding rate and Adaption Unit}
+Inside the \gls{nss} voice data is moved with 64 kbit/s over E-1 connections.
+The resources on the air interface are much scarcer, therefore this amount of voice data cannot directly be sent to \glspl{ms} through the radio network.
+The data rate on the $U_m$ interface for voice is about 22.8 kbit/s as will be broken down in detail in Section \ref{sec:radio}.
+Since the channel is noisy and prone to errors, a lot of this bandwidth has to be subtracted for error correction purpose leaving around 13 kbit/s for actual voice data \cite{kommsys2006}.
+The 64 kbit/s PCM signal is sent from the \gls{msc} to the \gls{bsc} on its way, it is compressed and then sent over the air interface.
+On the other side, the compressed 13 kbit/s signal is decompressed to 64 kbit/s again.
+The compression and decompression on the subscriber's side is handled by the \gls{me} while on the network side the \gls{trau} is responsible for these tasks.
+Additionally the \gls{trau} can choose from a variety of codecs (compression/decompression algorithms).
+The one normally used is called Full Rate codec.
+Another interesting codec is the Half Rate codec, which compresses the voice signal to 7 kbit/s thus making it possible to route double the amount of \glspl{tch} since one channel can be used to transfer two different voice signals.
+This is interesting for crowded events where a lot of subscribers need to be served by a relatively small number of \gls{bts}.
+
+One of the most important tasks of the \gls{trau} apart from compressing, decompressing and correcting transmission errors, is ciphering the voice data.
+As in most cases when handling continuous data a stream cyphering algorithm is used.
+The stream cypher key $K_c$ that is generated by the authentication centre.
+It is generated by the A8 algorithm on the \gls{sim} card with a random number (RAND) and the secret key \gls{ki} as input.
+Since the transmission of voice data is split into frames it suffices to encode the data on a per frame basis.
+\gls{kc} and the current frame number are the inputs for the algorithm A5 which generates a 114 bit cyphering sequence that can be XORed with the frame.
+This sequence changes every frame since it uses the current frame number as input.
+The complete procedure is outlined in Figure \ref{fig:cypher}.
+
+\begin{figure}
+\centering
+\caption{Cyphering procedure for one frame of voice data. Adopted from \cite{kommsys2006}.}
+\label{fig:cypher}
+\end{figure}
+
+Since some strong cyphering algorithms are not permitted in certain countries, there is a variety of algorithms called A5/1, A5/2,$\ldots$ A5/n from which one needs to be chosen upon connecting to the network.
+However the encryption in only optional and not mandatory.
+If the network does not offer encryption, the \gls{me} sends its data unencrypted, without giving notice to the user in most cases.
+The other weakness is the locality of encryption.
+The procedure only affects the transmission from the \gls{me} to the \gls{bts}, everything after that is unencrypted voice data.
+This is especially a problem when providers use point-to-point radio systems to connect their base stations to the \gls{msc}.
+
 \section{The $U_m$ Interface}
 \label{sec:Um}
 \subsection{Layers}
 \subsection{The Radio Channel}
+%timing advance
+\label{sec:radio}
 \subsection{Logical Channels}
+\label{sec:channels}
 \section{IMSI-Catcher}
 \label{sec:catcher}
 \subsection{Mode of Operation}
@@ -541,6 +612,7 @@ As such it is not an application itself but rather a framework to build vendor i
 
 %easier share of sensitive information between police/intelligence/prosecution
 %similar examples for other areas like surrender of citizens
+
 
 
 
