@@ -64,11 +64,11 @@ Three of the main reasons for this rapid growth are explained by Heine \cite{pro
 \label{fig:gsm_growth}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=.5\textwidth]{../Images/3gpp.jpg}
-\caption{The 3GPP Logo}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=.5\textwidth]{../Images/3gpp.jpg}
+%\caption{The 3GPP Logo}
+%\end{figure}
 
 In 1998 the \gls{3gpp} was founded by 5 organizational partners with the goal of standardization in mobile communications, with focus on developing specifications for a third generation mobile radio system.
 These partners were \gls{arib}, \gls{etsi}, \gls{atis}, \gls{tta} and \gls{ttc}.
@@ -575,12 +575,65 @@ This is especially a problem when providers use point-to-point radio systems to 
 
 \section{The $U_m$ Interface}
 \label{sec:Um}
-\subsection{Layers}
-\subsection{The Radio Channel}
-%timing advance
+As with all radio based networks, the efficiency of the interface between the \gls{ms} and the \gls{bts} is of utmost importance to the overall performance of the network.
+The main reason for that is that resources on the air interface are scarce.
+Efficiency in this case can be seen as maximizing the quotient of transmission rate over bandwidth used \cite{protocols1999}.
+
+The first section will explain how transmission in a \gls{gsm} network are handled on the physical level and what techniques are used to maximize throughput.
+Afterwards the notion of logical channels, virtual channels that are mapped on top of the actual transmission, will be discussed and which channels are of importance for this project.
+The last section compares the network layers of the \gls{gsm} stack to ISO/OSI layer model, to give a basis for understanding where the framework employed in the practical part is situated in that hierarchy.
+
+\subsection{Radio Transmission}
+Without additional techniques, the \gls{bts} would only be able to serve a single caller at a time. 
+Therefore even in older radio networks like the C-Netz in Germany used \gls{fdma}.
+With \gls{fdma} a specific frequency of the broad frequency band of the \gls{bts} is allocated to a specific subscriber for a call, leaving other frequencies open to use for other subscribers connected to the same base station.
+Essentially this means that every \gls{bts} can serve multiple frequencies at the same time.
+This comes at the cost of additional hardware, since all the frequencies need their own transceivers and need to be amplified accordingly to guarantee the transmission quality.
+Additional hardware for each channel is also required to enable duplex transmission, meaning that sending and receiving can be done at the same time.
+
+That number of available frequencies would not suffice to meet the demand, more communication channels were needed.
+To that end another technique has been introduced, called \gls{tdma}.
+In \gls{gsm} networks each of these subbands yielded by the \gls{fdma} procedure has a width of 200 kHz.
+Onto this smaller carrier frequency, \gls{tdma} frames are transmitted, that contain eight time slots.
+These frames have a transmission length of 4.615 ms.
+Each of these timeslots could host the data of a different subscriber, although the first one is usually used for signalling procedures.
+An illustration of how these multiplexing methods work together can be seen in Figure \ref{fig:fdma_tdma}.
+\begin{figure}
+	\centering
+	\caption{The combination of FDMA and TDMA.}
+	\label{fig:fdma_tdma}
+\end{figure}
+
+Another important parameter is the frame number since they are used for cyphering as well as channel mapping and synchronisation.
+The frame number is broadcasted frequently on the \gls{sch} to keep mobile subscribers in sync and inform subscribers that are about to connect or request a channel for communication.
+Numbering in \gls{gsm} is fairly complex and will be explained bottom up.
+Figure \ref{fig:frame_hierarchy} shows complete diagram of the numbering scheme and frame hierarchy for reference.
+The timeslots which have a length of $4.615\text{ ms} \div 8 = 577~\mu\text{s}$ are called Bursts and are numbered from 0 to 7.
+
+%input for cypher + same every 3 hours
+%synchronisation 3 frames after / timing advance / guard time
+%channel assignment refers back to answering frame
+
+\begin{figure}
+	\centering
+	\caption{Hierarchical Composition of the different frames.}
+	\label{fig:frame_hierarchy}
+\end{figure}
+
+
+
+\begin{figure}
+	\centering
+	\caption{Structural Comparison of different Burst types.}
+	\label{fig:burst_types}
+\end{figure}
+
+
+
 \label{sec:radio}
 \subsection{Logical Channels}
 \label{sec:channels}
+\subsection{Layers}
 \section{IMSI-Catcher}
 \label{sec:catcher}
 \subsection{Mode of Operation}

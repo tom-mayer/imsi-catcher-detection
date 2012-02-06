@@ -3,27 +3,27 @@
 \contentsline {section}{\numberline {1.1}Structure}{1}
 \contentsline {chapter}{\numberline {2}GSM}{3}
 \contentsline {section}{\numberline {2.1}A Historical Perspective}{3}
-\contentsline {section}{\numberline {2.2}The GSM Network}{6}
-\contentsline {subsection}{\numberline {2.2.1}Mobile Station}{7}
-\contentsline {subsection}{\numberline {2.2.2}Network Subsystem}{11}
-\contentsline {subsubsection}{Mobile Switching Center}{11}
-\contentsline {subsubsection}{Home Location Register}{12}
-\contentsline {subsubsection}{Visitor Location Register}{13}
-\contentsline {subsubsection}{Equipment Identification Register}{13}
-\contentsline {subsubsection}{Authentication Center}{14}
-\contentsline {subsection}{\numberline {2.2.3}Intelligent Network}{15}
-\contentsline {subsection}{\numberline {2.2.4}Base Station Subsystem}{15}
-\contentsline {subsubsection}{Frequencies and the Cellular Principle}{16}
-\contentsline {subsubsection}{Base Transceiver Station}{18}
-\contentsline {subsubsection}{Baste Station Controller}{19}
-\contentsline {subsubsection}{Transcoding rate and Adaption Unit}{20}
-\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{22}
-\contentsline {subsection}{\numberline {2.3.1}Layers}{22}
-\contentsline {subsection}{\numberline {2.3.2}The Radio Channel}{22}
-\contentsline {subsection}{\numberline {2.3.3}Logical Channels}{22}
-\contentsline {section}{\numberline {2.4}IMSI-Catcher}{22}
-\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{22}
-\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{22}
-\contentsline {subsection}{\numberline {2.4.3}Law situation in Germany}{22}
+\contentsline {section}{\numberline {2.2}The GSM Network}{5}
+\contentsline {subsection}{\numberline {2.2.1}Mobile Station}{6}
+\contentsline {subsection}{\numberline {2.2.2}Network Subsystem}{8}
+\contentsline {subsubsection}{Mobile Switching Center}{9}
+\contentsline {subsubsection}{Home Location Register}{10}
+\contentsline {subsubsection}{Visitor Location Register}{11}
+\contentsline {subsubsection}{Equipment Identification Register}{11}
+\contentsline {subsubsection}{Authentication Center}{12}
+\contentsline {subsection}{\numberline {2.2.3}Intelligent Network}{13}
+\contentsline {subsection}{\numberline {2.2.4}Base Station Subsystem}{13}
+\contentsline {subsubsection}{Frequencies and the Cellular Principle}{14}
+\contentsline {subsubsection}{Base Transceiver Station}{15}
+\contentsline {subsubsection}{Baste Station Controller}{16}
+\contentsline {subsubsection}{Transcoding rate and Adaption Unit}{17}
+\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{18}
+\contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{19}
+\contentsline {subsection}{\numberline {2.3.2}Logical Channels}{20}
+\contentsline {subsection}{\numberline {2.3.3}Layers}{20}
+\contentsline {section}{\numberline {2.4}IMSI-Catcher}{20}
+\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{20}
+\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{20}
+\contentsline {subsection}{\numberline {2.4.3}Law situation in Germany}{20}
 \contentsline {chapter}{Bibliography}{I}
 \contentsline {chapter}{Acronyms}{III}
