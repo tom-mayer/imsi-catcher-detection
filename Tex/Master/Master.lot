@@ -5,3 +5,4 @@
 \contentsline {table}{\numberline {2.2}{\ignorespaces Mobile Country and Network Codes. (R) denotes that the MCC is reserved but not operational as of yet, whereas (T) denotes a operational test network.}}{9}
 \contentsline {table}{\numberline {2.3}{\ignorespaces Interfaces inside the core network (upper part) and the radio network (lower part)}}{10}
 \contentsline {table}{\numberline {2.4}{\ignorespaces Frequencies in the different bands \cite {kommsys2006}.}}{15}
+\contentsline {table}{\numberline {2.5}{\ignorespaces Possible combinations of logical channels for the base station. From \cite {GSM2009}.}}{24}

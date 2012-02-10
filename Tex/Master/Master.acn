@@ -109,16 +109,18 @@
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{LA?\glossaryentryfield{la}{\glsnamefont{LA}}{Location Area}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{CC?\glossaryentryfield{cc}{\glsnamefont{CC}}{Call Control}{\relax }|setentrycounter{page}\glsnumberformat}{9}
+\glossaryentry{MM?\glossaryentryfield{mm}{\glsnamefont{MM}}{Mobility Management}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{CC?\glossaryentryfield{cc}{\glsnamefont{CC}}{Call Control}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{PSTN?\glossaryentryfield{pstn}{\glsnamefont{PSTN}}{Public Standard Telephone Network}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
+\glossaryentry{MM?\glossaryentryfield{mm}{\glsnamefont{MM}}{Mobility Management}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{10}
 \glossaryentry{HLR?\glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{10}
 \glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{10}
-\glossaryentry{MSISDN?\glossaryentryfield{msisdn}{\glsnamefont{MSISDN}}{Mobile Subscriber Integrated Services Digital Network Number}{\relax }|setentrycounter{page}\glsnumberformat}{11}
+\glossaryentry{MSISDN?\glossaryentryfield{msisdn}{\glsnamefont{MSISDN}}{Mobile Subscriber Integrated Services Digital Network Number}{\relax }|setentrycounter{page}\glsnumberformat}{10}
 \glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{11}
 \glossaryentry{HLR?\glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{11}
 \glossaryentry{VLR?\glossaryentryfield{vlr}{\glsnamefont{VLR}}{Visitor Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{11}
@@ -289,4 +291,91 @@
 \glossaryentry{FDMA?\glossaryentryfield{fdma}{\glsnamefont{FDMA}}{Frequency Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{19}
 \glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{19}
 \glossaryentry{SCH?\glossaryentryfield{sch}{\glsnamefont{SCH}}{Signalling Channel}{\relax }|setentrycounter{page}\glsnumberformat}{19}
-\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{19}
+\glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{19}
+\glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{19}
+\glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{SCH?\glossaryentryfield{sch}{\glsnamefont{SCH}}{Signalling Channel}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{BSC?\glossaryentryfield{bsc}{\glsnamefont{BSC}}{Base Station Controller}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{20}
+\glossaryentry{RACH?\glossaryentryfield{rach}{\glsnamefont{RACH}}{Random Access Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{SF?\glossaryentryfield{sf}{\glsnamefont{SF}}{Stealing Flag}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{FACCH?\glossaryentryfield{facch}{\glsnamefont{FACCH}}{Fast Access Control Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{FCCH?\glossaryentryfield{fcch}{\glsnamefont{FCCH}}{Frequency Correction Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{BCCH?\glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{TDMA?\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{SCH?\glossaryentryfield{sch}{\glsnamefont{SCH}}{Signalling Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{BCCH?\glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{RACH?\glossaryentryfield{rach}{\glsnamefont{RACH}}{Random Access Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{RACH?\glossaryentryfield{rach}{\glsnamefont{RACH}}{Random Access Channel}{\relax }|setentrycounter{page}\glsnumberformat}{21}
+\glossaryentry{TCH?\glossaryentryfield{tch}{\glsnamefont{TCH}}{Traffic Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{FACCH?\glossaryentryfield{facch}{\glsnamefont{FACCH}}{Fast Access Control Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{TCH?\glossaryentryfield{tch}{\glsnamefont{TCH}}{Traffic Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{SACCH?\glossaryentryfield{sacch}{\glsnamefont{SACCH}}{Slow Access Control Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{SDCCH?\glossaryentryfield{sdcch}{\glsnamefont{SDCCH}}{Standalone Digital Control Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{TCH?\glossaryentryfield{tch}{\glsnamefont{TCH}}{Traffic Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{SCH?\glossaryentryfield{sch}{\glsnamefont{SCH}}{Signalling Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{FCCH?\glossaryentryfield{fcch}{\glsnamefont{FCCH}}{Frequency Correction Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{BCCH?\glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }|setentrycounter{page}\glsnumberformat}{22}
+\glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{TMSI?\glossaryentryfield{tmsi}{\glsnamefont{TMSI}}{Temporary IMSI}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{RACH?\glossaryentryfield{rach}{\glsnamefont{RACH}}{Random Access Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{SDCCH?\glossaryentryfield{sdcch}{\glsnamefont{SDCCH}}{Standalone Digital Control Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{AGCH?\glossaryentryfield{agch}{\glsnamefont{AGCH}}{Access Grand Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{RACH?\glossaryentryfield{rach}{\glsnamefont{RACH}}{Random Access Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{SDCCH?\glossaryentryfield{sdcch}{\glsnamefont{SDCCH}}{Standalone Digital Control Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{BCCH?\glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{BCCH?\glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }|setentrycounter{page}\glsnumberformat}{23}
+\glossaryentry{ITU?\glossaryentryfield{itu}{\glsnamefont{ITU}}{International Telecomunication Union}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{GMSK?\glossaryentryfield{gmsk}{\glsnamefont{GMSK}}{Gaussian Minimum Shift Keying}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{HDLC?\glossaryentryfield{hdlc}{\glsnamefont{HDLC}}{High Level Data Link Control}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{SS-7?\glossaryentryfield{ss7}{\glsnamefont{SS-7}}{Signaling System 7}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{LAPD?\glossaryentryfield{lapd}{\glsnamefont{LAPD}}{Link Access Procedure, D Channel}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{HDLC?\glossaryentryfield{hdlc}{\glsnamefont{HDLC}}{High Level Data Link Control}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{LAPD$_m$?\glossaryentryfield{lapdm}{\glsnamefont{LAPD$_m$}}{LAPD Mobile}{\relax }|setentrycounter{page}\glsnumberformat}{24}
+\glossaryentry{ISDN?\glossaryentryfield{isdn}{\glsnamefont{ISDN}}{Integrated Services Digital Network}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{BSC?\glossaryentryfield{bsc}{\glsnamefont{BSC}}{Base Station Controller}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{LAPD$_m$?\glossaryentryfield{lapdm}{\glsnamefont{LAPD$_m$}}{LAPD Mobile}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{LAPD?\glossaryentryfield{lapd}{\glsnamefont{LAPD}}{Link Access Procedure, D Channel}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{MTP 2/SS7?\glossaryentryfield{mtp2}{\glsnamefont{MTP 2/SS7}}{Message Transfer Part 2/SS7}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{LAPD$_m$?\glossaryentryfield{lapdm}{\glsnamefont{LAPD$_m$}}{LAPD Mobile}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{3GPP?\glossaryentryfield{3gpp}{\glsnamefont{3GPP}}{Third Generation Partnership Project}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{BSC?\glossaryentryfield{bsc}{\glsnamefont{BSC}}{Base Station Controller}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{RR?\glossaryentryfield{rr}{\glsnamefont{RR}}{Radio Resource}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{SS-7?\glossaryentryfield{ss7}{\glsnamefont{SS-7}}{Signaling System 7}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{MM?\glossaryentryfield{mm}{\glsnamefont{MM}}{Mobility Management}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{CC?\glossaryentryfield{cc}{\glsnamefont{CC}}{Call Control}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{RR?\glossaryentryfield{rr}{\glsnamefont{RR}}{Radio Resource}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{25}

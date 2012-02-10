@@ -9,5 +9,7 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Common base station configurations. Compiled from \cite {protocols1999}.}}{15}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Cyphering procedure for one frame of voice data. Adopted from \cite {kommsys2006}.}}{18}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces The combination of FDMA and TDMA.}}{19}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Hierarchical Composition of the different frames.}}{19}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Structural Comparison of different Burst types.}}{19}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Hierarchical Composition of the different frames.}}{20}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Structural Comparison of different Burst types. After \cite {GSM2009}.}}{20}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Example mapping of logical channels. After \cite {protocols1999}.}}{22}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Example of Multiframe-configurations for a base station \cite {kommsys2006}.}}{23}

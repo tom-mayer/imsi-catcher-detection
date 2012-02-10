@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  6 FEB 2012 13:54
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  10 FEB 2012 18:09
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -911,35 +911,35 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 \glo@main@file=\write6
 \openout6 = `Master.glo'.
 
-Package glossaries Info: Writing glossary file Master.glo on input line 91.
+Package glossaries Info: Writing glossary file Master.glo on input line 93.
 \glo@acronym@file=\write7
 \openout7 = `Master.acn'.
 
-Package glossaries Info: Writing glossary file Master.acn on input line 91.
+Package glossaries Info: Writing glossary file Master.acn on input line 93.
  (./Glossary.tex)
 (./Master.aux)
 \openout1 = `Master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 108.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 110.
  (/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package scrbase Info: No captions found for `german'
-(scrbase)             --> skipped on input line 108.
+(scrbase)             --> skipped on input line 110.
 Package scrbase Info: No captions found for `ngerman'
-(scrbase)             --> skipped on input line 108.
+(scrbase)             --> skipped on input line 110.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
@@ -997,17 +997,17 @@ Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../Images/unisiegel.pdf>])
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 118.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 120.
  (../Content/Abstract.tex) [2]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 131.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 133.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 131.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 133.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 131.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 133.
  (./Master.lof)
 \tf@lof=\write8
 \openout8 = `Master.lof'.
@@ -1038,10 +1038,10 @@ Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)            on input line 4.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 28.
+(scrbook)            on input line 36.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 29.
+(scrbook)            on input line 37.
 )
 \tf@toc=\write10
 \openout10 = `Master.toc'.
@@ -1089,7 +1089,31 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 Underfull \vbox (badness 2318) has occurred while \output is active []
 
  [13]
-[14] [15] [16] [17] [18]) [19] [20] (./Master.bbl
+[14] [15] [16] [17] [18] [19] [20] [21]
+
+LaTeX Warning: Reference `sec:parameters' on page 22 undefined on input line 71
+8.
+
+[22]
+
+LaTeX Warning: Citation `gsm0502' on page 23 undefined on input line 731.
+
+
+LaTeX Warning: Reference `tab:channel_configurations' on page 23 undefined on i
+nput line 732.
+
+[23]
+
+LaTeX Warning: Citation `3gpp_ts_0405' on page 24 undefined on input line 790.
+
+
+LaTeX Warning: Citation `3gpp_ts_0406' on page 24 undefined on input line 790.
+
+[24]) [25] [26
+
+
+
+] (./Master.bbl
 Underfull \hbox (badness 2818) in paragraph at lines 4--8
 []\T1/ptm/m/n/10.95 Radio ac-cess net-work: Ra-dio trans-mis-sion and re-cep-ti
 on.  GSM 05.05,
@@ -1140,9 +1164,6 @@ Underfull \hbox (badness 3428) in paragraph at lines 50--53
 [1
 
 
-
-
-
 ]) (../Content/Appendix.tex) (./Master.acr [2]
 Underfull \hbox (badness 2626) in paragraph at lines 24--24
 []|\T1/ptm/m/n/10.95 Conférence Eu-ropéenne des Ad-min-is-tra-tions des
@@ -1158,29 +1179,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 
 
 
-] [4]) [5] (./Master.aux) ) 
+] [4]) [5] (./Master.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 22928 strings out of 493848
- 436261 string characters out of 1152824
- 651582 words of memory out of 3000000
- 25616 multiletter control sequences out of 15000+50000
+ 23135 strings out of 493848
+ 439315 string characters out of 1152824
+ 656159 words of memory out of 3000000
+ 25823 multiletter control sequences out of 15000+50000
  73378 words of font info for 99 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.en
-c}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
-/usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-t
-exlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/u
-rw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-</usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (33 pages, 245727 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/
+fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/ti
+mes/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr
+/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive
+/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (39 pages, 262852 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
+ 184 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

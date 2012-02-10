@@ -253,14 +253,14 @@ A possible arrangement of these components is displayed in Figure \ref{fig:gsm_n
 The \gls{msc} is the component that does the actual routing of calls and therefore the core component of the \gls{nss}.
 It basically works like any other \gls{isdn} exchange device with additional functionality to manage mobility.
 Since the amount of signalling inside a \gls{plmn} would be far to big for a single \gls{msc}, there is one for every \gls{la}.
-Amongst others its most important tasks are \gls{cc} and Mobility Management.
+Amongst others its most important tasks are \gls{cc} and \gls{mm}.
 
 \gls{cc} entrails registration when the subscriber connects to the network as well as routing the calls or text messages from one registered subscriber to another. 
 This routing can include transmission of calls to landlines or to networks of other providers.
 \glspl{msc} that bind the provider's networks to other provider's networks or the \gls{pstn} are called Gateway \glspl{msc}.
 
 The above part is also true for pure landline switching centres.
-What sets a mobile switching centre apart from these is called Mobility Management.
+What sets a mobile switching centre apart from these is called \gls{mm}.
 Since the participants can freely move around in the network  and thus cannot be identified the same way as a fixed landline participant, authentication before using the offered services is important.
 Another consequence of mobility is, that the network has to keep track of where a subscriber is and through which \gls{msc} it can be reached.
 This is done via  Location Updates, that update the current location in the databases for other \glspl{msc} to look up.
@@ -584,6 +584,8 @@ Afterwards the notion of logical channels, virtual channels that are mapped on t
 The last section compares the network layers of the \gls{gsm} stack to ISO/OSI layer model, to give a basis for understanding where the framework employed in the practical part is situated in that hierarchy.
 
 \subsection{Radio Transmission}
+\label{sec:radio}
+
 Without additional techniques, the \gls{bts} would only be able to serve a single caller at a time. 
 Therefore even in older radio networks like the C-Netz in Germany used \gls{fdma}.
 With \gls{fdma} a specific frequency of the broad frequency band of the \gls{bts} is allocated to a specific subscriber for a call, leaving other frequencies open to use for other subscribers connected to the same base station.
@@ -598,21 +600,27 @@ Onto this smaller carrier frequency, \gls{tdma} frames are transmitted, that con
 These frames have a transmission length of 4.615 ms.
 Each of these timeslots could host the data of a different subscriber, although the first one is usually used for signalling procedures.
 An illustration of how these multiplexing methods work together can be seen in Figure \ref{fig:fdma_tdma}.
+
 \begin{figure}
 	\centering
 	\caption{The combination of FDMA and TDMA.}
 	\label{fig:fdma_tdma}
 \end{figure}
 
-Another important parameter is the frame number since they are used for cyphering as well as channel mapping and synchronisation.
+\subsubsection{Frame Numbering}
+Another important aspect is the frame hierarchy and the resulting frame numbering since it is used for ciphering as well as channel mapping and synchronisation.
 The frame number is broadcasted frequently on the \gls{sch} to keep mobile subscribers in sync and inform subscribers that are about to connect or request a channel for communication.
-Numbering in \gls{gsm} is fairly complex and will be explained bottom up.
 Figure \ref{fig:frame_hierarchy} shows complete diagram of the numbering scheme and frame hierarchy for reference.
-The timeslots which have a length of $4.615\text{ ms} \div 8 = 577~\mu\text{s}$ are called Bursts and are numbered from 0 to 7.
 
-%input for cypher + same every 3 hours
-%synchronisation 3 frames after / timing advance / guard time
-%channel assignment refers back to answering frame
+The timeslots on the lowest level of the hierarchy have a length of $4.615\text{ ms} \div 8 = 577~\mu\text{s}$ are also known as Bursts numbered from 0 to 7.
+Every new \gls{tdma} frame the sequence number is increased by one.
+Since this number cannot be increased endlessly is repeated every 3 h 28 m 53 s and 760 ms.
+This is the largest chunk in the frame hierarchy and is called Hyperframe.
+Superframes and Multiframes are layers in between the Hyperframe and the \gls{tdma} frame.
+As can be seen in the diagram the two variants of Multiframes, the 26-Multiframe containing 26 \gls{tdma} frames transports traffic channels and the respective control channels and the 51-Multiframe containing 51 \gls{tdma} frames respectively which contains only signalling data.
+Superframes wrap these different kinds of Multiframes into packages of the same size.
+So either 51 26-Multiframes can be carried by a Superframe or 51 26-Multiframes yielding a duration of 6 s and 120 ms each.
+Finally 2048 Superframes make up the Hyperframe.
 
 \begin{figure}
 	\centering
@@ -620,25 +628,178 @@ The timeslots which have a length of $4.615\text{ ms} \div 8 = 577~\mu\text{s}$ 
 	\label{fig:frame_hierarchy}
 \end{figure}
 
+The frequency number thus is only repeated every 3 hours which makes cracking the cyphering algorithm that has the sequence number as one of its inputs and thus intercepting a call considerably  more difficult.
+When a \gls{ms} and \gls{bts} start to communicate the frame number has to be obtained by the \gls{ms} from the \gls{sch} before it can ask for a channel.
+This is important since the frame number is a vital information indicating the chronological order of control channels.
+If the \gls{ms} asks for a channel assignment in frame $n$ and a channel is assigned to the \gls{ms}, the assigned channels refers back to the frame $n$ and thus the \gls{ms} can find its channel amongst the others.
 
+The last task mentioned above was synchronisation.
+Since the mobile station and the transceiver station cannot send at exactly the same time, uplink and downlink of a channel are shifted by three timeslots.
+The time in between uplink and downlink however cannot be fixed for all situations like that.
+During a call a participant may move around and since radio waves travel at the speed of light slight variations in timing need to be dealt with.
+If not data from two participants might overlap and be rendered unusable.
+To avoid this problem each Burst has a Guard Time at the beginning and at the end, where no data is transmitted.
+The complete structure of such a Normal Burst is outlined in Figure \ref{fig:burst_types}.
+However this does not suffice if a subscriber moves away or to a \gls{bts} at considerable speed.
+Therefore a mechanism called Timing Advance is used.
+Basically the farther a subscriber is away from a base station the earlier a burst has to be sent, to compensate for the distance.
+The value for the Timing Advance is determined by the \gls{bsc} after receiving a channel request message from the mobile station and afterwards constantly updated by the respective \gls{bts}.
+The channel request message itself has only little data and large Guard Times since Timing Advance can only be used after this first measurement.
 
 \begin{figure}
 	\centering
-	\caption{Structural Comparison of different Burst types.}
+	\caption{Structural Comparison of different Burst types. After \cite{GSM2009}.}
 	\label{fig:burst_types}
 \end{figure}
 
+\subsubsection{Burst Types}
+As can be suspected by the paragraph above, there are different kinds of Bursts which are shown in \ref{fig:burst_types} \cite{GSM2009}.
+All Bursts contain the above mentioned Guard Times which separate them from the next Burst.
+In addition to data bits and known fixed bit sequences every frame has has tail bits, which mark the beginning and the end of a frame.
+The training sequence is a fixed bit sequence that appears in conjunction with data bit sequences.
+In a radio transmission procedure the signal can be distorted by shadowing, reflection, an other factors, which would result in data loss.
+But since the training sequence is known, it is possible to reconstruct the original signal by comparing the incoming training sequence with the expected one and thus conserving the data bits.
+\begin{itemize}
+	\item Normal Burst: The basic information transmitting Burst.
+	All information on traffic and control channels is transmitted by this Burst, except for the \gls{rach}.
+	Furthermore this Burst contains the \glspl{sf}.
+	If these are set, the Burst contains important signalling data that has to travel fast over the \gls{facch} however no normal data can be transmitted in this case.
+	\item Frequency Correction Burst: This Burst is sent frequently and is used by \glspl{ms} to fine tune to the frequency of the \gls{bts}.
+	It may also be used for time synchronisation for \gls{tdma} frames by the \gls{ms}.
+	The periodic broadcasting of this frame is also called \gls{fcch} and shares a frequency with the \gls{bcch} as will be shown in the next section.
+	\item Synchronisation Burst: This Burst contains time synchronisation information from the \gls{bts} to the \gls{ms} as well as the running number of the \gls{tdma} frame.
+	Periodic broadcasting of this Burst is called \gls{sch}.
+	\item Dummy Burst: When no other Bursts are sent on the \gls{bcch} this one is sent to ensure that something is sent every time.
+	This way the \gls{ms} can keep up doing measurements even if no data needs to be transmitted.
+	\item Access Burst: The Burst that is used to transmit data on the \gls{rach}.
+	Since everyone can sent on the \gls{rach} without being given a timeslot via Slotted Aloha procedure, the guard times of this Burst are high since this reduces the probability of data colliding.
+\end{itemize}
+The information in this section described the physical properties of the Air Interface also called Layer 1 when referring to the standard ISO/OSI model.
+A short description of the other layers will be presented in Section \ref{sec:layers} for the sake of completeness.
 
-
-\label{sec:radio}
 \subsection{Logical Channels}
 \label{sec:channels}
+A logical channel is a virtual construct on top of the physical construct of frames, to group information of the same kind together.
+Since not all information has to be sent all the time, these different information channels, \eg broadcast information about the respective base station, can be multiplexed and sent together.
+\begin{figure}
+	\centering
+	\caption{Example mapping of logical channels. After \cite{protocols1999}.}
+	\label{fig:channels}
+\end{figure}
+The mapping of these channels on the physical interface works in two dimensions.
+The first dimension is the frequency and the second the timeslot as can be seen in Figure \ref{fig:channels}.
+In this way, each timeslot over the course of multiple frames can be regarded as a virtual channel.
+These resulting virtual channels can now be used by a multitude of logical channels to transmit information.
+
+There are two main categories of logical channels distinguished by their usage \cite{kommsys2006}, dedicated channels and common channels.
+Dedicated channels transport data meant for a single subscriber whereas common channels contain information interesting to all subscribers.
+
+\subsubsection{Dedicated Channels}
+As mentioned above, these channels wrap the communication of a single user with the network.
+These are point to point channels.
+\begin{itemize}
+	\item \gls{tch}: A data channels that is used to transmit voice data or data service packages.
+	\item \gls{facch}: A channel for transmission of urgent signalling data, \eg handover signalling.
+	Since this data doesn't have to be send often, it shares a timeslot with the \gls{tch} and uses the stealing flags to insert its own data.
+	\item \gls{sacch}: The uplink of this channel is used by the \gls{ms} to transmit quality measurements of the cell and neighbouring cells to the base station, so the network can do handover decisions accordingly.
+	The downlink is used for Timing Advance data and power management data for the \gls{ms}.
+	\item \gls{sdcch}: On this channel signalling information is sent to a subscriber as long as no \gls{tch} has been assigned during the initialisation of a call.
+	Text messages and Location Updates are also transmitted on this channel.
+\end{itemize}
+
+\subsubsection{Common Channels}
+The common channels contain data interesting to all subscribers, thus having a broadcast nature.
+These are point to multi-point channels.
+\begin{itemize}
+	\item \gls{sch}: When the \gls{ms} is looking for a cell to connect, this channel is used.
+	\item \gls{fcch}: Used by \glspl{ms} to fine tune to the frequency of a certain base station and denotes the start of a 51-Multiframe.
+	\item \gls{bcch}: This channel is used to transmit information about the network and the base station itself through different system information messages.
+	These contain, the netowrk name and cell identification as well as neighbourhood information on cells in the area and much more.
+	This channel will be the main source of information for this project, since it allows harvesting information without actively participating in the network and will thus be discussed in further detail in Section \ref{sec:parameters}.
+	\item \gls{pch}: If a subscriber is not assigned a dedicated channel yet, \ie he/she is not active, they are notified on this channel if there is an incoming call or text.
+	The subscribers are identified by their \gls{tmsi} which has been previously assigned upon entering the network, so the \gls{imsi} does not have to be broadcasted.
+	\item \gls{rach}: A subscriber that has been notified over the \gls{pch} can contact the network and request a \gls{sdcch}.
+	Since this is a channel used by all connected and idle \glspl{ms}, access has to be regulated.
+	As the name implies access is random thus it can happen that two or more \gls{ms} try to send at the same time.
+	Slotted Aloha is used to handle access, meaning there are fixed timeslots on which \glspl{ms} can send data.
+	If collisions occur, the data is discarded and each \gls{ms} has to wait a random time interval before sending again.
+	\item \gls{agch}: This is the channel used to respond to a \gls{ms} if a request has been made on the \gls{rach}.
+	The acknowledgement message also contains information on which \gls{sdcch} to use.
+\end{itemize}
+\subsubsection{Combinations}
+These channels cannot arbitrarily mapped onto timeslots.
+There is a complex multiplexing scheme defined in GSM 05.02 \cite{gsm0502} that explains which channel combinations can be broadcasted inside a Multiframe.
+Since we are mainly interested in the downlink to harvest information from the \gls{bcch} Table \ref{tab:channel_configurations} shows the possible combinations of logical channels inside a Multiframe.
+\begin{table}
+	\centering
+	\begin{tabular}{lccccccccc}
+	\toprule
+						&M1&M2&M3&M4&M5&M6&M7&M8&M9\\
+	\midrule
+	TCH/F				&\cellcolor[gray]{0.7}&&&&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}\\
+	TCH/H				&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&&&\\
+	TCH/H				&&&\cellcolor[gray]{0.7}&&&&&&\\
+	BCCH				&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&\\
+	FCCH				&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&\\
+	SCH					&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&\\
+	CCCH				&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&\\
+	SDCCH				&&&&&\cellcolor[gray]{0.7}&&\cellcolor[gray]{0.7}&&\\
+	SACCH				&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&\cellcolor[gray]{0.7}&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}\\
+	FACCH				&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&&\cellcolor[gray]{0.7}&\\
+	\midrule
+	Multiframe Type		&26&26&26&51&51&51&51&26&26\\
+	\bottomrule
+	\end{tabular}
+	\caption{Possible combinations of logical channels for the base station. From \cite{GSM2009}.}
+\end{table}
+The mapping of these specific Multiframe-configurations onto timeslots is not arbitrary either.
+Normally TS-0 and TS-1, the first two time slots are used handle channels with signalling information.
+The \gls{bcch} also uses TS-0 of the carrier frequency.
+
+Figure \ref{fig:channel_example} shows an example \cite{kommsys2006} for the downlink of a base station where these channel configurations can be seen.
+As mentioned before, TS-0 and TS-1 are used for signalling purpose where the Multiframe-configurations M5 and M7 can be found respectively.
+The table shows, that these configurations do not contain any traffic channels.
+As for traffic channels, TS-2 through to TS-7 are used with the configuration M1 or M3.
+It cannot be seen from the data, whether full rate or half rate channels are used for transporting voice data, but since half rate channels are not used very often, it is more likely that it resembles M1.
+\begin{figure}
+	\centering
+	\caption{Example of Multiframe-configurations for a base station \cite{kommsys2006}.}
+	\label{fig:channel_example}
+\end{figure}
+
 \subsection{Layers}
+\label{sec:layers}
+Design-wise the layers of the $U_m$ interface resemble the layers of the ISO/OSI model reference model specified by the \gls{itu}.
+This section will give a short overview over the first three layers with respect to the air interface \cite{protocols1999}.
+It is important for further understanding to know what functionality can be found on which of the three lower layers, since the framework employed to gather information in this project will directly work on and with those layers.
+
+\paragraph{Physical Layer (Layer 1):} This layer provides the facilities for the actual transmission of data.
+In case of the $U_m$ interface this is the actual radio equipment.
+This layer does not know data types like user or signalling data.
+The data that it receives from Layer 2 are either single bits or an array of bits.
+On the protocol side of the $U_m$ interface the \gls{gmsk} modulation that is used to encode the data of a Burst into radio signals is part of Layer 1.
+
+\paragraph{Data Link (Layer 2):} On Layer 2 packaging is done.
+The notion of data frames is introduced to have chunks of information on which error checking can be performed and potential retransmission of corrupted data.
+The Layer 2 protocol \gls{hdlc} is used as a basis for \gls{ss7} as well as for \gls{lapd}.
+\gls{hdlc} and its derivatives use start/stop markers and checksums to form data frames.
+The Layer 2 format changes through the course of the network, while the data packages of layer 3 stay the same.
+When a transmission from a \gls{ms} to the \gls{bts} is done,\gls{lapdm} is used which is essentially the same as the Layer 2 \gls{isdn} protocol with a few simplifications.
+From the \gls{bts} to the \gls{bsc} \gls{lapdm} converts to \gls{lapd} and afterwards is exchanged to \gls{mtp2}.
+For the air interface \gls{lapdm} along with channel coding and Burst formatting form Layer 2.
+More information about these Layer 2 protocols can be found in the respective Technical Specifications of the \gls{3gpp} \cite{3gpp_ts_0405,3gpp_ts_0406}.
+
+\paragraph{Network (Layer 3):} Layer 3 headers have to provide all the information necessary for the packet to be routed towards its recipient.
+As with Layer 2 information, it may be the case that this header needs to be partially rewritten during the transmission of a package.
+Between the \gls{ms}, \gls{bts}, \gls{bsc} and \gls{msc} the \gls{rr} protocol and the information needed to route a call into the \gls{ss7} subsystem are part of Layer 3.
+This protocol handles configuration and allocation of radio channels as well as managing the dedicated channels to the subscribers.
+Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to Layer 3 functionality but is only transported via \gls{rr} between \gls{ms} and the \gls{nss} \cite{protocols1999}.
+
 \section{IMSI-Catcher}
 \label{sec:catcher}
 \subsection{Mode of Operation}
 \subsection{Possible Attacks}
-\subsection{Law situation in Germany}
+\subsection{Law Situation in Germany}
 %germany not plagued by terrorism
 %response to 9/11: overreaction (Luftschutzgesetz)
 %no definition for terror in german law
