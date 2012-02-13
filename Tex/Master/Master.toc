@@ -30,8 +30,7 @@
 \contentsline {paragraph}{Data Link (Layer 2):}{24}
 \contentsline {paragraph}{Network (Layer 3):}{25}
 \contentsline {section}{\numberline {2.4}IMSI-Catcher}{25}
-\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{25}
-\contentsline {subsection}{\numberline {2.4.2}Possible Attacks}{25}
-\contentsline {subsection}{\numberline {2.4.3}Law Situation in Germany}{25}
+\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{26}
+\contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{26}
 \contentsline {chapter}{Bibliography}{I}
 \contentsline {chapter}{Acronyms}{III}

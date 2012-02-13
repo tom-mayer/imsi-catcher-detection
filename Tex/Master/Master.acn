@@ -37,7 +37,7 @@
 \glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{5}
 \glossaryentry{BSS?\glossaryentryfield{bss}{\glsnamefont{BSS}}{Basestation Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{5}
 \glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{5}
-\glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{5}
+\glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{6}
 \glossaryentry{PSTN?\glossaryentryfield{pstn}{\glsnamefont{PSTN}}{Public Standard Telephone Network}{\relax }|setentrycounter{page}\glsnumberformat}{6}
 \glossaryentry{IN?\glossaryentryfield{in}{\glsnamefont{IN}}{Intelligent Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{6}
 \glossaryentry{VAS?\glossaryentryfield{vas}{\glsnamefont{VAS}}{value-added service}{\relax }|setentrycounter{page}\glsnumberformat}{6}
@@ -57,8 +57,8 @@
 \glossaryentry{SMS?\glossaryentryfield{sms}{\glsnamefont{SMS}}{Short Message Service}{\relax }|setentrycounter{page}\glsnumberformat}{6}
 \glossaryentry{PLMS?\glossaryentryfield{plmn}{\glsnamefont{PLMS}}{Public Land Mobile Network}{\relax }|setentrycounter{page}\glsnumberformat}{6}
 \glossaryentry{SIM?\glossaryentryfield{sim}{\glsnamefont{SIM}}{Subscriber Identity Module}{\relax }|setentrycounter{page}\glsnumberformat}{6}
-\glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{6}
-\glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{6}
+\glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{7}
+\glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{7}
 \glossaryentry{PDA?\glossaryentryfield{pda}{\glsnamefont{PDA}}{Personal Digital Assistant}{\relax }|setentrycounter{page}\glsnumberformat}{7}
 \glossaryentry{ME?\glossaryentryfield{me}{\glsnamefont{ME}}{Mobile Equipment}{\relax }|setentrycounter{page}\glsnumberformat}{7}
 \glossaryentry{ME?\glossaryentryfield{me}{\glsnamefont{ME}}{Mobile Equipment}{\relax }|setentrycounter{page}\glsnumberformat}{7}
@@ -96,8 +96,8 @@
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{8}
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{8}
 \glossaryentry{PSTN?\glossaryentryfield{pstn}{\glsnamefont{PSTN}}{Public Standard Telephone Network}{\relax }|setentrycounter{page}\glsnumberformat}{8}
-\glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{8}
-\glossaryentry{HLR?\glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{8}
+\glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{9}
+\glossaryentry{HLR?\glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{VLR?\glossaryentryfield{vlr}{\glsnamefont{VLR}}{Visitor Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{EIR?\glossaryentryfield{eir}{\glsnamefont{EIR}}{Equipment Identity Register}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{AC?\glossaryentryfield{ac}{\glsnamefont{AC}}{Authentication Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
@@ -116,11 +116,11 @@
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{MM?\glossaryentryfield{mm}{\glsnamefont{MM}}{Mobility Management}{\relax }|setentrycounter{page}\glsnumberformat}{9}
 \glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
-\glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{9}
+\glossaryentry{MSC?\glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }|setentrycounter{page}\glsnumberformat}{10}
 \glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{10}
 \glossaryentry{HLR?\glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{10}
-\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{10}
-\glossaryentry{MSISDN?\glossaryentryfield{msisdn}{\glsnamefont{MSISDN}}{Mobile Subscriber Integrated Services Digital Network Number}{\relax }|setentrycounter{page}\glsnumberformat}{10}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{11}
+\glossaryentry{MSISDN?\glossaryentryfield{msisdn}{\glsnamefont{MSISDN}}{Mobile Subscriber Integrated Services Digital Network Number}{\relax }|setentrycounter{page}\glsnumberformat}{11}
 \glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{11}
 \glossaryentry{HLR?\glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{11}
 \glossaryentry{VLR?\glossaryentryfield{vlr}{\glsnamefont{VLR}}{Visitor Location Register}{\relax }|setentrycounter{page}\glsnumberformat}{11}
@@ -379,3 +379,15 @@
 \glossaryentry{RR?\glossaryentryfield{rr}{\glsnamefont{RR}}{Radio Resource}{\relax }|setentrycounter{page}\glsnumberformat}{25}
 \glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{25}
 \glossaryentry{NSS?\glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{25}
+\glossaryentry{IMSI?\glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }|setentrycounter{page}\glsnumberformat}{26}

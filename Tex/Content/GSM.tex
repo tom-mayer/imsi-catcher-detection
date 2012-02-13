@@ -91,6 +91,8 @@ The \gls{gsm} network is a distributed, star shaped network type that is built o
 The telephony network is not only used to connect mobile subscribers to landline phones, but also to connect the different components of the mobile network.
 The main components of a \gls{gsm} network can be seen in figure \ref{fig:gsm_network} as well as the interfaces that are used to connect them.
 \begin{figure}
+\centering
+\includegraphics{../Images/template}
 \caption{The main components of a GSM network.}
 \label{fig:gsm_network}
 \end{figure}
@@ -797,9 +799,40 @@ Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to
 
 \section{IMSI-Catcher}
 \label{sec:catcher}
+
+An \gls{imsi}-Catcher is a technical device that is used to capture \gls{imsi} and \gls{imei} numbers of mobile subscribers.
+The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into calls the particular participant is doing or pinpoint the location of the subscriber \cite{fox}.
+
+This topic came up in conjunction with crime fighting and prevention with the advent of mobile telephones.
+A mobile phone cannot be tapped in the same way as a landline phone since the subscriber can change places and also phones.
+This has proven to be a challenge to the authorities.
+
+In 1996 Rohde \& Schwarz a company based in Munich, Germany has developed a device called ''GA 090'' which was the first \gls{imsi}-Catcher.
+Its was capable of yielding a list with all the \gls{imsi} number is the perimeter as well as pinpointing the location of a subscriber given the \gls{imsi}.
+Short thereafter the ''GA 900'' was presented which had the additional capabilities of tapping into calls that originated from a particular \gls{imsi}.
+These commercial versions of catchers produced by Rohde \& Schwarz are priced between 200 000 \euro{} and 300 000 \euro{} \cite{fox}.
+Although these catchers are meant to be bought by authorities, it is also possible to buy them as a private customer or to order them from abroad.
+Regulations prohibit the use of \gls{imsi}-Catchers for individuals since the frequency bands the \gls{gsm}  network uses are reserved for providers.
+However, it cannot be guaranteed that such a catcher is not used illegally.
+In addition to these commercial products different projects \cite{dennis, ccc_catcher} have shown that such a device can be built at a very low budget.
+This only intensifies risk that is imposed by the abusive usage of such an instrument.
+Figure \ref{fig:catchers} shows the ''GA 900'' side by side with a self built catcher.
+\begin{figure}
+\centering
+\caption{The ''GA 900'' and a self build IMSI-Catcher.}
+\label{fig:catchers}
+\end{figure}
+
+Section \ref{sec:catcher_operation} will show how an \gls{imsi}-Catcher works and how subscribers can be caught.
+In addition the potency of these attacks will be evaluated and what risks these impose from a technical perspective.
+The next section will explain when a catcher can be used in Germany from a legal perspective and show that this handling imposes a privacy risk on citizens.
+
 \subsection{Mode of Operation}
-\subsection{Possible Attacks}
+\label{sec:catcher_operation}
+
 \subsection{Law Situation in Germany}
+\label{sec:catcher_law}
+
 %germany not plagued by terrorism
 %response to 9/11: overreaction (Luftschutzgesetz)
 %no definition for terror in german law
