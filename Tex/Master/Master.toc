@@ -5,9 +5,9 @@
 \contentsline {section}{\numberline {2.1}A Historical Perspective}{3}
 \contentsline {section}{\numberline {2.2}The GSM Network}{5}
 \contentsline {subsection}{\numberline {2.2.1}Mobile Station}{6}
-\contentsline {subsection}{\numberline {2.2.2}Network Subsystem}{8}
+\contentsline {subsection}{\numberline {2.2.2}Network Subsystem}{9}
 \contentsline {subsubsection}{Mobile Switching Center}{9}
-\contentsline {subsubsection}{Home Location Register}{10}
+\contentsline {subsubsection}{Home Location Register}{11}
 \contentsline {subsubsection}{Visitor Location Register}{11}
 \contentsline {subsubsection}{Equipment Identification Register}{11}
 \contentsline {subsubsection}{Authentication Center}{12}
@@ -20,14 +20,14 @@
 \contentsline {section}{\numberline {2.3}The $U_m$ Interface}{18}
 \contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{19}
 \contentsline {subsubsection}{Frame Numbering}{19}
-\contentsline {subsubsection}{Burst Types}{20}
-\contentsline {subsection}{\numberline {2.3.2}Logical Channels}{21}
+\contentsline {subsubsection}{Burst Types}{21}
+\contentsline {subsection}{\numberline {2.3.2}Logical Channels}{22}
 \contentsline {subsubsection}{Dedicated Channels}{22}
 \contentsline {subsubsection}{Common Channels}{22}
 \contentsline {subsubsection}{Combinations}{23}
 \contentsline {subsection}{\numberline {2.3.3}Layers}{24}
 \contentsline {paragraph}{Physical Layer (Layer 1):}{24}
-\contentsline {paragraph}{Data Link (Layer 2):}{24}
+\contentsline {paragraph}{Data Link (Layer 2):}{25}
 \contentsline {paragraph}{Network (Layer 3):}{25}
 \contentsline {section}{\numberline {2.4}IMSI-Catcher}{25}
 \contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{26}
