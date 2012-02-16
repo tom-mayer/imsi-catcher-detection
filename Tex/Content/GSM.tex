@@ -92,8 +92,8 @@ The telephony network is not only used to connect mobile subscribers to landline
 The main components of a \gls{gsm} network can be seen in figure \ref{fig:gsm_network} as well as the interfaces that are used to connect them.
 \begin{figure}
 \centering
-\includegraphics{../Images/Drawing1}
-\caption{The main components of a GSM network.}
+\includegraphics{../Images/Architecture}
+\caption{The main components of a GSM network. The TRAU can be either build in to the BTS or BSC, here the BSC was chosen.}
 \label{fig:gsm_network}
 \end{figure}
 There are different notions of how to distribute these components into functional entities.
@@ -291,6 +291,8 @@ $E$				&MSC $\leftrightarrow$ MSC	&Executing a Handover when subscriber changes\
 				&							&to a new MSC\\
 $F$				&MSC $\leftrightarrow$ EIR	&Checking white-/grey- and blacklists before\\
 				&							&giving access to the network\\
+$G$				&VLR $\leftrightarrow$ VLR	&Connects VLR of different MSCs to exchange\\
+				&							&subscriber data during a handover\\
 \midrule
 $A_\text{bis}$	&BSC $\leftrightarrow$ BTS	&BSC receives data from MS via the BTS\\
 $U_m$			&BTS $\leftrightarrow$ MS	&Registration procedure, call data \etc as well\\
@@ -337,7 +339,8 @@ Different companies like Airwide Solutions (now aquired by Manivir)\footnote{\ur
 
 \begin{figure}
 \centering
-\caption{Authentication procedure}
+\includegraphics{../Images/Authentication}
+\caption{Authentication procedure.}
 \label{fig:authentication}
 \end{figure}
 \subsubsection{Authentication Center}
@@ -409,6 +412,8 @@ Before discussing the individual components of this subsystem, it is important t
 
 \subsubsection{Frequencies and the Cellular Principle}
 \begin{figure}
+\centering
+\includegraphics{../Images/Mapping}
 \caption{Mapping of functional entities on the 900Mhz band.}
 \label{fig:frequency}
 \end{figure}
@@ -466,6 +471,10 @@ These inflict increased signalling load on the network itself.
 \end{table}
 
 \begin{figure}
+\centering
+\includegraphics{../Images/Cells}
+\hspace{1cm}
+\includegraphics[scale=.21]{../Images/real_Cells}
 \caption{Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite{GSM2009}.}
 \label{fig:cells}
 \end{figure}
@@ -478,8 +487,11 @@ A single station can only serve a limited number of users which yields a radius 
 On the countryside where population is less dense, the limiting factor can also be transmission power of the \gls{me}.
 Therefore cells with a radius above 15 km are seldom seen.
 
-%TODO: subfig
 \begin{figure}
+	\centering
+	\subfigure[Stantard configuration.]{\centering\includegraphics{../Images/standart_config}}
+	\subfigure[Umbrella cell configuration.]{\centering\hspace{1cm}\includegraphics{../Images/Umbrella}\hspace{1cm}}
+	\subfigure[Sectorised configuration.]{\centering\includegraphics{../Images/Sectorised}}
 	\caption{Common base station configurations. Compiled from \cite{protocols1999}.}
 	\label{fig:configurations}
 \end{figure}
@@ -564,6 +576,7 @@ The complete procedure is outlined in Figure \ref{fig:cypher}.
 
 \begin{figure}
 \centering
+\includegraphics{../Images/Cipher}
 \caption{Cyphering procedure for one frame of voice data. Adopted from \cite{kommsys2006}.}
 \label{fig:cypher}
 \end{figure}
@@ -605,6 +618,7 @@ An illustration of how these multiplexing methods work together can be seen in F
 
 \begin{figure}
 	\centering
+	\includegraphics{../Images/TDMAFDMA}
 	\caption{The combination of FDMA and TDMA.}
 	\label{fig:fdma_tdma}
 \end{figure}
@@ -626,6 +640,7 @@ Finally 2048 Superframes make up the Hyperframe.
 
 \begin{figure}
 	\centering
+	\includegraphics{../Images/Frames}
 	\caption{Hierarchical Composition of the different frames.}
 	\label{fig:frame_hierarchy}
 \end{figure}
@@ -650,6 +665,7 @@ The channel request message itself has only little data and large Guard Times si
 
 \begin{figure}
 	\centering
+	\includegraphics{../Images/Bursts}
 	\caption{Structural Comparison of different Burst types. After \cite{GSM2009}.}
 	\label{fig:burst_types}
 \end{figure}
@@ -685,11 +701,13 @@ A logical channel is a virtual construct on top of the physical construct of fra
 Since not all information has to be sent all the time, these different information channels, \eg broadcast information about the respective base station, can be multiplexed and sent together.
 \begin{figure}
 	\centering
-	\caption{Example mapping of logical channels. After \cite{protocols1999}.}
+	\includegraphics{../Images/Channels}
+	\caption{Mapping of virtual channels on time slots.}
 	\label{fig:channels}
 \end{figure}
 The mapping of these channels on the physical interface works in two dimensions.
-The first dimension is the frequency and the second the timeslot as can be seen in Figure \ref{fig:channels}.
+The first dimension is the frequency and the second the time slot.
+Figure \ref{fig:channels} shows this mapping of channels onto time slots over the course of multiple \gls{tdma} frames for one fixed frequency.
 In this way, each timeslot over the course of multiple frames can be regarded as a virtual channel.
 These resulting virtual channels can now be used by a multitude of logical channels to transmit information.
 
@@ -717,7 +735,7 @@ These are point to multi-point channels.
 	\item \gls{fcch}: Used by \glspl{ms} to fine tune to the frequency of a certain base station and denotes the start of a 51-Multiframe.
 	\item \gls{bcch}: This channel is used to transmit information about the network and the base station itself through different system information messages.
 	These contain, the netowrk name and cell identification as well as neighbourhood information on cells in the area and much more.
-	This channel will be the main source of information for this project, since it allows harvesting information without actively participating in the network and will thus be discussed in further detail in Section \ref{sec:parameters}.
+	This channel will be the main source of information for this project, since it allows harvesting information without actively participating in the network and will thus be discussed in further detail in Chapter \ref{sec:info_gathering}.
 	\item \gls{pch}: If a subscriber is not assigned a dedicated channel yet, \ie he/she is not active, they are notified on this channel if there is an incoming call or text.
 	The subscribers are identified by their \gls{tmsi} which has been previously assigned upon entering the network, so the \gls{imsi} does not have to be broadcasted.
 	\item \gls{rach}: A subscriber that has been notified over the \gls{pch} can contact the network and request a \gls{sdcch}.
@@ -753,6 +771,7 @@ Since we are mainly interested in the downlink to harvest information from the \
 	\bottomrule
 	\end{tabular}
 	\caption{Possible combinations of logical channels for the base station. From \cite{GSM2009}.}
+	\label{tab:channel_configurations}
 \end{table}
 The mapping of these specific Multiframe-configurations onto timeslots is not arbitrary either.
 Normally TS-0 and TS-1, the first two time slots are used handle channels with signalling information.
@@ -760,12 +779,14 @@ The \gls{bcch} also uses TS-0 of the carrier frequency.
 
 Figure \ref{fig:channel_example} shows an example \cite{kommsys2006} for the downlink of a base station where these channel configurations can be seen.
 As mentioned before, TS-0 and TS-1 are used for signalling purpose where the Multiframe-configurations M5 and M7 can be found respectively.
+The slots for the \gls{bcch} can be seen here.
 The table shows, that these configurations do not contain any traffic channels.
 As for traffic channels, TS-2 through to TS-7 are used with the configuration M1 or M3.
-It cannot be seen from the data, whether full rate or half rate channels are used for transporting voice data, but since half rate channels are not used very often, it is more likely that it resembles M1.
+It cannot be seen from the data, whether full rate or half rate channels are used for transporting voice data, but since half rate channels are not used very often \cite{protocols1999}, it is more likely hat it resembles M1.
 \begin{figure}
 	\centering
-	\caption{Example of Multiframe-configurations for a base station \cite{kommsys2006}.}
+	\includegraphics[width=.9\textwidth]{../Images/channel_example}
+	\caption{Snippet of a Multiframe-configurations for a base station from \cite{kommsys2006}.}
 	\label{fig:channel_example}
 \end{figure}
 
@@ -799,7 +820,6 @@ Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to
 
 \section{IMSI-Catcher}
 \label{sec:catcher}
-
 An \gls{imsi}-Catcher is a technical device that is used to capture \gls{imsi} and \gls{imei} numbers of mobile subscribers.
 The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into calls the particular participant is doing or pinpoint the location of the subscriber \cite{fox}.
 
@@ -814,12 +834,13 @@ These commercial versions of catchers produced by Rohde \& Schwarz are priced be
 Although these catchers are meant to be bought by authorities, it is also possible to buy them as a private customer or to order them from abroad.
 Regulations prohibit the use of \gls{imsi}-Catchers for individuals since the frequency bands the \gls{gsm}  network uses are reserved for providers.
 However, it cannot be guaranteed that such a catcher is not used illegally.
-In addition to these commercial products different projects \cite{dennis, ccc_catcher} have shown that such a device can be built at a very low budget.
+In addition to these commercial products different projects \cite{dennis, def_catcher} have shown that such a device can be built at a very low budget.
 This only intensifies risk that is imposed by the abusive usage of such an instrument.
-Figure \ref{fig:catchers} shows the ''GA 900'' side by side with a self built catcher.
+Figure \ref{fig:catchers} shows a commercial model side by side with a self built catcher \footnote{\url{http://www.iwi.uni-hannover.de/lv/ucc\_ws04\_05/riemer/literatur/imsi-catcher.htm}\\\url{http://www.heise.de/security/meldung/IMSI-Catcher-fuer-1500-Euro-im-Eigenbau-1048919.html?view=zoom\%3Bzoom=1}}.
 \begin{figure}
 \centering
-\caption{The ''GA 900'' and a self build IMSI-Catcher.}
+\includegraphics[width=0.45\textwidth]{../Images/imsi_catcher}\hspace{1cm}\includegraphics[width=.45\textwidth]{../Images/usrp}
+\caption{A commercial catcher by Rhode \& Schwarz and a self built catcher introduced at Defcon 2010.}
 \label{fig:catchers}
 \end{figure}
 
@@ -829,6 +850,7 @@ The next section will explain when a catcher can be used in Germany from a legal
 
 \subsection{Mode of Operation}
 \label{sec:catcher_operation}
+
 
 \subsection{Law Situation in Germany}
 \label{sec:catcher_law}
