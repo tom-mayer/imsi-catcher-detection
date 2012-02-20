@@ -6,17 +6,18 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Authentication procedure.}}{13}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900Mhz band.}}{15}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite {GSM2009}.}}{17}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Common base station configurations. Compiled from \cite {protocols1999}.}}{18}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Stantard configuration.}}}{18}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Umbrella cell configuration.}}}{18}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Sectorised configuration.}}}{18}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Common base station configurations. Compiled from \cite {protocols1999}.}}{19}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Stantard configuration.}}}{19}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Umbrella cell configuration.}}}{19}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Sectorised configuration.}}}{19}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Cyphering procedure for one frame of voice data. Adopted from \cite {kommsys2006}.}}{21}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces The combination of FDMA and TDMA.}}{23}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Hierarchical Composition of the different frames.}}{24}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Structural Comparison of different Burst types. After \cite {GSM2009}.}}{25}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Mapping of virtual channels on time slots.}}{26}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Snippet of a Multiframe-configurations for a base station from \cite {kommsys2006}.}}{29}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces A commercial catcher by Rhode \& Schwarz and a self built catcher introduced at Defcon 2010.}}{32}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Mapping of virtual channels on time slots.}}{27}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Snippet of a Multiframe-configurations for a base station from \cite {kommsys2006}.}}{30}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces A commercial catcher by Rhode \& Schwarz \cite {fox} and a self built catcher introduced at Defcon 2010 \cite {def_catcher}.}}{32}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces IMSI catching procedure. Adopted and simplified from \cite {mueller}.}}{33}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

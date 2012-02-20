@@ -344,6 +344,7 @@ Different companies like Airwide Solutions (now aquired by Manivir)\footnote{\ur
 \label{fig:authentication}
 \end{figure}
 \subsubsection{Authentication Center}
+\label{sec:authentication}
 The \gls{ac} is the network component responsible for authenticating mobile subscribers.
 It is a part of the \gls{hlr} and the only place, apart form the customer's \gls{sim} card where the secret key \gls{ki} is stored.
 The authentication is not only done once when the subscriber connects to the network, but rather on many occasions \eg the start of a call or other significant events to avoid misuse by a third party.
@@ -424,6 +425,27 @@ In the 900MHz band each of these has a width of 25MHz.
 For other bands the numbers differ and can be seen in Table \ref{tab:frequencies} but the functionality is the same.
 These bands themselves are furthermore divided into channels, each spanning 200kHz, which accounts for 125 channels on 25MHz.
 
+\begin{table}
+\centering
+\begin{tabular}{lllll}
+\toprule
+Band		&ARFCN		&Uplink (MHz)	&Downlink (MHz)	&Offset (MHz)\\
+\midrule
+GSM 900		&0-124		&890-915		&935-960		&45\\
+(Primary)	&			&				&				&\\
+GSM 900		&0-124		&880-915		&925-960		&45\\
+(Extended)	&975-1023	&				&				&\\
+GSM 1800	&512-885	&1710-1785		&1805-1880		&95\\
+GSM 1900	&512-810	&1850-1910		&1930-1990		&80\\
+(North America)	&			&				&				&\\
+GSM 850		&128-251	&824-849		&869-894		&45\\
+(North America)	&			&				&				&\\
+\bottomrule
+\end{tabular}
+\caption{Frequencies in the different bands \cite{kommsys2006}.}
+\label{tab:frequencies}
+\end{table}
+
 Each of which is identified by its \gls{arfcn}.
 This is a simple numbering scheme, given to those 200kHz channels.
 The frequencies and \glspl{arfcn} are connected as follows:
@@ -464,11 +486,6 @@ Increasing the amount of receivers automatically increases the cost of infrastru
 Due to the nature of the mobility of subscribers, this increases the amount of Handovers needed, since it is more likely that a subscriber leaves a small cell during an active call.
 Also an update of the location of a subscribers needs to be done more often, to ensure reachability for incoming calls.
 These inflict increased signalling load on the network itself.
-
-\begin{table}
-\caption{Frequencies in the different bands \cite{kommsys2006}.}
-\label{tab:frequencies}
-\end{table}
 
 \begin{figure}
 \centering
@@ -810,7 +827,7 @@ The Layer 2 format changes through the course of the network, while the data pac
 When a transmission from a \gls{ms} to the \gls{bts} is done,\gls{lapdm} is used which is essentially the same as the Layer 2 \gls{isdn} protocol with a few simplifications.
 From the \gls{bts} to the \gls{bsc} \gls{lapdm} converts to \gls{lapd} and afterwards is exchanged to \gls{mtp2}.
 For the air interface \gls{lapdm} along with channel coding and Burst formatting form Layer 2.
-More information about these Layer 2 protocols can be found in the respective Technical Specifications of the \gls{3gpp} \cite{3gpp_ts_0405,3gpp_ts_0406}.
+More information about these Layer 2 protocols can be found in the respective Technical Specifications of the \gls{3gpp} \cite{GSM0405,GSM0406}.
 
 \paragraph{Network (Layer 3):} Layer 3 headers have to provide all the information necessary for the packet to be routed towards its recipient.
 As with Layer 2 information, it may be the case that this header needs to be partially rewritten during the transmission of a package.
@@ -821,10 +838,11 @@ Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to
 \section{IMSI-Catcher}
 \label{sec:catcher}
 An \gls{imsi}-Catcher is a technical device that is used to capture \gls{imsi} and \gls{imei} numbers of mobile subscribers.
-The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into calls the particular participant is doing or pinpoint the location of the subscriber \cite{fox}.
+The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into the participant's calls or pinpoint the location of the subscriber \cite{fox}.
+Another less known feature is that if catcher do not relay calls they can be used to suppress mobile communication in a certain area \eg during a police operation \cite{imsi_wiki}.
 
 This topic came up in conjunction with crime fighting and prevention with the advent of mobile telephones.
-A mobile phone cannot be tapped in the same way as a landline phone since the subscriber can change places and also phones.
+A mobile phone cannot be tapped in the same way as a landline phone since the subscriber can change places and also phones, thus there is no designated line associated with him/her.
 This has proven to be a challenge to the authorities.
 
 In 1996 Rohde \& Schwarz a company based in Munich, Germany has developed a device called ''GA 090'' which was the first \gls{imsi}-Catcher.
@@ -833,14 +851,14 @@ Short thereafter the ''GA 900'' was presented which had the additional capabilit
 These commercial versions of catchers produced by Rohde \& Schwarz are priced between 200 000 \euro{} and 300 000 \euro{} \cite{fox}.
 Although these catchers are meant to be bought by authorities, it is also possible to buy them as a private customer or to order them from abroad.
 Regulations prohibit the use of \gls{imsi}-Catchers for individuals since the frequency bands the \gls{gsm}  network uses are reserved for providers.
-However, it cannot be guaranteed that such a catcher is not used illegally.
+Therefore it cannot be guaranteed that such a catcher is not used illegally.
 In addition to these commercial products different projects \cite{dennis, def_catcher} have shown that such a device can be built at a very low budget.
 This only intensifies risk that is imposed by the abusive usage of such an instrument.
-Figure \ref{fig:catchers} shows a commercial model side by side with a self built catcher \footnote{\url{http://www.iwi.uni-hannover.de/lv/ucc\_ws04\_05/riemer/literatur/imsi-catcher.htm}\\\url{http://www.heise.de/security/meldung/IMSI-Catcher-fuer-1500-Euro-im-Eigenbau-1048919.html?view=zoom\%3Bzoom=1}}.
+Figure \ref{fig:catchers} shows a commercial model side by side with a self built catcher.
 \begin{figure}
 \centering
 \includegraphics[width=0.45\textwidth]{../Images/imsi_catcher}\hspace{1cm}\includegraphics[width=.45\textwidth]{../Images/usrp}
-\caption{A commercial catcher by Rhode \& Schwarz and a self built catcher introduced at Defcon 2010.}
+\caption{A commercial catcher by Rhode \& Schwarz \cite{fox} and a self built catcher introduced at Defcon 2010 \cite{def_catcher}.}
 \label{fig:catchers}
 \end{figure}
 
@@ -850,38 +868,94 @@ The next section will explain when a catcher can be used in Germany from a legal
 
 \subsection{Mode of Operation}
 \label{sec:catcher_operation}
+Basically an \gls{imsi}-Catcher masks itself as a base station and lures subscribers in the perimeter to connect to it without their knowledge.
+Ways of luring a subscriber into a catcher are explained in Section \ref{sec:attacks}.
+The one shown in Figure \ref{fig:catcher_catch} is broadcasting a new \gls{lai} to the \gls{ms} at very high power, suggesting that the \gls{ms} entered a new area and has to re-authenticate \cite{mueller}.
 
+\begin{figure}
+	\centering
+	\includegraphics{../Images/catcher_attack}
+	\caption{IMSI catching procedure. Adopted and simplified from \cite{mueller}.}
+	\label{fig:catcher_catch}
+\end{figure}
+
+Once a subscriber connects to the device, a command is sent to the \gls{ms} which asks for the \gls{sim}'s \gls{imsi}.
+This command is normally only used in case of an error \cite{fox} but can be abused this way.
+
+This is only possible since authentication in a \gls{gsm} network is one-sided as discussed earlier in Section \ref{sec:authentication}.
+The subscriber has no way of checking the authenticity of a base station but rather has to trust the broadcasted identifier which can be easily forged by a catcher.
+At this stage, the subscriber can already be localized as being in a certain perimeter of the catcher.
+
+Having the \gls{imsi} the authorities can now also query the provider for personal information about the subscriber, however criminals often use fake credentials when obtaining a \gls{sim} card.
+Since it is only possible to catch all the \glspl{imsi} in an area, the person to be observed has to be followed and the catcher has to be used multiple times.
+Each time it yields a set of numbers in the area. 
+The \gls{imsi} that is part of all the sets is the \gls{imsi} of the person under observation.
+More catchers can now be used to triangulate the position.
+The next step is also possible because of a design decision made in the \gls{gsm} protocol.
+Encryption itself or certain kinds of strong encryption are not allowed in all countries.
+Therefore it is possible for the base station to request the encryption algorithm A5/0 which means that no encryption will be used for the calls at all.
+Only a few mobile phones display that encryption has been disabled by the \gls{bts}.
+
+At this point the setup for a man-in-the-middle attack \cite{mueller} on calls is completed.
+The catcher itself is connected to the mobile network with its own \gls{sim}.
+If the subscriber now initiates a call, the call can be routed by the catcher into the network and since encryption is turned of it can also be tapped it.
+The subscriber itself doesn't notice this privacy breach, except in the rare cases where the phone displays that encryption has been turned off.
+The \gls{imei} is also harvested in a similar fashion if the observed person tries to switch \gls{sim} cards on a regular basis \cite{fox}.
+
+\subsubsection{Attacks}
+\label{sec:attacks}
+When operating a catcher the first step is to actually trick the \gls{ms} into connecting to the catcher.
+Most phones save the frequency the were tuned to last and upon connecting to the mobile network this is the first frequency they try.
+Therefore a \gls{ms} has to be set to 'normal cell selection' mode, meaning it starts scanning for the best base station available.
+Four possible ways of luring a \gls{ms} to the \gls{imsi}-Catcher will now be explained.
+Three were presented by Wehrle for the Open Source IMSI-Catcher project \cite{dennis} and one by Federrath \cite{mueller}.
+The attacks differ on whether the \gls{ms} already is in normal cell selection mode or not, meaning it is connected to another \gls{bts}.
+
+\paragraph{\gls{ms} is in normal cell selection mode:}
+The \gls{imsi}-Catcher has to emulate a cell configuration of the provider the target \gls{ms} is looking for broadcasting at any frequency.
+If the \gls{ms} stumbles upon the the frequency, it will connect.
+This is no method with 100\% accuracy, however chances can be raised by broadcasting with higher power.
+Some \gls{imsi}-Catchers even broadcast at a higher power than it would be allowed for normal \gls{bts} \cite{imsi_wiki}.
+
+\paragraph{\gls{ms} is already connected to a network:}
+If this is the case then the connection to the current cell needs to be broken.
+This can be achieved either by jamming the frequency of the cell the \gls{ms} is connected to thus forcing the \gls{ms} into cell selection or by getting the \gls{ms} to switch the cell to the catcher's.
+This can be done the following way.
+In this method the fact is abused, that the \gls{ms} knows it's neighbourhood (since it has been broadcasted by the \gls{bts}) and does regular quality measurements.
+The main idea is that the operator of the catcher chooses the frequency of a \gls{bts} that is in the neighbourhood of the \gls{bts} that the target \gls{ms} is connected to.
+This way the operator can make sure the \gls{ms} know this frequency and hast quality measurements associated with it.
+Furthermore should the chosen \gls{bts}, the one that will be replaced by the catcher, have a bad signal to noise ratio (which is why the \gls{ms} is currently not connected to it).
+As soon as the catcher starts broadcasting on that frequency, quality measurements will radically improve and the \gls{ms} will initiate a change of cells to the catcher cell if the quality is above its current cell.
+Another way is to broadcast a new \gls{lai} to the \gls{ms} suggesting it just arrived at a new location, and therefore initiating a cell selection \cite{mueller}.
+This works as long as the \gls{ms} has no active connections to the network, if it has, the jamming method can help to disconnect the \gls{ms} from the network.
+
+\subsubsection{Risks and Irregularities}
+An \gls{imsi}-Catcher cannot target a individual subscriber, it always targets an area, thus breaching the privacy of uninvolved subjects.
+Apart from that, a catcher that does not relay calls takes away the possibility for all people in the area to submit calls.
+Even if the the catcher routes calls into the network, since it only has one \gls{sim} card, it can only route a single call.
+This can be very dangerous since no emergency calls can be submitted in that area during the time of operation.
+
+Another irregularity apart from using no encryption is that people caught in this area cannot be reached on their mobile phones, since they are not registered on the main network, only through the catcher proxy.
+As a consequence of the proxy functionality of the \gls{imsi}-Catcher, when a call is routed into the network, the recipient can only see the number the catcher is registered with or 'Number Withheld', however not the original number.
 
 \subsection{Law Situation in Germany}
 \label{sec:catcher_law}
 
-%germany not plagued by terrorism
-%response to 9/11: overreaction (Luftschutzgesetz)
-%no definition for terror in german law
-%preventive meassures taken
-%government can influence prosecution
+First reports of an \gls{imsi}-Catcher used by authorities in Germany dates back to 1997.
+Until November 2001 35 cases of use were officially confirmed by the \gls{bmi} \cite{fox}.
+It was used to fight of organised and serious crime like hostage-takings or drug traffic by the \gls{bka} and \gls{bgs}.
+Attempts have been made by the government to move the catcher out of the legal grey zone and use the 'GA 900' with its capabilities of tapping in to calls for crime prosecution.
+At that time however the attempt was dismissed.
 
-%---- procedural law ------
-%terrorists/criminals switch mobile phone/sim cards often
-%imsi-catcher: identification to apply telephone surveillance, whereabouts for arrest warrant, no other purpose allowed
-%prior authorization by a judge (legislative power) or prosecutor (executive power) in case of emergency ----> revoked
-%2004: no electronic surveillance in private premises HOWEVER for data needed for criminal cundoct allowed
-%sacrifice of personal rights for crime surveillance
-%threshold for elecronic surveillance is VERY low when the word terrorism or serious crimes bumps up
-%police needs to show certain evidence underpinning a suspicion that such a criminal act was committed, attempted or prepared
-%evidence from agents that is not transparent
+On 14$^\text{th}$ of August 2002 with Section §100i of the Strafprozessordnung (Code of Criminal Procedure) a law basis was given to the device.
+Afterwards on 22$^\text{nd}$ of August 2006 this section was affirmed and its accordance with the Grundgesetz (Basic Rights).
+The use of an \gls{imsi}-Catcher with prior authorisation by a judge does not affect peoples right to privacy nor does it contradict Datenschutzbestimmungen (Secrecy of Confidential Data) or the Fernmeldegeheimnis (Secrecy of Confidential Communication).
+In Austria the need for a prior authorisation by a judge was removed in January 2008.
+During the first for months of 2008, 3800 cases of catcher use were reported \cite{imsi_wiki} in Austria.
 
-%"Electronic surveillance, it seems, is no
-%longer governed by questions of legitimacy, but solely by the question of practi-
-%cality. Every method that is practical, will be used by police and agencies.37
-%Often enough the courts have given up any serious control of investigation
-%methods"
-%See U. Eisenberg and T. Singelnstein, ‘Zur Unzulassigkeit der heimlichen Ortung per ‘‘stiller
-%SMS’’’, 25 Neue Zeitschrift fur Strafrecht (2005) 62, at 67.
+Gradually, starting with §100i it has become easier for the police and agencies to use electronic surveillance.
+Although on 2004 it was decided by the Federal Court of Saxony, that electronic surveillance is not to be used in the substantially intimate sphere of private premises, this regulation can be overthrown if linked to the field of serious crimes and terrorism.
+Section §100a(1) describes that the police merely need to show certain evidence underpinning a suspicion that a criminal act was committed \cite{criminal_justice}.
+This threshold can often be overcome easily, since it is hard for courts to check evidence for sufficiency thoroughly given the short time frame.
 
-%easier share of sensitive information between police/intelligence/prosecution
-%similar examples for other areas like surrender of citizens
-
-
-
-
+These loose regulations together with the face that third parties  can buy or build catchers poses a grave threat to privacy of each individual person.

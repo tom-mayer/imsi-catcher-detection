@@ -1,53 +1,17 @@
-This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
-The top-level auxiliary file: Master.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Master.aux
 The style file: acm.bst
 Database file #1: ../Content/Bibliography.bib
+Warning--I didn't find a database entry for "raven"
+Warning--I didn't find a database entry for "defcon"
 Warning--to sort, need author or key in GSM0207
 Warning--to sort, need author or key in GSM0505
 Warning--to sort, need author or key in ISO7810
 Warning--to sort, need author or key in GSM23003
-Warning--to sort, need author or key in blacklisting
 Warning--to sort, need author or key in GSM23078
+Warning--to sort, need author or key in gsm0502
+Warning--to sort, need author or key in GSM0405
+Warning--to sort, need author or key in GSM0406
 Warning--can't use both author and editor fields in GSM2009
-You've used 18 entries,
-            2253 wiz_defined-function locations,
-            633 strings with 6392 characters,
-and the built_in function-call counts, 3646 in all, are:
-= -- 345
-> -- 91
-< -- 0
-+ -- 45
-- -- 26
-* -- 192
-:= -- 530
-add.period$ -- 45
-call.type$ -- 18
-change.case$ -- 68
-chr.to.int$ -- 0
-cite$ -- 25
-duplicate$ -- 153
-empty$ -- 410
-format.name$ -- 26
-if$ -- 821
-int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 10
-newline$ -- 84
-num.names$ -- 16
-pop$ -- 123
-preamble$ -- 1
-purify$ -- 53
-quote$ -- 0
-skip$ -- 118
-stack$ -- 0
-substring$ -- 126
-swap$ -- 27
-text.length$ -- 0
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 66
-warning$ -- 7
-while$ -- 20
-width$ -- 20
-write$ -- 162
-(There were 7 warnings)
+Warning--empty journal in mueller
+Warning--empty journal in dennis
+(There were 13 warnings)

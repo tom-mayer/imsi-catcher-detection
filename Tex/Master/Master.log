@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.30)  16 FEB 2012 14:13
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.30)  20 FEB 2012 16:54
 entering extended mode
 **Master.tex
 (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.tex
@@ -1016,25 +1016,25 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 \c@example=\count190
 \glo@main@file=\write5
-Package glossaries Info: Writing glossary file Master.glo on input line 94.
+Package glossaries Info: Writing glossary file Master.glo on input line 93.
 \glo@acronym@file=\write6
-Package glossaries Info: Writing glossary file Master.acn on input line 94.
+Package glossaries Info: Writing glossary file Master.acn on input line 93.
 
 (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Glossary.tex)
 (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 111.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 110.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ptm.fd"
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
@@ -1063,7 +1063,7 @@ nglish.dict"
 Dictionary: glossaries-dictionary, Language: English 
 ) ABD: EveryShipout initializing macros
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 120.
 
 (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Content\Abstract.tex) [1
 Non-PDF special ignored!
@@ -1074,17 +1074,17 @@ Non-PDF special ignored!
 
 Non-PDF special ignored!
 Non-PDF special ignored!{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 131.
+LaTeX Font Info:    Try loading font information for U+msa on input line 130.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 131.
+LaTeX Font Info:    Try loading font information for U+msb on input line 130.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+esvect on input line 131
+LaTeX Font Info:    Try loading font information for U+esvect on input line 130
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\esvect\uesvect.fd"
@@ -1094,15 +1094,15 @@ File: uesvect.fd
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 135.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 134.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 135.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 134.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 135.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 134.
 
 (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.toc [1
 
@@ -1171,7 +1171,7 @@ n.png>] [14]
 File: ../Images/Mapping.png Graphic file (type png)
 
 <use ../Images/Mapping.png>
-Package pdftex.def Info: ../Images/Mapping.png used on input line 416.
+Package pdftex.def Info: ../Images/Mapping.png used on input line 417.
 (pdftex.def)             Requested size: 337.28326pt x 115.19809pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1181,63 +1181,59 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <../Images/Cells.png, id=81, 98.72083pt x 88.8921pt>
 File: ../Images/Cells.png Graphic file (type png)
  <use ../Images/Cells.png>
-Package pdftex.def Info: ../Images/Cells.png used on input line 475.
+Package pdftex.def Info: ../Images/Cells.png used on input line 492.
 (pdftex.def)             Requested size: 98.72057pt x 88.89188pt.
 
 <../Images/real_Cells.png, id=82, 743.02594pt x 496.10344pt>
 File: ../Images/real_Cells.png Graphic file (type png)
 
 <use ../Images/real_Cells.png>
-Package pdftex.def Info: ../Images/real_Cells.png used on input line 477.
+Package pdftex.def Info: ../Images/real_Cells.png used on input line 494.
 (pdftex.def)             Requested size: 156.04005pt x 104.18478pt.
-
-<../Images/standart_config.png, id=84, 199.4652pt x 133.26588pt>
+ [17 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cells.png> <C:/Use
+rs/Tom/Desktop/imsi-catcher-detection/Tex/Images/real_Cells.png>]
+<../Images/standart_config.png, id=88, 199.4652pt x 133.26588pt>
 File: ../Images/standart_config.png Graphic file (type png)
 
 <use ../Images/standart_config.png>
-Package pdftex.def Info: ../Images/standart_config.png used on input line 492.
+Package pdftex.def Info: ../Images/standart_config.png used on input line 509.
 (pdftex.def)             Requested size: 199.4647pt x 133.26553pt.
 
-<../Images/Umbrella.png, id=85, 209.3662pt x 181.46997pt>
+<../Images/Umbrella.png, id=89, 209.3662pt x 181.46997pt>
 File: ../Images/Umbrella.png Graphic file (type png)
 
 <use ../Images/Umbrella.png>
-Package pdftex.def Info: ../Images/Umbrella.png used on input line 493.
+Package pdftex.def Info: ../Images/Umbrella.png used on input line 510.
 (pdftex.def)             Requested size: 209.36568pt x 181.46951pt.
 
-<../Images/Sectorised.png, id=86, 147.64761pt x 147.64761pt>
+<../Images/Sectorised.png, id=90, 147.64761pt x 147.64761pt>
 File: ../Images/Sectorised.png Graphic file (type png)
 
 <use ../Images/Sectorised.png>
-Package pdftex.def Info: ../Images/Sectorised.png used on input line 494.
+Package pdftex.def Info: ../Images/Sectorised.png used on input line 511.
 (pdftex.def)             Requested size: 147.64725pt x 147.64725pt.
- [17 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cells.png> <C:/Use
-rs/Tom/Desktop/imsi-catcher-detection/Tex/Images/real_Cells.png>] [18 <C:/Users
-/Tom/Desktop/imsi-catcher-detection/Tex/Images/standart_config.png> <C:/Users/T
-om/Desktop/imsi-catcher-detection/Tex/Images/Umbrella.png> <C:/Users/Tom/Deskto
-p/imsi-catcher-detection/Tex/Images/Sectorised.png>] [19] [20] <../Images/Ciphe
-r.png, id=101, 387.72855pt x 131.02551pt>
+ [18] [19 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/standart_conf
+ig.png> <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Umbrella.png> <
+C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Sectorised.png>] [20]
+<../Images/Cipher.png, id=101, 387.72855pt x 131.02551pt>
 File: ../Images/Cipher.png Graphic file (type png)
 
 <use ../Images/Cipher.png>
-Package pdftex.def Info: ../Images/Cipher.png used on input line 579.
+Package pdftex.def Info: ../Images/Cipher.png used on input line 596.
 (pdftex.def)             Requested size: 387.72758pt x 131.02518pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cipher.png>]
-<../Images/TDMAFDMA.png, id=106, 254.53494pt x 133.33815pt>
+ [21 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cipher.png>] [22]
+<../Images/TDMAFDMA.png, id=110, 254.53494pt x 133.33815pt>
 File: ../Images/TDMAFDMA.png Graphic file (type png)
 
 <use ../Images/TDMAFDMA.png>
-Package pdftex.def Info: ../Images/TDMAFDMA.png used on input line 621.
+Package pdftex.def Info: ../Images/TDMAFDMA.png used on input line 638.
 (pdftex.def)             Requested size: 254.5343pt x 133.33781pt.
- [22]
+
 <../Images/Frames.png, id=111, 367.42068pt x 252.29457pt>
 File: ../Images/Frames.png Graphic file (type png)
 
 <use ../Images/Frames.png>
-Package pdftex.def Info: ../Images/Frames.png used on input line 643.
+Package pdftex.def Info: ../Images/Frames.png used on input line 660.
 (pdftex.def)             Requested size: 367.41977pt x 252.29395pt.
  [23 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/TDMAFDMA.png>] [24
  <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Frames.png>] <../Image
@@ -1245,146 +1241,147 @@ s/Bursts.png, id=118, 371.9737pt x 91.92744pt>
 File: ../Images/Bursts.png Graphic file (type png)
 
 <use ../Images/Bursts.png>
-Package pdftex.def Info: ../Images/Bursts.png used on input line 668.
+Package pdftex.def Info: ../Images/Bursts.png used on input line 685.
 (pdftex.def)             Requested size: 371.97278pt x 91.9272pt.
  [25 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Bursts.png>]
 <../Images/Channels.png, id=122, 272.60245pt x 169.47314pt>
 File: ../Images/Channels.png Graphic file (type png)
 
 <use ../Images/Channels.png>
-Package pdftex.def Info: ../Images/Channels.png used on input line 704.
+Package pdftex.def Info: ../Images/Channels.png used on input line 721.
 (pdftex.def)             Requested size: 272.60178pt x 169.47273pt.
- [26 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Channels.png>]
-
-LaTeX Warning: Reference `sec:parameters' on page 27 undefined on input line 73
-8.
-
-[27]
-
-LaTeX Warning: Citation `gsm0502' on page 28 undefined on input line 751.
-
-
-LaTeX Warning: Reference `tab:channel_configurations' on page 28 undefined on i
-nput line 752.
-
+ [26] [27 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Channels.png>
+]
 <../Images/channel_example.png, id=130, 926.71219pt x 1127.71312pt>
 File: ../Images/channel_example.png Graphic file (type png)
 
 <use ../Images/channel_example.png>
-Package pdftex.def Info: ../Images/channel_example.png used on input line 787.
+Package pdftex.def Info: ../Images/channel_example.png used on input line 805.
 (pdftex.def)             Requested size: 349.53978pt x 425.35205pt.
- [28] [29 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/channel_examp
-le.png>]
-
-LaTeX Warning: Citation `3gpp_ts_0405' on page 30 undefined on input line 812.
-
-
-LaTeX Warning: Citation `3gpp_ts_0406' on page 30 undefined on input line 812.
-
-[30]
-
-LaTeX Warning: Citation `fox' on page 31 undefined on input line 823.
-
-
-LaTeX Warning: Citation `fox' on page 31 undefined on input line 832.
-
-
-LaTeX Warning: Citation `dennis' on page 31 undefined on input line 836.
-
-
-LaTeX Warning: Citation `def_catcher' on page 31 undefined on input line 836.
-
+ [28] [29] [30 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/channel_
+example.png>]
 <../Images/imsi_catcher.jpg, id=141, 280.15778pt x 225.73222pt>
 File: ../Images/imsi_catcher.jpg Graphic file (type jpg)
 
 <use ../Images/imsi_catcher.jpg>
-Package pdftex.def Info: ../Images/imsi_catcher.jpg used on input line 841.
+Package pdftex.def Info: ../Images/imsi_catcher.jpg used on input line 860.
 (pdftex.def)             Requested size: 174.76988pt x 140.81706pt.
 
 <../Images/usrp.jpg, id=142, 1204.5pt x 844.65562pt>
 File: ../Images/usrp.jpg Graphic file (type jpg)
  <use ../Images/usrp.jpg>
-Package pdftex.def Info: ../Images/usrp.jpg used on input line 841.
+Package pdftex.def Info: ../Images/usrp.jpg used on input line 860.
 (pdftex.def)             Requested size: 174.76988pt x 122.5557pt.
 
-[31]) (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Content\Detection.tex
-[32 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/imsi_catcher.jpg> <
-C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/usrp.jpg>]
+[31] <../Images/catcher_attack.png, id=146, 321.52924pt x 277.08318pt>
+File: ../Images/catcher_attack.png Graphic file (type png)
+
+<use ../Images/catcher_attack.png>
+Package pdftex.def Info: ../Images/catcher_attack.png used on input line 877.
+(pdftex.def)             Requested size: 321.52844pt x 277.08249pt.
+ [32 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/imsi_catcher.jpg> 
+<C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/usrp.jpg>] [33 <C:/User
+s/Tom/Desktop/imsi-catcher-detection/Tex/Images/catcher_attack.png>] [34] [35]
+("C:\Program Files\MiKTeX 2.9\tex\latex\unicode\data\uni-0.def"
+File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
+))
+(C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Content\Detection.tex [36]
 Chapter 3.
 ) (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Content\Evaluation.tex
-[33
+[37
 
 
-] [34
+] [38
 
 
 ]
 Chapter 4.
 ) (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Content\Conclusion.tex
-[35] [36
+[39] [40
 
 
 ]
 Chapter 5.
-) [37] [38
+) [41] [42
 
 
 
 ] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.bbl
-Underfull \hbox (badness 2818) in paragraph at lines 4--8
+Underfull \hbox (badness 2818) in paragraph at lines 17--21
 []\T1/ptm/m/n/10.95 Radio ac-cess net-work: Ra-dio trans-mis-sion and re-cep-ti
 on.  GSM 05.05,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--8
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
 $\T1/pcr/m/n/10.95 http : / / www . 3gpp . org / ftp / Specs / archive / 05 _ s
 eries / 05 .$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--21
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
 []\T1/ptm/m/n/10.95 Identification cards -- phys-i-cal char-ac-ter-is-tics.  IS
 O/IEC 7810:2003,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--21
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
 $\T1/pcr/m/n/10.95 http : / / www . iso . org / iso / iso _ catalogue / catalog
 ue _ tc /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--27
+Underfull \hbox (badness 10000) in paragraph at lines 36--40
+$\T1/pcr/m/n/10.95 3gpp . org / ftp / Specs / archive / 05 _ series / 05 . 02 /
+ 0502-[]8b0 . zip$\T1/ptm/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
 $\T1/pcr/m/n/10.95 http : / / www . 3gpp . org / ftp / Specs / archive / 23 _ s
 eries / 23 . 078 /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--33
+Underfull \hbox (badness 10000) in paragraph at lines 48--52
 $\T1/pcr/m/n/10.95 org / ftp / Specs / archive / 23 _ series / 23 . 003 / 23003
 -[]a30 . zip$\T1/ptm/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--38
-[]\T1/ptm/m/n/10.95 Equipment iden-tity reg-is-ter.  $\T1/pcr/m/n/10.95 http : 
-/ / en . wikipedia . org / wiki /$
- []
-
-
-Underfull \hbox (badness 3428) in paragraph at lines 50--53
-[]\T1/ptm/m/n/10.95 Gsm/3g stats.  $\T1/pcr/m/n/10.95 http : / / www . gsacom .
- com / news / statistics . php4$\T1/ptm/m/n/10.95 ,
  []
 
 [1
 
 
-]) [2] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.lof)
-\tf@lof=\write8
+]
+Underfull \hbox (badness 3428) in paragraph at lines 73--76
+[]\T1/ptm/m/n/10.95 Gsm/3g stats.  $\T1/pcr/m/n/10.95 http : / / www . gsacom .
+ com / news / statistics . php4$\T1/ptm/m/n/10.95 ,
+ []
 
-[3
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--126
+[]\T1/ptm/m/sc/10.95 Security, H.  \T1/ptm/m/n/10.95 Imsi-catcher für 1500 euro
+ im eigen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--126
+\T1/ptm/m/n/10.95 bau.  $\T1/pcr/m/n/10.95 http : / / www . heise . de / securi
+ty / meldung /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--126
+$\T1/pcr/m/n/10.95 IMSI-[]Catcher-[]fuer-[]1500-[]Euro-[]im-[]Eigenbau-[]104891
+9 . html$\T1/ptm/m/n/10.95 ,
+ []
+
+) [2] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.lof
+
+LaTeX Warning: Citation `raven' on page III undefined on input line 19.
+
+)
+\tf@lof=\write8
+ [3
 
 
 ] [4
@@ -1416,10 +1413,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 28516 strings out of 494045
- 573521 string characters out of 3148393
- 815001 words of memory out of 3000000
- 31139 multiletter control sequences out of 15000+200000
+ 29136 strings out of 494045
+ 580496 string characters out of 3148393
+ 816736 words of memory out of 3000000
+ 31755 multiletter control sequences out of 15000+200000
  52205 words of font info for 90 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  74i,13n,83p,1323b,1590s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1435,9 +1432,9 @@ am Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (51 pages, 4005419 bytes).
+Output written on Master.pdf (55 pages, 4387857 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
+ 256 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
