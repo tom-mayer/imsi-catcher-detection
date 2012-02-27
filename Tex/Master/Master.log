@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.30)  20 FEB 2012 16:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.30)  23 FEB 2012 14:30
 entering extended mode
 **Master.tex
 (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.tex
@@ -1163,7 +1163,7 @@ Underfull \vbox (badness 2042) has occurred while \output is active []
 File: ../Images/Authentication.png Graphic file (type png)
 
 <use ../Images/Authentication.png>
-Package pdftex.def Info: ../Images/Authentication.png used on input line 342.
+Package pdftex.def Info: ../Images/Authentication.png used on input line 343.
 (pdftex.def)             Requested size: 359.18102pt x 323.04611pt.
  [12] [13 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Authenticatio
 n.png>] [14]
@@ -1171,84 +1171,84 @@ n.png>] [14]
 File: ../Images/Mapping.png Graphic file (type png)
 
 <use ../Images/Mapping.png>
-Package pdftex.def Info: ../Images/Mapping.png used on input line 417.
+Package pdftex.def Info: ../Images/Mapping.png used on input line 419.
 (pdftex.def)             Requested size: 337.28326pt x 115.19809pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Mapping.png>] [16]
+ [15] [16 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Mapping.png>]
 
 <../Images/Cells.png, id=81, 98.72083pt x 88.8921pt>
 File: ../Images/Cells.png Graphic file (type png)
  <use ../Images/Cells.png>
-Package pdftex.def Info: ../Images/Cells.png used on input line 492.
+Package pdftex.def Info: ../Images/Cells.png used on input line 494.
 (pdftex.def)             Requested size: 98.72057pt x 88.89188pt.
 
 <../Images/real_Cells.png, id=82, 743.02594pt x 496.10344pt>
 File: ../Images/real_Cells.png Graphic file (type png)
 
 <use ../Images/real_Cells.png>
-Package pdftex.def Info: ../Images/real_Cells.png used on input line 494.
+Package pdftex.def Info: ../Images/real_Cells.png used on input line 496.
 (pdftex.def)             Requested size: 156.04005pt x 104.18478pt.
- [17 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cells.png> <C:/Use
-rs/Tom/Desktop/imsi-catcher-detection/Tex/Images/real_Cells.png>]
-<../Images/standart_config.png, id=88, 199.4652pt x 133.26588pt>
+ [17]
+<../Images/standart_config.png, id=87, 199.4652pt x 133.26588pt>
 File: ../Images/standart_config.png Graphic file (type png)
 
 <use ../Images/standart_config.png>
-Package pdftex.def Info: ../Images/standart_config.png used on input line 509.
+Package pdftex.def Info: ../Images/standart_config.png used on input line 511.
 (pdftex.def)             Requested size: 199.4647pt x 133.26553pt.
 
-<../Images/Umbrella.png, id=89, 209.3662pt x 181.46997pt>
+<../Images/Umbrella.png, id=88, 209.3662pt x 181.46997pt>
 File: ../Images/Umbrella.png Graphic file (type png)
 
 <use ../Images/Umbrella.png>
-Package pdftex.def Info: ../Images/Umbrella.png used on input line 510.
+Package pdftex.def Info: ../Images/Umbrella.png used on input line 512.
 (pdftex.def)             Requested size: 209.36568pt x 181.46951pt.
 
-<../Images/Sectorised.png, id=90, 147.64761pt x 147.64761pt>
+<../Images/Sectorised.png, id=89, 147.64761pt x 147.64761pt>
 File: ../Images/Sectorised.png Graphic file (type png)
 
 <use ../Images/Sectorised.png>
-Package pdftex.def Info: ../Images/Sectorised.png used on input line 511.
+Package pdftex.def Info: ../Images/Sectorised.png used on input line 513.
 (pdftex.def)             Requested size: 147.64725pt x 147.64725pt.
- [18] [19 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/standart_conf
-ig.png> <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Umbrella.png> <
-C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Sectorised.png>] [20]
-<../Images/Cipher.png, id=101, 387.72855pt x 131.02551pt>
+ [18 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cells.png> <C:/Use
+rs/Tom/Desktop/imsi-catcher-detection/Tex/Images/real_Cells.png>] [19 <C:/Users
+/Tom/Desktop/imsi-catcher-detection/Tex/Images/standart_config.png> <C:/Users/T
+om/Desktop/imsi-catcher-detection/Tex/Images/Umbrella.png> <C:/Users/Tom/Deskto
+p/imsi-catcher-detection/Tex/Images/Sectorised.png>] [20] [21] <../Images/Ciphe
+r.png, id=105, 387.72855pt x 131.02551pt>
 File: ../Images/Cipher.png Graphic file (type png)
 
 <use ../Images/Cipher.png>
-Package pdftex.def Info: ../Images/Cipher.png used on input line 596.
+Package pdftex.def Info: ../Images/Cipher.png used on input line 598.
 (pdftex.def)             Requested size: 387.72758pt x 131.02518pt.
- [21 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cipher.png>] [22]
+ [22 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Cipher.png>]
 <../Images/TDMAFDMA.png, id=110, 254.53494pt x 133.33815pt>
 File: ../Images/TDMAFDMA.png Graphic file (type png)
 
 <use ../Images/TDMAFDMA.png>
-Package pdftex.def Info: ../Images/TDMAFDMA.png used on input line 638.
+Package pdftex.def Info: ../Images/TDMAFDMA.png used on input line 640.
 (pdftex.def)             Requested size: 254.5343pt x 133.33781pt.
-
-<../Images/Frames.png, id=111, 367.42068pt x 252.29457pt>
+ [23 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/TDMAFDMA.png>]
+<../Images/Frames.png, id=114, 367.42068pt x 252.29457pt>
 File: ../Images/Frames.png Graphic file (type png)
 
 <use ../Images/Frames.png>
-Package pdftex.def Info: ../Images/Frames.png used on input line 660.
+Package pdftex.def Info: ../Images/Frames.png used on input line 662.
 (pdftex.def)             Requested size: 367.41977pt x 252.29395pt.
- [23 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/TDMAFDMA.png>] [24
- <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Frames.png>] <../Image
-s/Bursts.png, id=118, 371.9737pt x 91.92744pt>
+
+Underfull \vbox (badness 3291) has occurred while \output is active []
+
+ [24 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Frames.png>]
+<../Images/Bursts.png, id=118, 371.9737pt x 91.92744pt>
 File: ../Images/Bursts.png Graphic file (type png)
 
 <use ../Images/Bursts.png>
-Package pdftex.def Info: ../Images/Bursts.png used on input line 685.
+Package pdftex.def Info: ../Images/Bursts.png used on input line 687.
 (pdftex.def)             Requested size: 371.97278pt x 91.9272pt.
  [25 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Bursts.png>]
 <../Images/Channels.png, id=122, 272.60245pt x 169.47314pt>
 File: ../Images/Channels.png Graphic file (type png)
 
 <use ../Images/Channels.png>
-Package pdftex.def Info: ../Images/Channels.png used on input line 721.
+Package pdftex.def Info: ../Images/Channels.png used on input line 723.
 (pdftex.def)             Requested size: 272.60178pt x 169.47273pt.
  [26] [27 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/Channels.png>
 ]
@@ -1256,7 +1256,7 @@ Package pdftex.def Info: ../Images/Channels.png used on input line 721.
 File: ../Images/channel_example.png Graphic file (type png)
 
 <use ../Images/channel_example.png>
-Package pdftex.def Info: ../Images/channel_example.png used on input line 805.
+Package pdftex.def Info: ../Images/channel_example.png used on input line 807.
 (pdftex.def)             Requested size: 349.53978pt x 425.35205pt.
  [28] [29] [30 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/channel_
 example.png>]
@@ -1264,20 +1264,20 @@ example.png>]
 File: ../Images/imsi_catcher.jpg Graphic file (type jpg)
 
 <use ../Images/imsi_catcher.jpg>
-Package pdftex.def Info: ../Images/imsi_catcher.jpg used on input line 860.
+Package pdftex.def Info: ../Images/imsi_catcher.jpg used on input line 862.
 (pdftex.def)             Requested size: 174.76988pt x 140.81706pt.
 
 <../Images/usrp.jpg, id=142, 1204.5pt x 844.65562pt>
 File: ../Images/usrp.jpg Graphic file (type jpg)
  <use ../Images/usrp.jpg>
-Package pdftex.def Info: ../Images/usrp.jpg used on input line 860.
+Package pdftex.def Info: ../Images/usrp.jpg used on input line 862.
 (pdftex.def)             Requested size: 174.76988pt x 122.5557pt.
 
 [31] <../Images/catcher_attack.png, id=146, 321.52924pt x 277.08318pt>
 File: ../Images/catcher_attack.png Graphic file (type png)
 
 <use ../Images/catcher_attack.png>
-Package pdftex.def Info: ../Images/catcher_attack.png used on input line 877.
+Package pdftex.def Info: ../Images/catcher_attack.png used on input line 879.
 (pdftex.def)             Requested size: 321.52844pt x 277.08249pt.
  [32 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/imsi_catcher.jpg> 
 <C:/Users/Tom/Desktop/imsi-catcher-detection/Tex/Images/usrp.jpg>] [33 <C:/User
@@ -1375,13 +1375,10 @@ $\T1/pcr/m/n/10.95 IMSI-[]Catcher-[]fuer-[]1500-[]Euro-[]im-[]Eigenbau-[]104891
 9 . html$\T1/ptm/m/n/10.95 ,
  []
 
-) [2] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.lof
-
-LaTeX Warning: Citation `raven' on page III undefined on input line 19.
-
-)
+) [2] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.lof)
 \tf@lof=\write8
- [3
+
+[3
 
 
 ] [4
@@ -1407,32 +1404,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 [7
 
 
-] [8]) [9] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] [8]) [9] (C:\Users\Tom\Desktop\imsi-catcher-detection\Tex\Master\Master.aux) 
+) 
 Here is how much of TeX's memory you used:
- 29136 strings out of 494045
- 580496 string characters out of 3148393
- 816736 words of memory out of 3000000
- 31755 multiletter control sequences out of 15000+200000
+ 29135 strings out of 494045
+ 580489 string characters out of 3148393
+ 816742 words of memory out of 3000000
+ 31754 multiletter control sequences out of 15000+200000
  52205 words of font info for 90 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  74i,13n,83p,1323b,1590s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (55 pages, 4387857 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+rw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (55 pages, 4252267 bytes).
 PDF statistics:
  256 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

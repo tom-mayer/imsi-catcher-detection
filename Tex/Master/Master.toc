@@ -13,12 +13,12 @@
 \contentsline {subsubsection}{Authentication Center}{12}
 \contentsline {subsection}{\numberline {2.2.3}Intelligent Network}{14}
 \contentsline {subsection}{\numberline {2.2.4}Base Station Subsystem}{15}
-\contentsline {subsubsection}{Frequencies and the Cellular Principle}{16}
+\contentsline {subsubsection}{Frequencies and the Cellular Principle}{15}
 \contentsline {subsubsection}{Base Transceiver Station}{18}
-\contentsline {subsubsection}{Baste Station Controller}{18}
+\contentsline {subsubsection}{Baste Station Controller}{20}
 \contentsline {subsubsection}{Transcoding rate and Adaption Unit}{21}
 \contentsline {section}{\numberline {2.3}The $U_m$ Interface}{22}
-\contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{22}
+\contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{23}
 \contentsline {subsubsection}{Frame Numbering}{23}
 \contentsline {subsubsection}{Burst Types}{25}
 \contentsline {subsection}{\numberline {2.3.2}Logical Channels}{26}
