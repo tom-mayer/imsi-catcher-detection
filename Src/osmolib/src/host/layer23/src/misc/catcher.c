@@ -189,7 +189,6 @@ static void log_sysinfo(void)
 	//LOGP(DSUM, LOGL_INFO, "Cell: ARFCN=%d MCC=%s MNC=%s (%s, %s)%s\n",
 	//	arfcn, gsm_print_mcc(s->mcc), gsm_print_mnc(s->mnc),
 	//	gsm_get_mcc(s->mcc), gsm_get_mnc(s->mcc, s->mnc), ta_str);
-
 	LOGFILE("[SysInfo]\n");
 	LOGFILE("country %s\n", gsm_get_mcc(s->mcc))
 	LOGFILE("provider %s\n", gsm_get_mnc(s->mcc, s->mnc))
@@ -213,7 +212,6 @@ static void log_sysinfo(void)
 	//	log_frame("si4", s->si4_msg);
 	//if (log_si.ta != 0xff)
 	//	LOGFILE("ta %d\n", log_si.ta);
-
 	LOGFILE("[EndInfo]\n");
 	LOGFILE("\n");
 	LOGFLUSH();

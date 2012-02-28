@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea">
-		<item value="/home/tom/imsi-catcher-detection/Src/osmocom-bb" key="OUTSIDE_LOCATION"/>
+		<item value="/home/tom/Documents/imsi-catcher-detection/Src/osmolib/src" key="OUTSIDE_LOCATION"/>
 	</section>
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
