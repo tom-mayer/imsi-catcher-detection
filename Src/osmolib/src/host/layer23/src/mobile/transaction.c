@@ -33,6 +33,8 @@
 extern void *l23_ctx;
 
 void _gsm48_cc_trans_free(struct gsm_trans *trans);
+void _gsm480_ss_trans_free(struct gsm_trans *trans);
+void _gsm411_sms_trans_free(struct gsm_trans *trans);
 
 struct gsm_trans *trans_find_by_id(struct osmocom_ms *ms,
 				   uint8_t proto, uint8_t trans_id)
@@ -90,14 +92,12 @@ void trans_free(struct gsm_trans *trans)
 	case GSM48_PDISC_CC:
 		_gsm48_cc_trans_free(trans);
 		break;
-#if 0
-	case GSM48_PDISC_SS:
-		_gsm411_ss_trans_free(trans);
+	case GSM48_PDISC_NC_SS:
+		_gsm480_ss_trans_free(trans);
 		break;
 	case GSM48_PDISC_SMS:
 		_gsm411_sms_trans_free(trans);
 		break;
-#endif
 	}
 
 	DEBUGP(DCC, "ms %s frees transaction (mem %p)\n", trans->ms->name,
@@ -108,7 +108,7 @@ void trans_free(struct gsm_trans *trans)
 	talloc_free(trans);
 }
 
-/* allocate an unused transaction ID 
+/* allocate an unused transaction ID
  * in the given protocol using the ti_flag specified */
 int trans_assign_trans_id(struct osmocom_ms *ms,
 			  uint8_t protocol, uint8_t ti_flag)

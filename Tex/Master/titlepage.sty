@@ -1,0 +1,402 @@
+%%
+%% This is file `titlepage.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% titlepage.dtx  (with options: `package')
+%% Copyright (c) 2011 by Markus Kohm <komascript(at)gmx.info>
+%% 
+%% This file was generated from file(s) of titlepage distribution.
+%% ----------------------------------------------------------------------
+%% 
+%% This work may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, version 1.3c of the license.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status "maintained".
+%% 
+%% The Current Maintainer and author of this work is Markus Kohm.
+%% 
+%% This file may only be distributed together with the file
+%% `titlepage.dtx'. You may however distribute the file `titlepage.dtx'
+%% without this file.
+%% 
+%% NOTE: THIS IS AN ALPHA-VERSION!
+\ProvidesPackage{titlepage%
+}[%
+  2011/06/07 v0.2
+  KOMA presents the title page project
+]
+\RequirePackage{scrbase}[2011/06/07]
+\DefineFamily{title}
+\DefineFamilyMember{title}
+\newcommand*{\TitleOptions}{\FamilyOptions{title}}
+\newcommand*{\TitleOption}{\FamilyOption{title}}
+\newcounter{titlepage}\setcounter{titlepage}{\@ne}
+\DefineFamilyKey{title}{pagenumber}{\setcounter{titlepage}{#1}}
+\providecommand*{\titlepagestyle}{}
+\renewcommand*{\titlepagestyle}{empty}
+\DefineFamilyKey{title}{pagestyle}{\renewcommand*{\titlepagestyle}{#1}}
+\ifcsname @restonecolfalse\endcsname
+  \expandafter\@gobble
+\else
+  \expandafter\@firstofone
+\fi
+{\newif\if@restonecol}
+\scr@ifundefinedorrelax{titlepage}{\def\titlepage{}}{}
+\scr@ifundefinedorrelax{endtitlepage}{\def\endtitlepage{}}{}
+\providecommand*{\maketitle}[1][]{}
+\newcommand*{\tp@undefinedtitle}[1]{%
+  \PackageInfo{titlepage}{leaving not defined #1-title page empty}%
+}
+\newcommand*{\inittitle}{}
+\newcommand*{\makepretitle}{\tp@undefinedtitle{pre}}
+\newcommand*{\makepretitleback}{\tp@undefinedtitle{back of pre}}
+\newcommand*{\makemaintitle}{\tp@undefinedtitle{main}}
+\newcommand*{\makemaintitleback}{\tp@undefinedtitle{back of main}}
+\newcommand*{\makeposttitle}{\tp@undefinedtitle{post}}
+\newcommand*{\makeposttitleback}{\tp@undefinedtitle{back of post}}
+\newcommand*{\exittitle}{}
+\newcommand*{\inittitlestyle}{%
+  \renewenvironment{titlepage}[1][]{%
+    \TitleOptions{##1}%
+    \clearpage
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \ifx\titlepagestyle\@empty\else\thispagestyle{\titlepagestyle}\fi
+    \ifodd\value{page}% aktuelle Seite ist ungerade
+      \ifodd\value{titlepage}%
+      \else
+        \null\newpage
+      \fi
+    \else
+      \ifodd\value{titlepage}%
+        \null\newpage % Leerseite
+      \fi
+    \fi
+    \setcounter{page}{\value{titlepage}}%
+    \ifx\titlepagestyle\@empty\else\thispagestyle{\titlepagestyle}\fi
+  }{%
+    \if@restonecol\twocolumn \else \newpage\fi
+    \stepcounter{titlepage}%
+  }%
+
+  \renewcommand*{\maketitle}[1][]{%
+    \begingroup
+      \TitleOptions{##1}%
+      \inittitle
+      \makepretitle\if@twoside\makepretitleback\fi
+      \makemaintitle\if@twoside\makemaintitleback\fi
+      \makeposttitle\if@twoside\makeposttitleback\fi
+      \exittitle
+    \endgroup
+  }%
+
+  \renewcommand*{\inittitle}{}%
+  \renewcommand*{\makepretitle}{\tp@undefinedtitle{pre}}%
+  \renewcommand*{\makepretitleback}{\tp@undefinedtitle{back of pre}}%
+  \renewcommand*{\makemaintitle}{\tp@undefinedtitle{main}}%
+  \renewcommand*{\makemaintitleback}{\tp@undefinedtitle{back of main}}%
+  \renewcommand*{\makeposttitle}{\tp@undefinedtitle{post}}%
+  \renewcommand*{\makeposttitleback}{\tp@undefinedtitle{back of post}}%
+  \renewcommand*{\exittitle}{}%
+}
+\inittitlestyle
+\newsavebox\titlebox
+\newenvironment{fullsizetitle}[1][]{%
+  \TitleOptions{#1}%
+  \begin{lrbox}{\titlebox}
+    \hsize\paperwidth
+    \scr@ifundefinedorrelax{ta@bcor}{%
+      \scr@ifundefinedorrelax{Gm@bindingoffset}{}{%
+        \advanve\hsize-\Gm@bindingoffset}%
+    }{%
+      \advance\hsize-\ta@bcor
+      \scr@ifundefinedorrelax{Gm@bindingoffset}{}{%
+        \ifdim \Gm@bindingoffset=\ta@bcor\else
+          \PackageWarning{titlepage}{ignorring geometry's binding
+            correction,\MessageBreak
+            using typearea's binding correction.\MessageBreak
+            If you're using geometry and typearea,\MessageBreak
+            you should set both options to same value,\MessageBreak
+            e.g. \string\KOMAoptions{BCOR=\ta@bcor}\MessageBreak
+            \space\space\space\space\space
+            \string\geometry{bindingoffset=\ta@bbcor}\MessageBreak
+            to make titlepage use this value%
+          }%
+        \fi
+      }%
+    }%
+    \vsize\paperheight
+    \linewidth\hsize
+    \columnwidth\hsize
+    \textwidth\hsize
+    \textheight\vsize
+    \noindent\minipage{\hsize}
+}{%
+    \endminipage
+  \end{lrbox}
+  \begin{titlepage}%
+    \vspace*{-1in}\vskip-\topmargin\vskip-\headheight\vskip-\headsep
+    \vskip-\topskip
+    \raggedright
+    \leavevmode
+    \hskip-1in
+    \ifodd\c@page
+      \hskip-\oddsidemargin
+      \scr@ifundefinedorrelax{ta@bcor}{%
+        \scr@ifundefinedorrelax{Gm@bindingoffset}{}{%
+          \hskip\Gm@bindingoffset}%
+      }{\hskip\ta@bcor}%
+    \else
+      \hskip-\evensidemargin
+    \fi
+    \vbox to\z@{\hsize\z@
+      \vskip-\baselineskip
+      \makebox[0pt][l]{\usebox\titlebox}%
+      \vss
+    }%
+  \end{titlepage}
+}
+\newcommand*{\tp@replacewarning}[2]{%
+  \PackageWarning{titlepage}{%
+    using `#2' instead of `#1',\MessageBreak
+    because `#1' not defined%
+  }%
+}
+\newcommand*{\tp@dokeys}{}
+\newcommand*{\DefineSimpleTitleKey}[2][.\@currname.\@currext]{%
+  \l@addto@macro\tp@dokeys{\do{#2}}%
+  \expandafter\newcommand\expandafter*\csname @#2\endcsname{}%
+  \expandafter\newcommand\expandafter*\csname #2\endcsname[1]{%
+    \expandafter\gdef\csname @#2\endcsname{##1}}%
+  \DefineFamilyKey[{#1}]{title}{#2}{\csname #2\endcsname{##1}}%
+}
+\newcommand*{\DefineReplaceTitleKey}[3][.\@currname.\@currext]{%
+  \DefineFamilyKey[{#1}]{title}{#2}{%
+    \tp@replacewarning{#2}{#3}%
+    \FamilyOptions{title}{#3=##1}%
+  }%
+}
+\providecommand*{\@titlehead}{}
+\providecommand{\titlehead}[1]{\gdef\@titlehead{#1}}
+\DefineFamilyKey{title}{titlehead}{\titlehead{#1}}
+\let\@title\relax\let\title\relax\DefineSimpleTitleKey{title}
+\let\@author\relax\let\author\relax\DefineSimpleTitleKey{author}
+\let\@date\relax\let\date\relax\DefineSimpleTitleKey{date}
+\DefineSimpleTitleKey{duration}
+\DefineSimpleTitleKey{course}
+\DefineSimpleTitleKey{company}
+\let\@subtitle\relax\let\subtitle\relax\DefineSimpleTitleKey{subtitle}
+\DefineSimpleTitleKey{university}
+\DefineSimpleTitleKey{faculty}
+\DefineSimpleTitleKey{chair}
+\DefineSimpleTitleKey{professor}
+\providecommand*{\@subject}{}
+\providecommand*{\subject}[1]{\gdef\@subject{#1}}
+\l@addto@macro\tp@dokeys{\do{subject}}%
+\DefineFamilyKey{title}{subject}{%
+  \ifstr{#1}{project}{\subject{\projectpapername}}{%
+    \ifstr{#1}{seminar}{\subject{\seminarpapername}}{%
+      \ifstr{#1}{studentreseach}{\subject{\studentreserachname}}{%
+        \ifstr{#1}{diploma}{\subject{\diplomathesisname}}{%
+          \ifstr{#1}{degree}{\subject{\degreethesisname}}{%
+            \ifstr{#1}{master}{\subject{\masterthesisname}}{%
+              \ifstr{#1}{bachelor}{\subject{\bachelorthesisname}}{%
+                \subject{#1}%
+              }%
+            }%
+          }%
+        }%
+      }%
+    }%
+  }%
+}
+\DefineReplaceTitleKey{student}{author}
+\DefineSimpleTitleKey{discipline}
+\DefineSimpleTitleKey{degree}
+\DefineSimpleTitleKey{matriculationnumber}
+\DefineSimpleTitleKey{advisor}
+\DefineSimpleTitleKey{referee}
+\DefineSimpleTitleKey{place}
+\DefineSimpleTitleKey{publisher}
+\renewcommand*{\@publisher}{\csname @publishers\endcsname}
+\DefineSimpleTitleKey{oralexaminationdate}
+\providecommand*{\@dedication}{}
+\providecommand{\dedication}[1]{\gdef\@dedication{#1}}
+\DefineFamilyKey{title}{dedication}{\dedication{#1}}
+\scr@ifundefinedorrelax{newkomafont}{
+  \newcommand*{\@titlepagefont}{}%
+}{%
+  \newkomafont{titlepage}{}%
+}
+\DefineFamilyKey{title}{titlepagefont}{%
+  \renewcommand*{\@titlepagefont}{#1}%
+}
+\providecommand*{\subject@font}{\bfseries}
+\DefineFamilyKey{title}{subjectfont}{%
+  \renewcommand*{\subject@font}{#1}%
+}
+\providecommand*{\titlefont}{\bfseries}
+\DefineFamilyKey{title}{titlefont}{%
+  \renewcommand*{\titlefont}{#1}%
+}
+\providecommand*{\@subtitlefont}{\bfseries}
+\DefineFamilyKey{title}{subtitlefont}{%
+  \renewcommand*{\@subtitlefont}{#1}%
+}
+\newcommand*{\TitlePageStyle}[2][]{%
+  \IfFileExists{title-#2.def}{%
+    \begingroup
+      \edef\@tempa{\endgroup
+        \noexpand\inittitlestyle
+        \noexpand\makeatletter
+        \noexpand\input{title-#2.def}%
+        \noexpand\catcode`\noexpand\@=\the\catcode`\@
+      }%
+    \@tempa
+    \TitleOptions{#1}%
+  }{%
+    \PackageError{titlepage}{No title definition for `#2' found}{%
+      You've tried to set title page style `#2', but no title page
+      style definition file\MessageBreak
+      `title-#2.def' may be found%
+    }%
+  }
+}
+\newcommand*{\NowButAfterBeginDocument}{%
+  \if@atdocument
+    \expandafter\@firstofone
+  \else
+    \expandafter\AtBeginDocument
+  \fi
+}
+\DeclareOption*{\expandafter\TitlePageStyle\expandafter{\CurrentOption}}
+\FamilyProcessOptions*\relax
+\providecommand*\projectpapername{Project Paper}
+\providecommand*\seminarpapername{Seminar Paper}
+\providecommand*\studentresearchname{Student Research Project}
+\providecommand*\diplomathesisname{Diploma Thesis}
+\providecommand*\degreethesisname{Degree Thesis}
+\providecommand*\masterthesisname{Master Thesis}
+\providecommand*\bachelorthesisname{Bachelor Thesis}
+\providecommand*{\presentedbyname}{presented by}
+\providecommand*{\advisorname}{Advisor}
+\providecommand*{\thename}{}
+\providecommand*{\ofthename}{of the}
+\providecommand*{\fromname}{from}
+\providecommand*{\fromplacename}{from}
+\providecommand*{\refereename}{Referee}
+\providecommand*{\oralexaminationdatename}{Date of Oral Examination}
+\providecommand*{\atthename}{at}
+\providecommand*{\durationname}{Processing Time}
+\providecommand*{\matriculationnumbername}{Matriculationnumber}
+\providecommand*{\coursename}{Course}
+\providecommand*{\companyname}{Training Company}
+\providecommand*{\examinationname}{Examination}
+\newcommand*{\ordinal}{\englishordinal}
+\AtBeginDocument{%
+  \providecaptionname{english}\projectpapername{Project Paper}%
+  \providecaptionname{english}\seminarpapername{Seminar Paper}%
+  \providecaptionname{english}\studentresearchname{Student Research Project}%
+  \providecaptionname{english}\diplomathesisname{Diploma Thesis}%
+  \providecaptionname{english}\degreethesisname{Degree Thesis}%
+  \providecaptionname{english}\masterthesisname{Master Thesis}%
+  \providecaptionname{english}\bachelorthesisname{Bachelor Thesis}%
+  \providecaptionname{english}{\ordinal}{\englishordinal}%
+  \providecaptionname{english}{\presentedbyname}{presented by}%
+  \providecaptionname{english}{\advisorname}{Advisor}%
+  \providecaptionname{english}{\thename}{}%
+  \providecaptionname{english}{\ofthename}{of the}%
+  \providecaptionname{english}{\fromname}{from}%
+  \providecaptionname{english}{\fromplacename}{from}%
+  \providecaptionname{english}{\refereename}{Referee}%
+  \providecaptionname{english}{\oralexaminationdatename}{Date of Oral
+    Examination}%
+  \providecaptionname{english}{\durationname}{Processing Time}%
+  \providecaptionname{english}{\matriculationnumbername}{Matriculationnumber}%
+  \providecaptionname{english}{\coursename}{Course}%
+  \providecaptionname{english}{\companyname}{Training Company}%
+  \providecaptionname{english}{\examinationname}{Examination}%
+  \providecaptionname{german}\projectpapername{Projektarbeit}%
+  \providecaptionname{german}\seminarpapername{Seminararbeit}%
+  \providecaptionname{german}\studentresearchname{Studienarbeit}%
+  \providecaptionname{german}\diplomathesisname{Diplomarbeit}%
+  \providecaptionname{german}\degreethesisname{Dissertation}%
+  \providecaptionname{german}\masterthesisname{Master-Arbeit}%
+  \providecaptionname{german}\bachelorthesisname{Bachelor-Arbeit}%
+  \providecaptionname{german}{\ordinal}{\germanordinal}%
+  \providecaptionname{german}{\presentedbyname}{eingereicht von}%
+  \providecaptionname{german}{\advisorname}{Betreuer}%
+  \providecaptionname{german}{\thename}{den}%
+  \providecaptionname{german}{\ofthename}{der}%
+  \providecaptionname{german}{\fromname}{von}%
+  \providecaptionname{german}{\fromplacename}{aus}%
+  \providecaptionname{german}{\refereename}{Gutachter}%
+  \providecaptionname{german}{\oralexaminationdatename}{Datum der m\"undlichen
+    Pr\"ufung}%
+  \providecaptionname{german}{\durationname}{Bearbeitungszeitraum}%
+  \providecaptionname{german}{\matriculationnumbername}{Matrikelnummer}%
+  \providecaptionname{german}{\coursename}{Kurs}%
+  \providecaptionname{german}{\companyname}{Ausbildungsfirma}%
+  \providecaptionname{german}{\examinationname}{Pr\"ufung}%
+  \providecaptionname{ngerman}\projectpapername{Projektarbeit}%
+  \providecaptionname{ngerman}\seminarpapername{Seminararbeit}%
+  \providecaptionname{ngerman}\studentresearchname{Studienarbeit}%
+  \providecaptionname{ngerman}\diplomathesisname{Diplomarbeit}%
+  \providecaptionname{ngerman}\degreethesisname{Dissertation}%
+  \providecaptionname{ngerman}\masterthesisname{Master-Arbeit}%
+  \providecaptionname{ngerman}\bachelorthesisname{Bachelor-Arbeit}%
+  \providecaptionname{ngerman}{\ordinal}{\germanordinal}%
+  \providecaptionname{ngerman}{\presentedbyname}{eingereicht von}%
+  \providecaptionname{ngerman}{\advisorname}{Betreuer}%
+  \providecaptionname{ngerman}{\thename}{den}%
+  \providecaptionname{ngerman}{\ofthename}{der}%
+  \providecaptionname{ngerman}{\fromname}{von}%
+  \providecaptionname{ngerman}{\fromplacename}{aus}%
+  \providecaptionname{ngerman}{\refereename}{Gutachter}%
+  \providecaptionname{ngerman}{\oralexaminationdatename}{Datum der m\"undlichen
+    Pr\"ufung}%
+  \providecaptionname{ngerman}{\durationname}{Bearbeitungszeitraum}%
+  \providecaptionname{ngerman}{\matriculationnumbername}{Matrikelnummer}%
+  \providecaptionname{ngerman}{\coursename}{Kurs}%
+  \providecaptionname{ngerman}{\companyname}{Ausbildungsfirma}%
+  \providecaptionname{ngerman}{\examinationname}{Pr\"ufung}%
+}
+\newcommand*{\englishordinal}[1]{%
+  \ifcsname engordnumber\endcsname
+    \engordnumber{#1}%
+  \else
+    \ifnum #1<\@ne
+      \PackageError{titlepage}{ordinal of `#1' not defined}{%
+        This package does only define english ordinals from 1}%
+    \else
+      \ifcase #1\or 1st\or 2nd\or 3rd\or 4th\or 5th\or 6th\or 7th\or 8th\or
+        9th\or 10th\else
+        \PackageError{titlepage}{ordinal of `#1' not defined}{%
+          This package does only define english ordinals from 1 to
+          10.\MessageBreak
+          You may load package `engord' to improve support of english
+          ordinals}%
+      \fi
+    \fi
+  \fi
+}
+\newcommand*{\germanordinal}[1]{%
+  \ifnum #1<\@ne
+    \PackageError{titlepage}{ordinal of `#1' not defined}{%
+      This package does only define german ordinals from 1}%
+  \else
+    #1.%
+  \fi
+}
+\endinput
+%%
+%% End of file `titlepage.sty'.

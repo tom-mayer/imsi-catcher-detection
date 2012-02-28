@@ -40,7 +40,6 @@
 
 #include <osmocom/bb/common/l1ctl.h>
 #include <osmocom/bb/common/osmocom_data.h>
-#include <osmocom/bb/common/lapdm.h>
 #include <osmocom/bb/common/logging.h>
 
 /* somewhere in 05.08 */
@@ -275,7 +274,7 @@ static int bscan_sig_cb(unsigned int subsys, unsigned int signal,
 			rc = get_next_arfcn(&fps);
 			if (rc < 0) {
 				fps.state = BSCAN_S_DONE;
-				return;
+				return 0;
 			}
 			_cinfo_start_arfcn(rc);
 			break;

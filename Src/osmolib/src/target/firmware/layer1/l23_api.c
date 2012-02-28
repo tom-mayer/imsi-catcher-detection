@@ -29,6 +29,8 @@
 #include <debug.h>
 #include <byteorder.h>
 
+#include <asm/system.h>
+
 #include <osmocom/core/msgb.h>
 #include <osmocom/gsm/protocol/gsm_04_08.h>
 #include <comm/sercomm.h>
@@ -38,18 +40,28 @@
 #include <layer1/mframe_sched.h>
 #include <layer1/prim.h>
 #include <layer1/tpu_window.h>
+#include <layer1/sched_gsmtime.h>
 
 #include <abb/twl3025.h>
 #include <rf/trf6151.h>
+#include <calypso/sim.h>
+#include <calypso/dsp.h>
 
 #include <l1ctl_proto.h>
 
 /* the size we will allocate struct msgb* for HDLC */
 #define L3_MSG_HEAD 4
-#define L3_MSG_SIZE (sizeof(struct l1ctl_hdr)+sizeof(struct l1ctl_info_dl)+sizeof(struct l1ctl_traffic_ind) + L3_MSG_HEAD)
+#define L3_MSG_DATA 200
+#define L3_MSG_SIZE (L3_MSG_HEAD + sizeof(struct l1ctl_hdr) + L3_MSG_DATA)
+
+void (*l1a_l23_tx_cb)(struct msgb *msg) = NULL;
 
 void l1_queue_for_l2(struct msgb *msg)
 {
+	if (l1a_l23_tx_cb) {
+		l1a_l23_tx_cb(msg);
+		return;
+	}
 	/* forward via serial for now */
 	sercomm_sendmsg(SC_DLCI_L1A_L23, msg);
 }
@@ -395,7 +407,7 @@ static void l1ctl_rx_pm_req(struct msgb *msg)
 			l1s.pm.range.arfcn_start, l1s.pm.range.arfcn_end);
 		break;
 	}
-
+	l1s_reset_hw(); /* must reset, otherwise measurement results are delayed */
 	l1s_pm_test(1, l1s.pm.range.arfcn_next);
 }
 
@@ -520,8 +532,10 @@ static void l1ctl_rx_neigh_pm_req(struct msgb *msg)
 	/* now reset pointer and fill list */
 	l1s.neigh_pm.pos = 0;
 	l1s.neigh_pm.running = 0;
-	for (i = 0; i < pm_req->n; i++)
+	for (i = 0; i < pm_req->n; i++) {
 		l1s.neigh_pm.band_arfcn[i] = ntohs(pm_req->band_arfcn[i]);
+		l1s.neigh_pm.tn[i] = pm_req->tn[i];
+	}
 	printf("L1CTL_NEIGH_PM_REQ new list with %u entries\n", pm_req->n);
 	l1s.neigh_pm.n = pm_req->n; /* atomic */
 
@@ -552,10 +566,49 @@ static void l1ctl_rx_traffic_req(struct msgb *msg)
 	l1a_txq_msgb_enq(&l1s.tx_queue[L1S_CHAN_TRAFFIC], msg);
 }
 
-/* callback from SERCOMM when L2 sends a message to L1 */
-static void l1a_l23_rx_cb(uint8_t dlci, struct msgb *msg)
+static void l1ctl_sim_req(struct msgb *msg)
 {
-	struct l1ctl_hdr *l1h = (struct l1ctl_hdr *) msg->data;
+	uint16_t len = msg->len - sizeof(struct l1ctl_hdr);
+	uint8_t *data = msg->data + sizeof(struct l1ctl_hdr);
+
+#if 1 /* for debugging only */
+	{
+		int i;
+		printf("SIM Request (%u): ", len);
+		for (i = 0; i < len; i++)
+			printf("%02x ", data[i]);
+		puts("\n");
+	}
+#endif
+
+   sim_apdu(len, data);
+}
+
+static struct llist_head l23_rx_queue = LLIST_HEAD_INIT(l23_rx_queue);
+
+/* callback from SERCOMM when L2 sends a message to L1 */
+void l1a_l23_rx(uint8_t dlci, struct msgb *msg)
+{
+	unsigned long flags;
+
+	local_firq_save(flags);
+	msgb_enqueue(&l23_rx_queue, msg);
+	local_irq_restore(flags);
+}
+
+void l1a_l23_handler(void)
+{
+	struct msgb *msg;
+	struct l1ctl_hdr *l1h;
+	unsigned long flags;
+
+	local_firq_save(flags);
+	msg = msgb_dequeue(&l23_rx_queue);
+	local_irq_restore(flags);
+	if (!msg)
+		return;
+
+	l1h = (struct l1ctl_hdr *) msg->data;
 
 #if 0
 	{
@@ -619,6 +672,9 @@ static void l1a_l23_rx_cb(uint8_t dlci, struct msgb *msg)
 		l1ctl_rx_traffic_req(msg);
 		/* we have to keep the msgb, not free it! */
 		goto exit_nofree;
+	case L1CTL_SIM_REQ:
+		l1ctl_sim_req(msg);
+		break;
 	}
 
 exit_msgbfree:
@@ -629,5 +685,6 @@ exit_nofree:
 
 void l1a_l23api_init(void)
 {
-	sercomm_register_rx_cb(SC_DLCI_L1A_L23, l1a_l23_rx_cb);
+	sercomm_register_rx_cb(SC_DLCI_L1A_L23, l1a_l23_rx);
 }
+

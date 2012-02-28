@@ -36,6 +36,8 @@
 #include <osmocom/bb/common/networks.h>
 #include <osmocom/bb/common/l1ctl.h>
 #include <osmocom/bb/mobile/gsm48_cc.h>
+#include <osmocom/bb/mobile/gsm480_ss.h>
+#include <osmocom/bb/mobile/gsm411_sms.h>
 #include <osmocom/bb/mobile/app_mobile.h>
 #include <osmocom/bb/mobile/vty.h>
 
@@ -661,7 +663,7 @@ const char *get_mmr_name(int value)
 
 /* allocate GSM 04.08 message (MMxx-SAP) */
 struct msgb *gsm48_mmxx_msgb_alloc(int msg_type, uint32_t ref,
-	uint8_t transaction_id)
+	uint8_t transaction_id, uint8_t sapi)
 {
 	struct msgb *msg;
 	struct gsm48_mmxx_hdr *mmh;
@@ -675,6 +677,7 @@ struct msgb *gsm48_mmxx_msgb_alloc(int msg_type, uint32_t ref,
 	mmh->msg_type = msg_type;
 	mmh->ref = ref;
 	mmh->transaction_id = transaction_id;
+	mmh->sapi = sapi;
 
 	return msg;
 }
@@ -748,26 +751,24 @@ int gsm48_mmxx_dequeue(struct osmocom_ms *ms)
 	struct msgb *msg;
 	struct gsm48_mmxx_hdr *mmh;
 	int work = 0;
-	
+
 	while ((msg = msgb_dequeue(&mm->mmxx_upqueue))) {
 		mmh = (struct gsm48_mmxx_hdr *) msg->data;
 		switch (mmh->msg_type & GSM48_MMXX_MASK) {
 		case GSM48_MMCC_CLASS:
 			gsm48_rcv_cc(ms, msg);
 			break;
-#if 0
 		case GSM48_MMSS_CLASS:
-			gsm48_rcv_ss(ms, msg);
+			gsm480_rcv_ss(ms, msg);
 			break;
 		case GSM48_MMSMS_CLASS:
-			gsm48_rcv_sms(ms, msg);
+			gsm411_rcv_sms(ms, msg);
 			break;
-#endif
 		}
 		msgb_free(msg);
 		work = 1; /* work done */
 	}
-	
+
 	return work;
 }
 
@@ -778,14 +779,14 @@ int gsm48_mmr_dequeue(struct osmocom_ms *ms)
 	struct msgb *msg;
 	struct gsm48_mmr *mmr;
 	int work = 0;
-	
+
 	while ((msg = msgb_dequeue(&mm->mmr_downqueue))) {
 		mmr = (struct gsm48_mmr *) msg->data;
 		gsm48_rcv_mmr(ms, msg);
 		msgb_free(msg);
 		work = 1; /* work done */
 	}
-	
+
 	return work;
 }
 
@@ -795,13 +796,13 @@ int gsm48_rr_dequeue(struct osmocom_ms *ms)
 	struct gsm48_mmlayer *mm = &ms->mmlayer;
 	struct msgb *msg;
 	int work = 0;
-	
+
 	while ((msg = msgb_dequeue(&mm->rr_upqueue))) {
 		/* msg is freed there */
 		gsm48_rcv_rr(ms, msg);
 		work = 1; /* work done */
 	}
-	
+
 	return work;
 }
 
@@ -812,20 +813,20 @@ int gsm48_mmevent_dequeue(struct osmocom_ms *ms)
 	struct gsm48_mm_event *mme;
 	struct msgb *msg;
 	int work = 0;
-	
+
 	while ((msg = msgb_dequeue(&mm->event_queue))) {
 		mme = (struct gsm48_mm_event *) msg->data;
 		gsm48_mm_ev(ms, mme->msg_type, msg);
 		msgb_free(msg);
 		work = 1; /* work done */
 	}
-	
+
 	return work;
 }
 
 /* push RR header and send to RR */
-static int gsm48_mm_to_rr(struct osmocom_ms *ms, struct msgb *msg,
-	int msg_type, uint8_t cause)
+static int gsm48_mm_to_rr(struct osmocom_ms *ms, struct msgb *msg, int msg_type,
+	uint8_t sapi, uint8_t cause)
 {
 	struct gsm48_rr_hdr *rrh;
 
@@ -833,6 +834,7 @@ static int gsm48_mm_to_rr(struct osmocom_ms *ms, struct msgb *msg,
 	msgb_push(msg, sizeof(struct gsm48_rr_hdr));
 	rrh = (struct gsm48_rr_hdr *) msg->data;
 	rrh->msg_type = msg_type;
+	rrh->sapi = sapi;
 	rrh->cause = cause;
 
 	/* send message to RR */
@@ -927,7 +929,7 @@ static void new_mm_state(struct gsm48_mmlayer *mm, int state, int substate)
 		switch (substate) {
 		case GSM48_MM_SST_NORMAL_SERVICE:
 			vty_notify(ms, NULL);
-			vty_notify(ms, "On Network, normal service: %s, %s\n", 
+			vty_notify(ms, "On Network, normal service: %s, %s\n",
 				gsm_get_mcc(plmn->mcc),
 				gsm_get_mnc(plmn->mcc, plmn->mnc));
 			break;
@@ -1117,8 +1119,9 @@ static int gsm48_mm_return_idle(struct osmocom_ms *ms, struct msgb *msg)
 		return 0;
 	}
 
-	/* selected cell equals the registered LAI */
-	if (subscr->lac /* valid */
+	/* if we are attached and selected cell equals the registered LAI */
+	if (subscr->imsi_attached
+	 && subscr->lac /* valid */
 	 && cs->sel_mcc == subscr->mcc
 	 && cs->sel_mnc == subscr->mnc
 	 && cs->sel_lac == subscr->lac) {
@@ -1336,7 +1339,7 @@ int gsm48_mm_exit(struct osmocom_ms *ms)
 
 	/* flush lists */
 	while (!llist_empty(&mm->mm_conn)) {
-		conn = llist_entry(mm->mm_conn.next, 
+		conn = llist_entry(mm->mm_conn.next,
 			struct gsm48_mm_conn, list);
 		mm_conn_free(conn);
 	}
@@ -1348,7 +1351,7 @@ int gsm48_mm_exit(struct osmocom_ms *ms)
 		msgb_free(msg);
 	while ((msg = msgb_dequeue(&mm->event_queue)))
 		msgb_free(msg);
-		
+
 	/* stop timers */
 	stop_mm_t3210(mm);
 	stop_mm_t3211(mm);
@@ -1413,7 +1416,7 @@ struct gsm48_mm_conn *mm_conn_by_ref(struct gsm48_mmlayer *mm,
 
 /* create MM connection instance */
 static struct gsm48_mm_conn* mm_conn_new(struct gsm48_mmlayer *mm,
-	int proto, uint8_t transaction_id, uint32_t ref)
+	int proto, uint8_t transaction_id, uint8_t sapi, uint32_t ref)
 {
 	struct gsm48_mm_conn *conn = talloc_zero(l23_ctx, struct gsm48_mm_conn);
 
@@ -1421,12 +1424,13 @@ static struct gsm48_mm_conn* mm_conn_new(struct gsm48_mmlayer *mm,
 		return NULL;
 
 	LOGP(DMM, LOGL_INFO, "New MM Connection (proto 0x%02x trans_id %d "
-		"ref %d)\n", proto, transaction_id, ref);
+		"sapi %d ref %x)\n", proto, transaction_id, sapi, ref);
 
 	conn->mm = mm;
 	conn->state = GSM48_MMXX_ST_IDLE;
 	conn->transaction_id = transaction_id;
 	conn->protocol = proto;
+	conn->sapi = sapi;
 	conn->ref = ref;
 
 	llist_add(&conn->list, &mm->mm_conn);
@@ -1448,22 +1452,27 @@ void mm_conn_free(struct gsm48_mm_conn *conn)
 
 /* support function to release pending/all ongoing MM connections */
 static int gsm48_mm_release_mm_conn(struct osmocom_ms *ms, int abort_any,
-				    uint8_t cause, int error)
+				    uint8_t cause, int error, uint8_t sapi)
 {
 	struct gsm48_mmlayer *mm = &ms->mmlayer;
 	struct gsm48_mm_conn *conn, *conn2;
 	struct msgb *nmsg;
 	struct gsm48_mmxx_hdr *nmmh;
 
+	/* Note: For SAPI 0 all connections are released */
+
 	if (abort_any)
-		LOGP(DMM, LOGL_INFO, "Release any MM Connection\n");
+		LOGP(DMM, LOGL_INFO, "Release any MM Connection "
+			"(sapi = %d)\n", sapi);
 	else
-		LOGP(DMM, LOGL_INFO, "Release pending MM Connections\n");
+		LOGP(DMM, LOGL_INFO, "Release pending MM Connections "
+			"(sapi = %d)\n", sapi);
 
 	/* release MM connection(s) */
 	llist_for_each_entry_safe(conn, conn2, &mm->mm_conn, list) {
 		/* abort any OR the pending connection */
-		if (abort_any || conn->state == GSM48_MMXX_ST_CONN_PEND) {
+		if ((abort_any || conn->state == GSM48_MMXX_ST_CONN_PEND)
+		 && (sapi == conn->sapi || sapi == 0)) {
 			/* send MMxx-REL-IND */
 			nmsg = NULL;
 			switch(conn->protocol) {
@@ -1471,19 +1480,22 @@ static int gsm48_mm_release_mm_conn(struct osmocom_ms *ms, int abort_any,
 				nmsg = gsm48_mmxx_msgb_alloc(
 					error ? GSM48_MMCC_ERR_IND
 					: GSM48_MMCC_REL_IND, conn->ref,
-						conn->transaction_id);
+						conn->transaction_id,
+						conn->sapi);
 				break;
 			case GSM48_PDISC_NC_SS:
 				nmsg = gsm48_mmxx_msgb_alloc(
 					error ? GSM48_MMSS_ERR_IND
 					: GSM48_MMSS_REL_IND, conn->ref,
-						conn->transaction_id);
+						conn->transaction_id,
+						conn->sapi);
 				break;
 			case GSM48_PDISC_SMS:
 				nmsg = gsm48_mmxx_msgb_alloc(
 					error ? GSM48_MMSMS_ERR_IND
 					: GSM48_MMSMS_REL_IND, conn->ref,
-						conn->transaction_id);
+						conn->transaction_id,
+						conn->sapi);
 				break;
 			}
 			if (!nmsg) {
@@ -1525,7 +1537,7 @@ static int gsm48_mm_tx_mm_status(struct osmocom_ms *ms, uint8_t cause)
 	*reject_cause = cause;
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0);
+	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0, 0);
 }
 
 /* 4.3.1.2 sending TMSI REALLOCATION COMPLETE message */
@@ -1545,7 +1557,7 @@ static int gsm48_mm_tx_tmsi_reall_cpl(struct osmocom_ms *ms)
 	ngh->msg_type = GSM48_MT_MM_TMSI_REALL_COMPL;
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0);
+	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0, 0);
 }
 
 /* 4.3.1 TMSI REALLOCATION COMMAND is received */
@@ -1661,7 +1673,7 @@ static int gsm48_mm_tx_auth_rsp(struct osmocom_ms *ms, struct msgb *msg)
 	memcpy(sres, mme->sres, 4);
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0);
+	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0, 0);
 }
 
 /* 4.3.2.5 AUTHENTICATION REJECT is received */
@@ -1766,7 +1778,7 @@ static int gsm48_mm_tx_id_rsp(struct osmocom_ms *ms, uint8_t mi_type)
 	gsm48_encode_mi(buf, nmsg, ms, mi_type);
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0);
+	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0, 0);
 }
 
 /* 4.3.4.1 sending IMSI DETACH INDICATION message */
@@ -1814,7 +1826,7 @@ static int gsm48_mm_tx_imsi_detach(struct osmocom_ms *ms, int rr_prim)
 
 	/* push RR header and send down */
 	mm->est_cause = RR_EST_CAUSE_OTHER_SDCCH;
-	return gsm48_mm_to_rr(ms, nmsg, rr_prim, mm->est_cause);
+	return gsm48_mm_to_rr(ms, nmsg, rr_prim, 0, mm->est_cause);
 }
 
 /* detach has ended */
@@ -1828,7 +1840,6 @@ static int gsm48_mm_imsi_detach_end(struct osmocom_ms *ms, struct msgb *msg)
 
 	/* stop IMSI detach timer (if running) */
 	stop_mm_t3220(mm);
-
 
 	/* SIM invalid */
 	subscr->sim_valid = 0;
@@ -1854,6 +1865,24 @@ static int gsm48_mm_imsi_detach_end(struct osmocom_ms *ms, struct msgb *msg)
 
 	/* return to MM IDLE */
 	return gsm48_mm_return_idle(ms, NULL);
+}
+
+/* abort radio connection */
+static int gsm48_mm_imsi_detach_abort(struct osmocom_ms *ms, struct msgb *msg)
+{
+	struct msgb *nmsg;
+	struct gsm48_rr_hdr *nrrh;
+
+	/* abort RR if timer fired */
+	nmsg = gsm48_rr_msgb_alloc(GSM48_RR_ABORT_REQ);
+	if (!nmsg)
+		return -ENOMEM;
+	nrrh = (struct gsm48_rr_hdr *) nmsg->data;
+	nrrh->cause = GSM48_RR_CAUSE_NORMAL;
+	gsm48_rr_downmsg(ms, nmsg);
+
+	/* imsi detach has ended now */
+	return gsm48_mm_imsi_detach_end(ms, msg);
 }
 
 /* start an IMSI detach in MM IDLE */
@@ -1891,7 +1920,7 @@ static int gsm48_mm_imsi_detach_sent(struct osmocom_ms *ms, struct msgb *msg)
 
 	return 0;
 }
-	
+
 /* release MM connection and proceed with IMSI detach */
 static int gsm48_mm_imsi_detach_release(struct osmocom_ms *ms, struct msgb *msg)
 {
@@ -1903,7 +1932,7 @@ static int gsm48_mm_imsi_detach_release(struct osmocom_ms *ms, struct msgb *msg)
 	stop_mm_t3230(mm);
 
 	/* release all connections */
-	gsm48_mm_release_mm_conn(ms, 1, 16, 0);
+	gsm48_mm_release_mm_conn(ms, 1, 16, 0, 0);
 
 	/* wait for release of RR */
 	if (!s->att_allowed || !subscr->imsi_attached) {
@@ -1972,10 +2001,10 @@ static int gsm48_mm_rx_abort(struct osmocom_ms *ms, struct msgb *msg)
 		/* stop MM connection timer */
 		stop_mm_t3230(mm);
 
-		gsm48_mm_release_mm_conn(ms, 1, 16, 0);
+		gsm48_mm_release_mm_conn(ms, 1, 16, 0, 0);
 	}
 
-	if (reject_cause == GSM48_REJECT_ILLEGAL_ME) { 
+	if (reject_cause == GSM48_REJECT_ILLEGAL_ME) {
 		/* SIM invalid */
 		subscr->sim_valid = 0;
 
@@ -2038,7 +2067,7 @@ static int gsm48_mm_sysinfo(struct osmocom_ms *ms, struct msgb *msg)
 	struct gsm48_mmlayer *mm = &ms->mmlayer;
 	struct gsm48_sysinfo *s = &ms->cellsel.sel_si;
 
-	/* t3212 not changed in these states */ 
+	/* t3212 not changed in these states */
 	if (mm->state == GSM48_MM_ST_MM_IDLE
 	 && (mm->substate == GSM48_MM_SST_NO_CELL_AVAIL
 	  || mm->substate == GSM48_MM_SST_LIMITED_SERVICE
@@ -2074,7 +2103,7 @@ static int gsm48_mm_sysinfo(struct osmocom_ms *ms, struct msgb *msg)
 		}
 		mm->t3212_value = s->t3212;
 	}
-	
+
 	return 0;
 }
 
@@ -2095,7 +2124,7 @@ static int gsm48_mm_loc_upd(struct osmocom_ms *ms, struct msgb *msg)
 	struct gsm_settings *set = &ms->settings;
 	struct msgb *nmsg;
 	int msg_type;
-	
+
 	/* (re)start only if we still require location update */
 	if (!mm->lupd_pending) {
 		LOGP(DMM, LOGL_INFO, "No loc. upd. pending.\n");
@@ -2315,7 +2344,7 @@ static int gsm48_mm_tx_loc_upd_req(struct osmocom_ms *ms)
 	/* location updating type */
 	nlu->type = mm->lupd_type;
 	/* cipering key */
-	nlu->key_seq = subscr->key_seq;
+	nlu->key_seq = gsm_subscr_get_key_seq(ms, subscr);
 	/* LAI (last SIM stored LAI)
 	 *
 	 * NOTE: The TMSI is only valid within a LAI!
@@ -2343,7 +2372,7 @@ static int gsm48_mm_tx_loc_upd_req(struct osmocom_ms *ms)
 
 	/* push RR header and send down */
 	mm->est_cause = RR_EST_CAUSE_LOC_UPD;
-	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_EST_REQ, mm->est_cause);
+	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_EST_REQ, 0, mm->est_cause);
 }
 
 /* 4.4.4.1 RR is esablised during location update */
@@ -2511,7 +2540,7 @@ static int gsm48_mm_rx_loc_upd_rej(struct osmocom_ms *ms, struct msgb *msg)
 	start_mm_t3240(mm);
 
 	new_mm_state(mm, GSM48_MM_ST_LOC_UPD_REJ, 0);
-	
+
 	return 0;
 }
 
@@ -2522,7 +2551,7 @@ static int gsm48_mm_rel_loc_upd_rej(struct osmocom_ms *ms, struct msgb *msg)
 	struct gsm_subscriber *subscr = &ms->subscr;
 	struct msgb *nmsg;
 	struct gsm322_msg *ngm;
-	
+
 	LOGP(DMM, LOGL_INFO, "Loc. upd. rejected (cause %d)\n",
 		mm->lupd_rej_cause);
 
@@ -2777,7 +2806,7 @@ static int gsm48_mm_tx_cm_serv_req(struct osmocom_ms *ms, int rr_prim,
 
 	/* type and key */
 	nsr->cm_service_type = cm_serv;
-	nsr->cipher_key_seq = subscr->key_seq;
+	nsr->cipher_key_seq = gsm_subscr_get_key_seq(ms, subscr);
 	/* classmark 2 */
 	cm2lv[0] = sizeof(struct gsm48_classmark2);
 	gsm48_rr_enc_cm2(ms, (struct gsm48_classmark2 *)(cm2lv + 1),
@@ -2807,7 +2836,7 @@ static int gsm48_mm_tx_cm_serv_req(struct osmocom_ms *ms, int rr_prim,
 	/* prio is optional for eMLPP */
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, nmsg, rr_prim, mm->est_cause);
+	return gsm48_mm_to_rr(ms, nmsg, rr_prim, 0, mm->est_cause);
 }
 
 /* cm service abort message from upper layer
@@ -2829,7 +2858,7 @@ static int gsm48_mm_tx_cm_service_abort(struct osmocom_ms *ms)
 	ngh->msg_type = GSM48_MT_MM_CM_SERV_ABORT;
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0);
+	return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_DATA_REQ, 0, 0);
 }
 
 /* cm service acknowledge is received from lower layer */
@@ -2900,7 +2929,7 @@ static int gsm48_mm_rx_cm_service_rej(struct osmocom_ms *ms, struct msgb *msg)
 	}
 
 	/* release MM connection(s) */
-	gsm48_mm_release_mm_conn(ms, abort_any, 16, 0);
+	gsm48_mm_release_mm_conn(ms, abort_any, 16, 0, 0);
 
 	/* state depends on the existance of remaining MM connections */
 	if (llist_empty(&mm->mm_conn))
@@ -2930,6 +2959,7 @@ static int gsm48_mm_init_mm(struct osmocom_ms *ms, struct msgb *msg,
 	struct msgb *nmsg;
 	struct gsm48_mmxx_hdr *nmmh;
 	struct gsm48_mm_conn *conn, *conn_found = NULL;
+	uint8_t sapi = mmh->sapi;
 
 	/* reset loc. upd. counter on CM service request */
 	mm->lupd_attempt = 0;
@@ -2947,20 +2977,24 @@ static int gsm48_mm_init_mm(struct osmocom_ms *ms, struct msgb *msg,
 		LOGP(DMM, LOGL_INFO, "Init MM Connection, but already have "
 			"pending MM Connection.\n");
 		cause = 17;
+		/* use sapi from connection. if no connection, use sapi from
+		 * message.
+		 */
+		sapi = conn_found->sapi;
 		reject:
 		nmsg = NULL;
 		switch(msg_type) {
 		case GSM48_MMCC_EST_REQ:
 			nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_REL_IND,
-				mmh->ref, mmh->transaction_id);
+				mmh->ref, mmh->transaction_id, sapi);
 			break;
 		case GSM48_MMSS_EST_REQ:
 			nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSS_REL_IND,
-				mmh->ref, mmh->transaction_id);
+				mmh->ref, mmh->transaction_id, sapi);
 			break;
 		case GSM48_MMSMS_EST_REQ:
 			nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSMS_REL_IND,
-				mmh->ref, mmh->transaction_id);
+				mmh->ref, mmh->transaction_id, sapi);
 			break;
 		}
 		if (!nmsg)
@@ -3039,7 +3073,7 @@ static int gsm48_mm_init_mm(struct osmocom_ms *ms, struct msgb *msg,
 	}
 
 	/* create MM connection instance */
-	conn = mm_conn_new(mm, proto, mmh->transaction_id, mmh->ref);
+	conn = mm_conn_new(mm, proto, mmh->transaction_id, mmh->sapi, mmh->ref);
 	if (!conn)
 		return -ENOMEM;
 
@@ -3166,6 +3200,7 @@ static int gsm48_mm_init_mm_reject(struct osmocom_ms *ms, struct msgb *msg)
 {
 	struct gsm48_mmxx_hdr *mmh = (struct gsm48_mmxx_hdr *)msg->data;
 	int msg_type = mmh->msg_type;
+	int sapi = mmh->sapi;
 	struct msgb *nmsg;
 	struct gsm48_mmxx_hdr *nmmh;
 
@@ -3174,15 +3209,15 @@ static int gsm48_mm_init_mm_reject(struct osmocom_ms *ms, struct msgb *msg)
 	switch(msg_type) {
 	case GSM48_MMCC_EST_REQ:
 		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_REL_IND, mmh->ref,
-			mmh->transaction_id);
+			mmh->transaction_id, sapi);
 		break;
 	case GSM48_MMSS_EST_REQ:
 		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSS_REL_IND, mmh->ref,
-			mmh->transaction_id);
+			mmh->transaction_id, sapi);
 		break;
 	case GSM48_MMSMS_EST_REQ:
 		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSMS_REL_IND, mmh->ref,
-			mmh->transaction_id);
+			mmh->transaction_id, sapi);
 		break;
 	}
 	if (!nmsg)
@@ -3198,7 +3233,7 @@ static int gsm48_mm_init_mm_reject(struct osmocom_ms *ms, struct msgb *msg)
  *
  * this function is called:
  * - when ciphering command is received
- * - when cm service is accepted 
+ * - when cm service is accepted
  */
 static int gsm48_mm_conn_go_dedic(struct osmocom_ms *ms)
 {
@@ -3228,22 +3263,33 @@ static int gsm48_mm_conn_go_dedic(struct osmocom_ms *ms)
 	nmsg = NULL;
 	switch(conn_found->protocol) {
 	case GSM48_PDISC_CC:
-		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_EST_CNF, conn->ref,
-			conn->transaction_id);
+		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_EST_CNF,
+			conn_found->ref, conn_found->transaction_id,
+			conn_found->sapi);
 		break;
 	case GSM48_PDISC_NC_SS:
-		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSS_EST_CNF, conn->ref,
-			conn->transaction_id);
+		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSS_EST_CNF,
+			conn_found->ref, conn_found->transaction_id,
+			conn_found->sapi);
 		break;
 	case GSM48_PDISC_SMS:
-		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSMS_EST_CNF, conn->ref,
-			conn->transaction_id);
+		if (!mm->sapi3_link) {
+			LOGP(DMM, LOGL_INFO, "Sapi 3 link down, requesting "
+				"link, waiting for confirm.\n");
+			nmsg = gsm48_l3_msgb_alloc();
+			if (!nmsg)
+				return -ENOMEM;
+			return gsm48_mm_to_rr(ms, nmsg, GSM48_RR_EST_REQ,
+				conn_found->sapi, 0);
+		}
+		nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMSMS_EST_CNF,
+			conn_found->ref, conn_found->transaction_id,
+			conn_found->sapi);
 		break;
 	}
 	if (!nmsg)
 		return -ENOMEM;
 	nmmh = (struct gsm48_mmxx_hdr *)nmsg->data;
-	nmmh->cause = 17;
 	gsm48_mmxx_upmsg(ms, nmsg);
 
 	return 0;
@@ -3287,13 +3333,12 @@ static int gsm48_mm_sync_ind_active(struct osmocom_ms *ms, struct msgb *msg)
 		switch(conn->protocol) {
 		case GSM48_PDISC_CC:
 			nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_SYNC_IND,
-				conn->ref, conn->transaction_id);
+				conn->ref, conn->transaction_id, conn->sapi);
 			break;
 		}
 		if (!nmsg)
 			continue; /* skip if not of CC type */
 		nmmh = (struct gsm48_mmxx_hdr *)nmsg->data;
-		nmmh->cause = 17;
 		/* copy L3 message */
 		nmsg->l3h = msgb_put(nmsg, msgb_l3len(msg));
 		memcpy(nmsg->l3h, msg->l3h, msgb_l3len(msg));
@@ -3331,7 +3376,7 @@ static int gsm48_mm_abort_mm_con(struct osmocom_ms *ms, struct msgb *msg)
 	stop_mm_t3230(mm);
 
 	/* release all connections */
-	gsm48_mm_release_mm_conn(ms, 1, cause, 1);
+	gsm48_mm_release_mm_conn(ms, 1, cause, 1, 0);
 
 	/* return to MM IDLE */
 	return gsm48_mm_return_idle(ms, NULL);
@@ -3343,7 +3388,7 @@ static int gsm48_mm_timeout_mm_con(struct osmocom_ms *ms, struct msgb *msg)
 	struct gsm48_mmlayer *mm = &ms->mmlayer;
 
 	/* release pending connection */
-	gsm48_mm_release_mm_conn(ms, 0, 102, 0);
+	gsm48_mm_release_mm_conn(ms, 0, 102, 0, 0);
 
 	/* state depends on the existance of remaining MM connections */
 	if (llist_empty(&mm->mm_conn)) {
@@ -3397,12 +3442,15 @@ static int gsm48_mm_data(struct osmocom_ms *ms, struct msgb *msg)
 		/* mirror message with REL_IND + cause */
 		return gsm48_mmxx_upmsg(ms, msg);
 	}
-	
+
+	/* set SAPI, if upper layer does not do it correctly */
+	mmh->sapi = conn->sapi;
+
 	/* pull MM header */
 	msgb_pull(msg, sizeof(struct gsm48_mmxx_hdr));
 
 	/* push RR header and send down */
-	return gsm48_mm_to_rr(ms, msg, GSM48_RR_DATA_REQ, 0);
+	return gsm48_mm_to_rr(ms, msg, GSM48_RR_DATA_REQ, conn->sapi, 0);
 }
 
 /* release of MM connection (active state) */
@@ -3523,6 +3571,50 @@ static int gsm48_mm_rel_other(struct osmocom_ms *ms, struct msgb *msg)
 
 	/* return to MM IDLE */
 	return gsm48_mm_return_idle(ms, NULL);
+}
+
+/*
+ * sapi 3
+ */
+
+static int gsm48_rcv_rr_sapi3(struct osmocom_ms *ms, struct msgb *msg,
+	int msg_type, uint8_t sapi)
+{
+	struct gsm48_mmlayer *mm = &ms->mmlayer;
+	struct gsm48_mm_conn *conn;
+
+	switch (msg_type) {
+	case GSM48_RR_EST_CNF:
+		LOGP(DMM, LOGL_INFO, "SAPI 3 link up, confirming conns.\n");
+		mm->sapi3_link = 1;
+		/* indicate establishment to sapi 3 connections */
+		llist_for_each_entry(conn, &mm->mm_conn, list) {
+			if (conn->sapi == sapi
+			 && conn->state == GSM48_MMXX_ST_DEDICATED) {
+				struct gsm48_mmxx_hdr *nmmh;
+				struct msgb *nmsg;
+
+				nmsg = gsm48_mmxx_msgb_alloc(
+					GSM48_MMSMS_EST_CNF, conn->ref,
+					conn->transaction_id, conn->sapi);
+				if (!nmsg)
+					return -ENOMEM;
+				nmmh = (struct gsm48_mmxx_hdr *)nmsg->data;
+				gsm48_mmxx_upmsg(ms, nmsg);
+			}
+		}
+		break;
+	case GSM48_RR_DATA_IND:
+		return gsm48_mm_data_ind(ms, msg);
+	case GSM48_RR_REL_IND:
+		LOGP(DMM, LOGL_INFO, "SAPI 3 link down, releasing conns.\n");
+		mm->sapi3_link = 0;
+		gsm48_mm_release_mm_conn(ms, 1, 16, 0, sapi);
+		break;
+	}
+	msgb_free(msg);
+
+	return 0;
 }
 
 /*
@@ -3802,11 +3894,15 @@ static int gsm48_rcv_rr(struct osmocom_ms *ms, struct msgb *msg)
 	struct gsm48_mmlayer *mm = &ms->mmlayer;
 	struct gsm48_rr_hdr *rrh = (struct gsm48_rr_hdr *)msg->data;
 	int msg_type = rrh->msg_type;
+	int sapi = rrh->sapi;
 	int i, rc;
 
-	LOGP(DMM, LOGL_INFO, "(ms %s) Received '%s' from RR in state %s\n",
-		ms->name, get_rr_name(msg_type),
-		gsm48_mm_state_names[mm->state]);
+	LOGP(DMM, LOGL_INFO, "(ms %s) Received '%s' from RR in state %s "
+		"(sapi %d)\n", ms->name, get_rr_name(msg_type),
+		gsm48_mm_state_names[mm->state], sapi);
+
+	if (sapi)
+		return gsm48_rcv_rr_sapi3(ms, msg, msg_type, sapi);
 
 	/* find function for current state and message */
 	for (i = 0; i < RRDATASLLEN; i++)
@@ -3820,7 +3916,7 @@ static int gsm48_rcv_rr(struct osmocom_ms *ms, struct msgb *msg)
 	}
 
 	rc = rrdatastatelist[i].rout(ms, msg);
-	
+
 	if (rrdatastatelist[i].rout != gsm48_mm_data_ind)
 		msgb_free(msg);
 
@@ -3870,6 +3966,8 @@ static struct mmdatastate {
 static int gsm48_mm_data_ind(struct osmocom_ms *ms, struct msgb *msg)
 {
 	struct gsm48_mmlayer *mm = &ms->mmlayer;
+	struct gsm48_rr_hdr *rrh = (struct gsm48_rr_hdr *)msg->data;
+	int sapi = rrh->sapi;
 	struct gsm48_hdr *gh = msgb_l3(msg);
 	uint8_t pdisc = gh->proto_discr & 0x0f;
 	uint8_t msg_type = gh->msg_type & 0xbf;
@@ -3880,12 +3978,15 @@ static int gsm48_mm_data_ind(struct osmocom_ms *ms, struct msgb *msg)
 	int i, rc;
 
 	/* 9.2.19 */
-	if (msg_type == GSM48_MT_MM_NULL)
+	if (msg_type == GSM48_MT_MM_NULL) {
+		msgb_free(msg);
 		return 0;
+	}
 
 	if (mm->state == GSM48_MM_ST_IMSI_DETACH_INIT) {
 		LOGP(DMM, LOGL_NOTICE, "DATA IND ignored during IMSI "
 			"detach.\n");
+		msgb_free(msg);
 		return 0;
 	}
 	/* pull the RR header */
@@ -3897,7 +3998,6 @@ static int gsm48_mm_data_ind(struct osmocom_ms *ms, struct msgb *msg)
 		rr_prim = GSM48_MMCC_DATA_IND;
 		rr_est = GSM48_MMCC_EST_IND;
 		break;
-#if 0
 	case GSM48_PDISC_NC_SS:
 		rr_prim = GSM48_MMSS_DATA_IND;
 		rr_est = GSM48_MMSS_EST_IND;
@@ -3906,7 +4006,6 @@ static int gsm48_mm_data_ind(struct osmocom_ms *ms, struct msgb *msg)
 		rr_prim = GSM48_MMSMS_DATA_IND;
 		rr_est = GSM48_MMSMS_EST_IND;
 		break;
-#endif
 	}
 	if (rr_prim != -1) {
 		uint8_t transaction_id = ((gh->proto_discr & 0xf0) ^ 0x80) >> 4;
@@ -3918,18 +4017,22 @@ static int gsm48_mm_data_ind(struct osmocom_ms *ms, struct msgb *msg)
 
 		/* create MM connection instance */
 		if (!conn) {
-			conn = mm_conn_new(mm, pdisc, transaction_id,
+			conn = mm_conn_new(mm, pdisc, transaction_id, sapi,
 				mm_conn_new_ref++);
 			rr_prim = rr_est;
 		}
-		if (!conn)
+		if (!conn) {
+			msgb_free(msg);
 			return -ENOMEM;
+		}
 
 		/* push new header */
 		msgb_push(msg, sizeof(struct gsm48_mmxx_hdr));
 		mmh = (struct gsm48_mmxx_hdr *)msg->data;
 		mmh->msg_type = rr_prim;
 		mmh->ref = conn->ref;
+		mmh->transaction_id = conn->transaction_id;
+		mmh->sapi = conn->sapi;
 
 		/* go MM CONN ACTIVE state */
 		if (mm->state == GSM48_MM_ST_WAIT_NETWORK_CMD
@@ -3950,24 +4053,35 @@ static int gsm48_mm_data_ind(struct osmocom_ms *ms, struct msgb *msg)
 		skip_ind = (gh->proto_discr & 0xf0) >> 4;
 
 		/* ignore if skip indicator is not B'0000' */
-		if (skip_ind)
+		if (skip_ind) {
+			msgb_free(msg);
 			return 0;
+		}
 		break; /* follow the selection proceedure below */
 
 	case GSM48_PDISC_CC:
-		return gsm48_rcv_cc(ms, msg);
+		rc = gsm48_rcv_cc(ms, msg);
+		msgb_free(msg);
+		return rc;
 
-#if 0
 	case GSM48_PDISC_NC_SS:
-		return gsm48_rcv_ss(ms, msg);
+		rc = gsm480_rcv_ss(ms, msg);
+		msgb_free(msg);
+		return rc;
 
 	case GSM48_PDISC_SMS:
-		return gsm48_rcv_sms(ms, msg);
-#endif
+		rc = gsm411_rcv_sms(ms, msg);
+		msgb_free(msg);
+		return rc;
 
+	case 0x0f: /* test TS 04.14 */
+		LOGP(DMM, LOGL_NOTICE, "Test protocol 0x%02x according to "
+			"TS 04.14 is not supported.\n", pdisc);
+		goto status;
 	default:
 		LOGP(DMM, LOGL_NOTICE, "Protocol type 0x%02x unsupported.\n",
 			pdisc);
+status:
 		msgb_free(msg);
 		return gsm48_mm_tx_mm_status(ms,
 			GSM48_REJECT_MSG_TYPE_NOT_IMPLEMENTED);
@@ -4136,8 +4250,8 @@ static struct eventstate {
 	{ALL_STATES, ALL_STATES,
 	 GSM48_MM_EVENT_IMSI_DETACH, gsm48_mm_imsi_detach_delay},
 
-	{GSM48_MM_ST_IMSI_DETACH_INIT, ALL_STATES,
-	 GSM48_MM_EVENT_TIMEOUT_T3220, gsm48_mm_imsi_detach_end},
+	{SBIT(GSM48_MM_ST_IMSI_DETACH_INIT), ALL_STATES,
+	 GSM48_MM_EVENT_TIMEOUT_T3220, gsm48_mm_imsi_detach_abort},
 
 	/* location update in other cases */
 	{SBIT(GSM48_MM_ST_MM_IDLE), ALL_STATES,
@@ -4166,7 +4280,8 @@ static struct eventstate {
 	 GSM48_MM_EVENT_TIMEOUT_T3240, gsm48_mm_abort_rr},
 
 	/* T3230 timed out */
-	{SBIT(GSM48_MM_ST_MM_IDLE), SBIT(GSM48_MM_SST_NORMAL_SERVICE),
+	{SBIT(GSM48_MM_ST_WAIT_OUT_MM_CONN) |
+	 SBIT(GSM48_MM_ST_WAIT_ADD_OUT_MM_CON), ALL_STATES,
 	 GSM48_MM_EVENT_TIMEOUT_T3230, gsm48_mm_timeout_mm_con},
 
 	/* SIM reports SRES */

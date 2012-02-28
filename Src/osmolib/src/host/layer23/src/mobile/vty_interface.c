@@ -37,6 +37,8 @@
 #include <osmocom/bb/mobile/transaction.h>
 #include <osmocom/bb/mobile/vty.h>
 #include <osmocom/bb/mobile/app_mobile.h>
+#include <osmocom/bb/mobile/gsm480_ss.h>
+#include <osmocom/bb/mobile/gsm411_sms.h>
 #include <osmocom/vty/telnet_interface.h>
 
 void *l23_ctx;
@@ -837,6 +839,84 @@ DEFUN(call_dtmf, call_dtmf_cmd, "call MS_NAME dtmf DIGITS",
 	return CMD_SUCCESS;
 }
 
+DEFUN(sms, sms_cmd, "sms MS_NAME NUMBER .LINE",
+	"Send an SMS\nName of MS (see \"show ms\")\nPhone number to send SMS "
+	"(Use digits '0123456789*#abc', and '+' to dial international)\n"
+	"SMS text\n")
+{
+	struct osmocom_ms *ms;
+	struct gsm_settings *set;
+	struct gsm_settings_abbrev *abbrev;
+	char *number, *sms_sca = NULL;
+
+	ms = get_ms(argv[0], vty);
+	if (!ms)
+		return CMD_WARNING;
+	set = &ms->settings;
+
+	if (!set->sms_ptp) {
+		vty_out(vty, "SMS not supported by this mobile, please enable "
+			"SMS support%s", VTY_NEWLINE);
+		return CMD_WARNING;
+	}
+
+	if (ms->subscr.sms_sca[0])
+		sms_sca = ms->subscr.sms_sca;
+	else if (set->sms_sca[0])
+		sms_sca = set->sms_sca;
+
+	if (!sms_sca) {
+		vty_out(vty, "SMS sms-service-center not defined on SIM card, "
+			"please define one at settings.%s", VTY_NEWLINE);
+		return CMD_WARNING;
+	}
+
+	number = (char *)argv[1];
+	llist_for_each_entry(abbrev, &set->abbrev, list) {
+		if (!strcmp(number, abbrev->abbrev)) {
+			number = abbrev->number;
+			vty_out(vty, "Using number '%s'%s", number,
+				VTY_NEWLINE);
+			break;
+		}
+	}
+	if (vty_check_number(vty, number))
+		return CMD_WARNING;
+
+	sms_send(ms, sms_sca, number, argv_concat(argv, argc, 2));
+
+	return CMD_SUCCESS;
+}
+
+DEFUN(service, service_cmd, "service MS_NAME (*#06#|*#21#|*#67#|*#61#|*#62#"
+	"|*#002#|*#004#|*xx*number#|*xx#|#xx#|##xx#|STRING|hangup)",
+	"Send a Supplementary Service request\nName of MS (see \"show ms\")\n"
+	"Query IMSI\n"
+	"Query Call Forwarding Unconditional (CFU)\n"
+	"Query Call Forwarding when Busy (CFB)\n"
+	"Query Call Forwarding when No Response (CFNR)\n"
+	"Query Call Forwarding when Not Reachable\n"
+	"Query all Call Forwardings\n"
+	"Query all conditional Call Forwardings\n"
+	"Set and activate Call Forwarding (xx = Service Code, see above)\n"
+	"Activate Call Forwarding (xx = Service Code, see above)\n"
+	"Deactivate Call Forwarding (xx = Service Code, see above)\n"
+	"Erase and deactivate Call Forwarding (xx = Service Code, see above)\n"
+	"Service string "
+	"(Example: '*100#' requests account balace on some networks.)\n"
+	"Hangup existing service connection")
+{
+	struct osmocom_ms *ms;
+
+	ms = get_ms(argv[0], vty);
+	if (!ms)
+		return CMD_WARNING;
+
+	ss_send(ms, argv[1], 0);
+
+	return CMD_SUCCESS;
+}
+
 DEFUN(test_reselection, test_reselection_cmd, "test re-selection NAME",
 	"Manually trigger cell re-selection\nName of MS (see \"show ms\")")
 {
@@ -1208,12 +1288,21 @@ static void config_write_ms(struct vty *vty, struct osmocom_ms *ms)
 	else
 		if (!hide_default)
 			vty_out(vty, " no emergency-imsi%s", VTY_NEWLINE);
+	if (set->sms_sca[0])
+		vty_out(vty, " sms-service-center %s%s", set->sms_sca,
+			VTY_NEWLINE);
+	else
+		if (!hide_default)
+			vty_out(vty, " no sms-service-center%s", VTY_NEWLINE);
 	if (!hide_default || set->cw)
 		vty_out(vty, " %scall-waiting%s", (set->cw) ? "" : "no ",
 			VTY_NEWLINE);
 	if (!hide_default || set->auto_answer)
 		vty_out(vty, " %sauto-answer%s",
 			(set->auto_answer) ? "" : "no ", VTY_NEWLINE);
+	if (!hide_default || set->force_rekey)
+		vty_out(vty, " %sforce-rekey%s",
+			(set->force_rekey) ? "" : "no ", VTY_NEWLINE);
 	if (!hide_default || set->clip)
 		vty_out(vty, " %sclip%s", (set->clip) ? "" : "no ",
 			VTY_NEWLINE);
@@ -1569,6 +1658,37 @@ DEFUN(cfg_ms_no_emerg_imsi, cfg_ms_no_emerg_imsi_cmd, "no emergency-imsi",
 	return CMD_SUCCESS;
 }
 
+DEFUN(cfg_ms_sms_sca, cfg_ms_sms_sca_cmd, "sms-service-center NUMBER",
+	"Use Service center address for outgoing SMS\nNumber of service center "
+	"(Use digits '0123456789*#abc', and '+' to dial international)")
+{
+	struct osmocom_ms *ms = vty->index;
+	struct gsm_settings *set = &ms->settings;
+	const char *number = argv[0];
+
+	if ((strlen(number) > 20 && number[0] != '+') || strlen(number) > 21) {
+		vty_out(vty, "Number too long%s", VTY_NEWLINE);
+		return CMD_WARNING;
+	}
+	if (vty_check_number(vty, number))
+		return CMD_WARNING;
+
+	strcpy(set->sms_sca, number);
+
+	return CMD_SUCCESS;
+}
+
+DEFUN(cfg_ms_no_sms_sca, cfg_ms_no_sms_sca_cmd, "no sms-service-center",
+	NO_STR "Use Service center address for outgoing SMS")
+{
+	struct osmocom_ms *ms = vty->index;
+	struct gsm_settings *set = &ms->settings;
+
+	set->sms_sca[0] = '\0';
+
+	return CMD_SUCCESS;
+}
+
 DEFUN(cfg_no_cw, cfg_ms_no_cw_cmd, "no call-waiting",
 	NO_STR "Disallow waiting calls")
 {
@@ -1609,6 +1729,28 @@ DEFUN(cfg_auto_answer, cfg_ms_auto_answer_cmd, "auto-answer",
 	struct gsm_settings *set = &ms->settings;
 
 	set->auto_answer = 1;
+
+	return CMD_SUCCESS;
+}
+
+DEFUN(cfg_no_force_rekey, cfg_ms_no_force_rekey_cmd, "no force-rekey",
+	NO_STR "Disable key renew forcing after every event")
+{
+	struct osmocom_ms *ms = vty->index;
+	struct gsm_settings *set = &ms->settings;
+
+	set->force_rekey = 0;
+
+	return CMD_SUCCESS;
+}
+
+DEFUN(cfg_force_rekey, cfg_ms_force_rekey_cmd, "force-rekey",
+	"Enable key renew forcing after every event")
+{
+	struct osmocom_ms *ms = vty->index;
+	struct gsm_settings *set = &ms->settings;
+
+	set->force_rekey = 1;
 
 	return CMD_SUCCESS;
 }
@@ -2624,6 +2766,8 @@ int ms_vty_init(void)
 	install_element(ENABLE_NODE, &call_cmd);
 	install_element(ENABLE_NODE, &call_retr_cmd);
 	install_element(ENABLE_NODE, &call_dtmf_cmd);
+	install_element(ENABLE_NODE, &sms_cmd);
+	install_element(ENABLE_NODE, &service_cmd);
 	install_element(ENABLE_NODE, &test_reselection_cmd);
 	install_element(ENABLE_NODE, &delete_forbidden_plmn_cmd);
 
@@ -2657,10 +2801,14 @@ int ms_vty_init(void)
 	install_element(MS_NODE, &cfg_ms_imei_random_cmd);
 	install_element(MS_NODE, &cfg_ms_no_emerg_imsi_cmd);
 	install_element(MS_NODE, &cfg_ms_emerg_imsi_cmd);
+	install_element(MS_NODE, &cfg_ms_no_sms_sca_cmd);
+	install_element(MS_NODE, &cfg_ms_sms_sca_cmd);
 	install_element(MS_NODE, &cfg_ms_cw_cmd);
 	install_element(MS_NODE, &cfg_ms_no_cw_cmd);
 	install_element(MS_NODE, &cfg_ms_auto_answer_cmd);
 	install_element(MS_NODE, &cfg_ms_no_auto_answer_cmd);
+	install_element(MS_NODE, &cfg_ms_force_rekey_cmd);
+	install_element(MS_NODE, &cfg_ms_no_force_rekey_cmd);
 	install_element(MS_NODE, &cfg_ms_clip_cmd);
 	install_element(MS_NODE, &cfg_ms_clir_cmd);
 	install_element(MS_NODE, &cfg_ms_no_clip_cmd);

@@ -3,6 +3,7 @@ AC_INIT([libosmocore],
 	[openbsc-devel@lists.openbsc.org])
 
 AM_INIT_AUTOMAKE([dist-bzip2])
+AC_CONFIG_TESTDIR(tests)
 
 dnl kernel style compile messages
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
@@ -19,6 +20,10 @@ AC_CONFIG_MACRO_DIR([m4])
 dnl checks for header files
 AC_HEADER_STDC
 AC_CHECK_HEADERS(execinfo.h sys/select.h sys/socket.h syslog.h ctype.h)
+# for src/conv.c
+AC_FUNC_ALLOCA
+AC_SEARCH_LIBS([dlopen], [dl dld], [LIBRARY_DL="$LIBS";LIBS=""])
+AC_SUBST(LIBRARY_DL)
 
 AC_PATH_PROG(DOXYGEN,doxygen,false)
 AM_CONDITIONAL(HAVE_DOXYGEN, test $DOXYGEN != false)
@@ -134,6 +139,7 @@ then
 	AC_DEFINE([PANIC_INFLOOP],[1],[Use infinite loop on panic rather than fprintf/abort])
 fi
 
+
 AC_OUTPUT(
 	libosmocore.pc
 	libosmocodec.pc
@@ -158,6 +164,11 @@ AC_OUTPUT(
 	tests/ussd/Makefile
 	tests/smscb/Makefile
 	tests/bits/Makefile
+	tests/a5/Makefile
+	tests/auth/Makefile
+	tests/conv/Makefile
+	tests/lapd/Makefile
+	tests/gsm0808/Makefile
 	utils/Makefile
 	Doxyfile.core
 	Doxyfile.gsm

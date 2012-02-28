@@ -25,13 +25,13 @@
 
 #include <debug.h>
 #include <memory.h>
+#include <string.h>
 #include <delay.h>
 #include <rffe.h>
 #include <keypad.h>
 #include <board.h>
 
 #include <abb/twl3025.h>
-#include <display.h>
 #include <rf/trf6151.h>
 
 #include <comm/sercomm.h>
@@ -42,9 +42,14 @@
 #include <calypso/tsp.h>
 #include <calypso/irq.h>
 #include <calypso/misc.h>
+#include <calypso/sim.h>
 
 #include <layer1/sync.h>
+#include <layer1/async.h>
 #include <layer1/tpu_window.h>
+#include <layer1/l23_api.h>
+
+#include <fb/framebuffer.h>
 
 const char *hr = "======================================================================\n";
 
@@ -54,6 +59,9 @@ static void key_handler(enum key_codes code, enum key_states state);
 
 int main(void)
 {
+	uint8_t atr[20];
+	uint8_t atrLength = 0;
+
 	board_init();
 
 	puts("\n\nOSMOCOM Layer 1 (revision " GIT_REVISION ")\n");
@@ -69,17 +77,44 @@ int main(void)
 	calypso_clk_dump();
 	puts(hr);
 
-	display_puts("layer1.bin");
+	fb_clear();
+
+	fb_setfg(FB_COLOR_BLACK);
+	fb_setbg(FB_COLOR_WHITE);
+	fb_setfont(FB_FONT_HELVB14);
+
+	fb_gotoxy(2,20);
+	fb_putstr("Layer 1",framebuffer->width-4);
+
+	fb_setfg(FB_COLOR_RED);
+	fb_setbg(FB_COLOR_BLUE);
+
+	fb_gotoxy(2,25);
+	fb_boxto(framebuffer->width-3,38);
+
+	fb_setfg(FB_COLOR_WHITE);
+	fb_setfont(FB_FONT_HELVR08);
+	fb_gotoxy(8,33);
+	fb_putstr("osmocom-bb",framebuffer->width-4);
+
+	fb_flush();
+
+	/* initialize SIM */
+	calypso_sim_init();
+
+	puts("Power up simcard:\n");
+	memset(atr,0,sizeof(atr));
+	atrLength = calypso_sim_powerup(atr);
 
 	layer1_init();
-
-	display_unset_attr(DISP_ATTR_INVERT);
 
 	tpu_frame_irq_en(1, 1);
 
 	while (1) {
 		l1a_compl_execute();
-		update_timers();
+		osmo_timers_update();
+		sim_handler();
+		l1a_l23_handler();
 	}
 
 	/* NOT REACHED */
@@ -130,6 +165,9 @@ static void key_handler(enum key_codes code, enum key_states state)
 	default:
 		break;
 	}
+	/* power down SIM, TODO:  this will happen with every key pressed,
+       put it somewhere else ! */
+	calypso_sim_powerdown();
 }
 
 

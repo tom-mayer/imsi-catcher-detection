@@ -509,7 +509,7 @@ Therefore cells with a radius above 15 km are seldom seen.
 
 \begin{figure}
 	\centering
-	\subfigure[Stantard configuration.]{\centering\includegraphics{../Images/standart_config}}
+	\subfigure[Stantard configuration.]{\centering\includegraphics{../Images/Standart_config}}
 	\subfigure[Umbrella cell configuration.]{\centering\hspace{1cm}\includegraphics{../Images/Umbrella}\hspace{1cm}}
 	\subfigure[Sectorised configuration.]{\centering\includegraphics{../Images/Sectorised}}
 	\caption{Common base station configurations. Compiled from \cite{protocols1999}.}
@@ -917,13 +917,13 @@ Four possible ways of luring a \gls{ms} to the \gls{imsi}-catcher will now be ex
 Three were presented by Wehrle for the 'Open Source IMSI-catcher' project \cite{dennis} and one by Federrath \cite{mueller}.
 The attacks differ on whether the \gls{ms} already is in normal cell selection mode or not, \ie it is connected to another \gls{bts}.
 
-\paragraph{\gls{ms} is in normal cell selection mode:}
+\paragraph{MS is in normal cell selection mode:}
 The \gls{imsi}-catcher has to emulate a cell configuration of the provider the target \gls{ms} is looking for broadcasting at any frequency.
 If the \gls{ms} stumbles upon the frequency it will connect.
 This is no method with 100\% accuracy however chances can be raised by broadcasting with higher power.
 Some \gls{imsi}-catchers even broadcast at a higher power than it would be allowed for normal \gls{bts} \cite{imsi_wiki} to make certain to be the strongest base station available to the \gls{ms}.
 
-\paragraph{\gls{ms} is already connected to a network:}
+\paragraph{MS is already connected to a network:}
 If this is the case then the connection to the current cell needs to be broken.
 It can be achieved either by jamming the frequency band of the cell the \gls{ms} is connected to thus forcing the \gls{ms} into cell selection or by getting the \gls{ms} to switch the cell to the catcher's.
 This can be done the following way.

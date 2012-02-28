@@ -33,7 +33,6 @@
 #include <osmocom/gsm/protocol/gsm_04_08.h>
 
 #include <osmocom/bb/common/logging.h>
-#include <osmocom/bb/common/lapdm.h>
 #include <osmocom/bb/misc/rslms.h>
 #include <osmocom/bb/misc/layer3.h>
 #include <osmocom/bb/common/osmocom_data.h>
@@ -162,7 +161,8 @@ static void dump_bcch(struct osmocom_ms *ms, uint8_t tc, const uint8_t *data)
 	case GSM48_MT_RR_SYSINFO_5ter:
 		break;
 	default:
-		fprintf(stderr, "\tUnknown SI");
+		LOGP(DRR, LOGL_ERROR, "Unknown SI: %d\n",
+		     si_hdr->system_information);
 		break;
 	};
 }
@@ -352,7 +352,7 @@ static int gsm48_rx_paging_p2(struct msgb *msg, struct osmocom_ms *ms)
 		     chan_need(pag->cneed1), pag->tmsi1);
 	LOGP(DRR, LOGL_NOTICE, "Paging2: %s chan %s to TMSI M(0x%x) \n",
 		     pag_print_mode(pag->pag_mode),
-		     chan_need(pag->cneed1), pag->tmsi2);
+		     chan_need(pag->cneed2), pag->tmsi2);
 
 	/* no optional element */
 	if (msgb_l3len(msg) < sizeof(*pag) + 3)
@@ -380,6 +380,32 @@ static int gsm48_rx_paging_p2(struct msgb *msg, struct osmocom_ms *ms)
 	return 0;
 }
 
+static int gsm48_rx_paging_p3(struct msgb *msg, struct osmocom_ms *ms)
+{
+	struct gsm48_paging3 *pag;
+
+	if (msgb_l3len(msg) < sizeof(*pag)) {
+		LOGP(DRR, LOGL_ERROR, "Paging3 message is too small.\n");
+		return -1;
+	}
+
+	pag = msgb_l3(msg);
+	LOGP(DRR, LOGL_NOTICE, "Paging1: %s chan %s to TMSI M(0x%x) \n",
+		     pag_print_mode(pag->pag_mode),
+		     chan_need(pag->cneed1), pag->tmsi1);
+	LOGP(DRR, LOGL_NOTICE, "Paging2: %s chan %s to TMSI M(0x%x) \n",
+		     pag_print_mode(pag->pag_mode),
+		     chan_need(pag->cneed2), pag->tmsi2);
+	LOGP(DRR, LOGL_NOTICE, "Paging3: %s chan %s to TMSI M(0x%x) \n",
+		     pag_print_mode(pag->pag_mode),
+		     "n/a ", pag->tmsi3);
+	LOGP(DRR, LOGL_NOTICE, "Paging4: %s chan %s to TMSI M(0x%x) \n",
+		     pag_print_mode(pag->pag_mode),
+		     "n/a ", pag->tmsi4);
+
+	return 0;
+}
+
 int gsm48_rx_ccch(struct msgb *msg, struct osmocom_ms *ms)
 {
 	struct gsm48_system_information_type_header *sih = msgb_l3(msg);
@@ -396,7 +422,7 @@ int gsm48_rx_ccch(struct msgb *msg, struct osmocom_ms *ms)
 		gsm48_rx_paging_p2(msg, ms);
 		break;
 	case GSM48_MT_RR_PAG_REQ_3:
-		LOGP(DRR, LOGL_ERROR, "PAGING of type 3 is not implemented.\n");
+		gsm48_rx_paging_p3(msg, ms);
 		break;
 	case GSM48_MT_RR_IMM_ASS:
 		gsm48_rx_imm_ass(msg, ms);

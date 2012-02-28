@@ -39,7 +39,6 @@
 
 #include <osmocom/bb/common/l1ctl.h>
 #include <osmocom/bb/common/osmocom_data.h>
-#include <osmocom/bb/common/lapdm.h>
 #include <osmocom/bb/common/logging.h>
 #include <osmocom/bb/common/networks.h>
 #include <osmocom/bb/common/gps.h>
@@ -190,14 +189,16 @@ static void log_sysinfo(void)
 	//	arfcn, gsm_print_mcc(s->mcc), gsm_print_mnc(s->mnc),
 	//	gsm_get_mcc(s->mcc), gsm_get_mnc(s->mcc, s->mnc), ta_str);
 	LOGFILE("[SysInfo]\n");
-	LOGFILE("country %s\n", gsm_get_mcc(s->mcc))
-	LOGFILE("provider %s\n", gsm_get_mnc(s->mcc, s->mnc))
-	LOGFILE("arfcn %d\n", s->arfcn);
+	LOGFILE("Country: %s\n", gsm_get_mcc(s->mcc));
+	LOGFILE("Provider: %s\n", gsm_get_mnc(s->mcc, s->mnc));
+	LOGFILE("ARFCN: %d\n", s->arfcn);
+	LOGFILE("Cell_ID: %d\n", s->cell_id);
+	LOGFILE("LAC: %d\n", s->lac);
 	//log_time();
 	//log_gps();
-	//LOGFILE("bsic %d,%d\n", s->bsic >> 3, s->bsic & 7);
+	LOGFILE("BSIC: %d,%d\n", s->bsic >> 3, s->bsic & 7);
 	rxlev = meas->rxlev / meas->frames - 110;
-	LOGFILE("rxlev %d\n", rxlev);
+	LOGFILE("rxlev: %d\n", rxlev);
 	//if (s->si1)
 	//	log_frame("si1", s->si1_msg);
 	if (s->si2)

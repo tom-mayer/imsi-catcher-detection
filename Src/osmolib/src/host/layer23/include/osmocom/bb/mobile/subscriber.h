@@ -77,6 +77,9 @@ struct gsm_subscriber {
 	uint32_t		sim_handle_query;
 	uint32_t		sim_handle_update;
 	uint32_t		sim_handle_key;
+
+	/* SMS */
+	char			sms_sca[22];
 };
 
 int gsm_subscr_init(struct osmocom_ms *ms);
@@ -102,6 +105,7 @@ int gsm_subscr_dump_forbidden_plmn(struct osmocom_ms *ms,
 void gsm_subscr_dump(struct gsm_subscriber *subscr,
 			void (*print)(void *, const char *, ...), void *priv);
 char *gsm_check_imsi(const char *imsi);
+int gsm_subscr_get_key_seq(struct osmocom_ms *ms, struct gsm_subscriber *subscr);
 
 #endif /* _SUBSCRIBER_H */
 

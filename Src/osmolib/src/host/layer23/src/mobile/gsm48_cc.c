@@ -43,7 +43,7 @@ extern void *l23_ctx;
 static int gsm48_cc_tx_release(struct gsm_trans *trans, void *arg);
 static int gsm48_rel_null_free(struct gsm_trans *trans);
 int mncc_release_ind(struct osmocom_ms *ms, struct gsm_trans *trans,
-		     u_int32_t callref, int location, int value);
+		     uint32_t callref, int location, int value);
 static int gsm48_cc_tx_disconnect(struct gsm_trans *trans, void *arg);
 static int gsm48_cc_tx_connect_ack(struct gsm_trans *trans, void *arg);
 
@@ -173,6 +173,7 @@ static int gsm48_cc_to_mm(struct msgb *msg, struct gsm_trans *trans,
 	mmh->msg_type = msg_type;
 	mmh->ref = trans->callref;
 	mmh->transaction_id = trans->transaction_id;
+	mmh->sapi = 0;
 	mmh->emergency = emergency;
 
 	/* send message to MM */
@@ -215,7 +216,7 @@ int mncc_dequeue(struct osmocom_ms *ms)
 	struct gsm_mncc *mncc;
 	struct msgb *msg;
 	int work = 0;
-	
+
 	while ((msg = msgb_dequeue(&cc->mncc_upqueue))) {
 		mncc = (struct gsm_mncc *)msg->data;
 		if (ms->mncc_entity.mncc_recv)
@@ -223,7 +224,7 @@ int mncc_dequeue(struct osmocom_ms *ms)
 		work = 1; /* work done */
 		msgb_free(msg);
 	}
-	
+
 	return work;
 }
 
@@ -392,7 +393,7 @@ static int gsm48_rel_null_free(struct gsm_trans *trans)
 
 	/* release MM connection */
 	nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_REL_REQ, trans->callref,
-					trans->transaction_id);
+					trans->transaction_id, 0);
 	if (!nmsg)
 		return -ENOMEM;
 	LOGP(DCC, LOGL_INFO, "Sending MMCC_REL_REQ\n");
@@ -416,7 +417,7 @@ void mncc_set_cause(struct gsm_mncc *data, int loc, int val)
 
 /* send release indication to upper layer */
 int mncc_release_ind(struct osmocom_ms *ms, struct gsm_trans *trans,
-		     u_int32_t callref, int location, int value)
+		     uint32_t callref, int location, int value)
 {
 	struct gsm_mncc rel;
 
@@ -497,7 +498,7 @@ static int gsm48_cc_init_mm(struct gsm_trans *trans, void *arg)
 
 	/* establish MM connection */
 	nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_EST_REQ, trans->callref,
-					trans->transaction_id);
+					trans->transaction_id, 0);
 	if (!nmsg)
 		return -ENOMEM;
 	nmmh = (struct gsm48_mmxx_hdr *) nmsg->data;
@@ -514,7 +515,7 @@ static int gsm48_cc_abort_mm(struct gsm_trans *trans, void *arg)
 
 	/* abort MM connection */
 	nmsg = gsm48_mmxx_msgb_alloc(GSM48_MMCC_REL_REQ, trans->callref,
-			trans->transaction_id);
+			trans->transaction_id, 0);
 	if (!nmsg)
 		return -ENOMEM;
 	LOGP(DCC, LOGL_INFO, "Sending MMCC_REL_REQ\n");
@@ -556,7 +557,7 @@ static int gsm48_cc_tx_setup(struct gsm_trans *trans)
 		trans_free(trans);
 		return rc;
 	}
-	
+
 	/* Get free transaction_id */
 	transaction_id = trans_assign_trans_id(trans->ms, GSM48_PDISC_CC, 0);
 	if (transaction_id < 0) {
@@ -712,7 +713,7 @@ static int gsm48_cc_rx_alerting(struct gsm_trans *trans, struct msgb *msg)
 	unsigned int payload_len = msgb_l3len(msg) - sizeof(*gh);
 	struct tlv_parsed tp;
 	struct gsm_mncc alerting;
-	
+
 	LOGP(DCC, LOGL_INFO, "received ALERTING\n");
 
 	gsm48_stop_cc_timer(trans);
@@ -945,7 +946,7 @@ static int gsm48_cc_tx_alerting(struct gsm_trans *trans, void *arg)
 		gsm48_encode_ssversion(nmsg, &alerting->ssversion);
 
 	new_cc_state(trans, GSM_CSTATE_CALL_RECEIVED);
-	
+
 	return gsm48_cc_to_mm(nmsg, trans, GSM48_MMCC_DATA_REQ);
 }
 
@@ -993,7 +994,7 @@ static int gsm48_cc_rx_connect_ack(struct gsm_trans *trans, struct msgb *msg)
 	gsm48_stop_cc_timer(trans);
 
 	new_cc_state(trans, GSM_CSTATE_ACTIVE);
-	
+
 	memset(&connect_ack, 0, sizeof(struct gsm_mncc));
 	connect_ack.callref = trans->callref;
 	return mncc_recvmsg(trans->ms, trans, MNCC_SETUP_COMPL_IND,
@@ -1846,7 +1847,7 @@ static int gsm48_cc_rx_release_compl(struct gsm_trans *trans, struct msgb *msg)
 
 /* state trasitions for MNCC messages (upper layer) */
 static struct downstate {
-	u_int32_t	states;
+	uint32_t	states;
 	int		type;
 	int		(*rout) (struct gsm_trans *trans, void *arg);
 } downstatelist[] = {
@@ -1991,12 +1992,12 @@ int mncc_tx_to_cc(void *inst, int msg_type, void *arg)
 		if ((msg_type == downstatelist[i].type)
 		 && ((1 << trans->cc.state) & downstatelist[i].states))
 			break;
-		if (i == DOWNSLLEN) {
-			LOGP(DCC, LOGL_NOTICE, "Message %d unhandled at state "
-				"%d\n", msg_type, trans->cc.state);
-			return 0;
-		}
-		
+	if (i == DOWNSLLEN) {
+		LOGP(DCC, LOGL_NOTICE, "Message %d unhandled at state %d\n",
+			msg_type, trans->cc.state);
+		return 0;
+	}
+
 	rc = downstatelist[i].rout(trans, arg);
 
 	return rc;
@@ -2004,7 +2005,7 @@ int mncc_tx_to_cc(void *inst, int msg_type, void *arg)
 
 /* state trasitions for call control messages (lower layer) */
 static struct datastate {
-	u_int32_t	states;
+	uint32_t	states;
 	int		type;
 	int		(*rout) (struct gsm_trans *trans, struct msgb *msg);
 } datastatelist[] = {
@@ -2021,7 +2022,7 @@ static struct datastate {
 	 GSM48_MT_CC_ALERTING, gsm48_cc_rx_alerting},
 
 	{SBIT(GSM_CSTATE_INITIATED) | SBIT(GSM_CSTATE_MO_CALL_PROC) |
-	 SBIT(GSM_CSTATE_CALL_DELIVERED), /* 5.2.1.6 */  
+	 SBIT(GSM_CSTATE_CALL_DELIVERED), /* 5.2.1.6 */
 	 GSM48_MT_CC_CONNECT, gsm48_cc_rx_connect},
 
 	/* mobile terminating call establishment */

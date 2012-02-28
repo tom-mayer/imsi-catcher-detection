@@ -45,7 +45,7 @@
 static int sap_read(struct osmo_fd *fd)
 {
 	struct msgb *msg;
-	u_int16_t len;
+	uint16_t len;
 	int rc;
 	struct osmocom_ms *ms = (struct osmocom_ms *) fd->data;
 
@@ -150,6 +150,7 @@ int sap_close(struct osmocom_ms *ms)
 	close(ms->sap_wq.bfd.fd);
 	ms->sap_wq.bfd.fd = -1;
 	osmo_fd_unregister(&ms->sap_wq.bfd);
+	osmo_wqueue_clear(&ms->sap_wq);
 
 	return 0;
 }

@@ -23,6 +23,9 @@ struct gsm_settings {
 	int			sim_type; /* selects card on power on */
 	char 			emergency_imsi[16];
 
+	/* SMS */
+	char			sms_sca[22];
+
 	/* test card simulator settings */
 	char 			test_imsi[16];
 	uint32_t		test_tmsi;
@@ -84,6 +87,7 @@ struct gsm_settings {
 
 	/* radio */
 	uint16_t		dsc_max;
+	uint8_t			force_rekey;
 
 	/* dialing */
 	struct llist_head	abbrev;

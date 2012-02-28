@@ -176,8 +176,12 @@ int vty_shell_serv (struct vty *);
 void vty_hello (struct vty *);
 void *vty_current_index(struct vty *);
 int vty_current_node(struct vty *vty);
+enum node_type vty_go_parent(struct vty *vty);
 
 extern void *tall_vty_ctx;
+
+extern struct cmd_element cfg_description_cmd;
+extern struct cmd_element cfg_no_description_cmd;
 
 /*! }@ */
 

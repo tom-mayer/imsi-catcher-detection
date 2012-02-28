@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="4" version="2.0">
+<workbench progressCount="17" version="2.0">
 <workbenchAdvisor/>
 <window height="1081" maximized="true" width="1922" x="1280" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -41,7 +41,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="catcher.c" partName="catcher.c" path="/home/tom/Documents/imsi-catcher-detection/Src/osmolib/src/host/layer23/src/misc/catcher.c" title="catcher.c" tooltip="CatcherDriver/host/layer23/src/misc/catcher.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CatcherDriver/host/layer23/src/misc/catcher.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4332" selectionTopPixel="3084"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14686" selectionTopPixel="10657"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="sysinfo.h" partName="sysinfo.h" path="/home/tom/Documents/imsi-catcher-detection/Src/osmolib/src/host/layer23/include/osmocom/bb/common/sysinfo.h" title="sysinfo.h" tooltip="CatcherDriver/host/layer23/include/osmocom/bb/common/sysinfo.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CatcherDriver/host/layer23/include/osmocom/bb/common/sysinfo.h"/>
@@ -92,8 +92,8 @@
 <view id="org.eclipse.ui.views.ResourceNavigator" partName="Navigator">
 <viewState LINK_NAVIGATOR_TO_EDITOR="0" sorter="1">
 <filters>
-<filter element=".*" isEnabled="false"/>
 <filter element="*.class" isEnabled="true"/>
+<filter element=".*" isEnabled="false"/>
 </filters>
 <expanded>
 <element path="/CatcherDriver"/>

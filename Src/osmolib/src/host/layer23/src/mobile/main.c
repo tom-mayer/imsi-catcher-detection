@@ -67,6 +67,9 @@ int mobile_work(struct osmocom_ms *ms);
 int mobile_exit(struct osmocom_ms *ms, int force);
 
 
+const char *debug_default =
+	"DCS:DNB:DPLMN:DRR:DMM:DSIM:DCC:DMNCC:DSS:DLSMS:DPAG:DSUM";
+
 const char *openbsc_copyright =
 	"Copyright (C) 2008-2010 ...\n"
 	"Contributions by ...\n\n"
@@ -87,7 +90,8 @@ static void print_help()
 	printf("  -i --gsmtap-ip	The destination IP used for GSMTAP.\n");
 	printf("  -v --vty-port		The VTY port number to telnet to. "
 		"(default %u)\n", vty_port);
-	printf("  -d --debug		Change debug flags.\n");
+	printf("  -d --debug		Change debug flags. default: %s\n",
+		debug_default);
 	printf("  -D --daemonize	Run as daemon\n");
 	printf("  -m --mncc-sock	Disable built-in MNCC handler and "
 		"offer socket\n");
@@ -147,13 +151,30 @@ void sighandler(int sigset)
 
 	fprintf(stderr, "Signal %d received.\n", sigset);
 
-	/* in case there is a lockup during exit */
-	signal(SIGINT, SIG_DFL);
-	signal(SIGHUP, SIG_DFL);
-	signal(SIGTERM, SIG_DFL);
-	signal(SIGPIPE, SIG_DFL);
+	switch (sigset) {
+	case SIGINT:
+		/* If another signal is received afterwards, the program
+		 * is terminated without finishing shutdown process.
+		 */
+		signal(SIGINT, SIG_DFL);
+		signal(SIGHUP, SIG_DFL);
+		signal(SIGTERM, SIG_DFL);
+		signal(SIGPIPE, SIG_DFL);
+		signal(SIGABRT, SIG_DFL);
+		signal(SIGUSR1, SIG_DFL);
+		signal(SIGUSR2, SIG_DFL);
 
-	osmo_signal_dispatch(SS_GLOBAL, S_GLOBAL_SHUTDOWN, NULL);
+		osmo_signal_dispatch(SS_GLOBAL, S_GLOBAL_SHUTDOWN, NULL);
+		break;
+	case SIGABRT:
+		/* in case of abort, we want to obtain a talloc report
+		 * and then return to the caller, who will abort the process
+		 */
+	case SIGUSR1:
+	case SIGUSR2:
+		talloc_report_full(l23_ctx, stderr);
+		break;
+	}
 }
 
 int main(int argc, char **argv)
@@ -176,11 +197,12 @@ int main(int argc, char **argv)
 	log_set_all_filter(stderr_target, 1);
 
 	l23_ctx = talloc_named_const(NULL, 1, "layer2 context");
+	msgb_set_talloc_ctx(l23_ctx);
 
 	handle_options(argc, argv);
 
 	if (!debug_set)
-		log_parse_category_mask(stderr_target, "DCS:DNB:DPLMN:DRR:DMM:DSIM:DCC:DMNCC:DPAG:DSUM");
+		log_parse_category_mask(stderr_target, debug_default);
 	log_set_log_level(stderr_target, LOGL_DEBUG);
 
 	if (gsmtap_ip) {
@@ -214,6 +236,9 @@ int main(int argc, char **argv)
 	signal(SIGHUP, sighandler);
 	signal(SIGTERM, sighandler);
 	signal(SIGPIPE, sighandler);
+	signal(SIGABRT, sighandler);
+	signal(SIGUSR1, sighandler);
+	signal(SIGUSR2, sighandler);
 
 	if (daemonize) {
 		printf("Running as daemon\n");
@@ -230,6 +255,10 @@ int main(int argc, char **argv)
 	}
 
 	l23_app_exit();
+
+	talloc_free(config_file);
+	talloc_free(config_dir);
+	talloc_report_full(l23_ctx, stderr);
 
 	return 0;
 }

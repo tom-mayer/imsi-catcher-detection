@@ -32,8 +32,8 @@
 \contentsline {section}{\numberline {2.4}IMSI-Catcher}{32}
 \contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{33}
 \contentsline {subsubsection}{Attacks}{35}
-\contentsline {paragraph}{\gls {ms} is in normal cell selection mode:}{35}
-\contentsline {paragraph}{\gls {ms} is already connected to a network:}{35}
+\contentsline {paragraph}{MS is in normal cell selection mode:}{35}
+\contentsline {paragraph}{MS is already connected to a network:}{35}
 \contentsline {subsubsection}{Risks and Irregularities}{36}
 \contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{36}
 \contentsline {chapter}{\numberline {3}IMSI Catcher Detection}{39}
