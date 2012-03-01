@@ -17,6 +17,9 @@ class PyCatcherGUI:
         self._main_window.show()
         
         self._filter_window = self._builder.get_object('filter_window')
+        self._detail_window = self._builder.get_object('detail_view')
+        self._rules_window = self._builder.get_object('rules_window')
+        self._evaluators_window = self._builder.get_object('evaluators_window')
                    
         self._catcher_controller = catcher_controller        
         
@@ -101,6 +104,18 @@ class PyCatcherGUI:
         self._update_filters()
         self._filter_window.hide()
 
+    def _on_rules_close_clicked(self, widget):
+        self._rules_window.hide()
+    
+    def _on_evaluators_clicked(self, widget):
+        self._evaluators_window.show()
+    
+    def _on_rules_clicked(self, widget):
+        self._rules_window.show()
+    
+    def _on_evaluators_close_clicked(self, widget):
+        self._evaluators_window.hide()
+
     def _on_open_file_clicked(self, widget):
         chooser = gtk.FileChooserDialog(title="Open dot File",
                                         action=gtk.FILE_CHOOSER_ACTION_OPEN,
@@ -155,8 +170,7 @@ class PyCatcherGUI:
         
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
                                     message_format=str(message)                                
-                                    )
-        
+                                )      
         dlg.set_title(title)
         dlg.show()
         time.sleep(time_to_sleep)

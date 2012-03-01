@@ -10,8 +10,8 @@ from filters import ARFCNFilter,FoundFilter,ProviderFilter
 class PyCatcherController:
     def __init__(self):
         self._base_station_list = BaseStationInformationList()
-        store = gtk.ListStore(str,str,str,str)
-        store.append(('-','-','-','-')) 
+        store = gtk.ListStore(str,str,str,str, str)
+        store.append(('-','-','-','-', '-')) 
         self.bs_tree_list_data = store
         self._gui = PyCatcherGUI(self)
         self._driver_connector = DriverConnector()       
@@ -57,7 +57,8 @@ class PyCatcherController:
         
     def trigger_redraw(self):
         dotcode = self._base_station_list.get_dot_code(self._filters,self.found_filter)
-        self._gui.load_dot(dotcode)
+        if dotcode != 'digraph bsnetwork { }':
+            self._gui.load_dot(dotcode)
     
     def _firmware_waiting_callback(self):
         self._gui.log_line("firmware waiting for device")

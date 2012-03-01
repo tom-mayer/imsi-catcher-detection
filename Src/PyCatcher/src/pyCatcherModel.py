@@ -3,22 +3,27 @@ import gtk
 import math
 
 class BaseStationInformation: 
-    #TODO: examine plmn permitted byte
-    #TODO: examine emergency call capability
+
     def __init__ (self):
         self.country = 'Nowhere'
         self.provider = 'Carry'
         self.arfcn = 0
         self.rxlev = 0
         self.system_info_t2 = []
+        self.system_info_t2bis = []
+        self.system_info_t2ter = []
         self.discovery_time = datetime.datetime.now().strftime('%T')
         self.found = False
-        
+        self.bsic = ''
+        self.lac = 0
+        self.cell = 0
+        self.rules_report = {}
+        self.evaluation = 'NYE'
+               
     def get_list_model(self):
-        return (self.provider, str(self.arfcn), str(self.rxlev), self.discovery_time)
+        return (self.provider, str(self.arfcn), str(self.rxlev), self.evaluation, self.discovery_time)
     
     def get_neighbour_arfcn(self):
-        #TODO: implement this for bis/tar sysinfo
         neighbours = self.system_info_t2[3:19]
         bin_representation = ''
         neighbour_arfcn = []
@@ -30,14 +35,22 @@ class BaseStationInformation:
         >>> for i, bit in enumerate(reversed(a)):
 ...     if bit == '1':
 ...             print i
-        '''
-        
+        '''       
         for x in xrange(1,125):
             index = 0-x
             bit = bin_representation[index]
             if bit == '1':
                 neighbour_arfcn.append(abs(index))
         return neighbour_arfcn
+    
+    def get_neighbour_arfcn_ter(self):
+        pass
+        
+    def get_neighbour_arfcn_bis(self):
+        pass
+    
+    def create_lof(self):
+        pass
     
 class BaseStationInformationList:
     def __init__(self):

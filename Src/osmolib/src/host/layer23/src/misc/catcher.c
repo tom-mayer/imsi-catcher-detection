@@ -192,7 +192,7 @@ static void log_sysinfo(void)
 	LOGFILE("Country: %s\n", gsm_get_mcc(s->mcc));
 	LOGFILE("Provider: %s\n", gsm_get_mnc(s->mcc, s->mnc));
 	LOGFILE("ARFCN: %d\n", s->arfcn);
-	LOGFILE("Cell_ID: %d\n", s->cell_id);
+	LOGFILE("Cell ID: %d\n", s->cell_id);
 	LOGFILE("LAC: %d\n", s->lac);
 	//log_time();
 	//log_gps();
@@ -211,6 +211,14 @@ static void log_sysinfo(void)
 	//	log_frame("si3", s->si3_msg);
 	//if (s->si4)
 	//	log_frame("si4", s->si4_msg);
+	//if (s->si5)
+	//	log_frame("si5", s->si5_msg);
+	//if (s->si5bis)
+	//	log_frame("si5bis", s->si5b_msg);
+	//if (s->si5ter)
+	//	log_frame("si5ter", s->si5t_msg);
+	//if (s->si6)
+	//	log_frame("si6", s->si6_msg);
 	//if (log_si.ta != 0xff)
 	//	LOGFILE("ta %d\n", log_si.ta);
 	LOGFILE("[EndInfo]\n");
@@ -601,6 +609,7 @@ static int new_sysinfo(void)
 /* receive BCCH at RR layer */
 static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 {
+	//LOGFILE("Got BCCH fragment!\n");
 	struct gsm48_sysinfo *s = &sysinfo;
 	struct gsm48_system_information_type_header *sih = msgb_l3(msg);
 	uint8_t ccch_mode;
@@ -611,6 +620,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 	}
 	switch (sih->system_information) {
 	case GSM48_MT_RR_SYSINFO_1:
+		LOGFILE("Got Sysinfo 1\n");
 		if (!memcmp(sih, s->si1_msg, sizeof(s->si1_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 1\n");
@@ -619,6 +629,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_2:
+		LOGFILE("Got Sysinfo 2\n");
 		if (!memcmp(sih, s->si2_msg, sizeof(s->si2_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 2\n");
@@ -627,6 +638,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_2bis:
+		LOGFILE("Got Sysinfo 2bis\n");
 		if (!memcmp(sih, s->si2b_msg, sizeof(s->si2b_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 2bis\n");
@@ -635,6 +647,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_2ter:
+		LOGFILE("Got Sysinfo 2ter\n");
 		if (!memcmp(sih, s->si2t_msg, sizeof(s->si2t_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 2ter\n");
@@ -643,6 +656,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_3:
+		LOGFILE("Got Sysinfo 3\n");
 		if (!memcmp(sih, s->si3_msg, sizeof(s->si3_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 3\n");
@@ -655,12 +669,49 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 		l1ctl_tx_ccch_mode_req(ms, ccch_mode);
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_4:
+		LOGFILE("Got Sysinfo 4\n");
 		if (!memcmp(sih, s->si4_msg, sizeof(s->si4_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 4\n");
 		gsm48_decode_sysinfo4(s,
 			(struct gsm48_system_information_type_4 *) sih,
 			msgb_l3len(msg));
+		return new_sysinfo();
+	case GSM48_MT_RR_SYSINFO_5:
+		LOGFILE("Got Sysinfo 5\n");
+		if (!memcmp(sih, s->si5_msg, sizeof(s->si5_msg)))
+			return 0;
+		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 5\n");
+		gsm48_decode_sysinfo5(s,
+			(struct gsm48_system_information_type_5 *) sih,
+			msgb_l3len(msg));
+		return new_sysinfo();
+	case GSM48_MT_RR_SYSINFO_5bis:
+		LOGFILE("Got Sysinfo 5bis\n");
+			if (!memcmp(sih, s->si5b_msg, sizeof(s->si5b_msg)))
+				return 0;
+			LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 5bis\n");
+			gsm48_decode_sysinfo5bis(s,
+				(struct gsm48_system_information_type_5bis *) sih,
+				msgb_l3len(msg));
+			return new_sysinfo();
+	case GSM48_MT_RR_SYSINFO_5ter:
+		LOGFILE("Got Sysinfo 5ter\n");
+			if (!memcmp(sih, s->si5t_msg, sizeof(s->si5t_msg)))
+				return 0;
+			LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 5ter\n");
+			gsm48_decode_sysinfo5ter(s,
+				(struct gsm48_system_information_type_5ter *) sih,
+				msgb_l3len(msg));
+			return new_sysinfo();
+	case GSM48_MT_RR_SYSINFO_6:
+		LOGFILE("Got Sysinfo 6\n");
+		if (!memcmp(sih, s->si6_msg, sizeof(s->si6_msg)))
+			return 0;
+			LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 6\n");
+			gsm48_decode_sysinfo6(s,
+				(struct gsm48_system_information_type_6 *) sih,
+				msgb_l3len(msg));
 		return new_sysinfo();
 	default:
 		return -EINVAL;

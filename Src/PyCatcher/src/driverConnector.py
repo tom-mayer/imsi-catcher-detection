@@ -86,29 +86,54 @@ class ScanThread(threading.Thread):
                         base_station = BaseStationInformation()
                         #get country
                         line = line = scan_process.stdout.readline()
-                        match = re.search(r'country\s(\w+)',line)
+                        match = re.search(r'Country:\s(\w+)',line)
                         if match:
                             base_station.country = match.group(1)
                         #get provider
                         line = line = scan_process.stdout.readline()
-                        match = re.search(r'provider\s(.+)',line)
+                        match = re.search(r'Provider:\s(.+)',line)
                         if match:
                             base_station.provider = match.group(1)
                         #get arfcn
                         line = line = scan_process.stdout.readline()
-                        match = re.search(r'arfcn\s(\d+)',line)
+                        match = re.search(r'ARFCN:\s(\d+)',line)
                         if match:
                             base_station.arfcn = int(match.group(1))
+                        #get cell id
+                        line = line = scan_process.stdout.readline()
+                        match = re.search(r'Cell ID:\s(\d+)',line)
+                        if match:
+                            base_station.arfcn = int(match.group(1))
+                        #get lac
+                        line = line = scan_process.stdout.readline()
+                        match = re.search(r'LAC:\s(\d+)',line)
+                        if match:
+                            base_station.lac = int(match.group(1))
+                        #get bsic
+                        line = line = scan_process.stdout.readline()
+                        match = re.search(r'BSIC:\s(\.+)\s',line)
+                        if match:
+                            base_station.bsic = int(match.group(1))
                         #get rxlev
                         line = line = scan_process.stdout.readline()
                         match = re.search(r'rxlev\s(.\d+)',line)
                         if match:
                             base_station.rxlev = match.group(1)
-                        #get neighbours
+                        #get si2
                         line = line = scan_process.stdout.readline()
                         match = re.search(r'si2\s(.+)',line)
                         if match:
                             base_station.system_info_t2 = match.group(1).split(' ')
+                        #get si2bis
+                        line = line = scan_process.stdout.readline()
+                        match = re.search(r'si2bis\s(.+)',line)
+                        if match:
+                            base_station.system_info_t2bis = match.group(1).split(' ')
+                        #get si2ter
+                        line = line = scan_process.stdout.readline()
+                        match = re.search(r'si2ter\s(.+)',line)
+                        if match:
+                            base_station.system_info_t2ter = match.group(1).split(' ')
                         #endinfo
                         line = line = scan_process.stdout.readline()
                         
