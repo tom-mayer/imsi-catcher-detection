@@ -620,7 +620,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 	}
 	switch (sih->system_information) {
 	case GSM48_MT_RR_SYSINFO_1:
-		LOGFILE("Got Sysinfo 1\n");
+		//LOGFILE("Got Sysinfo 1\n");
 		if (!memcmp(sih, s->si1_msg, sizeof(s->si1_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 1\n");
@@ -629,7 +629,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_2:
-		LOGFILE("Got Sysinfo 2\n");
+		//LOGFILE("Got Sysinfo 2\n");
 		if (!memcmp(sih, s->si2_msg, sizeof(s->si2_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 2\n");
@@ -638,7 +638,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_2bis:
-		LOGFILE("Got Sysinfo 2bis\n");
+		//LOGFILE("Got Sysinfo 2bis\n");
 		if (!memcmp(sih, s->si2b_msg, sizeof(s->si2b_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 2bis\n");
@@ -647,7 +647,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_2ter:
-		LOGFILE("Got Sysinfo 2ter\n");
+		//LOGFILE("Got Sysinfo 2ter\n");
 		if (!memcmp(sih, s->si2t_msg, sizeof(s->si2t_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 2ter\n");
@@ -656,7 +656,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_3:
-		LOGFILE("Got Sysinfo 3\n");
+		//LOGFILE("Got Sysinfo 3\n");
 		if (!memcmp(sih, s->si3_msg, sizeof(s->si3_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 3\n");
@@ -669,7 +669,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 		l1ctl_tx_ccch_mode_req(ms, ccch_mode);
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_4:
-		LOGFILE("Got Sysinfo 4\n");
+		//LOGFILE("Got Sysinfo 4\n");
 		if (!memcmp(sih, s->si4_msg, sizeof(s->si4_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 4\n");
@@ -678,7 +678,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_5:
-		LOGFILE("Got Sysinfo 5\n");
+		//LOGFILE("Got Sysinfo 5\n");
 		if (!memcmp(sih, s->si5_msg, sizeof(s->si5_msg)))
 			return 0;
 		LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 5\n");
@@ -687,7 +687,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 			msgb_l3len(msg));
 		return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_5bis:
-		LOGFILE("Got Sysinfo 5bis\n");
+		//LOGFILE("Got Sysinfo 5bis\n");
 			if (!memcmp(sih, s->si5b_msg, sizeof(s->si5b_msg)))
 				return 0;
 			LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 5bis\n");
@@ -696,7 +696,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 				msgb_l3len(msg));
 			return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_5ter:
-		LOGFILE("Got Sysinfo 5ter\n");
+		//LOGFILE("Got Sysinfo 5ter\n");
 			if (!memcmp(sih, s->si5t_msg, sizeof(s->si5t_msg)))
 				return 0;
 			LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 5ter\n");
@@ -705,7 +705,7 @@ static int bcch(struct osmocom_ms *ms, struct msgb *msg)
 				msgb_l3len(msg));
 			return new_sysinfo();
 	case GSM48_MT_RR_SYSINFO_6:
-		LOGFILE("Got Sysinfo 6\n");
+		//LOGFILE("Got Sysinfo 6\n");
 		if (!memcmp(sih, s->si6_msg, sizeof(s->si6_msg)))
 			return 0;
 			LOGP(DRR, LOGL_INFO, "New SYSTEM INFORMATION 6\n");

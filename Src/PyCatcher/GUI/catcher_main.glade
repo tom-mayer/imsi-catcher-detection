@@ -3,9 +3,11 @@
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkWindow" id="detail_view">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
-    <property name="destroy_with_parent">True</property>
+    <property name="title" translatable="yes">Details</property>
+    <property name="default_width">500</property>
+    <property name="default_height">500</property>
     <property name="has_resize_grip">False</property>
+    <signal name="delete-event" handler="_on_details_delete" swapped="no"/>
     <child>
       <object class="GtkTextView" id="te_detail_view">
         <property name="visible">True</property>
@@ -81,12 +83,19 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHSeparator" id="separator1">
+              <object class="GtkRadioButton" id="rb_weighted_evaluator">
+                <property name="label" translatable="yes">Weighted Evaluator</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="xalign">0</property>
+                <property name="active">True</property>
+                <property name="draw_indicator">True</property>
+                <property name="group">rb_conservative_evaluator</property>
               </object>
               <packing>
-                <property name="expand">False</property>
+                <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
@@ -331,20 +340,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="cb_only_scanned_bs">
-                <property name="label" translatable="yes">Show only BS, that have been found</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">7</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -443,6 +439,36 @@
                 <property name="use_underline">True</property>
                 <property name="icon_name">accessories-calculator</property>
                 <signal name="clicked" handler="_on_evaluators_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="btn_save_project">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="label" translatable="yes">Save Project</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">document-save</property>
+                <signal name="clicked" handler="_on_save_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="btn_load_project">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="label" translatable="yes">Load Project</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">document-open</property>
+                <signal name="clicked" handler="_on_load_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -591,6 +617,7 @@
                   <object class="GtkTreeView" id="tv_stations">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="select-cursor-row" handler="_on_tv_stations_clicked" swapped="no"/>
                     <child internal-child="selection">
                       <object class="GtkTreeSelection" id="treeview-selection"/>
                     </child>
@@ -739,8 +766,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="cb_cell_id">
-                <property name="label" translatable="yes">Unique Cell ID</property>
+              <object class="GtkCheckButton" id="cb_uniqueness">
+                <property name="label" translatable="yes">Uniqueness</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -894,6 +921,22 @@
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="cb_arfcn">
+                <property name="label" translatable="yes">ARFCN/Provider Mapping</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">10</property>
               </packing>
             </child>
           </object>

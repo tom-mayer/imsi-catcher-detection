@@ -2,7 +2,7 @@ from pyCatcherModel import BaseStationInformation
 import subprocess
 import threading 
 import re
-from pyCatcherSettings import Commands
+from settings import Commands
 import time
 import gtk 
 
@@ -61,7 +61,6 @@ class FirmwareThread(threading.Thread):
             if line.strip() == 'Finishing download phase':
                 self._firmware_loaded_callback()
             #time.sleep(0.5)
-        print 'killing firmware'
         loader_process_object.terminate()
 
 class ScanThread(threading.Thread):
@@ -95,49 +94,48 @@ class ScanThread(threading.Thread):
                         if match:
                             base_station.provider = match.group(1)
                         #get arfcn
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'ARFCN:\s(\d+)',line)
                         if match:
                             base_station.arfcn = int(match.group(1))
                         #get cell id
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'Cell ID:\s(\d+)',line)
                         if match:
-                            base_station.arfcn = int(match.group(1))
+                            base_station.cell = int(match.group(1))
                         #get lac
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'LAC:\s(\d+)',line)
                         if match:
                             base_station.lac = int(match.group(1))
                         #get bsic
-                        line = line = scan_process.stdout.readline()
-                        match = re.search(r'BSIC:\s(\.+)\s',line)
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'BSIC:\s(\d+,\d+)',line)
                         if match:
-                            base_station.bsic = int(match.group(1))
+                            base_station.bsic = match.group(1)
                         #get rxlev
-                        line = line = scan_process.stdout.readline()
-                        match = re.search(r'rxlev\s(.\d+)',line)
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'rxlev:\s(.\d+)',line)
                         if match:
                             base_station.rxlev = match.group(1)
                         #get si2
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'si2\s(.+)',line)
                         if match:
                             base_station.system_info_t2 = match.group(1).split(' ')
                         #get si2bis
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'si2bis\s(.+)',line)
                         if match:
                             base_station.system_info_t2bis = match.group(1).split(' ')
                         #get si2ter
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'si2ter\s(.+)',line)
                         if match:
                             base_station.system_info_t2ter = match.group(1).split(' ')
                         #endinfo
-                        line = line = scan_process.stdout.readline()
+                        scan_process.stdout.readline()
                         
                         self._base_station_found_callback(base_station)
-            print 'killing scan'
             scan_process.terminate()
     

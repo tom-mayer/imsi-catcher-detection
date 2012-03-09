@@ -1,11 +1,12 @@
-import sys
-import pygtk
-import gtk 
+import gtk
 import gtk.glade 
 from driverConnector import DriverConnector
 from pyCatcherModel import BaseStationInformation, BaseStationInformationList
 from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,FoundFilter,ProviderFilter
+from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
+from rules import ProviderRule
+import pickle
 
 class PyCatcherController:
     def __init__(self):
@@ -15,14 +16,23 @@ class PyCatcherController:
         self.bs_tree_list_data = store
         self._gui = PyCatcherGUI(self)
         self._driver_connector = DriverConnector()       
-        self._gui.log_line("GUI initialized")
+        self._gui.log_line('GUI initialized')
         
         self.arfcn_filter = ARFCNFilter()       
         self.provider_filter = ProviderFilter()
         self.found_filter = FoundFilter()
         
         self._filters = [self.arfcn_filter, self.provider_filter]
-        
+
+        self._conservative_evaluator = ConservativeEvaluator()
+        self._bayes_evaluator = BayesEvaluator()
+        self._weighted_evaluator = WeightedEvaluator()
+        self._active_evaluator = self._conservative_evaluator
+
+        self.provider_rule = ProviderRule()
+        self.provider_rule.is_active = True
+        self._rules = [self.provider_rule]
+
         gtk.main()
                 
     def log_message(self, message):
@@ -42,7 +52,6 @@ class PyCatcherController:
         
     def stop_firmware(self):
         self._gui.log_line("stop firmware")
-        print 'stop firmwares'
         self._driver_connector.stop_firmware()
     
     def shutdown(self):
@@ -50,9 +59,10 @@ class PyCatcherController:
     
     def _found_base_station_callback(self, base_station):
         self._gui.log_line("found " + base_station.provider + ' (' + str(base_station.arfcn) + ')')
-        self._base_station_list.add_station(base_station)        
+        self._base_station_list.add_station(base_station)
+        self._base_station_list.evaluate(self._rules, self._active_evaluator)
         self._base_station_list.refill_store(self.bs_tree_list_data)
-        dotcode = self._base_station_list.get_dot_code(self._filters,self.found_filter)
+        dotcode = self._base_station_list.get_dot_code(self._filters, self.found_filter)
         self._gui.load_dot(dotcode)
         
     def trigger_redraw(self):
@@ -67,4 +77,31 @@ class PyCatcherController:
     def _firmware_done_callback(self):
         self._gui.log_line("firmware loaded, ready for scanning")
         self._gui.show_info('Firmware load completed', 'Firmware')
-    
+        
+    def fetch_report(self, arfcn):
+        return self._base_station_list.create_report(arfcn)
+
+    def set_evaluator (self, evaluator):
+        if evaluator == EvaluatorSelect.CONSERVATIVE:
+            self._active_evaluator = self._conservative_evaluator
+        elif evaluator == EvaluatorSelect.BAYES:
+            self._active_evaluator = self._bayes_evaluator
+        elif evaluator == EvaluatorSelect.WEIGHTED:
+            self._active_evaluator = self._weighted_evaluator
+
+    def save_project(self, path):
+        filehandler = open(path, 'w')
+        pickle.dump(self._base_station_list, filehandler)
+        filehandler.close()
+        self._gui.log_line('Project saved to ' + path)
+
+    def load_project(self, path):
+        filehandler = open(path, 'r')
+        base_station_list = pickle.load(filehandler)
+        self._base_station_list = base_station_list
+        self._base_station_list.evaluate(self._rules, self._active_evaluator)
+        self._base_station_list.refill_store(self.bs_tree_list_data)
+        dotcode = self._base_station_list.get_dot_code(self._filters, self.found_filter)
+        self._gui.load_dot(dotcode)
+        filehandler.close()
+        self._gui.log_line('Project leaded from  ' + path)

@@ -27,7 +27,8 @@ class PyCatcherGUI:
         self._add_column("Provider", 0)
         self._add_column("ARFCN", 1)
         self._add_column("Strength",2)
-        self._add_column("Last seen", 3)
+        self._add_column("Evaluation",3)
+        self._add_column("Last seen", 4)
         self._bs_tree_view.set_model(self._catcher_controller.bs_tree_list_data)       
             
         self._horizontal_container = self._builder.get_object('vbox2')
@@ -36,8 +37,11 @@ class PyCatcherGUI:
         self._dot_widget.set_filter('neato')
         self._dot_widget.show()
         self._dot_widget.connect('clicked', self._on_graph_node_clicked)
-        
+
         self._builder.connect_signals(self)
+        
+        detail_view_text = self._builder.get_object('te_detail_view')
+        self._detail_buffer = detail_view_text.get_buffer()        
         
         log_view = self._builder.get_object('te_log')
         self._log_buffer = log_view.get_buffer()        
@@ -55,28 +59,43 @@ class PyCatcherGUI:
         if self._builder.get_object('cb_filter_by_provider').get_active():
             self._catcher_controller.provider_filter.params = {'providers': self._builder.get_object('te_filter_provider').get_text()}
             self._catcher_controller.provider_filter.is_active = True
-            print 'provider active'
         else: 
-            self._catcher_controller.provider_filter.is_active = False 
-            print 'provider off'
+            self._catcher_controller.provider_filter.is_active = False
                                                                
         if self._builder.get_object('cb_filter_by_arfcn').get_active():
             self._catcher_controller.arfcn_filter.params = {'from':int(self._builder.get_object('te_filter_arfcn_from').get_text()),
                                          'to':int(self._builder.get_object('te_filter_arfcn_to').get_text())}
             self._catcher_controller.arfcn_filter.is_active = True
-            print 'arfcn active'
         else:
             self._catcher_controller.arfcn_filter.is_active = False
-            print 'arfcn off'
         
         if self._builder.get_object('cb_only_scanned_bs').get_active():
             self._catcher_controller.found_filter.is_active = True
-            print 'scanned active'
         else:
             self._catcher_controller.found_filter.is_active = False
-            print 'scanned off' 
-        
+
         self._catcher_controller.trigger_redraw()
+
+    def _update_rules(self):
+        pass
+
+    def _update_evaluators(self):
+        pass
+
+    def show_info(self, message, title='PyCatcher', time_to_sleep=3, type='INFO'):
+        gtk_type = {'INFO' : gtk.MESSAGE_INFO,
+                    'ERROR': gtk.MESSAGE_ERROR}
+
+        dlg = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                                message_format=str(message)
+        )
+        dlg.set_title(title)
+        dlg.show()
+        time.sleep(time_to_sleep)
+        dlg.destroy()
+
+    def log_line(self, line):
+        self._log_buffer.insert(self._log_buffer.get_end_iter(),self._utf8conv(datetime.datetime.now().strftime("%I:%M:%S %p")+ ":     " + line + "\n"))
     
     def _on_graph_node_clicked (self, widget, url, event):
         print 'NODE CLICKED'
@@ -86,13 +105,13 @@ class PyCatcherGUI:
         gtk.main_quit()
         
     def _on_scan_toggled(self, widget):
-        if(widget.get_active()):      
+        if widget.get_active():
             self._catcher_controller.start_scan()
         else:
             self._catcher_controller.stop_scan()
             
     def _on_firmware_toggled(self, widget):
-        if(widget.get_active()):
+        if widget.get_active():
             self._catcher_controller.start_firmware()
         else:
             self._catcher_controller.stop_firmware()
@@ -105,6 +124,7 @@ class PyCatcherGUI:
         self._filter_window.hide()
 
     def _on_rules_close_clicked(self, widget):
+        self._update_rules()
         self._rules_window.hide()
     
     def _on_evaluators_clicked(self, widget):
@@ -114,8 +134,69 @@ class PyCatcherGUI:
         self._rules_window.show()
     
     def _on_evaluators_close_clicked(self, widget):
+        self._update_evaluators()
         self._evaluators_window.hide()
 
+    def _on_tv_stations_clicked(self, widget, unecessary_parameter_just_for_signature):
+        selection = widget.get_selection()
+        model, treeiter = selection.get_selected()
+        if treeiter is not None:
+            arfcn = model[treeiter][1]
+            report = self._catcher_controller.fetch_report(arfcn)
+            self._detail_buffer.set_text(self._utf8conv(report))
+            self._detail_window.show()
+
+    def _on_details_delete(self, widget, dunno_what_this_param_does):
+        self._detail_window.hide()
+        return True
+
+    def _on_save_clicked(self, widget):
+        chooser = gtk.FileChooserDialog(title="Save Project",
+            action=gtk.FILE_CHOOSER_ACTION_SAVE,
+            buttons=(gtk.STOCK_CANCEL,
+                     gtk.RESPONSE_CANCEL,
+                     gtk.STOCK_SAVE,
+                     gtk.RESPONSE_OK))
+        chooser.set_default_response(gtk.RESPONSE_OK)
+        filter = gtk.FileFilter()
+        filter.set_name("Catcher Project Files")
+        filter.add_pattern("*.cpf")
+        chooser.add_filter(filter)
+        filter = gtk.FileFilter()
+        filter.set_name("All files")
+        filter.add_pattern("*")
+        chooser.add_filter(filter)
+        if chooser.run() == gtk.RESPONSE_OK:
+            filename = chooser.get_filename()
+            chooser.destroy()
+            self._catcher_controller.save_project(filename)
+        else:
+            chooser.destroy()
+
+    def _on_load_clicked(self, widget):
+        chooser = gtk.FileChooserDialog(title="Open Project",
+            action=gtk.FILE_CHOOSER_ACTION_OPEN,
+            buttons=(gtk.STOCK_CANCEL,
+                     gtk.RESPONSE_CANCEL,
+                     gtk.STOCK_OPEN,
+                     gtk.RESPONSE_OK))
+        chooser.set_default_response(gtk.RESPONSE_OK)
+        filter = gtk.FileFilter()
+        filter.set_name("Catcher Project Files")
+        filter.add_pattern("*.cpf")
+        chooser.add_filter(filter)
+        filter = gtk.FileFilter()
+        filter.set_name("All files")
+        filter.add_pattern("*")
+        chooser.add_filter(filter)
+        if chooser.run() == gtk.RESPONSE_OK:
+            filename = chooser.get_filename()
+            chooser.destroy()
+            self._catcher_controller.load_project(filename)
+        else:
+            chooser.destroy()
+
+    #---------------- Viewer Bindings ----------------------------------------------------#
     def _on_open_file_clicked(self, widget):
         chooser = gtk.FileChooserDialog(title="Open dot File",
                                         action=gtk.FILE_CHOOSER_ACTION_OPEN,
@@ -161,20 +242,6 @@ class PyCatcherGUI:
     
     def load_dot(self, dotcode, filename="<stdin>"):
         if self._dot_widget.set_dotcode(dotcode, filename):
-            #self._dot_widget.zoom_to_fit()           
+            #self._dot_widget.zoom_to_fit()
             pass
     
-    def show_info(self, message, title='PyCatcher', time_to_sleep=3, type='INFO'):
-        gtk_type = {'INFO' : gtk.MESSAGE_INFO,
-                    'ERROR': gtk.MESSAGE_ERROR}
-        
-        dlg = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                                    message_format=str(message)                                
-                                )      
-        dlg.set_title(title)
-        dlg.show()
-        time.sleep(time_to_sleep)
-        dlg.destroy()
-    
-    def log_line(self, line):
-        self._log_buffer.insert(self._log_buffer.get_end_iter(),self._utf8conv(datetime.datetime.now().strftime("%I:%M:%S %p")+ ":     " + line + "\n"))
