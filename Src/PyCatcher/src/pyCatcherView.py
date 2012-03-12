@@ -69,15 +69,20 @@ class PyCatcherGUI:
         else:
             self._catcher_controller.arfcn_filter.is_active = False
         
-        if self._builder.get_object('cb_only_scanned_bs').get_active():
-            self._catcher_controller.found_filter.is_active = True
-        else:
-            self._catcher_controller.found_filter.is_active = False
+        #if self._builder.get_object('cb_only_scanned_bs').get_active():
+        #    self._catcher_controller.found_filter.is_active = True
+        #else:
+        #    self._catcher_controller.found_filter.is_active = False
 
         self._catcher_controller.trigger_redraw()
 
     def _update_rules(self):
-        pass
+        self._catcher_controller.provider_rule.is_active = self._builder.get_object('cb_provider_known').get_active()
+        self._catcher_controller.country_mapping_rule.is_active = self._builder.get_object('cb_country_provider').get_active()
+        self._catcher_controller.arfcn_mapping_rule.is_active = self._builder.get_object('cb_arfcn_provider').get_active()
+        self._catcher_controller.lac_mapping_rule.is_active = self._builder.get_object('cb_lac_provider').get_active()
+        self._catcher_controller.unique_cell_id_rule.is_active = self._builder.get_object('cb_uniqueness').get_active()
+        self._catcher_controller.trigger_evaluation()
 
     def _update_evaluators(self):
         pass

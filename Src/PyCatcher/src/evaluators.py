@@ -4,6 +4,11 @@ class EvaluatorSelect:
     CONSERVATIVE = 0
     WEIGHTED = 1
     BAYES = 2
+    MACHINE = 3
+
+class StationClass:
+    BASE_STATION = 0
+    CATCHER = 1
 
 class Evaluator:
 
@@ -29,3 +34,6 @@ class BayesEvaluator(Evaluator):
 
 class WeightedEvaluator(Evaluator):
     return_type = type(int)
+
+class MachineLearningEvaluator(Evaluator):
+    return_type = type(StationClass)

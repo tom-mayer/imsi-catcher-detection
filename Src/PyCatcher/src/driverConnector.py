@@ -123,16 +123,16 @@ class ScanThread(threading.Thread):
                         match = re.search(r'si2\s(.+)',line)
                         if match:
                             base_station.system_info_t2 = match.group(1).split(' ')
-                        #get si2bis
-                        line = scan_process.stdout.readline()
-                        match = re.search(r'si2bis\s(.+)',line)
-                        if match:
-                            base_station.system_info_t2bis = match.group(1).split(' ')
                         #get si2ter
                         line = scan_process.stdout.readline()
                         match = re.search(r'si2ter\s(.+)',line)
                         if match:
                             base_station.system_info_t2ter = match.group(1).split(' ')
+                        #get si2bis
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'si2bis\s(.+)',line)
+                        if match:
+                            base_station.system_info_t2bis = match.group(1).split(' ')
                         #endinfo
                         scan_process.stdout.readline()
                         

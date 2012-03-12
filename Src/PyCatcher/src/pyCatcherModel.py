@@ -64,7 +64,7 @@ Evaluation: %s\n
 
         report_rules ='------- Rule Results -----------\n'
         for key in self.rules_report.keys():
-            report_rules += str(key) + ': ' + str(self.rules_report[key])
+            report_rules += str(key) + ': ' + str(self.rules_report[key]) + '\n'
         report_rules +='\n\n'
         report_raw = '''------- Raw Information -----------
 SystemInfo_2:       %s

@@ -203,10 +203,10 @@ static void log_sysinfo(void)
 	//	log_frame("si1", s->si1_msg);
 	if (s->si2)
 		log_frame("si2", s->si2_msg);
-	if (s->si2bis)
-		log_frame("si2bis", s->si2b_msg);
 	if (s->si2ter)
 		log_frame("si2ter", s->si2t_msg);
+	if (s->si2bis)
+		log_frame("si2bis", s->si2b_msg);
 	//if (s->si3)
 	//	log_frame("si3", s->si3_msg);
 	//if (s->si4)

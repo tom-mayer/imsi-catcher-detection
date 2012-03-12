@@ -5,7 +5,7 @@ from pyCatcherModel import BaseStationInformation, BaseStationInformationList
 from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,FoundFilter,ProviderFilter
 from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
-from rules import ProviderRule
+from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, LACIntegrityRule
 import pickle
 
 class PyCatcherController:
@@ -17,10 +17,10 @@ class PyCatcherController:
         self._gui = PyCatcherGUI(self)
         self._driver_connector = DriverConnector()       
         self._gui.log_line('GUI initialized')
-        
-        self.arfcn_filter = ARFCNFilter()       
+
+        self.arfcn_filter = ARFCNFilter()
         self.provider_filter = ProviderFilter()
-        self.found_filter = FoundFilter()
+        #self.found_filter = FoundFilter()
         
         self._filters = [self.arfcn_filter, self.provider_filter]
 
@@ -31,7 +31,17 @@ class PyCatcherController:
 
         self.provider_rule = ProviderRule()
         self.provider_rule.is_active = True
-        self._rules = [self.provider_rule]
+        self.country_mapping_rule = CountryMappingRule()
+        self.country_mapping_rule.is_active = True
+        self.arfcn_mapping_rule = ARFCNMappingRule()
+        self.arfcn_mapping_rule.is_active = True
+        self.lac_mapping_rule = LACMappingRule()
+        self.lac_mapping_rule.is_active = True
+        self.unique_cell_id_rule = UniqueCellIDRule()
+        self.unique_cell_id_rule.is_active = True
+
+        self._rules = [self.provider_rule, self.country_mapping_rule, self.arfcn_mapping_rule, self.lac_mapping_rule,
+                        self.unique_cell_id_rule]
 
         gtk.main()
                 
@@ -60,16 +70,13 @@ class PyCatcherController:
     def _found_base_station_callback(self, base_station):
         self._gui.log_line("found " + base_station.provider + ' (' + str(base_station.arfcn) + ')')
         self._base_station_list.add_station(base_station)
-        self._base_station_list.evaluate(self._rules, self._active_evaluator)
-        self._base_station_list.refill_store(self.bs_tree_list_data)
-        dotcode = self._base_station_list.get_dot_code(self._filters, self.found_filter)
-        self._gui.load_dot(dotcode)
+        self.trigger_evaluation()
         
     def trigger_redraw(self):
-        dotcode = self._base_station_list.get_dot_code(self._filters,self.found_filter)
+        dotcode = self._base_station_list.get_dot_code(self._filters)#,self.found_filter)
         if dotcode != 'digraph bsnetwork { }':
             self._gui.load_dot(dotcode)
-    
+
     def _firmware_waiting_callback(self):
         self._gui.log_line("firmware waiting for device")
         self._gui.show_info('Switch on the phone now.', 'Firmware')
@@ -99,9 +106,11 @@ class PyCatcherController:
         filehandler = open(path, 'r')
         base_station_list = pickle.load(filehandler)
         self._base_station_list = base_station_list
+        self.trigger_evaluation()
+        filehandler.close()
+        self._gui.log_line('Project loaded from  ' + path)
+
+    def trigger_evaluation(self):
         self._base_station_list.evaluate(self._rules, self._active_evaluator)
         self._base_station_list.refill_store(self.bs_tree_list_data)
-        dotcode = self._base_station_list.get_dot_code(self._filters, self.found_filter)
-        self._gui.load_dot(dotcode)
-        filehandler.close()
-        self._gui.log_line('Project leaded from  ' + path)
+        self.trigger_redraw()

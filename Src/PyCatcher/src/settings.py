@@ -22,12 +22,18 @@ Commands = {'osmocon_command' : [Osmocon_lib + '/host/osmocon/osmocon',
 Provider_list = ['T-Mobile', 'O2']
 
 Provider_Country_list = {
-'T-Mobile':'Germany',
-'O2':'France'
+    'T-Mobile':'Germany',
+    'O2':'France'
 }
 
-LAC_mappings = {
+LAC_mapping = {
+    'T-Mobile' : [21000,22000],
+    'O2' : [0,9999]
+}
 
+ARFCN_mapping = {
+    'T-Mobile' : [0,9999],
+    'O2' : [0,9999]
 }
 
 BSIC_database = ''

@@ -1,0 +1,9 @@
+digraph neighbourhood {
+
+a -> b
+a -> c
+
+c -> b
+c -> a
+
+}
