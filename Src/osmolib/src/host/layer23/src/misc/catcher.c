@@ -179,11 +179,14 @@ static void log_sysinfo(void)
 {
 	struct rx_meas_stat *meas = &ms->meas;
 	struct gsm48_sysinfo *s = &sysinfo;
+	struct gsm322_cellsel *cs = &ms->cellsel;
 	int8_t rxlev;
 	char ta_str[32] = "";
 
 	if (log_si.ta != 0xff)
 		sprintf(ta_str, " TA=%d", log_si.ta);
+
+
 
 	//LOGP(DSUM, LOGL_INFO, "Cell: ARFCN=%d MCC=%s MNC=%s (%s, %s)%s\n",
 	//	arfcn, gsm_print_mcc(s->mcc), gsm_print_mnc(s->mnc),
@@ -199,6 +202,7 @@ static void log_sysinfo(void)
 	LOGFILE("BSIC: %d,%d\n", s->bsic >> 3, s->bsic & 7);
 	rxlev = meas->rxlev / meas->frames - 110;
 	LOGFILE("rxlev: %d\n", rxlev);
+
 	//if (s->si1)
 	//	log_frame("si1", s->si1_msg);
 	if (s->si2)
@@ -225,6 +229,7 @@ static void log_sysinfo(void)
 	LOGFILE("\n");
 	LOGFLUSH();
 }
+
 
 static void timeout_cb(void *arg)
 {

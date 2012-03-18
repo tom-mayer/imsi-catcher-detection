@@ -19,22 +19,30 @@ Commands = {'osmocon_command' : [Osmocon_lib + '/host/osmocon/osmocon',
 
 #Rules Configuration -------------------------------------------------------------------------------------------
 
-Provider_list = ['T-Mobile', 'O2']
+Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus']
 
 Provider_Country_list = {
     'T-Mobile':'Germany',
-    'O2':'France'
+    'O2':'Germany',
+    'Vodafone':'Germany',
+    'E-Plus':'Germany'
 }
 
 LAC_mapping = {
     'T-Mobile' : [21000,22000],
-    'O2' : [0,9999]
+    'O2' : [0,9999],
+    'Vodafone' : [0,100000],
+    'E-Plus' : [0,100000]
 }
 
 ARFCN_mapping = {
     'T-Mobile' : [0,9999],
-    'O2' : [0,9999]
+    'O2' : [0,9999],
+    'Vodafone' : [0,9999],
+    'E-Plus' : [0,9999]
 }
+
+LAC_threshold = 0.5
 
 BSIC_database = ''
 

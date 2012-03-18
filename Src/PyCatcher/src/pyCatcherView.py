@@ -3,7 +3,6 @@ import gtk
 from xdot import DotWidget
 import datetime
 import time
-from filters import ARFCNFilter, FoundFilter, ProviderFilter
 
 class PyCatcherGUI:
  
@@ -68,13 +67,13 @@ class PyCatcherGUI:
             self._catcher_controller.arfcn_filter.is_active = True
         else:
             self._catcher_controller.arfcn_filter.is_active = False
-        
-        #if self._builder.get_object('cb_only_scanned_bs').get_active():
-        #    self._catcher_controller.found_filter.is_active = True
-        #else:
-        #    self._catcher_controller.found_filter.is_active = False
 
-        self._catcher_controller.trigger_redraw()
+        if self._builder.get_object('cb_filter_900').get_active():
+            self._catcher_controller.band_filter.is_active = True
+        else:
+            self._catcher_controller.band_filter.is_active = False
+
+        self._catcher_controller.trigger_evaluation()
 
     def _update_rules(self):
         self._catcher_controller.provider_rule.is_active = self._builder.get_object('cb_provider_known').get_active()
@@ -82,6 +81,10 @@ class PyCatcherGUI:
         self._catcher_controller.arfcn_mapping_rule.is_active = self._builder.get_object('cb_arfcn_provider').get_active()
         self._catcher_controller.lac_mapping_rule.is_active = self._builder.get_object('cb_lac_provider').get_active()
         self._catcher_controller.unique_cell_id_rule.is_active = self._builder.get_object('cb_uniqueness').get_active()
+        self._catcher_controller.lac_median_rule.is_active = self._builder.get_object('cb_lac').get_active()
+        self._catcher_controller.neighbourhood_structure_rule.is_active = self._builder.get_object('cb_neighbourhood_structure').get_active()
+        self._catcher_controller.pure_neighbourhood_rule.is_active = self._builder.get_object('cb_pure_neighbourhood').get_active()
+        self._catcher_controller.full_discovered_neighbourhoods_rule.is_active = self._builder.get_object('cb_neighbours_discovered').get_active()
         self._catcher_controller.trigger_evaluation()
 
     def _update_evaluators(self):

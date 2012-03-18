@@ -3,9 +3,10 @@ import gtk.glade
 from driverConnector import DriverConnector
 from pyCatcherModel import BaseStationInformation, BaseStationInformationList
 from pyCatcherView import PyCatcherGUI
-from filters import ARFCNFilter,FoundFilter,ProviderFilter
+from filters import ARFCNFilter,ProviderFilter, BandFilter900
 from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
-from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, LACIntegrityRule
+from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
+    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule
 import pickle
 
 class PyCatcherController:
@@ -20,7 +21,9 @@ class PyCatcherController:
 
         self.arfcn_filter = ARFCNFilter()
         self.provider_filter = ProviderFilter()
-        #self.found_filter = FoundFilter()
+
+        self.band_filter = BandFilter900()
+        self.band_filter.is_active = True
         
         self._filters = [self.arfcn_filter, self.provider_filter]
 
@@ -39,10 +42,18 @@ class PyCatcherController:
         self.lac_mapping_rule.is_active = True
         self.unique_cell_id_rule = UniqueCellIDRule()
         self.unique_cell_id_rule.is_active = True
+        self.lac_median_rule = LACMedianRule()
+        self.lac_median_rule.is_active = True
+        self.neighbourhood_structure_rule = NeighbourhoodStructureRule()
+        self.neighbourhood_structure_rule.is_active = True
+        self.pure_neighbourhood_rule = PureNeighbourhoodRule()
+        self.pure_neighbourhood_rule.is_active = True
+        self.full_discovered_neighbourhoods_rule = FullyDiscoveredNeighbourhoodsRule()
+        self.full_discovered_neighbourhoods_rule.is_active = False
 
         self._rules = [self.provider_rule, self.country_mapping_rule, self.arfcn_mapping_rule, self.lac_mapping_rule,
-                        self.unique_cell_id_rule]
-
+                        self.unique_cell_id_rule, self.lac_median_rule, self.neighbourhood_structure_rule,
+                        self.pure_neighbourhood_rule, self.full_discovered_neighbourhoods_rule]
         gtk.main()
                 
     def log_message(self, message):
@@ -71,11 +82,6 @@ class PyCatcherController:
         self._gui.log_line("found " + base_station.provider + ' (' + str(base_station.arfcn) + ')')
         self._base_station_list.add_station(base_station)
         self.trigger_evaluation()
-        
-    def trigger_redraw(self):
-        dotcode = self._base_station_list.get_dot_code(self._filters)#,self.found_filter)
-        if dotcode != 'digraph bsnetwork { }':
-            self._gui.load_dot(dotcode)
 
     def _firmware_waiting_callback(self):
         self._gui.log_line("firmware waiting for device")
@@ -112,5 +118,10 @@ class PyCatcherController:
 
     def trigger_evaluation(self):
         self._base_station_list.evaluate(self._rules, self._active_evaluator)
-        self._base_station_list.refill_store(self.bs_tree_list_data)
+        self._base_station_list.refill_store(self.bs_tree_list_data, self.band_filter, self._filters)
         self.trigger_redraw()
+
+    def trigger_redraw(self):
+        dotcode = self._base_station_list.get_dot_code(self.band_filter, self._filters)
+        if dotcode != 'digraph bsnetwork { }':
+            self._gui.load_dot(dotcode)

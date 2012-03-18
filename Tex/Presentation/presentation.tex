@@ -48,8 +48,11 @@
 \tocsection{Background}
 \subsection{IMSI Catcher}
 \begin{frame}{Mode of Operation}
-\centering
+\begin{center}
+	\includegraphics[width=.9\textwidth]{IMSICatcher}
+\end{center}
 \end{frame}
+
 \begin{frame}{Threats}
 \begin{block}{Technical Possibilities}
 \begin{itemize}
@@ -62,21 +65,24 @@ Other concerns:
 \begin{itemize}
 	\item Cannot target individuals
 	\item No emergency calls possible
-	\item Procedural law situation 	
+	\item Procedural law situation
 	\item Hard to prove operation in retrospect
 \end{itemize}
 ... risk intensified by homebrew IMSI catcher projects!
 \end{frame}
 
 \subsection{IMSI Catcher Detection}
-\begin{frame}{Passive Detection}
-Why no active connection?
+\begin{frame}{Detection}
+Main Question: How to detect such a device?
 \begin{itemize}
-	\item Localisation possible once connected
-	\item Already lost ability to initiate emergency calls
+	\item<1-> Actively connect to the catcher
+	\begin{itemize}
+		\item<1-> Localisation possible once connected
+	\end{itemize}
+	\item<1-> \color<2>{red}Passively gather information
 \end{itemize}
 \vspace{.8cm}
-Procedure: Information that is publicly available
+\visible<2>{Procedure: Information that is publicly available
 \begin{itemize}
 	\item Broadcast Control Channel
 	\begin{itemize}
@@ -84,10 +90,8 @@ Procedure: Information that is publicly available
 		\item SI 1 and 2 of special interest
 	\end{itemize}
 	\item Parameters that can be measured
-	\begin{itemize}
-		\item Signal strength
-	\end{itemize}
 \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Parameters}
@@ -112,11 +116,14 @@ Parameters that can be set, can be forged!
 \tocsection{Current State}
 \subsection{Architecture}
 \begin{frame}{Overview}
-\centering
+\begin{center}
+	\includegraphics[width=\textwidth]{Architecture}
+\end{center}
+
 \end{frame}
 
 \begin{frame}{Components}
-MVC oriented design with plug-in rules and evaluators
+Model/View/Controller oriented design with plug-in rules and evaluators
 \begin{itemize}
 	\item Data Model:
 	\begin{itemize}
@@ -166,14 +173,7 @@ Analyse structure of the neighbourhood graph:
 \end{center}
 \end{frame}
 
-\subsection{Demo}
-\begin{frame}{Demo}
-\begin{center}
-	\huge{Time for some shiny graphics!}
-\end{center}
-\end{frame}
-
-\tocsection{Extensions}
+\tocsection{To Do}
 \subsection{Rules}
 \begin{frame}{Rules}{Databases}
 \begin{alertblock}{Problem}
@@ -221,42 +221,21 @@ Bayes Theorem is recursive:
 		\item $\ldots$
 	\end{itemize}
 \end{itemize}
-After databases are implemented foundations for other machine learning approaches are given:
-\begin{itemize}
-	\item Boolean Decision Tree Learning
-	\item Implication Rule Learning
-	\item $\ldots$
-\end{itemize}
 \end{frame}
 
-\tocsection{Roadmap}
-\begin{frame}{Roadmap}
-\begin{itemize}
-	\item Until mid of April:
-	\begin{itemize}
-		\item Implementation of CellID Database
-		\item Implementation of Local Area Database
-		\item Implementation of Bayes Filter Evaluator
-	\end{itemize}
-	\item Until mid of May:
-	\begin{itemize}
-		\item Writing practical part
-		\item Writing evaluation part
-	\end{itemize}
-	\item Until mid of June:
-	\begin{itemize}
-		\item Buffer for correction reading
-		\item Incorporating suggestions
-		\item If enough time is left, implement Boolean Decision Tree Learning to compare with Bayes Filter Learning 
-	\end{itemize}
-\end{itemize}
+\tocsection{Demo}
+\subsection{Demo}
+\begin{frame}{Demo}
+\begin{center}
+	\huge{Demo}
+\end{center}
 \end{frame}
+
 \begin{frame}{The End}
 \begin{center}
 	\huge{Thank you for your attention! Questions?}
 \end{center}
-\end{frame}
-\end{document}
-
+\end{frame} 
 
 \end{document}
+
