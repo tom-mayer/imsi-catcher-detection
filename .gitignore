@@ -18,13 +18,14 @@ Src/osmolib/src/shared/libosmocore/build-host/tests/lapd/lapd_test
 Src/osmolib/src/shared/libosmocore/build-host/utils/osmo-arfcn
 Src/osmolib/src/shared/libosmocore/build-host/utils/osmo-auc-gen
 
+Tex/Master/Master.acn
+Tex/Master/Master.aux
+Tex/Master/Master.ist
+Tex/Master/Master.lof
+Tex/Master/Master.log
+Tex/Master/Master.lot
+Tex/Master/Master.pdf
+Tex/Master/Master.synctex.gz
+Tex/Master/Master.tex
+Tex/Master/Master.toc
 
-/Tex/Presentation/test.aux
-/Tex/Presentation/test.log
-/Tex/Presentation/test.nav
-/Tex/Presentation/test.out
-/Tex/Presentation/test.pdf
-/Tex/Presentation/test.snm
-/Tex/Presentation/test.synctex.gz
-/Tex/Presentation/test.tex
-/Tex/Presentation/test.toc

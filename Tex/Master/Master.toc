@@ -37,24 +37,26 @@
 \contentsline {subsubsection}{Risks and Irregularities}{36}
 \contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{36}
 \contentsline {chapter}{\numberline {3}IMSI Catcher Detection}{39}
-\contentsline {section}{\numberline {3.1}Frameworks and Hardware}{39}
-\contentsline {subsection}{\numberline {3.1.1}OsmoconBB}{39}
-\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{39}
-\contentsline {subsection}{\numberline {3.1.3}GNS 5870 MFI}{39}
-\contentsline {section}{\numberline {3.2}Procedure}{39}
-\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{39}
-\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{39}
-\contentsline {subsection}{\numberline {3.2.3}Further Improvements}{39}
-\contentsline {section}{\numberline {3.3}Implementation}{39}
-\contentsline {section}{\numberline {3.4}IMSI Catcher Detection System}{39}
-\contentsline {subsection}{\numberline {3.4.1}Configuration}{39}
-\contentsline {subsection}{\numberline {3.4.2}Operation}{39}
-\contentsline {chapter}{\numberline {4}Evaluation}{41}
-\contentsline {section}{\numberline {4.1}Open Field Statistics}{41}
-\contentsline {subsection}{\numberline {4.1.1}Bayesian Filter}{41}
-\contentsline {subsection}{\numberline {4.1.2}Detection System}{41}
-\contentsline {section}{\numberline {4.2}Example Scenarios}{41}
-\contentsline {chapter}{\numberline {5}Conclusion}{43}
-\contentsline {section}{\numberline {5.1}Future Work}{43}
+\contentsline {section}{\numberline {3.1}Framework and Hardware}{39}
+\contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{39}
+\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{41}
+\contentsline {section}{\numberline {3.2}Procedure}{41}
+\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{41}
+\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{41}
+\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{41}
+\contentsline {subsection}{\numberline {3.3.1}Implemetation}{41}
+\contentsline {subsubsection}{Architecture}{41}
+\contentsline {subsubsection}{Extensions}{41}
+\contentsline {subsection}{\numberline {3.3.2}Configuration}{41}
+\contentsline {subsection}{\numberline {3.3.3}Operation}{41}
+\contentsline {chapter}{\numberline {4}Evaluation}{43}
+\contentsline {section}{\numberline {4.1}Example Scenarios}{43}
+\contentsline {section}{\numberline {4.2}Test Period}{43}
+\contentsline {chapter}{\numberline {5}Conclusion}{45}
+\contentsline {section}{\numberline {5.1}Related Projects}{45}
+\contentsline {section}{\numberline {5.2}Future Work}{45}
 \contentsline {chapter}{Bibliography}{I}
-\contentsline {chapter}{Acronyms}{VII}
+\contentsline {chapter}{\numberline {A}appendix}{VII}
+\contentsline {section}{\numberline {A.1}OsmocomBB}{VII}
+\contentsline {subsection}{\numberline {A.1.1}Installation}{VII}
+\contentsline {chapter}{Acronyms}{IX}

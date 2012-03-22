@@ -108,7 +108,7 @@ Parameters harvested from SI:
 	\item Neighbouring Cell List
 	\item Base Station Identification (not yet used)
 \end{itemize}
-\begin{alertblock}{Main Problem}
+\begin{alertblock}<2>{Main Problem}
 Parameters that can be set, can be forged!
 \end{alertblock}
 \end{frame}
@@ -139,7 +139,6 @@ Model/View/Controller oriented design with plug-in rules and evaluators
 	\begin{itemize}
 		\item Gathers and aggregates rule results for a base station
 		\item Conservative Evaluator
-		\item Weighted Evaluator
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -166,10 +165,9 @@ Context Rules:
 \end{frame}
 
 \begin{frame}{Rules}{Neighbourhood Rules}
-Analyse structure of the neighbourhood graph:
+Analyse the structure of the neighbourhood graph:
 \begin{center}
-\includegraphics[width=.3\textwidth]{neighbourhood1}\hspace{1cm}
-\includegraphics[width=.3\textwidth]{neighbourhood2}
+\includegraphics[width=.9\textwidth]{Neighbours}
 \end{center}
 \end{frame}
 
@@ -185,7 +183,6 @@ Possible solution:
 	\begin{itemize}
 		\item Many official and open databases (Nokia/OpenCellID)
 		\item Used for localisation, but can also be used vice versa!
-		\item GPS to refine results
 	\end{itemize}
 	\item Local Area Database:
 	\begin{itemize}

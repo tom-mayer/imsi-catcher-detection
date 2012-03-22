@@ -1,14 +1,63 @@
 \chapter{IMSI Catcher Detection}
-\section{Frameworks and Hardware}
-\subsection{OsmoconBB}
+\section{Framework and Hardware}
+The following section will give a short overview of the OsmocomBB framework and how it works in conjunction with the Motorola C123 mobile phone to enable information harvesting for the \gls{icds}.
+OsmocomBB is one of many \gls{osmo} projects\footnote{\url{http://osmocom.org/}} that implements the software part of a mobile phone.
+Another project is OpenBSC which implements software for configuring and operating a \gls{bsc}.
+OpenBSC is used to realise the Open Source IMSI Catcher \cite{dennis} and the base station that will be used later to evaluate the performance of the \gls{icds}.
+
+\subsection{OsmocomBB}
+OscmocomBB is the project that implements the baseband part of \gls{gsm} as an open source project.
+The goal is to have, by using compatible hardware, a phone using free software only as opposed proprietary baseband implementations.
+This could be beneficial to multiple areas \cite{osmo_rationale}:
+\begin{itemize}
+	\item \textbf{Security:} The software running on the baseband chips is highly proprietary and closed.
+	One cannot be sure that this software does not have bugs that could be exploited and ultimately pose a security risk to the subscriber.
+	History has shown that open source projects are more secure than proprietary solutions since more people can view the source to find issues.
+	If a security threat is found the bug is fixed fast and a patch is released.
+	This could be a great benefit for phone users.
+	\item \textbf{Education:} Currently knowledge about \gls{gsm} and its layers on a technical level is not very well spread.
+	The literature so far 
+	An open source implementation as a reference could serve to educate more developers generally interested in the subject of mobile communications and thus improve products and software.
+	\item \textbf{Research:} An open source implementation can decouple research on \gls{gsm} technologies from the industry since key technologies are no longer only available to researchers employed to a specific company.	
+\end{itemize}
+
+The project targets \gls{gsm} layers 1-3 with the first layer being already implemented and ported to an open source firmware.
+At this point layer two and three are do not actually run on the phone but rather on a computer to which the phone is connected via a serial cable.
+More information on the compatible phones will be presented in Section \ref{sec:osmo_phones}.
+
+\begin{figure}
+\centering
+\caption{Interaction of the OsmocomBB components with the ICDS software.}
+\label{fig:osmo_setup}
+\end{figure}
+
+The setup that is used for the \gls{icds} project can be seen in Figure \ref{fig:osmo_setup}.
+It was build and tested in a Xubuntu 11.10 environment \footnote{http://xubuntu.org/} which is a more lightweight variant of the popular Debian based Ubuntu Linux distribution.
+The process of acquiring, compiling and running the OsmocomBB framework itself in this environment is explained in Appendix \ref{sec:osmo_install}.
+As can be seen in the diagram, layer 1 of the OsmocomBB \gls{gsm} stack runs on the phone.
+It is connected via a serial cable to the computer running the \gls{icds}.
+On the computer side the \texttt{osmocon} program provides a general interface to the phone.
+\texttt{Osmocon} is also used to download the firmware to the Motorola C123.
+Other software can communicate with \texttt{osmocon} and subsequently with the phone using unix sockets.
+
+\texttt{Catcher} is a modified version of the \texttt{cell\_log} program by Andreas Eversberg that interfaces with \texttt{osmocon} to harvest information from \gls{bts} and forward it to the \gls{icds}.
+It can be seen as a layer 2/3 program that scans through available frequencies and reads information from the \gls{bcch} whenever one such channel is available on the frequency at hand.
+The forwarding is done directly via \texttt{stdout} since it runs as a child process of the \gls{icds}.
+The functionality of \texttt{catcher} will be explained in detail in Section \ref{sec:info_gathering} while the implementation and operation of the \gls{icds} will be discussed in Section \ref{sec:icds}.
+
+
 \subsection{Motorola C123}
-\subsection{GNS 5870 MFI}
+\label{sec:osmo_phones}
+
 \section{Procedure}
 \subsection{Information Gathering}
 \label{sec:info_gathering}
 \subsection{Information Evaluation}
-\subsection{Further Improvements}
-\section{Implementation}
+
 \section{IMSI Catcher Detection System}
+\label{sec:icds}
+\subsection{Implemetation}
+\subsubsection{Architecture}
+\subsubsection{Extensions}
 \subsection{Configuration}
 \subsection{Operation}
