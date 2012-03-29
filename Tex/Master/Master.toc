@@ -39,24 +39,41 @@
 \contentsline {chapter}{\numberline {3}IMSI Catcher Detection}{39}
 \contentsline {section}{\numberline {3.1}Framework and Hardware}{39}
 \contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{39}
+\contentsline {subsubsection}{Project Status}{40}
+\contentsline {subsubsection}{OsmocomBB and ICDS}{41}
 \contentsline {subsection}{\numberline {3.1.2}Motorola C123}{41}
-\contentsline {section}{\numberline {3.2}Procedure}{41}
-\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{41}
-\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{41}
-\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{41}
-\contentsline {subsection}{\numberline {3.3.1}Implemetation}{41}
-\contentsline {subsubsection}{Architecture}{41}
-\contentsline {subsubsection}{Extensions}{41}
-\contentsline {subsection}{\numberline {3.3.2}Configuration}{41}
-\contentsline {subsection}{\numberline {3.3.3}Operation}{41}
-\contentsline {chapter}{\numberline {4}Evaluation}{43}
-\contentsline {section}{\numberline {4.1}Example Scenarios}{43}
-\contentsline {section}{\numberline {4.2}Test Period}{43}
-\contentsline {chapter}{\numberline {5}Conclusion}{45}
-\contentsline {section}{\numberline {5.1}Related Projects}{45}
-\contentsline {section}{\numberline {5.2}Future Work}{45}
+\contentsline {section}{\numberline {3.2}Procedure}{42}
+\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{43}
+\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{45}
+\contentsline {subsubsection}{Configuration Rules}{46}
+\contentsline {subsubsection}{Contextual Rules}{46}
+\contentsline {subsubsection}{Rule Evaluation}{46}
+\contentsline {subsection}{\numberline {3.2.3}Fake Parameters}{46}
+\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{46}
+\contentsline {subsection}{\numberline {3.3.1}Implemetation}{46}
+\contentsline {subsubsection}{Architecture}{46}
+\contentsline {subsubsection}{Extensions}{46}
+\contentsline {subsection}{\numberline {3.3.2}Configuration}{46}
+\contentsline {subsection}{\numberline {3.3.3}Operation}{46}
+\contentsline {chapter}{\numberline {4}Evaluation}{47}
+\contentsline {section}{\numberline {4.1}Example Scenarios}{47}
+\contentsline {section}{\numberline {4.2}Test Period}{47}
+\contentsline {chapter}{\numberline {5}Conclusion}{49}
+\contentsline {section}{\numberline {5.1}Related Projects}{49}
+\contentsline {section}{\numberline {5.2}Future Work}{49}
 \contentsline {chapter}{Bibliography}{I}
-\contentsline {chapter}{\numberline {A}appendix}{VII}
-\contentsline {section}{\numberline {A.1}OsmocomBB}{VII}
-\contentsline {subsection}{\numberline {A.1.1}Installation}{VII}
-\contentsline {chapter}{Acronyms}{IX}
+\contentsline {chapter}{\numberline {A}OsmocomBB}{VII}
+\contentsline {section}{\numberline {A.1}Installation}{VII}
+\contentsline {section}{\numberline {A.2}Usage}{VII}
+\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{VII}
+\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{IX}
+\contentsline {section}{\numberline {B.1}Example Configuration}{IX}
+\contentsline {chapter}{\numberline {C}System Information}{XI}
+\contentsline {section}{\numberline {C.1}Type 1}{XI}
+\contentsline {section}{\numberline {C.2}Type 2}{XI}
+\contentsline {section}{\numberline {C.3}Type 3}{XI}
+\contentsline {section}{\numberline {C.4}Type 4}{XI}
+\contentsline {chapter}{\numberline {D}Evaluation Data}{XIII}
+\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{XIII}
+\contentsline {section}{\numberline {D.2}ICDS Scans}{XIII}
+\contentsline {chapter}{Acronyms}{XV}

@@ -20,6 +20,11 @@
 \contentsline {figure}{\numberline {2.14}{\ignorespaces IMSI catching procedure. Adopted and simplified from \cite {mueller}.}}{34}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{40}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{43}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 2 Message with annotations \cite {protocols1999}.}}{44}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

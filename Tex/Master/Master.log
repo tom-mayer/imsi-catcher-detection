@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  22 MAR 2012 16:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  29 MAR 2012 14:35
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1024,10 +1024,10 @@ Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)            on input line 39.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 52.
+(scrbook)            on input line 58.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 55.
+(scrbook)            on input line 61.
  [1
 
 
@@ -1037,19 +1037,37 @@ Class scrbook Info: You've told me to use the font selection of the element
 ]
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 58.
+(scrbook)            on input line 64.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 59.
+(scrbook)            on input line 65.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 62.
+(scrbook)            on input line 69.
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 71.
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 76.
+
+Overfull \hbox (1.87224pt too wide) detected at line 77
+ []\T1/ptm/m/n/10.95 XIII
+ []
+
+
+Overfull \hbox (1.87224pt too wide) detected at line 78
+ []\T1/ptm/m/n/10.95 XIII
+ []
+
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 79.
 )
 \tf@toc=\write8
 \openout8 = `Master.toc'.
 
-
-[2] (../Content/Motivation.tex
+ [2] (../Content/Motivation.tex
 Chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -1175,24 +1193,41 @@ File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 ]
 Chapter 3.
 
-LaTeX Warning: Citation `osmo_rationale' on page 39 undefined on input line 11.
+LaTeX Warning: Citation `osmo_rationale' on page 39 undefined on input line 14.
 
 
-[39]) (../Content/Evaluation.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[39] <../Images/OsmoStructure.png, id=177, 387.00584pt x 79.13565pt>
+File: ../Images/OsmoStructure.png Graphic file (type png)
 
- [40]
-[41] [42
+<use ../Images/OsmoStructure.png>
+
+LaTeX Warning: Citation `konrad' on page 40 undefined on input line 50.
+
+[40 <../Images/OsmoStructure.png (PNG copy)>]
+<../Images/c123_pcb.jpg, id=181, 1284.8pt x 856.19875pt>
+File: ../Images/c123_pcb.jpg Graphic file (type jpg)
+
+<use ../Images/c123_pcb.jpg>
+
+LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
 
 
-]
+
+LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
+
+
+[41] [42] [43 <../Images/c123_pcb.jpg>] [44] [45]) (../Content/Evaluation.tex
+[46]
 Chapter 4.
-) (../Content/Conclusion.tex [43] [44
+) (../Content/Conclusion.tex [47
+
+
+] [48
 
 
 ]
 Chapter 5.
-) [45] [46
+) [49] [50
 
 
 
@@ -1265,7 +1300,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--126
  . html$\T1/ptm/m/n/10.95 ,
  []
 
-) [2] (./Master.lof)
+) [2] (./Master.lof
+
+LaTeX Warning: Citation `osmo_wiki_c123' on page III undefined on input line 23
+.
+
+)
 \tf@lof=\write9
 \openout9 = `Master.lof'.
 
@@ -1279,13 +1319,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--126
 \tf@lot=\write10
 \openout10 = `Master.lot'.
 
- [5] (../Content/Appendix.tex
-[6
+ [5] (../Content/Appendix.tex [6
 
 
 ]
 Appendix A.
-) (./Master.acr [7] [8
+[7] [8
+
+
+]
+Appendix B.
+[9] [10
+
+
+]
+Appendix C.
+[11] [12
+
+
+]
+Appendix D.
+) (./Master.acr [13] [14
 
 
 ]
@@ -1298,19 +1352,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 []|\T1/ptm/m/n/10.95 Electrically Erasable Pro-grammable Read-Only
  []
 
-[9
+[15
 
 
-] [10]) [11] (./Master.aux)
+] [16]) [17] (./Master.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 23938 strings out of 493848
- 449962 string characters out of 1152824
- 657848 words of memory out of 3000000
- 26586 multiletter control sequences out of 15000+50000
+ 24089 strings out of 493848
+ 452254 string characters out of 1152824
+ 660017 words of memory out of 3000000
+ 26735 multiletter control sequences out of 15000+50000
  73495 words of font info for 100 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1326,9 +1380,9 @@ w/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb
 ></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-t
 exlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/u
 rw/times/utmri8a.pfb>
-Output written on Master.pdf (61 pages, 6434216 bytes).
+Output written on Master.pdf (71 pages, 7368893 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
+ 311 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
