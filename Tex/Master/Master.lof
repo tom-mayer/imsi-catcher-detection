@@ -22,6 +22,12 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{40}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{43}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 2 Message with annotations \cite {protocols1999}.}}{44}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces T-Mobile and Vodafone stations at the Technische Fakult\"at.}}{48}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Comparison between a normal neighbourhood subgraph and a tainted one.}}{49}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{49}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{49}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{52}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The ICDS main window.}}{54}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

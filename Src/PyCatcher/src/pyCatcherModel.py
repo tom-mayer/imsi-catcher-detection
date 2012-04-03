@@ -116,7 +116,7 @@ class BaseStationInformationList:
             for neighbour in station.get_neighbour_arfcn():
                 code += str(station.arfcn) + r' -> ' + str(neighbour) + r'; '
         #TODO: make printing the source a fixed option
-        #print preamble + code + postamble
+        print preamble + code + postamble
         return preamble + code + postamble
     
     def refill_store(self, store, band_filter, filters=None):

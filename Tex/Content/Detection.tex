@@ -192,7 +192,8 @@ The parameters harvested are:
 	%TODO: find out exactly how this is done
 	To not become active and connect to the station, this is harvested by tuning in to something and capture the packages that set the encryption for another mobile subscriber.
 \end{itemize}
-Since the \texttt{catcher} program is spawned inside the \gls{icds} application as a subprocess, information forwarding is done via stdout so new parameters could be implemented with minimal overhead.
+Note that there are different formats for the Neighbouring Cell List since the original number of 17 bytes could only present a bit mask for 124 neighbouring \glspl{arfcn}.
+This works for the 900 MHz band but for the 900 extended and the 1800 MHz band the System Information Type 2 bis and System Information Type 2 ter have to be harvested additionally to construct the Neighbouring Cell List.
 
 \subsection{Information Evaluation}
 \label{sec:info_evaluation}
@@ -201,40 +202,259 @@ Additionally when a new \gls{bts} has been found and added all formerly discover
 
 As mentioned above, evaluation is done based on constructs called rules.
 Each rule represents one check that can be performed on a base station and yields a result based on its findings.
-Possible results are:
-\begin{itemize}
-	\item Critical: This means that the base station evaluated has a critical configuration error or critical settings that are not found on normal base stations, \eg unknown provider names or encryption is turned off.
-	This station should not be trusted.
-	\item Warning: The \gls{bts} at hand has some concerning features but it could not be said whether this really is a hint to a catcher or sheer coincidence.
-	An example would be a base station having a  neighbouring cell list of which none of the cells therein have actually be found up to that point.
-	The list could either be a fake or it could simply be coincidence that scan has not found any up to that point.
-	\item Ok: The result is as expected.
-	\item Ignore: In some cases the rule cannot yield a finding.
-	In that case the state is explicitly to 'ignore' so the evaluator knows that this rule should have no influence on the final outcome.
-	This is the case for example when trying to find whether the base station uses encryption or not and no other subscriber connects until a set timeout is reached.
-\end{itemize}
+\emph{Critical} result means that the base station evaluated has a critical configuration error or critical settings that are not found on normal base stations, \eg unknown provider names or encryption that is turned off.
+This station should not be trusted.
+If  a \emph{Warning} status is yielded the \gls{bts} at hand has some concerning features but it could not be said whether this really is a hint to a catcher or sheer coincidence.
+An example would be a base station having a  neighbouring cell list of which none of the cells therein have actually be found up to that point.
+The list could either be a fake or it could simply be coincidence that scan has not found any up to that point.
+In some cases the rule cannot yield a finding.
+That is when the state is explicitly set to \emph{Ignore} so the evaluator knows that this rule should have no influence on the final outcome.	
+This is the case for example when trying to find whether the base station uses encryption or not and no other subscriber connects until a set timeout is reached.
 Rules can be divided into two categories depending on what they do.
-The first category are 'Configuration Rules' while the second are 'Context Rules'.
-An overview as well as details on the rules implemented for each category can be found in the next two sections.
+If everything went as expected, \emph{Ok} is returned.
 
-\subsubsection{Configuration Rules}
-This set of rules targets the base station itself.
+These rules can be divided into two different categories depending on how they work and which situations they are tailored to.
+Most of the rules are parametrised so they can be tweaked to different environments.
+
+The first set of rules called \emph{Configuration Rules} targets the base station itself.
 Rules in this category are meant to check the parameters that concern the \gls{bts} and check them for integrity and configuration mistakes that could have been made by an IMSI catcher operator.
+These rules are mainly meant to filter out some base cases fast.
+An overview of which Context Rules are currently implemented inside the \gls{icds} is given in Table \ref{tab:config_rules}.
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\toprule
+Rule					&Functionality\\
+\midrule
+Provider Known			&Checks whether the provider is in a list of known \\
+						&providers.\\
+Country/Provider Map	&Checks whether the given provider is a valid provider\\
+						&for the given country.\\
+LAC/Provider Map		&Checks whether the LAC of the station is in the normal\\
+						&LAC range for that provider given the area.\\
+ARFCN/Provider Map		&Checks whether the ARFCN is in the officially registered\\
+						&range of the provider.\\
+Encryption Algorithm	&Checks which encryption algorithm is used.\\
+\bottomrule
+\end{tabular}
+\caption{Configuration Rules implemented inside the ICDS.}
+\label{tab:config_rules}
+\end{table}
+Since there is no official listing or rule how the \gls{lac} is derived the LAC/Provider Mapping Rule need knowledge of the area in the the \gls{icds} is used.
+The \gls{icds} itself can be used to gather that knowledge but it has to be done prior to using the rule for base station evaluation.
+The \gls{arfcn} range each provider has registered can be looked up at the website of the Bundesnetzagentur\footnote{\url{http://www.bundesnetzagentur.de/}} which is needed for the ARFCN /Provider Mapping Rule.
 
+The second set of rules is called \emph{Context Rules}.
+As the name suggests these rules serve the purpose of checking how well a given \gls{bts} fits into its neighbourhood.
+Table \ref{tab:context_rules} shows which rules have been implemented.
+The Neighbourhood Structure Rule will be explained in a bit more detail in the next section.
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\toprule
+Rule					&Functionality\\
+\midrule
+LAC Median Deviation	&Checks whether the LAC of the given BTS deviates\\
+						&more than a certain threshold from the median LAC of\\
+						&that provider.\\
+Pure Neighbourhoods		&Checks whether all found stations in the Neighbouring\\
+						&Cell List share the same provider.\\
+Neighbourhood Structure	&Checks the structure of the Neighbouring Cell List for\\
+						&certain patterns.\\
+Fully Discovered Nbhds. &Checks whether all the cells in the Neighbouring Cell\\
+						&List have actually been found.\\
+Cell ID Uniqueness 		&Checks whether there are other cells with the same\\
+						&Cell ID.\\
+\bottomrule
+\end{tabular}
+\caption{Context Rules implemented inside the ICDS.}
+\label{tab:context_rules}
+\end{table}
+For the LAC the median was chosen over the average since if an extreme value (ill configured IMSI catcher) exists it would have a too strong impact on the average to which all the \gls{bts} are compared.
+It could even have such a strong effect on the average that legitimate base stations would fall below the threshold and be recognised as catchers.
 
-\subsubsection{Contextual Rules}
+\subsubsection{Neighbourhood Structure}
+The neighbourhood structure is the graph that is described by the Neighbouring Cell List located in the System Inforamtion 2/bis/ter constructs.
+Figure \ref{fig:neighbourhood_example} shows an example of the neighbourhood graphs from Vodafone and T-Mobile at the Technische Fakult\"at of the University of Freiburg\footnote{Georges Koehler Allee, Freiburg}.
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{../Images/neighbourhoods_fak}
+\caption{T-Mobile and Vodafone stations at the Technische Fakult\"at.}
+\label{fig:neighbourhood_example}
+\end{figure}
+It can be seen that for each provider, the neighbourhood forms a isolated, nearly fully connected subgraph.
+The bordering grey-blue nodes have not yet been discovered therefore they have no outgoing edges.
+This could be the case because they are too far away for the Motorola to receive them or because of signal damping due to shadowing and reflection effects.
+In the \gls{icds} the aspect of isolated subgraphs for neighbourhoods is captured inside the Pure Neighbourhoods Rule.
 
-\subsubsection{Rule Evaluation}
+Some of the attacks discussed in Section \ref{sec:attacks} imply a certain structure of the neighbourhood graph.
+Since the IMSI catcher tries keep \glspl{ms} that have connected from switching back to a normal cell the neighbourhood list of such a catcher cell would either be empty or would only host neighbour cells that have a bad reception.
+An empty neighbourhood list is represented in a graph by a node that has been discovered and has only incoming edges.
+\begin{figure}
+\centering
+\subfigure[Normal neighbourhood]{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,fill=blue!10,draw,font=\sffamily\Large\bfseries}]
 
-\subsection{Fake Parameters}
+  \node[main node] (1) {A};
+  \node[main node] (2) [below left of=1] {B};
+  \node[main node] (3) [below right of=1] {C};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge  node {} (2)
+        edge  node {} (3)
+    (2) edge  node {} (1)
+    	edge  node {} (3)
+    (3) edge  node {} (1)
+    	edge  node {} (2);
+\end{tikzpicture}
+}
+\subfigure[Tainted neighbourhood]{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,fill=blue!10,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {A};
+  \node[main node] (2) [below left of=1] {B};
+  \node[main node] (3) [below right of=1] {C};
+  \node[main node] (4) [right of=1] {D};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge  node {} (2)
+        edge  node {} (3)
+    (2) edge  node {} (1)
+    	edge  node {} (3);
+\end{tikzpicture}
+}
+\caption{Comparison between a normal neighbourhood subgraph and a tainted one.}
+\label{fig:structure_comparison}
+\end{figure}
+Figure \ref{fig:structure_comparison} shows a simplified regular neighbourhood graph compared to a graph with a catcher node inside.
+In this case catcher C chose the attack where it replaces a previously existent \gls{bts} whereas catcher D opened up a new cell.
+Replacing has several advantages, one being already integrated in the neighbourhood of other nodes and thus being able to catch subscribers by handover.
+For catcher D it is the other way around, it has only outgoing edges.
+This means that this cell is not known by any other node of the same provider (of course the catchers provider is fake!).
+Nevertheless it has some outgoing edges to nodes with significantly less transmission strength to not stick out too much as a completely isolated node.
+Combinations of these two approaches are also possible.
+These thoughts are basically what is captured in the Neighbourhood Structure Rule.
+
+\subsubsection{Base Station Evaluation}
+As mentioned at the beginning, all the rules are evaluated for each base station.
+Aggregation of these rule results into a single result is done by modules called \emph{Evaluators}.
+Currently there are three different evaluators implemented inside the \gls{icds}, with varying degrees of customisability.
+\begin{itemize}
+	\item Conservative Evaluator: This is a worst-case evaluator.
+	It iterates over all the rule findings and yields the most concerning finding as its result.
+	By default this evaluator is enabled in the system.
+	\item Weighted Evaluator: Using this evaluator the user can give a weight to each rule.
+	This way rules that are more important to the user can have a higher impact on overall evaluation.
+	\item Grouped Evaluator: With this evaluator rules can be grouped together.
+	Inside each group the result for the group is found by majority vote whereas the final result is conservatively found by comparing all the group results.
+\end{itemize}
+The different kinds of evaluators can be used to tweak the whole system more to a specific environment or purpose, if specific rules or groups of rules are given more weight.
+After a finding has been determined for each station, all the results are again aggregated into a final result.
+This result is always found in a conservative manner since the subscriber cannot choose to which \gls{bts} to connect to.
+If one base station seems to be compromised it cannot be guaranteed that the subscriber will not connect to it, thus the final result needs to reflect that fact.
+
+\subsection{Forged Parameters}
 \label{sec:fake_parameters}
+All of the parameters that have been looked at in this project so far are parameters that can be directly set by the operator of the \gls{bts} or IMSI catcher.
+This is a major problem since how can an IMSI catcher be found that sends exactly the same information as a regular base station?
+To further investigate this issue we will analyse based on the three attack types presented in Section \ref{sec:attacks} which parameters can be forged and which cannot.
 
+For all three attack types presented it is possible to find a parameter configuration that does not raise suspicion, if the operator chooses a compatible \gls{lac}, \gls{arfcn}, \etc for the imitated provider. 
+The Neighbouring Cell List is a bit different.
+Since the catcher wants to keep lured subscribers it will normally have an empty list or a list pointing only \glspl{bts} that have a lower reception level. 
+Both of these cases can be detected.
+However the operator \emph{may} also choose to set a list consistent with the neighbouring cells.
+This would lower the chances of success for the catcher but also make it blend better in its environment and thus harder to detect.
+A sure criterion is the absence of an encryption algorithm which is needed by the catcher to record and monitor phone calls.
+The main problem here is that it cannot be guaranteed that this parameter can be harvested.
+Since this is a semi passive approach to harvesting it needs another subscriber to connect to the base station in question during the time the \gls{icds} is scanning it.
+
+For the Cell ID there are basically two possibilities depending on which attack is used.
+In the second case parameters can be chosen in a consistent way although a new Cell ID has to be chosen, as the Cell ID needs to be unique.
+The second possibility is that the IMSI catcher replaces a formerly existent cell and the second one is that it opens up a new cell.
+In the first case all parameters can be copied from the original cell.
+These cases can be resolved by adding outside knowledge to the \gls{icds}.
+This is also done by certain rules called \emph{Database Rules}.
+
+\subsubsection{Database Rules}
+There are to different rules that each handles one of the cases separately.
+The first case is the easier of both.
+We know that the catcher cell has a new Cell ID that has not been there before.
+Therefore the \emph{Cell ID Databse Rule} has three different approaches to exploit this fact:
+\begin{itemize}
+	\item A database of Cell IDs can be learned by the \gls{icds} beforehand. 
+	Each cell that was seen more often over longer periods of time receives a higher rating.
+	This can be used to detect new Cell IDs that have not been seen before.
+	The better way to receive a Cell ID database is to use a commercially build one since it is always possible to overlook a cell when learning the surroundings.
+	\item A web service also offered by most providers of Cell ID databases can be used to see whether a cell actually exists and check whether it should be situated in the neighbourhood it is in.
+\end{itemize}
+The three largest Cell ID databases are the two commercial ones by Ericson\footnote{\url{https://labs.ericsson.com/apis/mobile-location/}} and combain\footnote{\url{http://location-api.com/}} as well as the free alternative OpenCellID\footnote{\url{http://www.opencellid.org/}} \cite{wiki_cells}.
+Ericson and combain have trial modes, where the first 1000 requests are free for developers afterwards a subscription or a fee per request must be paid.
+By adding this information new cells can be identified.
+
+The second where an existing cell is replaced is a bit more complicated since its parameters are an exact copy of the old cell.
+Attacking by replacing a cell works in a way that the cell with the worst reception is targeted.
+That way when the IMSI catcher finished replacing it, the reception goes up a significant amount and the mobile phone will initiate a handover to that cell.
+The difference in reception can be used to identify this kind of attack.
+In general the reception cannot be well used as a parameter because shadowing and reflection can substantially change the reception from one moment to the other.
+However when reception intervals are logged for a fixed location like a bureau, important calls made from that specific location can be protected against this kind of attack.
+To that end the \emph{Location Area Databse Rule} can augment a Cell ID Database with information about the reception of the particular cells in different locations and find out if reception for a particular station and location have changed significantly.
 
 \section{IMSI Catcher Detection System}
 \label{sec:icds}
+This section will give a short overview over some technical aspects of the \gls{icds} software itself.
+The first section will focus on architectural aspects and how the architecture can be extended.
+The second and third section will then explain how to configure and operate the application.
+
 \subsection{Implemetation}
-\subsubsection{Architecture}
-\subsubsection{Extensions}
+\begin{figure}
+\centering
+\includegraphics{../Images/Architecture_software}
+\caption{System architecture of the ICDS. The arrows indicate the flow of data.}
+\label{fig:architecture}
+\end{figure}
+Figure \ref{fig:architecture} shows a diagram describing the system architecture, modules in light blue have been implemented for this project.
+The application consists of two main parts.
+One part, the \texttt{catcher} is implemented inside the OscmocomBB framework, the other part \texttt{PyCatcher} is a Python application that uses \texttt{catcher} to harvest information and evaluate it afterwards.
+Since the way \texttt{catcher} works has already been described in Section \ref{sec:info_gathering} this section will focus on the Python application part.
+
+As mentioned before layer 1 of the \gls{gsm} stack is implemented in the firmware running on the Motorola C123.
+Layer 2 and 3 are implemented on the computer and are used by the \texttt{catcher} software to harvest information from the \gls{bcch}.
+
+The \texttt{PyCatcher} application was designed with a \gls{mvc} approach in mind to make it easy to implement new functionality.
+The \gls{mvc} pattern is used to separate the data model of an application form the logic as well as from the way it is presented to the user.
+That way each of the different components can be exchanged without affecting the other two.
+An additional module has been added, the \texttt{OsmoConnector} that is loaded by the controller and spawns \texttt{catcher} as a child process.
+It takes the output back in and transforms it into an object oriented representation of the discovered base stations.
+These are then handed over and update the data model.
+This way it can be ensured that only coherent and complete information is incorporated in the data model.
+Another benefit is that the parsing module is separated from the main program logic.
+
+The \texttt{Controller} is the main part of the program and instantiates all the other modules.
+It loads data from the model, triggers the evaluation and sends the results to the view to be displayed.
+As discussed before there are several rules that can be evaluated for each base station.
+These rules are stored within the controller and can be enabled or disabled by using the view that in turn calls the respective functions for enabling or disabling rules respectively from the controller.
+Whenever a new evaluation is requested the controller evaluates the active rules and gives the results to the active evaluator, afterwards the results are send to the view for display to the user.
+Note that all the structures used are view independent, this way the current view could easily be exchanged with a web interface for example.
+
+The \texttt{View} in this project consists of a GTK3 window with several forms for user input.
+It is bound to the controller using PyGTK.
+Details on the \texttt{View} and how to use it will be explained in Section \ref{sec:icds_operation}.
+
+Rules and Evaluators were designed in a plugin fashion, since these are the main points where the program can be enhanced and new ideas can be realised.
+Implementing a new rule or a new evaluator works by extending the rule or evaluator base class and implementing one method that does the actual checking.
+After that they only need to be added to the list of included evaluators and rules inside the \texttt{controller}.
+This process is also shown in Appendix \ref{sec:extensions} in more detail.
+
 \subsection{Configuration}
+\label{sec:configuration}
 \subsection{Operation}
 \label{sec:icds_operation}
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{../Images/ICDS}
+\caption{The ICDS main window.}
+\label{fig:icds}
+\end{figure}

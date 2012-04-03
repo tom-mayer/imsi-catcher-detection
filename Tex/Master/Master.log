@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  29 MAR 2012 14:35
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  3 APR 2012 16:40
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -860,37 +860,45 @@ File: tikzlibraryplotmarks.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
 )))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrow
+s.code.tex
+File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
+\arrowsize=\dimen206
+))
 (/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 (/usr/share/texmf-texlive/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen206
-\lightrulewidth=\dimen207
-\cmidrulewidth=\dimen208
-\belowrulesep=\dimen209
-\belowbottomsep=\dimen210
-\aboverulesep=\dimen211
-\abovetopsep=\dimen212
-\cmidrulesep=\dimen213
-\cmidrulekern=\dimen214
-\defaultaddspace=\dimen215
+\heavyrulewidth=\dimen207
+\lightrulewidth=\dimen208
+\cmidrulewidth=\dimen209
+\belowrulesep=\dimen210
+\belowbottomsep=\dimen211
+\aboverulesep=\dimen212
+\abovetopsep=\dimen213
+\cmidrulesep=\dimen214
+\cmidrulekern=\dimen215
+\defaultaddspace=\dimen216
 \@cmidla=\count162
 \@cmidlb=\count163
-\@aboverulesep=\dimen216
-\@belowrulesep=\dimen217
+\@aboverulesep=\dimen217
+\@belowrulesep=\dimen218
 \@thisruleclass=\count164
 \@lastruleclass=\count165
-\@thisrulewidth=\dimen218
+\@thisrulewidth=\dimen219
 )
 (/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip65
 \subfigcapskip=\skip66
-\subfigcaptopadj=\dimen219
+\subfigcaptopadj=\dimen220
 \subfigbottomskip=\skip67
-\subfigcapmargin=\dimen220
+\subfigcapmargin=\dimen221
 \subfiglabelskip=\skip68
 \c@subfigure=\count166
 \c@lofdepth=\count167
@@ -915,35 +923,35 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 \glo@main@file=\write6
 \openout6 = `Master.glo'.
 
-Package glossaries Info: Writing glossary file Master.glo on input line 93.
+Package glossaries Info: Writing glossary file Master.glo on input line 94.
 \glo@acronym@file=\write7
 \openout7 = `Master.acn'.
 
-Package glossaries Info: Writing glossary file Master.acn on input line 93.
+Package glossaries Info: Writing glossary file Master.acn on input line 94.
  (./Glossary.tex)
 (./Master.aux)
 \openout1 = `Master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 110.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 111.
  (/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package scrbase Info: No captions found for `german'
-(scrbase)             --> skipped on input line 110.
+(scrbase)             --> skipped on input line 111.
 Package scrbase Info: No captions found for `ngerman'
-(scrbase)             --> skipped on input line 110.
+(scrbase)             --> skipped on input line 111.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
@@ -951,13 +959,13 @@ File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count171
-\scratchdimen=\dimen221
+\scratchdimen=\dimen222
 \scratchbox=\box51
 \nofMPsegments=\count172
 \nofMParguments=\count173
 \everyMPshowfont=\toks51
 \MPscratchCnt=\count174
-\MPscratchDim=\dimen222
+\MPscratchDim=\dimen223
 \MPnumerator=\count175
 \everyMPtoPDFconversion=\toks52
 )
@@ -1001,17 +1009,17 @@ Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../Images/unisiegel.pdf>])
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 120.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
  (../Content/Abstract.tex) [2]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 134.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 135.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 134.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 135.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 134.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 135.
  (./Master.toc
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
@@ -1024,10 +1032,10 @@ Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)            on input line 39.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 58.
+(scrbook)            on input line 56.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 61.
+(scrbook)            on input line 59.
  [1
 
 
@@ -1037,32 +1045,32 @@ Class scrbook Info: You've told me to use the font selection of the element
 ]
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 64.
+(scrbook)            on input line 62.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 65.
+(scrbook)            on input line 63.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 69.
+(scrbook)            on input line 67.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 71.
+(scrbook)            on input line 70.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 76.
+(scrbook)            on input line 75.
+
+Overfull \hbox (1.87224pt too wide) detected at line 76
+ []\T1/ptm/m/n/10.95 XIII
+ []
+
 
 Overfull \hbox (1.87224pt too wide) detected at line 77
  []\T1/ptm/m/n/10.95 XIII
  []
 
-
-Overfull \hbox (1.87224pt too wide) detected at line 78
- []\T1/ptm/m/n/10.95 XIII
- []
-
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 79.
+(scrbook)            on input line 78.
 )
 \tf@toc=\write8
 \openout8 = `Master.toc'.
@@ -1216,18 +1224,42 @@ LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
 LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
 
 
-[41] [42] [43 <../Images/c123_pcb.jpg>] [44] [45]) (../Content/Evaluation.tex
-[46]
+[41] [42] [43 <../Images/c123_pcb.jpg>] [44] [45]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [46]
+<../Images/neighbourhoods_fak.png, id=201, 3155.79pt x 2726.185pt>
+File: ../Images/neighbourhoods_fak.png Graphic file (type png)
+
+<use ../Images/neighbourhoods_fak.png>
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 311.
+ [47] [48 <../Images/neighbourhoods_fak.png (PNG copy)>] [49]
+Underfull \vbox (badness 4303) has occurred while \output is active []
+
+ [50]
+
+LaTeX Warning: Citation `wiki_cells' on page 51 undefined on input line 393.
+
+[51] <../Images/Architecture_software.png, id=219, 341.8371pt x 183.78261pt>
+File: ../Images/Architecture_software.png Graphic file (type png)
+
+<use ../Images/Architecture_software.png> [52 <../Images/Architecture_software.
+png (PNG copy)>] <../Images/ICDS.png, id=223, 1136.245pt x 784.9325pt>
+File: ../Images/ICDS.png Graphic file (type png)
+
+<use ../Images/ICDS.png>) (../Content/Evaluation.tex [53] [54 <../Images/ICDS.p
+ng>]
 Chapter 4.
-) (../Content/Conclusion.tex [47
+) (../Content/Conclusion.tex [55
 
 
-] [48
+] [56
 
 
 ]
 Chapter 5.
-) [49] [50
+) [57] [58
 
 
 
@@ -1361,11 +1393,11 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24089 strings out of 493848
- 452254 string characters out of 1152824
- 660017 words of memory out of 3000000
- 26735 multiletter control sequences out of 15000+50000
- 73495 words of font info for 100 fonts, out of 3000000 for 9000
+ 24421 strings out of 493848
+ 460807 string characters out of 1152824
+ 669735 words of memory out of 3000000
+ 27057 multiletter control sequences out of 15000+50000
+ 79697 words of font info for 104 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
@@ -1376,13 +1408,14 @@ cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/
 fonts/type1/public/eurosym/feymr10.pfb></usr/share/texmf-texlive/fonts/type1/ur
-w/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb
-></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-t
-exlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on Master.pdf (71 pages, 7368893 bytes).
+w/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.
+pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
+f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on Master.pdf (79 pages, 9107765 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
+ 346 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
