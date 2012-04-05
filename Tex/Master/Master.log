@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  3 APR 2012 16:40
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  4 APR 2012 13:55
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1413,7 +1413,7 @@ pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
 f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on Master.pdf (79 pages, 9107765 bytes).
+Output written on Master.pdf (79 pages, 9107699 bytes).
 PDF statistics:
  346 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

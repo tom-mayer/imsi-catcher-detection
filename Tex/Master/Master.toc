@@ -54,8 +54,6 @@
 \contentsline {subsection}{\numberline {3.3.2}Configuration}{53}
 \contentsline {subsection}{\numberline {3.3.3}Operation}{53}
 \contentsline {chapter}{\numberline {4}Evaluation}{55}
-\contentsline {section}{\numberline {4.1}Example Scenarios}{55}
-\contentsline {section}{\numberline {4.2}Test Period}{55}
 \contentsline {chapter}{\numberline {5}Conclusion}{57}
 \contentsline {section}{\numberline {5.1}Related Projects}{57}
 \contentsline {section}{\numberline {5.2}Future Work}{57}
