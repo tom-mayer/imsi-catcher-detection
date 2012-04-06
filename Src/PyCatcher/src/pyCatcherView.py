@@ -3,6 +3,7 @@ import gtk
 from xdot import DotWidget
 import datetime
 import time
+from rules import RuleResult
 
 class PyCatcherGUI:
  
@@ -19,7 +20,15 @@ class PyCatcherGUI:
         self._detail_window = self._builder.get_object('detail_view')
         self._rules_window = self._builder.get_object('rules_window')
         self._evaluators_window = self._builder.get_object('evaluators_window')
-                   
+        self._evaluation_window = self._builder.get_object('evaluation_window')
+        self._evaluation_image = self._builder.get_object('evaluation_image')
+
+        self._ok_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/ok.png')
+        self._warning_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/warning.png')
+        self._critical_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/critical.png')
+        self._plain_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/plain.png')
+        self.set_image(RuleResult.IGNORE)
+
         self._catcher_controller = catcher_controller        
         
         self._bs_tree_view = self._builder.get_object('tv_stations')
@@ -46,7 +55,19 @@ class PyCatcherGUI:
         self._log_buffer = log_view.get_buffer()        
         self._log_buffer.insert(self._log_buffer.get_end_iter(),self._utf8conv("-- Log execution on " + datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M %p") + "  --\n\n"))
         
-        self._main_window.show()         
+        self._main_window.show()
+
+    def set_image(self, status):
+        pixbuf = self._plain_image
+        if status == RuleResult.OK:
+            pixbuf = self._ok_image
+        elif status == RuleResult.WARNING:
+            pixbuf = self._warning_image
+        elif status == RuleResult.CRITICAL:
+            pixbuf = self._critical_image
+        width, height = self._evaluation_window.get_size()
+        pixbuf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
+        self._evaluation_image.set_from_pixbuf(pixbuf)
         
     def _add_column(self, name, index):
         column = gtk.TreeViewColumn(name, gtk.CellRendererText(), text=index)
@@ -126,6 +147,9 @@ class PyCatcherGUI:
 
     def _on_filter_clicked(self,widget):
         self._filter_window.show()
+
+    def _on_evaluation_clicked(self,widget):
+        self._evaluation_window.show()
 
     def _on_filter_close_clicked(self, widget):
         self._update_filters()

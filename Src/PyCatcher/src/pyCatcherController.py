@@ -6,7 +6,7 @@ from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,ProviderFilter, BandFilter900
 from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
 from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
-    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule
+    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult
 import pickle
 
 class PyCatcherController:
@@ -125,3 +125,17 @@ class PyCatcherController:
         dotcode = self._base_station_list.get_dot_code(self.band_filter, self._filters)
         if dotcode != 'digraph bsnetwork { }':
             self._gui.load_dot(dotcode)
+        result = RuleResult.IGNORE
+        at_least_warning = False
+        for item in self._base_station_list._get_filtered_list(self.band_filter, self._filters):
+           if item.evaluation == 'Ignore':
+               pass
+           if item.evaluation == 'Ok' and not at_least_warning:
+               result = RuleResult.OK
+           elif item.evaluation == 'Warning':
+               result = RuleResult.WARNING
+               at_least_warning = True
+           elif item.evaluation == 'Critical':
+               result = RuleResult.CRITICAL
+               break
+        self._gui.set_image(result)

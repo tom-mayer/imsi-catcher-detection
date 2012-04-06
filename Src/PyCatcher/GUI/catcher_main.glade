@@ -16,6 +16,20 @@
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="evaluation_window">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">ICDS</property>
+    <property name="default_width">341</property>
+    <property name="default_height">256</property>
+    <property name="has_resize_grip">False</property>
+    <child>
+      <object class="GtkImage" id="evaluation_image">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="stock">gtk-missing-image</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkDialog" id="evaluators_window">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -468,6 +482,7 @@
                 <property name="label" translatable="yes">Evaluation</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">utilities-system-monitor</property>
+                <signal name="clicked" handler="_on_evaluation_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
