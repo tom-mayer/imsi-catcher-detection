@@ -162,13 +162,7 @@ Afterwards \texttt{catcher} tunes the phone to those specific frequencies where 
 %TODO: see whether all parameters can be harvested inside OsmocomBB
 At each such frequency it waits until all the System Information Messages are gathered and extracts parameters where possible.
 The parameters along with the raw data are forwarded to the main \gls{icds} application for further parsing and evaluation.
-An example for a parsed System Information Type 2 Message can be seen in Figure \ref{fig:sysinfo2}.
-Examples for all the System Information Messages used are located in Appendix \ref{sec:system_infos}.
-\begin{figure}
-\centering
-\caption{System Information 2 Message with annotations \cite{protocols1999}.}
-\label{fig:sysinfo2}
-\end{figure}
+Examples for all the System Information Messages used along with an interpretation are located in Appendix \ref{sec:system_infos}.
 As long as scanning mode is active all the available stations are scanned repeatedly and changes in the \gls{bts} will continuously update the data model inside the \gls{icds} software.
 The parameters harvested are:
 %TODO: add more detail of format
@@ -450,11 +444,115 @@ This process is also shown in Appendix \ref{sec:extensions} in more detail.
 
 \subsection{Configuration}
 \label{sec:configuration}
+The configuration of the system is done in the file \texttt{settings.py}.
+All configuration is done with python dictionaries, where each module has its own dictionary inside which it can have an arbitrary number of parameters with their respective values.
+Figure \ref{fig:python_dict} shows an example with the two common cases used for parameters in this project.
+
+The file consists of three main sections.
+The first one is parameters that are needed for the correct operation of the \gls{icds} system and have to be edited:
+\begin{itemize}
+	\item \texttt{Device\_settings}: The setting for the mobile phone that is used.
+	In case the Motorola C123 is used, this section does not need to be edited.
+	\item \texttt{Osmocom\_lib}: The path to the folder that contains the OsmocomBB framework.
+	\item \texttt{Commands}: This is only to be edited when a newer version of the framework is used and the folder structure has changed since the release used in this project.s
+\end{itemize}
+The second and last sections are parameters for the different rules and evaluators.
+A completely documented configuration file with all the rules and evaluator parameters can be found in Appendix \ref{sec:example_config}.
+\begin{figure}
+\begin{lstlisting}
+dictionary = {
+	"key_1": value_1,		#single value
+	"key_2": [value_2,value_3]	#value range
+}
+\end{lstlisting}
+\caption{A python dictionary.}
+\label{fig:python_dict}
+\end{figure}
 \subsection{Operation}
 \label{sec:icds_operation}
+The \gls{icds} main application has to be started with root privileges since it needs to work with Unix sockets and open up connections to the Motorola C123.
+This should be done by starting up the \texttt{main} class that initialises everything else.
+\begin{lstlisting}
+sudo python /path-to-project/Src/PyCatcher/src/main.py
+\end{lstlisting}
+After a brief loading time the main window shown in Figure \ref{fig:icds} should appear if a valid configuration is set up.
+
 \begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{../Images/ICDS}
+\includegraphics[width=\textwidth]{../Images/ICDS}
 \caption{The ICDS main window.}
 \label{fig:icds}
 \end{figure}
+
+The different elements shown in the main window are:
+\begin{enumerate}
+%TODO: correct the numbering after the final picture is there
+\item Firmware Loader: This button is used to load the OsmoconBB firmware onto the Motorola C123. 
+For this to work, the mobile phone must be connected correctly to the computer and available on the respective tty interface.
+After pressing the button on-screen instructions will lead the user through the process of flashing.
+
+\item Scanner: This starts the \texttt{catcher} subprocess in the background and fills the data model with information on the discovered base stations.
+During this process the Base Station List (10) and the Base Station Graph (12) will also be populated in realtime.
+Re-evaluation is done for every new \gls{bts} that has been found.
+
+\item Filter Window: This brings up a window, where different view filters for the Base Station List and the Base Station Graph.
+Note that these filters do not modify the underlying data model or the behaviour of the scanner.
+Hidden base stations will be scanned and added to the data model independent from the filters set, so they can be viewed at a later point if necessary.
+Available filters are:
+	\begin{itemize}
+	\item Provider Filter: Takes a comma separated white list of providers that should be shown.
+	\item ARFCN Filter: Takes a range of \glspl{arfcn} to be shown.
+	\item Band Filter: This can be used to show only the 900 MHz or the 1800 MHz band.
+	\end{itemize}
+These filters can arbitrarily be combined together.
+
+\item Rules Window: All the rules implemented inside the \gls{icds} will be brought up with a check box to enable or disable the rules.
+Disabling means that they will not be considered for the evaluation of a base station.
+
+\item Evaluator Window: This window will let the user choose  which evaluator to use for \gls{bts} evaluation.
+Choosing a new evaluator will also trigger a re-evaluation of all the data collected so far.
+
+\item Evaluation: This button brings up a separate window showing only the final evaluation of the scan.
+
+\item Location Window: This window lets the user choose the current location that is used by the Local Area Database Rule.
+It is also possible to export the current scan as a Local Area Database or import an old database to be enhanced with data from the current scan.
+
+\item Save/Load Project: The current state of the application can be saved and loaded as \texttt{.cpf} files.
+This enables the user to continue a scan at a later point in time or to compare different data sets scanned at different points in time or locations with one another.
+
+%TODO: write this as soon as its finished
+\item Provider Quick Evaluation: Lets see what this brings...
+
+\item Base Station List: This list gives an overview of which base stations have been discovered so far along with some distinguishing information including its evaluation.
+A detailed view of a base station can be brought up by selecting it in the list and hitting the enter key.
+The report is separated into four main parts, the first being all the harvested parameters, followed by reports from the different rules and evaluators and a section with the raw uninterpreted system information data.
+ 
+\item Log Window: Every important event inside the \gls{icds} is reported in the log together with a time stamp when it occurred.
+
+\item Base Station Graph: This graph displays the base station found in the Base Station List (10).
+A node represents a single \gls{bts} and is labelled with its respective \gls{arfcn}.
+An edge from note A to B is drawn when node B occurs in the Neighbouring Cells List of A.
+Nodes with a white background have only been found inside Neighbouring Cell Lists but not yet by the \gls{icds} scanner itself whereas nodes with a red, yellow or green background have been found and evaluated with the colour representing either a critical, a warning or a ok status respectively.
+
+\item Graph Controls: These are meant to make navigating the graph a bit easier.
+From left to right the functionality is zoom in, zoom out, fit the whole graph to the viewport and display the graph in original size.
+Zooming can also be done with the mouse wheel and it is possible to drag the graph around by clicking and holding it with the mouse and then moving it around. 
+
+\end{enumerate}
+The procedure of operation differs depending on the purpose.
+\paragraph{Sweep scans:} This is the normal mode of operation, scanning and evaluating all base stations in the perimeter.
+At first the firmware needs to be flashed onto the device by pressing (1).
+After the flashing process is finished the scan can be started by pressing (2).
+Either before or during the scan (3),(4) and (5) can be used to customise the output or rules that should be considered during evaluation.
+The scan can be stopped at any time.
+Resuming the scan will renew the information in the Base Station List.
+
+\paragraph{Location Area Database:} To build up a new Location Area Database a sweep scan must be done.
+In the Location dialog (7) a location must be set, so the \gls{icds} know to which location the data is linked.
+Afterwards it can be saved and used by adding it to the list of available location databases in the \texttt{settings.py}.
+It is also possible to load an existing database and add the information obtained during the sweep scan to this database.
+To use such a database for evaluation, the location must be set correctly and the respective rule must be activated.
+The correct database will be used automatically.
+
+%TODO: write this once implementation is finished
+\paragraph{Quick check:} After a sweep scan is completed....

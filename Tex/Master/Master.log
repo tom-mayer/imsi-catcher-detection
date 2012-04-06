@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  4 APR 2012 13:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  6 APR 2012 14:22
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1032,10 +1032,10 @@ Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)            on input line 39.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 56.
+(scrbook)            on input line 59.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 59.
+(scrbook)            on input line 60.
  [1
 
 
@@ -1045,32 +1045,42 @@ Class scrbook Info: You've told me to use the font selection of the element
 ]
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 62.
-Class scrbook Info: You've told me to use the font selection of the element
-(scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 63.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 67.
+(scrbook)            on input line 64.
+
+Overfull \hbox (1.87224pt too wide) detected at line 66
+ []\T1/ptm/m/n/10.95 VIII
+ []
+
+
+Overfull \hbox (1.87224pt too wide) detected at line 67
+ []\T1/ptm/m/n/10.95 VIII
+ []
+
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 70.
+(scrbook)            on input line 68.
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 71.
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 72.
+
+Overfull \hbox (2.48549pt too wide) detected at line 73
+ []\T1/ptm/m/n/10.95 XIX
+ []
+
+
+Overfull \hbox (2.48549pt too wide) detected at line 74
+ []\T1/ptm/m/n/10.95 XIX
+ []
+
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 75.
-
-Overfull \hbox (1.87224pt too wide) detected at line 76
- []\T1/ptm/m/n/10.95 XIII
- []
-
-
-Overfull \hbox (1.87224pt too wide) detected at line 77
- []\T1/ptm/m/n/10.95 XIII
- []
-
-Class scrbook Info: You've told me to use the font selection of the element
-(scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 78.
 )
 \tf@toc=\write8
 \openout8 = `Master.toc'.
@@ -1224,42 +1234,42 @@ LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
 LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
 
 
-[41] [42] [43 <../Images/c123_pcb.jpg>] [44] [45]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [46]
+[41] [42] [43 <../Images/c123_pcb.jpg>] [44] [45] [46]
 <../Images/neighbourhoods_fak.png, id=201, 3155.79pt x 2726.185pt>
 File: ../Images/neighbourhoods_fak.png Graphic file (type png)
 
 <use ../Images/neighbourhoods_fak.png>
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 311.
- [47] [48 <../Images/neighbourhoods_fak.png (PNG copy)>] [49]
-Underfull \vbox (badness 4303) has occurred while \output is active []
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 305.
+ [47] [48 <../Images/neighbourhoods_fak.png (PNG copy)>] [49] [50]
 
- [50]
+LaTeX Warning: Citation `wiki_cells' on page 51 undefined on input line 387.
 
-LaTeX Warning: Citation `wiki_cells' on page 51 undefined on input line 393.
-
-[51] <../Images/Architecture_software.png, id=219, 341.8371pt x 183.78261pt>
+<../Images/Architecture_software.png, id=215, 341.8371pt x 183.78261pt>
 File: ../Images/Architecture_software.png Graphic file (type png)
 
-<use ../Images/Architecture_software.png> [52 <../Images/Architecture_software.
-png (PNG copy)>] <../Images/ICDS.png, id=223, 1136.245pt x 784.9325pt>
+<use ../Images/Architecture_software.png> [51]
+Underfull \vbox (badness 1895) has occurred while \output is active []
+
+ [52 <../Images/Architecture_software.png (PNG copy)>]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 464.
+
+<../Images/ICDS.png, id=223, 1154.3125pt x 869.2475pt>
 File: ../Images/ICDS.png Graphic file (type png)
 
-<use ../Images/ICDS.png>) (../Content/Evaluation.tex [53] [54 <../Images/ICDS.p
-ng>]
+<use ../Images/ICDS.png> [53] [54] [55 <../Images/ICDS.png>] [56])
+(../Content/Evaluation.tex [57] [58
+
+
+]
 Chapter 4.
-) (../Content/Conclusion.tex [55
-
-
-] [56
+) (../Content/Conclusion.tex [59] [60
 
 
 ]
 Chapter 5.
-) [57] [58
+) [61] [62
 
 
 
@@ -1337,6 +1347,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--126
 LaTeX Warning: Citation `osmo_wiki_c123' on page III undefined on input line 23
 .
 
+
+Overfull \hbox (2.48549pt too wide) detected at line 37
+ []\T1/ptm/m/n/10.95 XIV
+ []
+
+
+Overfull \hbox (2.48549pt too wide) detected at line 39
+ []\T1/ptm/m/n/10.95 XVI
+ []
+
+
+Overfull \hbox (6.13179pt too wide) detected at line 40
+ []\T1/ptm/m/n/10.95 XVII
+ []
+
 )
 \tf@lof=\write9
 \openout9 = `Master.lof'.
@@ -1356,22 +1381,59 @@ LaTeX Warning: Citation `osmo_wiki_c123' on page III undefined on input line 23
 
 ]
 Appendix A.
-[7] [8
+[7]
+Overfull \hbox (25.37581pt too wide) in paragraph at lines 31--33
+\T1/ptm/m/n/10.95 moved to \T1/pcr/m/n/10.95 osmocom-bb/src/host/layer23/src/mi
+sc \T1/ptm/m/n/10.95 and the \T1/pcr/m/n/10.95 Makefile.am
+ []
+
+
+Overfull \hbox (5.82301pt too wide) in paragraph at lines 46--47
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+<../Images/t191cable.jpg, id=281, 702.625pt x 609.27625pt>
+File: ../Images/t191cable.jpg Graphic file (type jpg)
+
+<use ../Images/t191cable.jpg> [8] [9 <../Images/t191cable.jpg>] [10
 
 
 ]
 Appendix B.
-[9] [10
-
-
-]
-Appendix C.
 [11] [12
 
 
 ]
+Appendix C.
+<../Images/sysinfo1.png, id=297, 260.172pt x 393.1488pt>
+File: ../Images/sysinfo1.png Graphic file (type png)
+
+<use ../Images/sysinfo1.png>
+
+LaTeX Warning: Float too large for page by 0.9002pt on input line 78.
+
+<../Images/sysinfo2.png, id=298, 261.32832pt x 440.55792pt>
+File: ../Images/sysinfo2.png Graphic file (type png)
+
+<use ../Images/sysinfo2.png>
+
+LaTeX Warning: Float too large for page by 61.98238pt on input line 83.
+
+<../Images/sysinfo3.png, id=299, 284.45473pt x 373.49136pt>
+File: ../Images/sysinfo3.png Graphic file (type png)
+
+<use ../Images/sysinfo3.png>
+<../Images/sysinfo4.png, id=300, 252.07776pt x 370.0224pt>
+File: ../Images/sysinfo4.png Graphic file (type png)
+
+<use ../Images/sysinfo4.png> [13] [14 <../Images/sysinfo1.png (PNG copy)>]
+[15 <../Images/sysinfo2.png (PNG copy)>] [16 <../Images/sysinfo3.png (PNG copy)
+>] [17 <../Images/sysinfo4.png (PNG copy)>] [18
+
+
+]
 Appendix D.
-) (./Master.acr [13] [14
+) (./Master.acr [19] [20
 
 
 ]
@@ -1384,20 +1446,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 []|\T1/ptm/m/n/10.95 Electrically Erasable Pro-grammable Read-Only
  []
 
-[15
+[21
 
 
-] [16]) [17] (./Master.aux)
+] [22]) [23] (./Master.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24421 strings out of 493848
- 460807 string characters out of 1152824
- 669735 words of memory out of 3000000
- 27057 multiletter control sequences out of 15000+50000
- 79697 words of font info for 104 fonts, out of 3000000 for 9000
+ 24816 strings out of 493848
+ 464492 string characters out of 1152824
+ 669765 words of memory out of 3000000
+ 27445 multiletter control sequences out of 15000+50000
+ 80434 words of font info for 106 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
@@ -1407,15 +1469,16 @@ amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
 cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/
-fonts/type1/public/eurosym/feymr10.pfb></usr/share/texmf-texlive/fonts/type1/ur
-w/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.
-pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
-f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on Master.pdf (79 pages, 9107699 bytes).
+fonts/type1/public/eurosym/feymr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf-texlive/fonts/type1/urw/c
+ourier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb
+></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texm
+f-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.p
+fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (89 pages, 14240385 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
+ 390 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
