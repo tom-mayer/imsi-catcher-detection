@@ -161,7 +161,11 @@ class PyCatcherGUI:
     
     def _on_evaluators_clicked(self, widget):
         self._evaluators_window.show()
-    
+
+    def _on_evaluators_window_close_clicked(self, window, event):
+        window.hide()
+        return True
+
     def _on_rules_clicked(self, widget):
         self._rules_window.show()
     

@@ -1,6 +1,12 @@
 import datetime
 import gtk
 import math
+from CellIDDatabase import CellIDDBStatus
+
+class LocationProvider:
+    GOOGLE = 0
+    OPENCELLID = 1
+    NONE = 2
 
 class BaseStationInformation: 
 
@@ -21,6 +27,9 @@ class BaseStationInformation:
         self.evaluation_report = {}
         self.evaluation = 'NYE'
         self.evaluation_by = 'NYE'
+        self.latitude = 0
+        self.longitude = 0
+        self.locationprovider = LocationProvider.NONE
                
     def get_list_model(self):
         return self.provider, str(self.arfcn), str(self.rxlev), self.evaluation, self.discovery_time
@@ -59,6 +68,11 @@ class BaseStationInformation:
         pass
 
     def create_report(self):
+        #TODO: remove this after scans with new data model are available
+        self.locationprovider = 'NONE'
+        self.longitude = 0
+        self.latitude = 0
+
         report_params = '''------- Base Station Parameters -----------
 Country: %s
 Provider: %s
@@ -68,8 +82,11 @@ BSIC: %s
 LAC: %s
 Cell ID: %s
 Neighbours: %s
+Latitude: %s
+Longitude: %s
+Location Provider: %s
 Evaluation: %s\n
-'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.get_neighbour_arfcn())),self.evaluation)
+'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.get_neighbour_arfcn())),self.latitude,self.longitude,self.locationprovider,self.evaluation)
 
         report_rules ='------- Rule Results -----------\n'
         for key in self.rules_report.keys():
@@ -125,6 +142,8 @@ class BaseStationInformationList:
         for item in filtered_list:
             store.append(item.get_list_model())
 
+    def _get_unfiltered_list(self):
+        return self._base_station_list
 
     def _get_filtered_list(self, band_filter, filters):
         filtered_list = []
@@ -160,4 +179,5 @@ class BaseStationInformationList:
             station.rules_report = rule_results.copy()
             station.evaluation, station.evaluation_report = evaluator.evaluate(rule_results)
             station.evaluation_by = evaluator.identifier
-    
+
+

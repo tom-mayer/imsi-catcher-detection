@@ -22,6 +22,7 @@
     <property name="default_width">341</property>
     <property name="default_height">256</property>
     <property name="has_resize_grip">False</property>
+    <signal name="delete-event" handler="_on_evaluators_window_close_clicked" swapped="no"/>
     <child>
       <object class="GtkImage" id="evaluation_image">
         <property name="visible">True</property>
@@ -490,13 +491,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btn_location">
+              <object class="GtkToolButton" id="btn_databases">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_action_appearance">False</property>
-                <property name="label" translatable="yes">Location</property>
+                <property name="label" translatable="yes">Databases</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">applications-internet</property>
+                <property name="icon_name">network-server</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -527,6 +528,20 @@
                 <property name="use_underline">True</property>
                 <property name="icon_name">document-open</property>
                 <signal name="clicked" handler="_on_load_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="btn_user_mode">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="label" translatable="yes">User Mode</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">applications-internet</property>
               </object>
               <packing>
                 <property name="expand">False</property>

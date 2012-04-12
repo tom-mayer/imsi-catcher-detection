@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  6 APR 2012 14:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  8 APR 2012 17:47
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1410,14 +1410,14 @@ File: ../Images/sysinfo1.png Graphic file (type png)
 
 <use ../Images/sysinfo1.png>
 
-LaTeX Warning: Float too large for page by 0.9002pt on input line 78.
+LaTeX Warning: Float too large for page by 0.9002pt on input line 79.
 
 <../Images/sysinfo2.png, id=298, 261.32832pt x 440.55792pt>
 File: ../Images/sysinfo2.png Graphic file (type png)
 
 <use ../Images/sysinfo2.png>
 
-LaTeX Warning: Float too large for page by 61.98238pt on input line 83.
+LaTeX Warning: Float too large for page by 61.98238pt on input line 84.
 
 <../Images/sysinfo3.png, id=299, 284.45473pt x 373.49136pt>
 File: ../Images/sysinfo3.png Graphic file (type png)
@@ -1476,7 +1476,7 @@ ourier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb
 f-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.p
 fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (89 pages, 14240385 bytes).
+Output written on Master.pdf (89 pages, 14240416 bytes).
 PDF statistics:
  390 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

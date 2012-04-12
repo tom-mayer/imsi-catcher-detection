@@ -44,11 +44,12 @@ ARFCN_mapping = {
 
 LAC_threshold = 0.5
 
-BSIC_database = ''
+#Database Configuration ----------------------------------------------------------------------------------------
 
-Cell_ID_database = ''
+Open_Cell_ID_Key = 'd7a5bc3f21b44d4bf93d1ec2b3f83dc4'
+Open_Cell_ID_Local = ''
 
-Home_database = ''
+
 
 #Evaluator Configuration ---------------------------------------------------------------------------------------
 
