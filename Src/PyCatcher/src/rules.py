@@ -1,4 +1,6 @@
-from settings import Provider_list, Provider_Country_list, LAC_mapping, ARFCN_mapping, LAC_threshold
+from settings import Provider_list, Provider_Country_list, LAC_mapping, ARFCN_mapping, LAC_threshold, RX_threshold
+from cellIDDatabase import CellIDDBStatus
+import math
 
 class RuleResult:
     OK = 'Ok'
@@ -116,7 +118,7 @@ class LACMedianRule (Rule):
         upper_bound = median + median * LAC_threshold
         lower_bound = median - median * LAC_threshold
 
-        if lower_bound < lac_to_test < upper_bound:
+        if lower_bound <= lac_to_test <= upper_bound:
             return RuleResult.OK
         else:
             return RuleResult.CRITICAL
@@ -191,18 +193,35 @@ class FullyDiscoveredNeighbourhoodsRule (Rule):
 
 class LocationAreaDatabaseRule(Rule):
     identifier = 'Location Area Database'
+    def __init__(self):
+        self.location_database_object = None
 
     def check(self, arfcn, base_station_list):
-        pass
+        if not self.location_database_object:
+            return RuleResult.IGNORE
+        for item in base_station_list:
+            if item.arfcn == arfcn:
+                result = self.location_database_object.get_station(item.cell)
+                if not result:
+                    return RuleResult.CRITICAL
+                rxmin = result[6]
+                rxmax = result[7]
+                rxmin_thresh = rxmin - math.fabs(rxmin * RX_threshold)
+                rxmax_thresh = rxmax + math.fabs(rxmax * RX_threshold)
+                if rxmin_thresh <= float(item.rxlev) <= rxmax_thresh:
+                    return RuleResult.OK
+                else:
+                    return RuleResult.CRITICAL
 
 class CellIDDatabaseRule (Rule):
     identifier = 'CellID Database'
 
     def check(self, arfcn, base_station_list):
-        pass
-
-class BDDLearningRule (Rule):
-    identifier = 'BDD Learning'
-
-    def check(self, arfcn, base_station_list):
-        pass
+        for item in base_station_list:
+            if item.arfcn == arfcn:
+                if item.db_status == CellIDDBStatus.NOT_LOOKED_UP:
+                    return RuleResult.IGNORE
+                if item.db_status == CellIDDBStatus.CONFIRMED:
+                    return RuleResult.OK
+                else:
+                    return RuleResult.CRITICAL

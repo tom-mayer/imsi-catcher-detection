@@ -23,11 +23,12 @@
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduciton}{1}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Structure}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Disclaimer}{1}}
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}GSM}{3}}
@@ -66,10 +67,10 @@
 \newlabel{sec:ms}{{2.2.1}{6}}
 \citation{GSM0505}
 \citation{ISO7810}
+\citation{protocols1999}
+\citation{protocols1999}
 \FN@pp@footnote@aux{3}{7}
 \FN@pp@footnote@aux{4}{7}
-\citation{protocols1999}
-\citation{protocols1999}
 \citation{kommsys2006}
 \citation{GSM23003}
 \citation{ITU212}
@@ -101,7 +102,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Base Station Subsystem}{15}}
 \newlabel{sec:bss}{{2.2.4}{15}}
 \@writefile{toc}{\contentsline {subsubsection}{Frequencies and the Cellular Principle}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900 Mhz band.}}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900\tmspace  +\thinmuskip {.1667em}MHz\ band.}}{16}}
 \newlabel{fig:frequency}{{2.4}{16}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.4}{\ignorespaces Frequencies in the different bands \cite  {kommsys2006}.}}{16}}
 \newlabel{tab:frequencies}{{2.4}{16}}
@@ -122,7 +123,7 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Sectorised configuration.}}}{19}}
 \newlabel{fig:configurations}{{2.6}{19}}
 \citation{kommsys2006}
-\@writefile{toc}{\contentsline {subsubsection}{Baste Station Controller}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{Base Station Controller}{20}}
 \citation{kommsys2006}
 \@writefile{toc}{\contentsline {subsubsection}{Transcoding rate and Adaption Unit}{21}}
 \citation{kommsys2006}
@@ -198,14 +199,12 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2.14}{\ignorespaces IMSI catching procedure. Adopted and simplified from \cite  {mueller}.}}{34}}
 \newlabel{fig:catcher_catch}{{2.14}{34}}
 \citation{dennis}
-\citation{mueller}
 \citation{imsi_wiki}
-\citation{mueller}
+\citation{fox}
 \@writefile{toc}{\contentsline {subsubsection}{Attacks}{35}}
 \newlabel{sec:attacks}{{2.4.1}{35}}
 \@writefile{toc}{\contentsline {paragraph}{MS is in normal cell selection mode:}{35}}
 \@writefile{toc}{\contentsline {paragraph}{MS is already connected to a network:}{35}}
-\citation{fox}
 \citation{fox}
 \citation{imsi_wiki}
 \citation{criminal_justice}
@@ -273,20 +272,26 @@
 \FN@pp@footnote@aux{16}{51}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{51}}
 \newlabel{sec:icds}{{3.3}{51}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Implemetation}{51}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{52}}
 \newlabel{fig:architecture}{{3.5}{52}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Implemetation}{52}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Configuration}{53}}
 \newlabel{sec:configuration}{{3.3.2}{53}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Operation}{53}}
 \newlabel{sec:icds_operation}{{3.3.3}{53}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces A python dictionary.}}{54}}
 \newlabel{fig:python_dict}{{3.6}{54}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces The ICDS main window.}}{55}}
-\newlabel{fig:icds}{{3.7}{55}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces The ICDS main window.}}{54}}
+\newlabel{fig:icds}{{3.7}{54}}
 \@writefile{toc}{\contentsline {paragraph}{Sweep scans:}{56}}
+\@writefile{toc}{\contentsline {paragraph}{CellID Information:}{56}}
+\newlabel{fig:databases}{{3.8(a)}{57}}
+\newlabel{sub@fig:databases}{{(a)}{57}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Settings windows for two ICDS features.}}{57}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Databases window.}}}{57}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {User Mode window.}}}{57}}
 \@writefile{toc}{\contentsline {paragraph}{Location Area Database:}{57}}
-\@writefile{toc}{\contentsline {paragraph}{Quick check:}{57}}
+\@writefile{toc}{\contentsline {paragraph}{User Mode:}{58}}
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Evaluation}{59}}
@@ -338,71 +343,51 @@
 \bibcite{blacklisting}{26}
 \bibcite{imsi_wiki}{27}
 \FN@pp@footnotehinttrue 
-\citation{GSM2009}
-\citation{GSM_history2011}
-\citation{GSM_stats2011}
-\citation{GSM2009}
-\citation{protocols1999}
-\citation{kommsys2006}
-\citation{GSM2009}
-\citation{kommsys2006}
-\citation{fox}
-\citation{def_catcher}
-\citation{mueller}
-\citation{osmo_wiki_c123}
 \FN@pp@footnotehinttrue 
-\FN@pp@footnotehinttrue 
-\FN@pp@footnotehinttrue 
-\citation{protocols1999}
-\citation{kommsys2006}
-\citation{GSM2009}
-\citation{GSM2009}
-\FN@pp@footnotehinttrue 
-\FN@pp@footnotehinttrue 
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}OsmocomBB}{VII}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}OsmocomBB}{III}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Installation}{VII}}
-\newlabel{sec:osmo_install}{{A.1}{VII}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Usage}{VIII}}
-\newlabel{sec:osmo_usage}{{A.2}{VIII}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{VIII}}
-\newlabel{sec:osmo_serial_schematics}{{A.3}{VIII}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Installation}{III}}
+\newlabel{sec:osmo_install}{{A.1}{III}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Usage}{IV}}
+\newlabel{sec:osmo_usage}{{A.2}{IV}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{IV}}
+\newlabel{sec:osmo_serial_schematics}{{A.3}{IV}}
 \FN@pp@footnotehinttrue 
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Schematics for the T191 unlock cable.}}{IX}}
-\newlabel{fig:schematics}{{A.1}{IX}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Schematics for the T191 unlock cable.}}{V}}
+\newlabel{fig:schematics}{{A.1}{V}}
 \FN@pp@footnotehinttrue 
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{XI}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{VII}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {B.1}Extextions}{XI}}
-\newlabel{sec:extensions}{{B.1}{XI}}
-\@writefile{toc}{\contentsline {section}{\numberline {B.2}Example Configuration}{XI}}
-\newlabel{sec:example_config}{{B.2}{XI}}
+\@writefile{toc}{\contentsline {section}{\numberline {B.1}Extextions}{VII}}
+\newlabel{sec:extensions}{{B.1}{VII}}
+\@writefile{toc}{\contentsline {section}{\numberline {B.2}Example Configuration}{VII}}
+\newlabel{sec:example_config}{{B.2}{VII}}
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
-\@writefile{toc}{\contentsline {chapter}{\numberline {C}System Information}{XIII}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}System Information}{IX}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\newlabel{sec:system_infos}{{C}{XIII}}
+\newlabel{sec:system_infos}{{C}{IX}}
 \FN@pp@footnotehinttrue 
-\@writefile{lof}{\contentsline {figure}{\numberline {C.1}{\ignorespaces System Information 1 Message}}{XIV}}
-\@writefile{lof}{\contentsline {figure}{\numberline {C.2}{\ignorespaces System Information 2 Message}}{XV}}
-\@writefile{lof}{\contentsline {figure}{\numberline {C.3}{\ignorespaces System Information 3 Message}}{XVI}}
-\@writefile{lof}{\contentsline {figure}{\numberline {C.4}{\ignorespaces System Information 4 Message}}{XVII}}
+\@writefile{lof}{\contentsline {figure}{\numberline {C.1}{\ignorespaces System Information 1 Message}}{X}}
+\@writefile{lof}{\contentsline {figure}{\numberline {C.2}{\ignorespaces System Information 2 Message}}{XI}}
+\@writefile{lof}{\contentsline {figure}{\numberline {C.3}{\ignorespaces System Information 3 Message}}{XII}}
+\@writefile{lof}{\contentsline {figure}{\numberline {C.4}{\ignorespaces System Information 4 Message}}{XIII}}
 \FN@pp@footnotehinttrue 
-\@writefile{toc}{\contentsline {chapter}{\numberline {D}Evaluation Data}{XIX}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {D}Evaluation Data}{XV}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{XIX}}
-\@writefile{toc}{\contentsline {section}{\numberline {D.2}ICDS Scans}{XIX}}
+\@writefile{toc}{\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{XV}}
+\@writefile{toc}{\contentsline {section}{\numberline {D.2}ICDS Scans}{XV}}
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
-\@writefile{toc}{\contentsline {chapter}{Acronyms}{XXI}}
+\@writefile{toc}{\contentsline {chapter}{Acronyms}{XVII}}
 \FN@pp@footnotehinttrue 
 \FN@pp@footnotehinttrue 
 \gdef \LT@i {\LT@entry 

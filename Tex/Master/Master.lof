@@ -4,7 +4,7 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Growth of mobile GSM subscriptions. Compiled from \cite {GSM2009,GSM_history2011,GSM_stats2011}}}{4}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The main components of a GSM network.}}{6}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Authentication procedure.}}{13}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900 Mhz band.}}{16}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900\tmspace +\thinmuskip {.1667em}MHz\ band.}}{16}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite {GSM2009}.}}{18}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Common base station configurations. Compiled from \cite {protocols1999}.}}{19}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Stantard configuration.}}}{19}
@@ -27,7 +27,10 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{49}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{52}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces A python dictionary.}}{54}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces The ICDS main window.}}{55}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The ICDS main window.}}{54}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Settings windows for two ICDS features.}}{57}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{57}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {User Mode window.}}}{57}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

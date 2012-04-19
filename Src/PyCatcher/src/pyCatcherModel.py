@@ -1,20 +1,33 @@
 import datetime
 import gtk
 import math
-from CellIDDatabase import CellIDDBStatus
+from cellIDDatabase import CellIDDBStatus
+from cellIDDatabase import CIDDatabases
+from rules import RuleResult
 
-class LocationProvider:
-    GOOGLE = 0
-    OPENCELLID = 1
-    NONE = 2
+class EnumTranslator:
+    CIDDBStatus = {
+        0:'Confirmed.',
+        1:'Approximated.',
+        2:'Error.',
+        3:'Not yet looked up.',
+        4:'Not in database.'
+    }
+    CIDDB = {
+        0:'None.',
+        1:'Google.',
+        2:'OpenCellID',
+        3:'Local Cell DB'
+    }
 
-class BaseStationInformation: 
+class BaseStationInformation:
 
     def __init__ (self):
         self.country = 'Nowhere'
         self.provider = 'Carry'
         self.arfcn = 0
         self.rxlev = 0
+        self.times_scanned = 0
         self.system_info_t2 = []
         self.system_info_t2bis = []
         self.system_info_t2ter = []
@@ -29,10 +42,11 @@ class BaseStationInformation:
         self.evaluation_by = 'NYE'
         self.latitude = 0
         self.longitude = 0
-        self.locationprovider = LocationProvider.NONE
+        self.db_status = CellIDDBStatus.NOT_LOOKED_UP
+        self.db_provider = CIDDatabases.NONE
                
     def get_list_model(self):
-        return self.provider, str(self.arfcn), str(self.rxlev), self.evaluation, self.discovery_time
+        return self.provider, str(self.arfcn), str(self.rxlev), str(self.cell),self.evaluation, self.discovery_time,0
     
     def get_neighbour_arfcn(self):
         if 1 < self.arfcn < 125:
@@ -68,11 +82,6 @@ class BaseStationInformation:
         pass
 
     def create_report(self):
-        #TODO: remove this after scans with new data model are available
-        self.locationprovider = 'NONE'
-        self.longitude = 0
-        self.latitude = 0
-
         report_params = '''------- Base Station Parameters -----------
 Country: %s
 Provider: %s
@@ -84,9 +93,10 @@ Cell ID: %s
 Neighbours: %s
 Latitude: %s
 Longitude: %s
-Location Provider: %s
+Database Status: %s
+Database Provider: %s
 Evaluation: %s\n
-'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.get_neighbour_arfcn())),self.latitude,self.longitude,self.locationprovider,self.evaluation)
+'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.get_neighbour_arfcn())),self.latitude,self.longitude,EnumTranslator.CIDDBStatus[self.db_status], EnumTranslator.CIDDB[self.db_provider],self.evaluation)
 
         report_rules ='------- Rule Results -----------\n'
         for key in self.rules_report.keys():
@@ -129,7 +139,14 @@ class BaseStationInformationList:
         filtered_list = self._get_filtered_list(band_filter, filters)
 
         for station in filtered_list:
-            code += str(station.arfcn) + r' [color=red]; '
+            if station.evaluation == RuleResult.OK:
+                code += str(station.arfcn) + r' [style = filled, fillcolor = green]; '
+            elif station.evaluation == RuleResult.WARNING:
+                code += str(station.arfcn) + r' [style = filled, fillcolor = yellow]; '
+            elif station.evaluation == RuleResult.CRITICAL:
+                code += str(station.arfcn) + r' [style = filled, fillcolor = red]; '
+            else:
+                code += str(station.arfcn) + r' [style = filled, fillcolor = white]; '
             for neighbour in station.get_neighbour_arfcn():
                 code += str(station.arfcn) + r' -> ' + str(neighbour) + r'; '
         #TODO: make printing the source a fixed option
@@ -179,5 +196,3 @@ class BaseStationInformationList:
             station.rules_report = rule_results.copy()
             station.evaluation, station.evaluation_report = evaluator.evaluate(rule_results)
             station.evaluation_by = evaluator.identifier
-
-

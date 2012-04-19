@@ -379,13 +379,13 @@ We know that the catcher cell has a new Cell ID that has not been there before.
 Therefore the \emph{Cell ID Databse Rule} has three different approaches to exploit this fact:
 \begin{itemize}
 	\item A database of Cell IDs can be learned by the \gls{icds} beforehand. 
-	Each cell that was seen more often over longer periods of time receives a higher rating.
 	This can be used to detect new Cell IDs that have not been seen before.
-	The better way to receive a Cell ID database is to use a commercially build one since it is always possible to overlook a cell when learning the surroundings.
+	The better way to receive a Cell ID database is to use a commercially build one since it is always possible to overlook a cell when learning the surroundings and not having scanned long enough.
 	\item A web service also offered by most providers of Cell ID databases can be used to see whether a cell actually exists and check whether it should be situated in the neighbourhood it is in.
 \end{itemize}
 The three largest Cell ID databases are the two commercial ones by Ericson\footnote{\url{https://labs.ericsson.com/apis/mobile-location/}} and combain\footnote{\url{http://location-api.com/}} as well as the free alternative OpenCellID\footnote{\url{http://www.opencellid.org/}} \cite{wiki_cells}.
 Ericson and combain have trial modes, where the first 1000 requests are free for developers afterwards a subscription or a fee per request must be paid.
+Another free alternative with a large coverage is Google Mobile Maps, that also offers a web service where CellIDs and their respecitve \glspl{lai} can be checked against their database to obtain localisation information (or simply check if they are part of the database).
 By adding this information new cells can be identified.
 
 The second where an existing cell is replaced is a bit more complicated since its parameters are an exact copy of the old cell.
@@ -502,7 +502,6 @@ Available filters are:
 	\begin{itemize}
 	\item Provider Filter: Takes a comma separated white list of providers that should be shown.
 	\item ARFCN Filter: Takes a range of \glspl{arfcn} to be shown.
-	\item Band Filter: This can be used to show only the 900 MHz or the 1800 MHz band.
 	\end{itemize}
 These filters can arbitrarily be combined together.
 
@@ -514,14 +513,14 @@ Choosing a new evaluator will also trigger a re-evaluation of all the data colle
 
 \item Evaluation: This button brings up a separate window showing only the final evaluation of the scan.
 
-\item Location Window: This window lets the user choose the current location that is used by the Local Area Database Rule.
-It is also possible to export the current scan as a Local Area Database or import an old database to be enhanced with data from the current scan.
+\item Databases Window: The settings for the databases the \gls{icds} uses can be changed here.
+These settings are mandatory if the Local Area Database Rule or the CellID Rule is going to be used.
 
 \item Save/Load Project: The current state of the application can be saved and loaded as \texttt{.cpf} files.
 This enables the user to continue a scan at a later point in time or to compare different data sets scanned at different points in time or locations with one another.
 
-%TODO: write this as soon as its finished
-\item Provider Quick Evaluation: Lets see what this brings...
+\item User Mode: The \gls{icds} is ultimately meant to be designed as a tool that can be used by end users to check whether it is safe to initiate a phone call or not.
+This dialog presents a way the already configured tool could be presented to end users.
 
 \item Base Station List: This list gives an overview of which base stations have been discovered so far along with some distinguishing information including its evaluation.
 A detailed view of a base station can be brought up by selecting it in the list and hitting the enter key.
@@ -541,18 +540,43 @@ Zooming can also be done with the mouse wheel and it is possible to drag the gra
 \end{enumerate}
 The procedure of operation differs depending on the purpose.
 \paragraph{Sweep scans:} This is the normal mode of operation, scanning and evaluating all base stations in the perimeter.
+This is also used for gathering various kinds of information to be used for analysis later.
 At first the firmware needs to be flashed onto the device by pressing (1).
 After the flashing process is finished the scan can be started by pressing (2).
 Either before or during the scan (3),(4) and (5) can be used to customise the output or rules that should be considered during evaluation.
 The scan can be stopped at any time.
 Resuming the scan will renew the information in the Base Station List.
 
-\paragraph{Location Area Database:} To build up a new Location Area Database a sweep scan must be done.
-In the Location dialog (7) a location must be set, so the \gls{icds} know to which location the data is linked.
-Afterwards it can be saved and used by adding it to the list of available location databases in the \texttt{settings.py}.
-It is also possible to load an existing database and add the information obtained during the sweep scan to this database.
-To use such a database for evaluation, the location must be set correctly and the respective rule must be activated.
-The correct database will be used automatically.
+\begin{figure}
+\centering
+\subfigure[Databases window.]{\includegraphics[width=.4\textwidth]{../Images/databases}\label{fig:databases}}
+\subfigure[User Mode window.]{\includegraphics[width=.4\textwidth]{../Images/databases}}
+\caption{Settings windows for two ICDS features.}
+\end{figure}
+
+\paragraph{CellID Information:} CellID information can be obtained through several different means.
+The Databases window shown in Figure \ref{fig:databases} can be brought up by pressing (7).
+In the upper part settings concerning the acquisition of CellIDs can be found.
+The operator has the choice between three different methods which can also be used in combination.
+\emph{Google Mobile Maps Service} compares the station's CellIDs and \glspl{lai} to the ones in the Google database.
+If they are found they are marked as such and additionally their location information will be set.
+\emph{OpenCellID Web Service} performs the same task if activated.
+As of now OpenCellID has a very low coverage compared to Google's service but it has been included since it is an open source approach that is developed and updated constantly.
+The \emph{Use Local Databse} feature allows to use a previously build Location Area Database as CellID Database for lookups.
+For this purpose the location to be used as database has to be entered in the textfield.
+Offline lookups can be done that way, which are considerably faster that online lookups, the raw data used by the OpenCellID project can also be downloaded and used as a offline version for reference that way.
+Since these lookups take some time if performed using webservices, this is not done while the scan is taking place, to not delay the acquisition of information from new base stations.
+Pressing the button below the checkboxes will add the CellID Database information from the selected sources to all the stations currently in the base station list.
+If more than one service is activated lookups will be done starting with the Google service and using the next one in line only if the previous lookup failed.
+Having at least one service activated and run on the base station list is a precondition for the CellID Rule to work.
+
+\paragraph{Location Area Database:} The correct location for the Locataion Area Database can also be found in the Databases window.
+Having set up the correct location in the \emph{Current Location} field and having a valid database for that location are preconditions for the Location Are Database Rule to work.
+To build up a database for a specific location a sweep scan for this location has to be done.
+After the sweep scan is finished, the current location has to be set in the dialog and the button for adding/updating the database has to be pressed.
+If there was no existing database for that location it will be created, otherwise the database will be updated with the new information acquired by the sweep scan.
+To raise the quality of a Location Area Database it is recommended to do multiple sweep scans and integrate them rather than to only rely on a single scan.
+This raises the probability that all \gls{bts} in the perimeter are found and it solidifies the interval in which the base station signal strength varies.
 
 %TODO: write this once implementation is finished
-\paragraph{Quick check:} After a sweep scan is completed....
+\paragraph{User Mode:} After a sweep scan is completed....

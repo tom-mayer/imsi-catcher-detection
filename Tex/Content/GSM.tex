@@ -7,8 +7,8 @@ The $U_m$ interface will be described in detail in Section \ref{sec:Um} since th
 Section \ref{sec:catcher} will finally explain how an IMSI-catcher works and how it replaces the system components as well as state from a technical and law perspective why these devices have become a threat to all-day privacy. 
  
 \section{A Historical Perspective}
-The acronym GSM was originally derived fom \emph{Group Sp\'{e}ciale Mobile}.
-This committee was part of the \gls{cept} 1982, with the task of developing a pan-Eurpean digital cellular mobile radio standard in the 900 MHz band.
+The acronym GSM was originally derived from \emph{Group Sp\'{e}ciale Mobile}.
+This committee was part of the \gls{cept} 1982, with the task of developing a pan-Eurpean digital cellular mobile radio standard in the 900\MHz band.
 1986 the frequency range was officially licensed.
 The foundation of this task group was a direct answer to the development of independent and incompatible analog radio networks during the 80's.
 Examples of such networks were the C-Netz in Germany, the \gls{tacs} in the UK and \gls{nmt} in Scandinavia.
@@ -20,13 +20,13 @@ This agreement was the foundation for allowing international operation of mobile
 In the same year the committee submitted the first detailed specification for the new communications standard.
 The acronym was reinterpreted in 1991 after the committee became a part of the \gls{etsi} in 1989 to \emph{Global System for Mobile Communications}.
 The very same year the specifications for \gls{dcs1800} were submitted.
-These were essentially the same specifications translated to the 1800 MHz band and the foundation for the USA's 1900 MHz band.
+These were essentially the same specifications translated to the 1800\MHz band and the foundation for the USA's 1900\MHz band.
 Under the umbrella of the \gls{etsi}, many \glspl{stc} began to work on different aspects of mobile communication, like network aspects (SMG 03) or security aspects (SMG 10).
 SMG 05 dealt with future networks and especially with UMTS specifications which eventually became an independent body inside the \gls{etsi}.
 
 In 1992 many European countries had operational mobile telephone networks.
 These networks were a huge success, and as early as 1993 they already counted more than one million subscribers \cite{GSM2009}.
-Also many networks on different frequency bands (900 MHz, 1800 MHz, 1900 MHz) were started outside Europe in countries like the US or Australia with Telstra as the first non European provider.
+Also many networks on different frequency bands (900\MHz, 1800\MHz, 1900\MHz) were started outside Europe in countries like the US or Australia with Telstra as the first non European provider.
 The rapid growth of mobile subscribers worldwide until today can be seen in figure \ref{fig:gsm_growth}.
 Three of the main reasons for this rapid growth are explained by Heine \cite{protocols1999} as:
 \begin{itemize}
@@ -80,9 +80,9 @@ The focus was later expanded in the light of the \emph{International Mobile Comm
 \end{itemize}
 Up to now the \gls{3gpp} has enhanced mobile standards.
 In 2005 the first \gls{hsdpa} network went online.
-\gls{hsdpa} \cite{hsdpa} is a protocol that enables mobile users to download data with speeds up to 84 MBit/s since release 9.
+\gls{hsdpa} \cite{hsdpa} is a protocol that enables mobile users to download data with speeds up to 84\,MBit/s since release 9.
 \gls{hsupa} \cite{hsupa} is a related protocol in the \gls{hspa} family that provides similar functionality for uploading data.
-These and other specification are published on the \gls{3gpp} website\footnote{\url{http://www.3gpp.org/}}.
+These and other specification are published on the \gls{3gpp} website\footnote{3GPP - Specification Groups,\url{http://www.3gpp.org/} [Online; Accessed 04.2012]}.
 
 \section{The GSM Network}
 \label{sec:network}
@@ -118,41 +118,39 @@ The three subsystems as well as the \gls{ms} will now be discussed in greater de
 \label{sec:ms}
 With the advent of portable microprocessors in the 80's mobile phones became possible.
 Advance in technology up to today yielded ever smaller mobile phones with ever more functionality year by year to a point where not the technology itself was the constraining factor for size but the user interface, \eg button and display sizes.
+This trend changed however with the upcoming of so called smart-phones. 
+With weight being the driving factor and not size resolution and display sizes started to increase again but the devices became ever thinner.
 What hasn't changed is the basic distinction between \gls{me} and \gls{sim}, the parts of which a \gls{ms} consists.
 
 It is hard to deliver a consistent definition for what a \gls{me} is.
 GSM Recommendation 02.07 \cite{GSM0207} summarizes the mandatory and optional features of a \gls{ms}.
 Some of the most important mandatory features are \cite{protocols1999}:
 \begin{itemize}
-	\item \gls{dtmf} signaling capability.
+	\item \gls{dtmf} signalling capability.
 	\item \gls{sms} capability.
 	\item The ciphering algorithms A5/1 and A5/2 need to be implemented.
-	\item Display capability for short messages and dialed numbers, as well as available \gls{plmn}s.
-	\item Capable of doing emergency calls without \gls{sim} card.
+	\item Display capability for short messages and dialled numbers, as well as available \gls{plmn}s.
+	\item A cyphering indicator that shows the user whether encryption is activated on the current connection or not.
 	\item Machine fixed \gls{imei}.
 	In a strict sense this disqualifies many modern mobile phones since the \gls{imei} is not fixed onto the device itself but rather is part of the software or firmware.
-	Tools like \emph{ZiPhone}\footnote{\url{http://www.ziphone.org/}} for iOS devices\footnote{\url{http://www.apple.com/ios/}}, especially iPhone, can change this supposedly unchangeable identifier.
+	Tools like \emph{ZiPhone}\footnote{Unlock iPhone 4, Jailbreak iPhone, \url{http://www.ziphone.org/} [Online; Accessed 04.2012]} for iOS devices\footnote{Apple iOS5, \url{http://www.apple.com/ios/} [Online; Accessed 04.2012]}, especially iPhone, can change this supposedly unchangeable identifier.
 \end{itemize}
-
-The range of devices complying to these specifications is rather large so finding a categorisation can be challenging.
-The intuitive approach would be to establish buckets by device type but there are so many different devices as well as hybrid devices out there that this approach would be impracticable.
-Does a smartphone belong into the same category as a \gls{pda} or in the category of basic mobile phones; and what would a basic mobile phone be?
-
-Another way to categorize different \gls{me}s is by supported frequency band and power class rating according to GSM  05.05\cite{GSM0505}.
-Most mobile phones and smartphones belong to power class 4 and 5, which are for handheld devices.
-Class 4 devices have and output of 2/33 W/dBm and class 5 0.8/29 W/dBm.
+A way to categorize different \gls{me}s is by supported frequency band and power class rating according to GSM 05.05 \cite{GSM0505}.
+Most mobile phones and smart-phones belong to power class 4 and 5, which are for handheld devices.
+Class 4 devices have and output of 2/33\,W/dBm and class 5 0.8/29\,W/dBm.
+%TODO: insert more informatio here
 Classes with higher output are typically installed devices, \eg in cars.
-These classes are different for each of the frequency bands, since output needed in higher frequency bands (1800/1900 MHz) is less compared to the 900 MHz band, or the north American 850 MHz band.
+These classes are different for each of the frequency bands, since output needed in higher frequency bands (1800/1900\MHz) is less compared to the 900\MHz band or the north American 850\MHz band.
 
 The supported band is also common category, since it describes in which countries a mobile phone can be used.
 However it is more common nowadays that \gls{me} supports two bands, three bands or even all four bands.
 These are called dual-band, tri-band and quad-band devices respectively.
 
 As the name suggests the \gls{sim} card is essentially a data storage that holds user specific data.
-This separation is interesting for the GSM user since it allows him/her to exchange the \gls{me} without having to contact the provider.
+This separation is interesting for the \gls{gsm} user since it allows him/her to exchange the \gls{me} without having to contact the provider.
 Thus it can be used on different frequency bands and is one of the preconditions for roaming.
 The \gls{sim} card can either be in plug-in format or ID-1 SIM format which is normally used for telephone cards, credit cards or car installed \gls{me}.
-The plug-in format is also called ID-000 and can be found in ISO/IEC 7810\cite{ISO7810}.
+The plug-in format is also called ID-000 and can be found in ISO/IEC 7810 \cite{ISO7810}.
 
 The most important information stored on a \gls{sim} card are the \gls{imsi} and the \gls{ki}.
 A subset of other parameters stored on the \gls{eeprom} of the card can be seen in Table \ref{tab:simdata}.
@@ -167,8 +165,8 @@ Parameter		&Description\\
 \midrule
 A3/A8			&Algorithms required for authentication and generation of the session key\\
 Ki				&Secret key\\
-Kc				&Session key, generated from a random number and Ki vie A8\\
-PIN				&Secret numeric password to use a SIM card\\
+Kc				&Session key, generated from a random number and Ki via A8\\
+PIN				&Secret numeric password to use the SIM card\\
 PUK				&Secret numeric password to unlock the SIM card\\
 \midrule
 \multicolumn{2}{l}{Subscriber Data}\\
@@ -188,14 +186,16 @@ Home PLMN		&Multiple entries to identify the home PLMN\\
 \end{table}
 
 This key is used to generate the \gls{kc}, as will be explained in Section \ref{sec:nss}.
-Most of this data, although not the security relevant \gls{ki} can be read via a USB \gls{sim} card reader, which can be bought for around \$10 on the web.
+Most of this data, although not the security relevant \gls{ki} and \gls{kc} can be read via a USB \gls{sim} card reader, which can be bought for around \$10 on the web.
 Since \gls{ki} never leaves the card, \gls{kc} has to be dynamically generated on the card.
 This can be done since the card itself has a microprocessor that manages the security relevant data.
-Key functions, like running the GSM key algorithm, verifying a \gls{pin} or reading a file can be accessed through the microprocessor via a communication protocol.
+Key functions, like running the \gls{gsm} key algorithm, verifying a \gls{pin} or reading a file can be accessed through the microprocessor via a communication protocol.
 A brief description of the protocol and functionalities can be found in Sauter's book \cite{kommsys2006}.
 
-The \gls{imsi} as described in GSM 23.003\cite{GSM23003} uniquely identifies a subscriber.
+The \gls{imsi} as described in GSM 23.003 \cite{GSM23003} uniquely identifies a subscriber.
 It has at most 15 digits and is divided into three parts, \gls{mcc}, \gls{mnc} and \gls{msin} of which only the last part is the personal identification number of the subscriber.
+%TODO: insert imsi example
+\[13091283012938\]
 The first two are also called \gls{hni}.
 The three digit \gls{mcc} describes the country code, the area of domicile of the mobile subscriber.
 The \gls{mnc} is an identification number for the home \gls{plmn}.
@@ -271,7 +271,7 @@ Also during calls if the subscriber leaves the respective service area of the sw
 A procedure called Handover achieves just that.
 
 For this central role to work it is necessary to be connected to all the other components of the \gls{nss}.
-This is done via different connecitons called Interfaces.
+This is done via different connections called Interfaces.
 A brief description of what the different interfaces in a GSM network are and what their respective function is can be seen in Table \ref{tab:interfaces}.
 
 \begin{table}
@@ -305,9 +305,6 @@ $U_m$			&BTS $\leftrightarrow$ MS	&Registration procedure, call data \etc as wel
 \label{tab:interfaces}
 \end{table}
 
-The $U_m$ interface will be of special interest to this project since it is the source for gathering broadcast information about the network and the respective base stations without directly registering with them.
-The interface itself will be explained in detail in Section \ref{sec:Um}.
-
 \subsubsection{Home Location Register}
 The \gls{hlr} is the central database in which all personal subscriber related data is stored.
 The entries can be divided into two classes, permanent administrative and temporary data.
@@ -324,6 +321,7 @@ As can be seen in Figure \ref{fig:gsm_network} there can be multiple \glspl{vlr}
 These registers can be seen as caches for data located in the \gls{hlr}.
 Thus they are intended to reduce signalling between the \gls{msc} and the \gls{hlr}.
 Each time a subscriber enters a new area that is serviced by a new \gls{msc}, data for this subscriber is transferred to the respective \gls{vlr} from the \gls{hlr}.
+%TODO: more exact on what is transmitted
 Such data includes the \gls{imsi} and the \gls{msisdn} as well as authentication data and information on which services are available to that particular subscriber.
 Additionally the subscriber is assigned a one-time \gls{imsi} called \gls{tmsi} and information in which \gls{la} the \gls{ms} was registered last is transmitted.
 In this way the regular \gls{imsi} is not used and can thus not be harvested by tapping into the radio channel.
@@ -350,7 +348,7 @@ Different companies like Airwide Solutions (now acquired by Mavenir)\footnote{\u
 The \gls{ac} is the network component responsible for authenticating mobile subscribers.
 It is a part of the \gls{hlr} and the only place apart form the customer's \gls{sim} card where the secret key \gls{ki} is stored.
 The authentication is not only done once when the subscriber connects to the network but rather on many occasions \eg the start of a call or other significant events to avoid misuse by a third party.
-This authentication routine is a key based challenge-response procedure\footnote{A procedure where a challenge is encrypted with a key only the sender and recipient possess so only the desired person can decrypt the challenge and can send the required response.} outlined in Figure \ref{fig:authentication}.
+This authentication routine is a key based challenge-response procedure\footnote{A procedure where one party poses a question, a so called challenge and the party to be authenticated has to provide a valid answer.} outlined in Figure \ref{fig:authentication}.
 The steps of the procedure can be summarized as follows:
 \begin{enumerate}
 	\item User connects to the network or triggers an event that needs authentication at the \gls{msc}.
@@ -362,10 +360,10 @@ The steps of the procedure can be summarized as follows:
 		\item RAND: a 128 bit random number.
 		\item SRES: a 32 bit number called signed response, which is generated by A3 with \gls{ki} and RAND as inputs.
 		\item Kc: the ciphering key that is used to cypher the data during transmission.
-		It is also generated with \gls{ki} and RAND.
+		It is also generated with \gls{ki} and RAND using the algorithm A8.
 	\end{itemize}
 	To save signalling bandwidth usually more than one authentication triplet is generated and returned to the \gls{msc} by the \gls{ac}.
-	It should be noted that, since a separate cyphering key is used, the secret key never leaves the \gls{ac}.
+	It should be noted that, since a separate cyphering key \gls{kc} is used, the secret key never leaves the \gls{ac}.
 	
 	In the second case either a previously generated authentication triplet is used or new authentication triplets are requested.
 	\item RAND is transmitted to the \gls{ms} by the \gls{msc} where the signed response SRES* is created by the \gls{sim} card using A3, \gls{ki} and RAND.
@@ -418,14 +416,14 @@ Before discussing the individual components of this subsystem it is important to
 \begin{figure}
 \centering
 \includegraphics{../Images/Mapping}
-\caption{Mapping of functional entities on the 900 Mhz band.}
+\caption{Mapping of functional entities on the 900\MHz band.}
 \label{fig:frequency}
 \end{figure}
 
 A frequency band as shown in Figure \ref{fig:frequency} is distributed into different functional entities.
 The band is divided into a range for the uplink, the part that is used by the \gls{ms} to upload data into the network and the downlink, that is utilised by the network to send data back.
-In the 900 MHz band each of these has a width of 25 MHz.
-These bands themselves are furthermore divided into channels, each spanning 200 kHz, which accounts for 125 channels on 25 MHz.
+In the 900\MHz band each of these has a width of 25\MHz.
+These bands themselves are furthermore divided into channels, each spanning 200\,kHz, which accounts for 125 channels on 25\MHz.
 
 \begin{table}
 \centering
@@ -449,7 +447,7 @@ GSM 850		&128-251	&824-849		&869-894		&45\\
 \end{table}
 
 Each of which is identified by its \gls{arfcn}.
-This is a simple numbering scheme, given to those 200 kHz channels.
+This is a simple numbering scheme, given to those 200\,kHz channels.
 The frequencies and \glspl{arfcn} are connected as follows:
 \begin{align}
 F_\text{Uplink} 	&= \text{Start}_\text{Band} + 0.2 \cdot (\text{ARFCN} -(\text{Start}_\text{ARFCN} -1))\\
@@ -467,8 +465,8 @@ For other bands the numbers differ and can be seen in Table \ref{tab:frequencies
 An additional method called time multiplexing which will be explained in further detail in Section \ref{sec:Um}, makes is possible to map $125 \cdot 8 = 1000$ channels that could be used for voice transmission over that band.
 Some of these channels need to be used for signalling.
 Even though the number by itself seems high it would never suffice to service a large urban area.
-This is one of the reasons why another frequency band in the 1800 MHz range has been opened with 75 MHz up- and downlink supporting 375 channels.
-That by itself would also never suffice to service the huge number of subscribers therefore the GSM network like any other modern mobile radio network is based on a cellular architecture which makes it possible to reuse frequencies.
+This is one of the reasons why another frequency band in the 1800\MHz range has been opened with 75\MHz up- and downlink supporting 375 channels.
+That by itself would also never suffice to service the huge number of subscribers therefore the \gls{gsm} network like any other modern mobile radio network is based on a cellular architecture which makes it possible to reuse frequencies.
 The range of one receiver station is drastically reduced to service only a small area.
 This is called the cell of the \gls{bts} which in theory can be approximated by a hexagon.
 Each of these cells is assigned a different frequency to avoid interference.
@@ -487,7 +485,6 @@ This procedure raises the number of effectively usable by a large factor.
 However certain disadvantages come with this procedure as well \cite{protocols1999}.
 Increasing the amount of receivers automatically increases the cost of infrastructure for the provider.
 Due to the nature of the mobility of subscribers this increases the amount of Handovers needed since it is more likely that a subscriber leaves a small cell during an active call.
-Also an update of the location of a subscribers needs to be done more often to ensure reachability for incoming calls.
 These inflict increased signalling load on the network itself.
 
 \begin{figure}
@@ -500,12 +497,14 @@ These inflict increased signalling load on the network itself.
 \end{figure}
 
 \subsubsection{Base Transceiver Station}
-They are also called Base Stations and are the entry points to the network for subscribers.
-Theoretically a \gls{bts} can serve a cell of 35 km radius however this is decreased by interference, reflection- and shadowing effects.
+They are also called base stations and are the entry points to the network for subscribers.
+Theoretically a \gls{bts} can serve a cell of 35\,km radius however this is decreased by interference, reflection- and shadowing effects.
+Also this is the theoretical limit for a cell on the 900\MHz band.
+A 1800\MHz cell has a lower coverage since the signal falloff is greater due to the shorter wavelength.
 The limiting factor here are the number of subscribers itself.
-A single station can only serve a limited number of users which yields a radius as low as 100 m for a single \gls{bts} in dense urban housing areas \cite{kommsys2006}.
+A single station can only serve a limited number of users which yields a radius as low as 100\,m for a single \gls{bts} in dense urban housing areas \cite{kommsys2006}.
 On the countryside where population is less dense the constraining factor can also be transmission power of the \gls{me}.
-Therefore cells with a radius above 15 km are seldom seen.
+Therefore cells with a radius above 15\,km are seldom seen.
 
 \begin{figure}
 	\centering
@@ -517,10 +516,9 @@ Therefore cells with a radius above 15 km are seldom seen.
 \end{figure}
 
 \glspl{bts} and their corresponding cells can have different configurations depending on load or morph structure of the surroundings.
-The main configurations will now be discussed shortly.
 
-In a \emph{standard configuration} every base base station has its own \gls{ci}, it is a one to one mapping of cells to \gls{bts}.
-This is an cost effective way of providing service to a rural or sparse settled area.
+In a \emph{standard configuration} every base station has its own \gls{ci}, it is a one to one mapping of cells to \gls{bts}.
+This is a cost effective way of providing service to a rural or sparse settled area since only one \gls{bts} is used to cover a large area.
 An comparative illustration of configurations can be found in Figure \ref{fig:configurations}.
 
 The \emph{umbrella configuration} is build around one central \gls{bts} that is on high ground compared to its neighbours and has a higher transmission power.
@@ -536,7 +534,7 @@ In the other configurations a single \gls{bts} covers always a 360$^\circ$ area,
 The idea is to use antennas which only cover a certain angle, like 180$^\circ$, 120$^\circ$ or 60$^\circ$ dividing a cell into two, three or six sectors respectively each having its own \gls{bts}.
 Main advantages are that each single \gls{bts} has to deal with less subscribers and that in a multi-sector configuration frequencies can be reused inside a cell, which is  a great advantage for these densely settled areas.
 
-\subsubsection{Baste Station Controller}
+\subsubsection{Base Station Controller}
 The \gls{bsc} is the central unit in the \gls{bss}.
 It can be compared to a digital exchange in a standard telephone network with additional mobile extensions.
 The design idea was to remove all radio related load from the \gls{msc} into the radio subsystem.
@@ -548,7 +546,6 @@ As a result the initialisation and maintenance of signalling and voice channels 
 What channels are and how they are established is explained in Section \ref{sec:channels}.
 For the sake of functional explanation of the \gls{bsc} it will suffice to regard channels as a communication line for a particular purpose like receiving or sending voice data or  for sending broadcast information.
 Due to the nature of a mobile network certain other tasks have to be performed like Handovers and power management \cite{kommsys2006}.
-We will now look at the different tasks in more detail.
 
 A \emph{signalling channel} is needed when a subscriber wants to start a call or send a text message.
 The \gls{ms} sends a channel request message to the \gls{bsc} which needs to check if any \glspl{sdcch} are free.
@@ -576,18 +573,19 @@ After synchronising with the new cell an acknowledgement is sent by the base sta
 What remains is freeing the old \gls{tch} for further use by other subscribers.
 
 \subsubsection{Transcoding rate and Adaption Unit}
-Inside the \gls{nss} voice data is moved with 64 kBit/s over E-1 connections.
+Inside the \gls{nss} voice data is moved with 64\,kBit/s over E-1 connections.
 The resources on the air interface are much scarcer, therefore this amount of voice data cannot directly be sent to \glspl{ms} through the radio network.
-The data rate on the $U_m$ interface for voice is about 22.8 kBit/s as will be broken down in detail in Section \ref{sec:radio}.
-Since the channel is noisy and prone to errors, a lot of this bandwidth has to be subtracted for error correction purpose leaving around 13 kBit/s for actual voice data \cite{kommsys2006}.
-The 64 kBit/s PCM signal is sent from the \gls{msc} to the \gls{ms}, on its way it is compressed and then sent over the air interface.
-On the other side, the compressed 13 kbit/s signal is decompressed to 64 kBit/s again.
+The data rate on the $U_m$ interface for voice is about 22.8\,kBit/s as will be broken down in detail in Section \ref{sec:radio}.
+Since the channel is noisy and prone to errors, a lot of this bandwidth has to be subtracted for error correction purpose leaving around 13\,kBit/s for actual voice data \cite{kommsys2006}.
+The 64\,kBit/s PCM signal is sent from the \gls{msc} to the \gls{ms}, on its way it is compressed and then sent over the air interface.
+On the other side, the compressed 13\,kbit/s signal is decompressed to 64 kBit/s again.
 The compression and decompression on the subscriber's side is handled by the \gls{me} while on the network side the \gls{trau} is responsible for these tasks.
 Additionally the \gls{trau} can choose from a variety of codecs (compression/decompression algorithms).
 The one normally used is called Full Rate codec.
-Another codec is the Half Rate codec which compresses the voice signal to 7 kBit/s thus making it possible to double the amount of \glspl{tch} since one channel can be used to transfer two different voice signals.
+Another codec is the Half Rate codec which compresses the voice signal to 7\,kBit/s thus making it possible to double the amount of \glspl{tch} since one channel can be used to transfer two different voice signals.
 This is interesting for crowded events where a lot of subscribers need to be served by a relatively small number of \gls{bts}.
 
+%TODO: move this section to the bts
 One of the most important tasks of the \gls{trau} apart from compressing, decompressing and correcting transmission errors is ciphering the voice data.
 As in most cases when handling continuous data a stream cyphering algorithm is used.
 The stream cypher key $K_c$ that is generated by the authentication centre.
@@ -604,9 +602,10 @@ The complete procedure is outlined in Figure \ref{fig:cypher}.
 \label{fig:cypher}
 \end{figure}
 
-Some strong ciphering algorithms are not permitted in certain countries so there is a variety of algorithms called A5/1, A5/2,$\ldots$ A5/n from which one needs to be chosen upon connecting to the network.
-However the encryption in only optional and not mandatory.
-If the network does not offer encryption, the \gls{me} sends its data unencrypted, without giving notice to the user in most cases.
+Some strong ciphering algorithms are not permitted in certain countries so there is a variety of algorithms called A5/0, A5/1 and A5/2 from which one needs to be chosen upon connecting to the network.
+However the encryption is only optional and not mandatory, the use of A5/0 indicates that no encryption is used.
+If the network does not offer such encryption, the \gls{me} sends its data unencrypted, without giving notice to the user in most cases.
+A ciphering indicator is part of most mobile phones, but on most models it is disabled by the operator to not confuse the customers.
 The other weakness is the locality of encryption.
 The procedure only affects the transmission from the \gls{me} to the \gls{bts}, everything after that is unencrypted voice data.
 This is especially a problem when providers use point-to-point radio systems to connect their base stations to the \gls{msc}.
@@ -632,10 +631,10 @@ Additional hardware for each channel is also required to enable duplex transmiss
 
 That number of available frequencies would not suffice to meet the demand, more communication channels were needed.
 To that end another technique has been introduced, called \gls{tdma}.
-In \gls{gsm} networks each of these sub-bands yielded by the \gls{fdma} procedure has a width of 200 kHz.
+In \gls{gsm} networks each of these sub-bands yielded by the \gls{fdma} procedure has a width of 200\,kHz.
 Onto this smaller carrier frequency, \gls{tdma} frames are transmitted, that contain eight time slots.
-These frames have a transmission length of 4.615 ms.
-Each of these timeslots could host the data of a different subscriber, although the first one is usually used for signalling procedures.
+These frames have a transmission length of 4.615\,ms.
+Each of these timeslots could host the data of a different subscriber, although the first two are usually used for signalling procedures.
 An illustration of how these multiplexing methods work together can be seen in Figure \ref{fig:fdma_tdma}.
 
 \begin{figure}
@@ -650,14 +649,14 @@ Another important aspect is the frame hierarchy and the resulting frame numberin
 The frame number is broadcasted frequently on the \gls{sch} to keep mobile subscribers in sync and inform subscribers that are about to connect or request a channel for communication.
 Figure \ref{fig:frame_hierarchy} shows a complete diagram of the numbering scheme and frame hierarchy for reference.
 
-The timeslots on the lowest level of the hierarchy have a length of $4.615\text{ ms} \div 8 = 577~\mu\text{s}$ and are also known as Bursts numbered from 0 to 7.
+The timeslots on the lowest level of the hierarchy have a length of $4.615\text{\,ms} \div 8 = 577~\mu\text{s}$ and are also known as Bursts numbered from 0 to 7.
 Every new \gls{tdma} frame the sequence number is increased by one.
-Since this number cannot be increased endlessly is repeated every 3 h 28 m 53 s and 760 ms.
+Since this number cannot be increased endlessly is repeated every 3\,h 28\,m 53\,s and 760\,ms.
 This is the largest chunk in the frame hierarchy and it is called Hyperframe.
 Superframes and Multiframes are layers in between the Hyperframe and the \gls{tdma} frame.
 As can be seen in the diagram the two variants of Multiframes, the 26-Multiframe containing 26 \gls{tdma} frames transports traffic channels as well as the respective control channels and the 51-Multiframe with its 51 \gls{tdma} frames with signalling data only.
 Superframes wrap these different kinds of Multiframes into packages of the same size.
-So either 51 26-Multiframes can be carried by a Superframe or 51 26-Multiframes yielding a duration of 6 s and 120 ms each.
+So either 51 26-Multiframes can be carried by a Superframe or 51 26-Multiframes yielding a duration of 6\,s and 120\,ms each.
 Finally 2048 Superframes make up one Hyperframe.
 
 \begin{figure}
@@ -693,9 +692,10 @@ The channel request message itself has only little data and large Guard Times si
 \end{figure}
 
 \subsubsection{Burst Types}
+%TODO make explanation more consistent with image
 As suggested by the paragraph above there are different kinds of Bursts which are shown in \ref{fig:burst_types} \cite{GSM2009}.
 All Bursts contain the before mentioned Guard Times which separate them from the next Burst.
-In addition to data bits and known fixed bit sequences every frame has has tail bits, which mark the beginning and the end of a frame.
+In addition to data bits and known fixed bit sequences every frame has tail bits, which mark the beginning and the end of a frame.
 The training sequence is a fixed bit sequence that appears in conjunction with data bit sequences.
 During a radio transmission procedure the signal can be distorted by shadowing, reflection, or other factors which would result in a loss of data.
 But since the training sequence is known it is possible to reconstruct the original signal by comparing the incoming training sequence with the expected one and thus conserving the data bits.
@@ -770,6 +770,8 @@ These are point to multi-point channels.
 	\item \gls{agch}: This is the channel used to respond to a \gls{ms} if a request has been made on the \gls{rach}.
 	The acknowledgement message also contains information on which \gls{sdcch} to use.
 \end{itemize}
+
+%TODO move si parsing here
 \subsubsection{Combinations}
 These channels cannot arbitrarily be mapped onto Multiframes.
 There is a complex multiplexing scheme defined in GSM 05.02 \cite{gsm0502} that explains which channel combinations can occur inside a Multiframe.
@@ -843,6 +845,7 @@ This protocol handles configuration and allocation of radio channels as well as 
 Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to Layer 3 functionality but is only transported via \gls{rr} between \gls{ms} and the \gls{nss} \cite{protocols1999}.
 
 \section{IMSI-Catcher}
+%TODO more motivation (espacially fact that everyone is concerned)
 \label{sec:catcher}
 An \gls{imsi}-Catcher is a technical device that is used to capture the \gls{imsi} and \gls{imei} numbers of mobile subscribers.
 The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into the participant's calls or pinpoint the location of the subscriber \cite{fox}.
@@ -855,8 +858,7 @@ This has proven to be a challenge to the authorities.
 In 1996 Rohde \& Schwarz a company based in Munich, Germany has developed a device called ''GA 090'' which was the first \gls{imsi}-catcher.
 Its was capable of yielding a list with all the \gls{imsi} numbers in the perimeter as well as pinpointing the location of a subscriber given the \gls{imsi}.
 Short thereafter the ''GA 900'' was presented which had the additional capability of tapping into calls that originated from a particular \gls{imsi}.
-These commercial versions of catchers produced by Rohde \& Schwarz were priced between 200 000 \euro{} and 300 000 \euro{} in 2001 \cite{fox}.
-Although these catchers are meant to be bought by authorities, it is also possible to buy them as a private customer or to order them from abroad.
+These commercial versions of catchers produced by Rohde \& Schwarz were priced between 200\,000\,\euro{} and 300\,000\,\euro{} in 2001 \cite{fox}.
 Regulations prohibit the use of \gls{imsi}-catchers for individuals since the frequency bands the \gls{gsm} network uses are reserved for providers.
 However it cannot be guaranteed that such a catcher is not used illegally.
 In addition to these commercial products different projects \cite{dennis, def_catcher} have shown that such devices can be built at a very low budget.
@@ -875,9 +877,8 @@ The next section will explain under which circumstances a catcher can be used in
 
 \subsection{Mode of Operation}
 \label{sec:catcher_operation}
-Basically an \gls{imsi}-Catcher masks itself as a base station and lures subscribers in its perimeter, to connect to it without their knowledge.
-Ways of luring a subscriber into a catcher are explained in Section \ref{sec:attacks}.
-The one shown in Figure \ref{fig:catcher_catch} is broadcasting a new \gls{lai} to the \gls{ms} at very high power, suggesting that the \gls{ms} entered a new area and has to re-authenticate \cite{mueller}.
+Basically an \gls{imsi}-Catcher masks itself as a base station and lures subscribers in its perimeter to connect to it without their knowledge.
+The attack shown in Figure \ref{fig:catcher_catch} is broadcasting a new \gls{lai} to the \gls{ms} at very high power, suggesting that the \gls{ms} entered a new area and has to re-authenticate \cite{mueller}.
 
 \begin{figure}
 	\centering
@@ -889,11 +890,12 @@ The one shown in Figure \ref{fig:catcher_catch} is broadcasting a new \gls{lai} 
 Once a subscriber connects to the device, a command is sent to the \gls{ms} which asks for the \gls{sim}'s \gls{imsi}.
 This command is normally only used in case of an error \cite{fox} but can be abused this way.
 
+%TODO übergang verfeinern
 This is only possible since authentication in a \gls{gsm} network is one-sided as discussed earlier in Section \ref{sec:authentication}.
 The subscriber has no way of checking the authenticity of a base station but rather has to trust the broadcasted identifier which can be easily forged by a catcher.
 At this stage, the subscriber can already be localized as being in a certain distance of the catcher.
 
-Having the \gls{imsi} the authorities can now also query the provider for personal information about the subscriber, however criminals often use fake credentials when obtaining a \gls{sim} card.
+Having the \gls{imsi} the authorities can now also query the provider for personal information about the subscriber, however criminals may use fake credentials when obtaining a \gls{sim} card.
 Since it is only possible to catch all the \glspl{imsi} in an area, the person to be observed has to be followed and the catcher has to be used multiple times.
 Each time it yields a set of numbers in the area. 
 The \gls{imsi} that is part of all the sets is the \gls{imsi} of the person under observation.
@@ -912,10 +914,9 @@ The \gls{imei} is also harvested in a similar fashion if the observed person tri
 \subsubsection{Attacks}
 \label{sec:attacks}
 When operating a catcher the first and most important step is to actually trick the \gls{ms} into connecting to the catcher.
-A lot of phones save the frequency the were tuned to last and upon connecting to the mobile network this is the first frequency they try.
+A lot of phones save the frequency they were tuned to last and upon connecting to the mobile network this is the first frequency they try.
 Therefore a \gls{ms} has to be set to 'normal cell selection' mode which means it starts scanning for the best base station available.
-Four possible ways of luring a \gls{ms} to the \gls{imsi}-catcher will now be explained.
-Three were presented by Wehrle for the 'Open Source IMSI-catcher' project \cite{dennis} and one by Federrath \cite{mueller}.
+Three ways of luring a subscriber to the forged cell were presented by Wehrle for the 'Open Source IMSI-catcher' project \cite{dennis}.
 The attacks differ on whether the \gls{ms} already is in normal cell selection mode or not, \ie it is connected to another \gls{bts}.
 
 \paragraph{MS is in normal cell selection mode:}
@@ -930,11 +931,9 @@ It can be achieved either by jamming the frequency band of the cell the \gls{ms}
 This can be done the following way.
 In this method the fact is abused that the \gls{ms} knows its neighbourhood (since it has been broadcasted by the \gls{bts}) and does regular quality measurements.
 The main idea is that the operator of the catcher chooses the frequency of a \gls{bts} that is in the neighbourhood of the \gls{bts} that the target \gls{ms} is connected to.
-This way the operator can make sure the \gls{ms} know this frequency and hast quality measurements associated with it.
+This way the operator can make sure the \gls{ms} know this frequency and has quality measurements associated with it.
 Furthermore should the chosen \gls{bts}, the one that will be replaced by the catcher, have a bad signal to noise ratio (which is why the \gls{ms} is currently not connected to it).
 As soon as the catcher starts broadcasting on that frequency, quality measurements will radically improve and the \gls{ms} will initiate a change of cells to the catcher cell if the quality is above its current cell.
-Another way is to broadcast a new \gls{lai} to the \gls{ms} suggesting it just arrived at a new location and therefore initiating a cell selection \cite{mueller}.
-This works as long as the \gls{ms} has no active connections to the network, if it has, the jamming method can help to disconnect the \gls{ms} from the network.
 
 \subsubsection{Risks and Irregularities}
 An \gls{imsi}-catcher cannot target an individual subscriber, it always targets an area thus breaching the privacy of uninvolved subjects.

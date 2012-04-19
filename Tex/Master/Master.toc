@@ -1,6 +1,7 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Introduciton}{1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Structure}{1}
+\contentsline {section}{\numberline {1.2}Disclaimer}{1}
 \contentsline {chapter}{\numberline {2}GSM}{3}
 \contentsline {section}{\numberline {2.1}A Historical Perspective}{3}
 \contentsline {section}{\numberline {2.2}The GSM Network}{5}
@@ -15,7 +16,7 @@
 \contentsline {subsection}{\numberline {2.2.4}Base Station Subsystem}{15}
 \contentsline {subsubsection}{Frequencies and the Cellular Principle}{15}
 \contentsline {subsubsection}{Base Transceiver Station}{18}
-\contentsline {subsubsection}{Baste Station Controller}{20}
+\contentsline {subsubsection}{Base Station Controller}{20}
 \contentsline {subsubsection}{Transcoding rate and Adaption Unit}{21}
 \contentsline {section}{\numberline {2.3}The $U_m$ Interface}{22}
 \contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{23}
@@ -50,26 +51,27 @@
 \contentsline {subsection}{\numberline {3.2.3}Forged Parameters}{50}
 \contentsline {subsubsection}{Database Rules}{50}
 \contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{51}
-\contentsline {subsection}{\numberline {3.3.1}Implemetation}{51}
+\contentsline {subsection}{\numberline {3.3.1}Implemetation}{52}
 \contentsline {subsection}{\numberline {3.3.2}Configuration}{53}
 \contentsline {subsection}{\numberline {3.3.3}Operation}{53}
 \contentsline {paragraph}{Sweep scans:}{56}
+\contentsline {paragraph}{CellID Information:}{56}
 \contentsline {paragraph}{Location Area Database:}{57}
-\contentsline {paragraph}{Quick check:}{57}
+\contentsline {paragraph}{User Mode:}{58}
 \contentsline {chapter}{\numberline {4}Evaluation}{59}
 \contentsline {chapter}{\numberline {5}Conclusion}{61}
 \contentsline {section}{\numberline {5.1}Related Projects}{61}
 \contentsline {section}{\numberline {5.2}Future Work}{61}
 \contentsline {chapter}{Bibliography}{I}
-\contentsline {chapter}{\numberline {A}OsmocomBB}{VII}
-\contentsline {section}{\numberline {A.1}Installation}{VII}
-\contentsline {section}{\numberline {A.2}Usage}{VIII}
-\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{VIII}
-\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{XI}
-\contentsline {section}{\numberline {B.1}Extextions}{XI}
-\contentsline {section}{\numberline {B.2}Example Configuration}{XI}
-\contentsline {chapter}{\numberline {C}System Information}{XIII}
-\contentsline {chapter}{\numberline {D}Evaluation Data}{XIX}
-\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{XIX}
-\contentsline {section}{\numberline {D.2}ICDS Scans}{XIX}
-\contentsline {chapter}{Acronyms}{XXI}
+\contentsline {chapter}{\numberline {A}OsmocomBB}{III}
+\contentsline {section}{\numberline {A.1}Installation}{III}
+\contentsline {section}{\numberline {A.2}Usage}{IV}
+\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{IV}
+\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{VII}
+\contentsline {section}{\numberline {B.1}Extextions}{VII}
+\contentsline {section}{\numberline {B.2}Example Configuration}{VII}
+\contentsline {chapter}{\numberline {C}System Information}{IX}
+\contentsline {chapter}{\numberline {D}Evaluation Data}{XV}
+\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{XV}
+\contentsline {section}{\numberline {D.2}ICDS Scans}{XV}
+\contentsline {chapter}{Acronyms}{XVII}

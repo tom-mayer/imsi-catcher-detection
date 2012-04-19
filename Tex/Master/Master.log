@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  8 APR 2012 17:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  19 APR 2012 17:45
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -923,35 +923,35 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 \glo@main@file=\write6
 \openout6 = `Master.glo'.
 
-Package glossaries Info: Writing glossary file Master.glo on input line 94.
+Package glossaries Info: Writing glossary file Master.glo on input line 95.
 \glo@acronym@file=\write7
 \openout7 = `Master.acn'.
 
-Package glossaries Info: Writing glossary file Master.acn on input line 94.
+Package glossaries Info: Writing glossary file Master.acn on input line 95.
  (./Glossary.tex)
 (./Master.aux)
 \openout1 = `Master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 111.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 112.
  (/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package scrbase Info: No captions found for `german'
-(scrbase)             --> skipped on input line 111.
+(scrbase)             --> skipped on input line 112.
 Package scrbase Info: No captions found for `ngerman'
-(scrbase)             --> skipped on input line 111.
+(scrbase)             --> skipped on input line 112.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
@@ -1009,33 +1009,33 @@ Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../Images/unisiegel.pdf>])
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 122.
  (../Content/Abstract.tex) [2]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 135.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 136.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 135.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 136.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 135.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 136.
  (./Master.toc
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 2.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 4.
+(scrbook)            on input line 5.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 39.
+(scrbook)            on input line 40.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 59.
+(scrbook)            on input line 61.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 60.
+(scrbook)            on input line 62.
  [1
 
 
@@ -1045,47 +1045,28 @@ Class scrbook Info: You've told me to use the font selection of the element
 ]
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 63.
+(scrbook)            on input line 65.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 64.
-
-Overfull \hbox (1.87224pt too wide) detected at line 66
- []\T1/ptm/m/n/10.95 VIII
- []
-
-
-Overfull \hbox (1.87224pt too wide) detected at line 67
- []\T1/ptm/m/n/10.95 VIII
- []
-
+(scrbook)            on input line 66.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 68.
+(scrbook)            on input line 70.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 71.
+(scrbook)            on input line 73.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 72.
-
-Overfull \hbox (2.48549pt too wide) detected at line 73
- []\T1/ptm/m/n/10.95 XIX
- []
-
-
-Overfull \hbox (2.48549pt too wide) detected at line 74
- []\T1/ptm/m/n/10.95 XIX
- []
-
+(scrbook)            on input line 74.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 75.
+(scrbook)            on input line 77.
 )
 \tf@toc=\write8
 \openout8 = `Master.toc'.
 
- [2] (../Content/Motivation.tex
+
+[2] (../Content/Motivation.tex
 Chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -1126,11 +1107,11 @@ File: ../Images/Architecture.png Graphic file (type png)
 <use ../Images/Architecture.png> [5]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 117.
- [6 <../Images/Architecture.png (PNG copy)>] [7]
-Underfull \vbox (badness 2042) has occurred while \output is active []
+ [6 <../Images/Architecture.png (PNG copy)>] [7] [8] [9]
+Underfull \vbox (badness 6808) has occurred while \output is active []
 
- [8]
-[9] [10] [11] <../Images/Authentication.png, id=66, 359.1819pt x 323.0469pt>
+ [10]
+[11] <../Images/Authentication.png, id=66, 359.1819pt x 323.0469pt>
 File: ../Images/Authentication.png Graphic file (type png)
 
 <use ../Images/Authentication.png> [12] [13 <../Images/Authentication.png (PNG 
@@ -1138,14 +1119,13 @@ copy)>] [14] <../Images/Mapping.png, id=76, 337.28409pt x 115.19838pt>
 File: ../Images/Mapping.png Graphic file (type png)
 
 <use ../Images/Mapping.png> [15] [16 <../Images/Mapping.png (PNG copy)>]
-[17] <../Images/Cells.png, id=87, 98.72083pt x 88.8921pt>
+<../Images/Cells.png, id=84, 98.72083pt x 88.8921pt>
 File: ../Images/Cells.png Graphic file (type png)
-
-<use ../Images/Cells.png>
-<../Images/real_Cells.PNG, id=88, 743.02594pt x 496.10344pt>
+ <use ../Images/Cells.png>
+<../Images/real_Cells.PNG, id=85, 743.02594pt x 496.10344pt>
 File: ../Images/real_Cells.PNG Graphic file (type png)
 
-<use ../Images/real_Cells.PNG>
+<use ../Images/real_Cells.PNG> [17]
 <../Images/Standart_config.png, id=90, 199.4652pt x 133.26588pt>
 File: ../Images/Standart_config.png Graphic file (type png)
 
@@ -1168,7 +1148,7 @@ File: ../Images/Cipher.png Graphic file (type png)
 File: ../Images/TDMAFDMA.png Graphic file (type png)
 
 <use ../Images/TDMAFDMA.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4899) has occurred while \output is active []
 
  [23 <../Images/TDMAFDMA.png (PNG copy)>]
 <../Images/Frames.png, id=117, 367.42068pt x 252.29457pt>
@@ -1243,28 +1223,37 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 305.
  [47] [48 <../Images/neighbourhoods_fak.png (PNG copy)>] [49] [50]
 
-LaTeX Warning: Citation `wiki_cells' on page 51 undefined on input line 387.
+LaTeX Warning: Citation `wiki_cells' on page 51 undefined on input line 386.
 
 <../Images/Architecture_software.png, id=215, 341.8371pt x 183.78261pt>
 File: ../Images/Architecture_software.png Graphic file (type png)
 
-<use ../Images/Architecture_software.png> [51]
-Underfull \vbox (badness 1895) has occurred while \output is active []
-
- [52 <../Images/Architecture_software.png (PNG copy)>]
+<use ../Images/Architecture_software.png> [51] [52 <../Images/Architecture_soft
+ware.png (PNG copy)>]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 464.
-
-<../Images/ICDS.png, id=223, 1154.3125pt x 869.2475pt>
+ [53]
+<../Images/ICDS.png, id=226, 1343.0175pt x 821.0675pt>
 File: ../Images/ICDS.png Graphic file (type png)
 
-<use ../Images/ICDS.png> [53] [54] [55 <../Images/ICDS.png>] [56])
-(../Content/Evaluation.tex [57] [58
+<use ../Images/ICDS.png> [54 <../Images/ICDS.png>] [55]
+<../Images/databases.png, id=236, 358.33875pt x 373.395pt>
+File: ../Images/databases.png Graphic file (type png)
 
+<use ../Images/databases.png>
+File: ../Images/databases.png Graphic file (type png)
+ <use ../Images/databases.png>
+Overfull \hbox (10.40205pt too wide) in paragraph at lines 557--572
+[] \T1/ptm/b/n/10.95 Cel-lID In-for-ma-tion:[][] \T1/ptm/m/n/10.95 Cel-lID in-f
+or-ma-tion can be ob-tained through sev-eral dif-fer-ent means.
+ []
 
-]
+[56]) (../Content/Evaluation.tex [57 <../Images/databases.png>] [58]
 Chapter 4.
-) (../Content/Conclusion.tex [59] [60
+) (../Content/Conclusion.tex [59
+
+
+] [60
 
 
 ]
@@ -1342,46 +1331,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--126
  . html$\T1/ptm/m/n/10.95 ,
  []
 
-) [2] (./Master.lof
-
-LaTeX Warning: Citation `osmo_wiki_c123' on page III undefined on input line 23
-.
-
-
-Overfull \hbox (2.48549pt too wide) detected at line 37
- []\T1/ptm/m/n/10.95 XIV
- []
-
-
-Overfull \hbox (2.48549pt too wide) detected at line 39
- []\T1/ptm/m/n/10.95 XVI
- []
-
-
-Overfull \hbox (6.13179pt too wide) detected at line 40
- []\T1/ptm/m/n/10.95 XVII
- []
-
-)
-\tf@lof=\write9
-\openout9 = `Master.lof'.
-
- [3
-
-
-] [4
-
-
-] (./Master.lot)
-\tf@lot=\write10
-\openout10 = `Master.lot'.
-
- [5] (../Content/Appendix.tex [6
+) [2] (../Content/Appendix.tex
+Appendix A.
+[3
 
 
 ]
-Appendix A.
-[7]
 Overfull \hbox (25.37581pt too wide) in paragraph at lines 31--33
 \T1/ptm/m/n/10.95 moved to \T1/pcr/m/n/10.95 osmocom-bb/src/host/layer23/src/mi
 sc \T1/ptm/m/n/10.95 and the \T1/pcr/m/n/10.95 Makefile.am
@@ -1392,48 +1347,48 @@ Overfull \hbox (5.82301pt too wide) in paragraph at lines 46--47
 [][][][][][][][][][][][][][][][][][] 
  []
 
-<../Images/t191cable.jpg, id=281, 702.625pt x 609.27625pt>
+<../Images/t191cable.jpg, id=270, 702.625pt x 609.27625pt>
 File: ../Images/t191cable.jpg Graphic file (type jpg)
 
-<use ../Images/t191cable.jpg> [8] [9 <../Images/t191cable.jpg>] [10
+<use ../Images/t191cable.jpg> [4] [5 <../Images/t191cable.jpg>] [6
 
 
 ]
 Appendix B.
-[11] [12
+[7] [8
 
 
 ]
 Appendix C.
-<../Images/sysinfo1.png, id=297, 260.172pt x 393.1488pt>
+<../Images/sysinfo1.png, id=287, 260.172pt x 393.1488pt>
 File: ../Images/sysinfo1.png Graphic file (type png)
 
 <use ../Images/sysinfo1.png>
 
 LaTeX Warning: Float too large for page by 0.9002pt on input line 79.
 
-<../Images/sysinfo2.png, id=298, 261.32832pt x 440.55792pt>
+<../Images/sysinfo2.png, id=288, 261.32832pt x 440.55792pt>
 File: ../Images/sysinfo2.png Graphic file (type png)
 
 <use ../Images/sysinfo2.png>
 
 LaTeX Warning: Float too large for page by 61.98238pt on input line 84.
 
-<../Images/sysinfo3.png, id=299, 284.45473pt x 373.49136pt>
+<../Images/sysinfo3.png, id=289, 284.45473pt x 373.49136pt>
 File: ../Images/sysinfo3.png Graphic file (type png)
 
 <use ../Images/sysinfo3.png>
-<../Images/sysinfo4.png, id=300, 252.07776pt x 370.0224pt>
+<../Images/sysinfo4.png, id=290, 252.07776pt x 370.0224pt>
 File: ../Images/sysinfo4.png Graphic file (type png)
 
-<use ../Images/sysinfo4.png> [13] [14 <../Images/sysinfo1.png (PNG copy)>]
-[15 <../Images/sysinfo2.png (PNG copy)>] [16 <../Images/sysinfo3.png (PNG copy)
->] [17 <../Images/sysinfo4.png (PNG copy)>] [18
+<use ../Images/sysinfo4.png> [9] [10 <../Images/sysinfo1.png (PNG copy)>]
+[11 <../Images/sysinfo2.png (PNG copy)>] [12 <../Images/sysinfo3.png (PNG copy)
+>] [13 <../Images/sysinfo4.png (PNG copy)>] [14
 
 
 ]
 Appendix D.
-) (./Master.acr [19] [20
+) (./Master.acr [15] [16
 
 
 ]
@@ -1446,19 +1401,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 []|\T1/ptm/m/n/10.95 Electrically Erasable Pro-grammable Read-Only
  []
 
-[21
+[17
 
 
-] [22]) [23] (./Master.aux)
+] [18]) [19] (./Master.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24816 strings out of 493848
- 464492 string characters out of 1152824
- 669765 words of memory out of 3000000
- 27445 multiletter control sequences out of 15000+50000
+ 24802 strings out of 493848
+ 464233 string characters out of 1152824
+ 669802 words of memory out of 3000000
+ 27436 multiletter control sequences out of 15000+50000
  80434 words of font info for 106 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1476,9 +1431,9 @@ ourier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb
 f-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.p
 fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (89 pages, 14240416 bytes).
+Output written on Master.pdf (85 pages, 14250338 bytes).
 PDF statistics:
- 390 PDF objects out of 1000 (max. 8388607)
+ 380 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

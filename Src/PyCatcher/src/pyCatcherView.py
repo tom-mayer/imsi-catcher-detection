@@ -1,5 +1,6 @@
 import locale
-import gtk 
+import gtk
+from cellIDDatabase import CIDDatabases
 from xdot import DotWidget
 import datetime
 import time
@@ -22,6 +23,7 @@ class PyCatcherGUI:
         self._evaluators_window = self._builder.get_object('evaluators_window')
         self._evaluation_window = self._builder.get_object('evaluation_window')
         self._evaluation_image = self._builder.get_object('evaluation_image')
+        self._databases_window = self._builder.get_object('databases_window')
 
         self._ok_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/ok.png')
         self._warning_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/warning.png')
@@ -35,8 +37,10 @@ class PyCatcherGUI:
         self._add_column("Provider", 0)
         self._add_column("ARFCN", 1)
         self._add_column("Strength",2)
-        self._add_column("Evaluation",3)
-        self._add_column("Last seen", 4)
+        self._add_column("Cell ID",3)
+        self._add_column("Evaluation",4)
+        self._add_column("Last seen", 5)
+        self._add_column('# Scanned',6)
         self._bs_tree_view.set_model(self._catcher_controller.bs_tree_list_data)       
             
         self._horizontal_container = self._builder.get_object('vbox2')
@@ -106,10 +110,19 @@ class PyCatcherGUI:
         self._catcher_controller.neighbourhood_structure_rule.is_active = self._builder.get_object('cb_neighbourhood_structure').get_active()
         self._catcher_controller.pure_neighbourhood_rule.is_active = self._builder.get_object('cb_pure_neighbourhood').get_active()
         self._catcher_controller.full_discovered_neighbourhoods_rule.is_active = self._builder.get_object('cb_neighbours_discovered').get_active()
+        self._catcher_controller.cell_id_db_rule.is_active = self._builder.get_object('cb_cell_id_database').get_active()
+        self._catcher_controller.location_area_database_rule.is_active = self._builder.get_object('cb_local_area_database').get_active()
         self._catcher_controller.trigger_evaluation()
 
     def _update_evaluators(self):
         pass
+
+    def _update_databases(self):
+        self._catcher_controller.use_google =  self._builder.get_object('cb_google').get_active()
+        self._catcher_controller.use_open_cell_id = self._builder.get_object('cb_opencellid').get_active()
+        self._catcher_controller.use_local_db =  (self._builder.get_object('cb_cellid_database_local').get_active(),
+                                                  self._builder.get_object('te_cellid_database').get_text())
+        self._catcher_controller.set_new_location(self._builder.get_object('te_current_location').get_text())
 
     def show_info(self, message, title='PyCatcher', time_to_sleep=3, type='INFO'):
         gtk_type = {'INFO' : gtk.MESSAGE_INFO,
@@ -128,7 +141,15 @@ class PyCatcherGUI:
     
     def _on_graph_node_clicked (self, widget, url, event):
         print 'NODE CLICKED'
-    
+
+    def _on_web_services_clicked(self, widget):
+        self._update_databases()
+        self._catcher_controller.update_with_web_services()
+
+    def _on_localdb_add_clicked(self, widget):
+        self._update_databases()
+        self._catcher_controller.update_location_database()
+
     def _on_main_window_destroy(self, widget):
         self._catcher_controller.shutdown() 
         gtk.main_quit()
@@ -185,6 +206,15 @@ class PyCatcherGUI:
     def _on_details_delete(self, widget, dunno_what_this_param_does):
         self._detail_window.hide()
         return True
+
+    def _on_databases_clicked(self, widget):
+        self._databases_window.show()
+
+    def _on_databases_close_clicked(self, widget):
+        self._update_databases()
+        self._catcher_controller.trigger_evaluation()
+        self._databases_window.hide()
+
 
     def _on_save_clicked(self, widget):
         chooser = gtk.FileChooserDialog(title="Save Project",

@@ -6,14 +6,16 @@ from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,ProviderFilter, BandFilter900
 from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
 from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
-    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult
+    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule
 import pickle
+from localAreaDatabse import LocalAreaDatabase
+from cellIDDatabase import CellIDDatabase, CellIDDBStatus, CIDDatabases
 
 class PyCatcherController:
     def __init__(self):
         self._base_station_list = BaseStationInformationList()
-        store = gtk.ListStore(str,str,str,str, str)
-        store.append(('-','-','-','-', '-')) 
+        store = gtk.ListStore(str,str,str,str, str,str,str)
+        store.append(('-','-','-','-', '-','-','-'))
         self.bs_tree_list_data = store
         self._gui = PyCatcherGUI(self)
         self._driver_connector = DriverConnector()       
@@ -26,6 +28,9 @@ class PyCatcherController:
         self.band_filter.is_active = True
         
         self._filters = [self.arfcn_filter, self.provider_filter]
+
+        self._local_area_database = LocalAreaDatabase()
+        self._cell_id_database = CellIDDatabase()
 
         self._conservative_evaluator = ConservativeEvaluator()
         self._bayes_evaluator = BayesEvaluator()
@@ -50,10 +55,23 @@ class PyCatcherController:
         self.pure_neighbourhood_rule.is_active = True
         self.full_discovered_neighbourhoods_rule = FullyDiscoveredNeighbourhoodsRule()
         self.full_discovered_neighbourhoods_rule.is_active = False
+        self.cell_id_db_rule = CellIDDatabaseRule()
+        self.cell_id_db_rule.is_active = False
+        self.location_area_database_rule =  LocationAreaDatabaseRule()
+        self.location_area_database_rule.is_active = False
+        self.location_area_database_rule.location_database_object = self._local_area_database
 
         self._rules = [self.provider_rule, self.country_mapping_rule, self.arfcn_mapping_rule, self.lac_mapping_rule,
                         self.unique_cell_id_rule, self.lac_median_rule, self.neighbourhood_structure_rule,
-                        self.pure_neighbourhood_rule, self.full_discovered_neighbourhoods_rule]
+                        self.pure_neighbourhood_rule, self.full_discovered_neighbourhoods_rule, self.cell_id_db_rule,
+                        self.location_area_database_rule]
+
+        self.use_google = False
+        self.use_open_cell_id = False
+        self.use_local_db = (False, '')
+
+        self._location = ''
+
         gtk.main()
                 
     def log_message(self, message):
@@ -102,6 +120,72 @@ class PyCatcherController:
         elif evaluator == EvaluatorSelect.WEIGHTED:
             self._active_evaluator = self._weighted_evaluator
 
+    def update_with_web_services(self):
+        self._gui.log_line('Starting online lookups...')
+        for station in self._base_station_list._get_unfiltered_list():
+            found = False
+            if self.use_google:
+                self._gui.log_line('Looking up %d on Google.'%station.cell)
+                (status, lat, long) = self._cell_id_database.fetch_id_from_Google(station.cell, station.lac, station.country)
+                if status == CellIDDBStatus.CONFIRMED:
+                    self._gui.log_line('...found.')
+                    found = True
+                    station.latitude = lat
+                    station.longitude = long
+                    station.db_provider = CIDDatabases.GOOGLE
+                #TODO: remove else clause once new scans are available
+                else:
+                    station.latitude = 0
+                    station.longitude = 0
+                    station.db_provider = CIDDatabases.NONE
+                station.db_status = status
+            if self.use_open_cell_id and not found:
+                self._gui.log_line('Looking up %d on OpenCellID.'%station.cell)
+                (status, lat, long) = self._cell_id_database.fetch_id_from_OpenCellID(station.cell, station.lac, station.country, station.provider)
+                if status == CellIDDBStatus.CONFIRMED:
+                    self._gui.log_line('...found.')
+                    found = True
+                    station.latitude = lat
+                    station.longitude = long
+                    station.db_provider = CIDDatabases.OPENCID
+                elif staus == CellIDDBStatus.APPROXIMATED:
+                    self._gui.log_line('...approximated.')
+                    station.latitude = lat
+                    station.longitude = long
+                    station.db_provider = CIDDatabases.OPENCID
+                    #TODO: remove else clause once new scans are available
+                else:
+                    station.latitude = 0
+                    station.longitude = 0
+                    station.db_provider = CIDDatabases.NONE
+                station.db_status = status
+            if self.use_local_db[0] and not found:
+                self._gui.log_line('Looking up %d on Local.'%station.cell)
+                (status, lat, long) = self._cell_id_database.fetch_id_from_local(station.cell, self.use_local_db[1])
+                if status == CellIDDBStatus.CONFIRMED:
+                    self._gui.log_line('...found.')
+                    station.db_provider = CIDDatabases.LOCAL
+                    station.latitude = 0
+                    station.longitude = 0
+                    #TODO: remove else clause once new scans are available
+                else:
+                    station.latitude = 0
+                    station.longitude = 0
+                    station.db_provider = CIDDatabases.NONE
+                station.db_status = status
+        self._gui.log_line('Finished online lookups.')
+
+    def update_location_database(self):
+        self._local_area_database.load_or_create_database(self._location)
+        self._local_area_database.insert_or_alter_base_stations(self._base_station_list._get_unfiltered_list())
+        self._gui.log_line('Done with database upgrade on %s.'%self._location)
+
+    def set_new_location(self,new_location):
+        if new_location != self._location:
+            self._location = new_location
+            self._local_area_database.load_or_create_database(self._location)
+            self._gui.log_line('Location changed to %s'%self._location)
+
     def save_project(self, path):
         filehandler = open(path, 'w')
         pickle.dump(self._base_station_list, filehandler)
@@ -117,6 +201,7 @@ class PyCatcherController:
         self._gui.log_line('Project loaded from  ' + path)
 
     def trigger_evaluation(self):
+        self._gui.log_line('Re-evaluation')
         self._base_station_list.evaluate(self._rules, self._active_evaluator)
         self._base_station_list.refill_store(self.bs_tree_list_data, self.band_filter, self._filters)
         self.trigger_redraw()

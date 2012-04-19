@@ -19,9 +19,10 @@ Commands = {'osmocon_command' : [Osmocon_lib + '/host/osmocon/osmocon',
 
 #Rules Configuration -------------------------------------------------------------------------------------------
 
-Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus']
+Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus', 'DB Systel GSM-R']
 
 Provider_Country_list = {
+    'DB Systel GSM-R':'Germany',
     'T-Mobile':'Germany',
     'O2':'Germany',
     'Vodafone':'Germany',
@@ -29,29 +30,28 @@ Provider_Country_list = {
 }
 
 LAC_mapping = {
+    'DB Systel GSM-R': [0,999999],
     'T-Mobile' : [21000,22000],
-    'O2' : [0,9999],
+    'O2' : [0,99999],
     'Vodafone' : [0,100000],
     'E-Plus' : [0,100000]
 }
 
 ARFCN_mapping = {
+    'DB Systel GSM-R': [0,9999],
     'T-Mobile' : [0,9999],
     'O2' : [0,9999],
     'Vodafone' : [0,9999],
     'E-Plus' : [0,9999]
 }
 
-LAC_threshold = 0.5
+LAC_threshold = 0
+
+RX_threshold = 0.05
 
 #Database Configuration ----------------------------------------------------------------------------------------
 
 Open_Cell_ID_Key = 'd7a5bc3f21b44d4bf93d1ec2b3f83dc4'
-Open_Cell_ID_Local = ''
 
+Database_path = '/home/tom/imsi-catcher-detection/Src/PyCatcher/Databases/'
 
-
-#Evaluator Configuration ---------------------------------------------------------------------------------------
-
-Bayes_probabilities = {}
-Bayes_database = ''

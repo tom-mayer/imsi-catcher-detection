@@ -117,7 +117,7 @@ class ScanThread(threading.Thread):
                         line = scan_process.stdout.readline()
                         match = re.search(r'rxlev:\s(.\d+)',line)
                         if match:
-                            base_station.rxlev = match.group(1)
+                            base_station.rxlev = int(match.group(1))
                         #get si2
                         line = scan_process.stdout.readline()
                         match = re.search(r'si2\s(.+)',line)
