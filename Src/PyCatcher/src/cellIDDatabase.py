@@ -8,10 +8,10 @@ import os
 from settings import Database_path
 
 class CIDDatabases:
-    NONE = 0
-    GOOGLE = 1
-    OPENCID = 2
-    LOCAL = 3
+    NONE = 'None'
+    GOOGLE = 'Google'
+    OPENCID = 'Open Cell ID'
+    LOCAL = 'Local'
 
 class Translator:
     Country = {
@@ -30,11 +30,11 @@ class Translator:
     }
 
 class CellIDDBStatus:
-    CONFIRMED = 0
-    APPROXIMATED = 1
-    ERROR = 2
-    NOT_LOOKED_UP = 3
-    NOT_IN_DB = 4
+    CONFIRMED = 'Confirmed'
+    APPROXIMATED = 'Approximated'
+    ERROR = 'Error'
+    NOT_LOOKED_UP = 'Not looked up'
+    NOT_IN_DB = 'Not in DB.'
 
 class CellIDDatabase:
 

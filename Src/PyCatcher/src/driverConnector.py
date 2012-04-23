@@ -84,12 +84,12 @@ class ScanThread(threading.Thread):
                     if re.search('SysInfo', line):
                         base_station = BaseStationInformation()
                         #get country
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'Country:\s(\w+)',line)
                         if match:
                             base_station.country = match.group(1)
                         #get provider
-                        line = line = scan_process.stdout.readline()
+                        line = scan_process.stdout.readline()
                         match = re.search(r'Provider:\s(.+)',line)
                         if match:
                             base_station.provider = match.group(1)
@@ -118,19 +118,38 @@ class ScanThread(threading.Thread):
                         match = re.search(r'rxlev:\s(.\d+)',line)
                         if match:
                             base_station.rxlev = int(match.group(1))
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'\s((\d+)\s)*',line)
+                        if match:
+                            base_station.neighbours = map(int,match.group(0).strip().split(' '))
+                        #get si1
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'SI1:\s(.+)',line)
+                        if match:
+                            base_station.system_info_t1 = match.group(1).split(' ')
+                        #get si3
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'SI3:\s(.+)',line)
+                        if match:
+                            base_station.system_info_t3 = match.group(1).split(' ')
+                        #get si4
+                        line = scan_process.stdout.readline()
+                        match = re.search(r'SI4:\s(.+)',line)
+                        if match:
+                            base_station.system_info_t4 = match.group(1).split(' ')
                         #get si2
                         line = scan_process.stdout.readline()
-                        match = re.search(r'si2\s(.+)',line)
+                        match = re.search(r'SI2:\s(.+)',line)
                         if match:
                             base_station.system_info_t2 = match.group(1).split(' ')
                         #get si2ter
                         line = scan_process.stdout.readline()
-                        match = re.search(r'si2ter\s(.+)',line)
+                        match = re.search(r'SI2ter:\s(.+)',line)
                         if match:
                             base_station.system_info_t2ter = match.group(1).split(' ')
                         #get si2bis
                         line = scan_process.stdout.readline()
-                        match = re.search(r'si2bis\s(.+)',line)
+                        match = re.search(r'SI2bis:\s(.+)',line)
                         if match:
                             base_station.system_info_t2bis = match.group(1).split(' ')
                         #endinfo

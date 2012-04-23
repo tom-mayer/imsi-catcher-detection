@@ -4492,7 +4492,7 @@ static int gsm322_nb_start(struct osmocom_ms *ms, int synced)
 #endif
 			nb = gsm322_nb_alloc(cs, arfcn);
 			LOGP(DNB, LOGL_INFO, "Adding neighbour cell %s to "
-				"list.\n", gsm_print_arfcn(nb->arfcn));
+				"list (refer_pcs=%d, index=%d, map=%d) .\n", gsm_print_arfcn(nb->arfcn), refer_pcs, index, map[i >> 3]);
 			if (!(cs->list[index].flags & GSM322_CS_FLAG_SUPPORT))
 				nb->state = GSM322_NB_NOT_SUP;
 			changed = 1;

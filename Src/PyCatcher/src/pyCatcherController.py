@@ -1,15 +1,17 @@
 import gtk
-import gtk.glade 
+import gtk.glade
+import io
 from driverConnector import DriverConnector
 from pyCatcherModel import BaseStationInformation, BaseStationInformationList
 from pyCatcherView import PyCatcherGUI
-from filters import ARFCNFilter,ProviderFilter, BandFilter900
+from filters import ARFCNFilter,ProviderFilter
 from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
 from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
     LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule
 import pickle
 from localAreaDatabse import LocalAreaDatabase
 from cellIDDatabase import CellIDDatabase, CellIDDBStatus, CIDDatabases
+from settings import Database_path
 
 class PyCatcherController:
     def __init__(self):
@@ -23,9 +25,6 @@ class PyCatcherController:
 
         self.arfcn_filter = ARFCNFilter()
         self.provider_filter = ProviderFilter()
-
-        self.band_filter = BandFilter900()
-        self.band_filter.is_active = True
         
         self._filters = [self.arfcn_filter, self.provider_filter]
 
@@ -133,11 +132,6 @@ class PyCatcherController:
                     station.latitude = lat
                     station.longitude = long
                     station.db_provider = CIDDatabases.GOOGLE
-                #TODO: remove else clause once new scans are available
-                else:
-                    station.latitude = 0
-                    station.longitude = 0
-                    station.db_provider = CIDDatabases.NONE
                 station.db_status = status
             if self.use_open_cell_id and not found:
                 self._gui.log_line('Looking up %d on OpenCellID.'%station.cell)
@@ -153,11 +147,6 @@ class PyCatcherController:
                     station.latitude = lat
                     station.longitude = long
                     station.db_provider = CIDDatabases.OPENCID
-                    #TODO: remove else clause once new scans are available
-                else:
-                    station.latitude = 0
-                    station.longitude = 0
-                    station.db_provider = CIDDatabases.NONE
                 station.db_status = status
             if self.use_local_db[0] and not found:
                 self._gui.log_line('Looking up %d on Local.'%station.cell)
@@ -167,11 +156,6 @@ class PyCatcherController:
                     station.db_provider = CIDDatabases.LOCAL
                     station.latitude = 0
                     station.longitude = 0
-                    #TODO: remove else clause once new scans are available
-                else:
-                    station.latitude = 0
-                    station.longitude = 0
-                    station.db_provider = CIDDatabases.NONE
                 station.db_status = status
         self._gui.log_line('Finished online lookups.')
 
@@ -203,16 +187,16 @@ class PyCatcherController:
     def trigger_evaluation(self):
         self._gui.log_line('Re-evaluation')
         self._base_station_list.evaluate(self._rules, self._active_evaluator)
-        self._base_station_list.refill_store(self.bs_tree_list_data, self.band_filter, self._filters)
+        self._base_station_list.refill_store(self.bs_tree_list_data, self._filters)
         self.trigger_redraw()
 
     def trigger_redraw(self):
-        dotcode = self._base_station_list.get_dot_code(self.band_filter, self._filters)
+        dotcode = self._base_station_list.get_dot_code(self._filters)
         if dotcode != 'digraph bsnetwork { }':
             self._gui.load_dot(dotcode)
         result = RuleResult.IGNORE
         at_least_warning = False
-        for item in self._base_station_list._get_filtered_list(self.band_filter, self._filters):
+        for item in self._base_station_list._get_filtered_list(self._filters):
            if item.evaluation == 'Ignore':
                pass
            if item.evaluation == 'Ok' and not at_least_warning:
@@ -224,3 +208,29 @@ class PyCatcherController:
                result = RuleResult.CRITICAL
                break
         self._gui.set_image(result)
+
+    def export_csv(self):
+        if self._location == '':
+            self._gui.log_line('Set valid location before exporting!')
+            return
+        path = Database_path + self._location + '.csv'
+        file = open(path,'w')
+        file.write('Country, Provider, ARFCN, rxlev, BSIC, LAC, Cell ID, Evaluation, Latitude, Longitude, Encryption, DB Status, DB Provider, Neighbours\n')
+        for item in self._base_station_list._get_unfiltered_list():
+            file.write('%s, %s, %d, %d, %s, %d, %d, %s, %d, %d, %s, %s, %s, %s\n'%
+            (item.country,
+            item.provider,
+            item.arfcn,
+            item.rxlev,
+            item.bsic.replace(',','/'),
+            item.lac,
+            item.cell,
+            item.evaluation,
+            item.latitude,
+            item.longitude,
+            item.encryption,
+            item.db_status,
+            item.db_provider,
+            ' '.join(map(str,item.neighbours))))
+        file.close()
+        self._gui.log_line('Export done.')

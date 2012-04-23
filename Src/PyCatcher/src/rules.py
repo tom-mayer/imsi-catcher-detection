@@ -18,7 +18,7 @@ class Rule:
     def _extract_neighbours(self, arfcn, base_station_list):
         for item in base_station_list:
             if item.arfcn == arfcn:
-                return item.get_neighbour_arfcn()
+                return item.neighbours
 
     def _extract_provider(self, arfcn, base_station_list):
         for item in base_station_list:
@@ -128,24 +128,26 @@ class NeighbourhoodStructureRule (Rule):
     identifier = 'Neighbourhood Structure'
 
     def check(self, arfcn, base_station_list):
-        #TODO: remove this when parser fully implemented
-        if not 0 < arfcn < 125:
-            return RuleResult.IGNORE
-
-        neighbours = self._extract_neighbours(arfcn, base_station_list)
-
-        if not len(neighbours):
+        own_neighbours = self._extract_neighbours(arfcn, base_station_list)
+        if not len(own_neighbours):
             return RuleResult.CRITICAL
-
         at_least_one_neighbour_found = False
+        at_least_one_indirect_neighbour = False
 
         for item in base_station_list:
-            if item.arfcn in neighbours:
+            if item.arfcn in own_neighbours:
                 at_least_one_neighbour_found = True
                 break
+            else:
+                if item.arfcn != arfcn:
+                    for foreign_neighbour_arfcn in item.neighbours:
+                        if foreign_neighbour_arfcn in own_neighbours:
+                            at_least_one_indirect_neighbour = True
 
         if at_least_one_neighbour_found:
             return RuleResult.OK
+        elif at_least_one_indirect_neighbour:
+            return RuleResult.WARNING
         else:
             return RuleResult.CRITICAL
 
@@ -154,9 +156,6 @@ class PureNeighbourhoodRule (Rule):
     identifier = 'Pure Neighbourhoods'
 
     def check(self, arfcn, base_station_list):
-        #TODO: remove this when parser fully implemented
-        if not 0 < arfcn < 125:
-            return RuleResult.IGNORE
 
         neighbours = self._extract_neighbours(arfcn, base_station_list)
         provider = self._extract_provider(arfcn, base_station_list)
@@ -176,18 +175,15 @@ class FullyDiscoveredNeighbourhoodsRule (Rule):
     identifier = 'Fully Discovered Neighbourhoods'
 
     def check(self, arfcn, base_station_list):
-        #TODO: remove this when parser fully implemented
-        if not 0 < arfcn < 125:
-            return RuleResult.IGNORE
 
         neighbours = self._extract_neighbours(arfcn, base_station_list)
-        all_neighbours_discovered = True
+        found = 0
         for item in base_station_list:
             if item.arfcn in neighbours:
-                neighbours.remove(item.arfcn)
+                found += 1
 
-        if len(neighbours):
-            return RuleResult.WARNING
+        if len(neighbours) != found:
+            return RuleResult.CRITICAL
         else:
             return RuleResult.OK
 

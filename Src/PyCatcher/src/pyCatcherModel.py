@@ -5,20 +5,11 @@ from cellIDDatabase import CellIDDBStatus
 from cellIDDatabase import CIDDatabases
 from rules import RuleResult
 
-class EnumTranslator:
-    CIDDBStatus = {
-        0:'Confirmed.',
-        1:'Approximated.',
-        2:'Error.',
-        3:'Not yet looked up.',
-        4:'Not in database.'
-    }
-    CIDDB = {
-        0:'None.',
-        1:'Google.',
-        2:'OpenCellID',
-        3:'Local Cell DB'
-    }
+class Encryption:
+    A0 = 'A5/0'
+    A1 = 'A5/1'
+    A2 = 'A5/2'
+    NA = 'Not checked.'
 
 class BaseStationInformation:
 
@@ -27,10 +18,14 @@ class BaseStationInformation:
         self.provider = 'Carry'
         self.arfcn = 0
         self.rxlev = 0
-        self.times_scanned = 0
+        self.times_scanned = 1
+        self.system_info_t1 = []
+        self.system_info_t3 = []
+        self.system_info_t4 = []
         self.system_info_t2 = []
         self.system_info_t2bis = []
         self.system_info_t2ter = []
+        self.neighbours = []
         self.discovery_time = datetime.datetime.now().strftime('%T')
         self.found = False
         self.bsic = ''
@@ -42,44 +37,13 @@ class BaseStationInformation:
         self.evaluation_by = 'NYE'
         self.latitude = 0
         self.longitude = 0
+        self.encryption = Encryption.NA
         self.db_status = CellIDDBStatus.NOT_LOOKED_UP
         self.db_provider = CIDDatabases.NONE
+
                
     def get_list_model(self):
-        return self.provider, str(self.arfcn), str(self.rxlev), str(self.cell),self.evaluation, self.discovery_time,0
-    
-    def get_neighbour_arfcn(self):
-        if 1 < self.arfcn < 125:
-            return self._parse_900()
-        return []
-
-    def si_to_bin(self, si):
-        neighbours = si[3:19]
-        bin_representation = ''
-        for value in neighbours:
-            bin_representation += str(bin(int(value, 16))[2:].zfill(8))
-        return bin_representation
-
-    def parse_bit_mask(self, si, offset):
-        bin_representation = self.si_to_bin(si)
-        neighbours = []
-        for x in xrange(1,125):
-            index = 0-x
-            bit = bin_representation[index]
-            if bit == '1':
-                neighbours.append(abs(index) + offset)
-        return neighbours
-
-
-    def _parse_900(self):
-        neighbours = self.parse_bit_mask(self.system_info_t2, 0)
-        return map(int, neighbours)
-
-    def _parse_1800(self):
-        pass
-
-    def _parse_900_ext(self):
-        pass
+        return self.provider, str(self.arfcn), str(self.rxlev), str(self.cell),self.evaluation, self.discovery_time,self.times_scanned
 
     def create_report(self):
         report_params = '''------- Base Station Parameters -----------
@@ -91,12 +55,13 @@ BSIC: %s
 LAC: %s
 Cell ID: %s
 Neighbours: %s
+Encryption: %s
 Latitude: %s
 Longitude: %s
 Database Status: %s
 Database Provider: %s
 Evaluation: %s\n
-'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.get_neighbour_arfcn())),self.latitude,self.longitude,EnumTranslator.CIDDBStatus[self.db_status], EnumTranslator.CIDDB[self.db_provider],self.evaluation)
+'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.neighbours)),self.encryption,self.latitude,self.longitude,self.db_status, self.db_provider,self.evaluation)
 
         report_rules ='------- Rule Results -----------\n'
         for key in self.rules_report.keys():
@@ -109,10 +74,14 @@ Evaluation: %s\n
         report_evaluation +='\n\n'
 
         report_raw = '''------- Raw Information -----------
+SystemInfo_1:       %s
 SystemInfo_2:       %s
 SystemInfo_2ter:    %s
 SystemInfo_2bis:    %s
-'''%('  '.join(self.system_info_t2), '  '.join(self.system_info_t2ter), '  '.join(self.system_info_t2bis))
+SystemInfo_3:       %s
+SystemInfo_4:       %s
+
+'''%('  '.join(self.system_info_t1),'  '.join(self.system_info_t2),'  '.join(self.system_info_t2ter),'  '.join(self.system_info_t2bis), '  '.join(self.system_info_t3), '  '.join(self.system_info_t4))
 
 
         return report_params + report_rules + report_evaluation + report_raw
@@ -127,16 +96,17 @@ class BaseStationInformationList:
             #TODO: check if this works like i thought
             if item.arfcn == base_station.arfcn and item.bsic == base_station.bsic:
                 item.discovery_time = datetime.datetime.now().strftime('%T')
+                item.times_scanned += 1
                 break
         else:
             self._base_station_list.append(base_station)
-    
-    def get_dot_code(self, band_filter, filters=None):
+
+    def get_dot_code(self, filters=None):
         preamble = r'digraph bsnetwork { '
         postamble = r'}'
         code = ''
 
-        filtered_list = self._get_filtered_list(band_filter, filters)
+        filtered_list = self._get_filtered_list(filters)
 
         for station in filtered_list:
             if station.evaluation == RuleResult.OK:
@@ -147,33 +117,25 @@ class BaseStationInformationList:
                 code += str(station.arfcn) + r' [style = filled, fillcolor = red]; '
             else:
                 code += str(station.arfcn) + r' [style = filled, fillcolor = white]; '
-            for neighbour in station.get_neighbour_arfcn():
+            for neighbour in station.neighbours:
                 code += str(station.arfcn) + r' -> ' + str(neighbour) + r'; '
         #TODO: make printing the source a fixed option
         #print preamble + code + postamble
         return preamble + code + postamble
     
-    def refill_store(self, store, band_filter, filters=None):
+    def refill_store(self, store, filters=None):
         store.clear()
-        filtered_list = self._get_filtered_list(band_filter, filters)
+        filtered_list = self._get_filtered_list(filters)
         for item in filtered_list:
             store.append(item.get_list_model())
 
     def _get_unfiltered_list(self):
         return self._base_station_list
 
-    def _get_filtered_list(self, band_filter, filters):
+    def _get_filtered_list(self, filters):
         filtered_list = []
-
-        #only implemented for 900 band so far, so no distinction
-        if band_filter.is_active:
-            for item in self._base_station_list:
-                if 0 < item.arfcn < 125:
-                    filtered_list.append(item)
-        else:
-            for item in self._base_station_list:
-                filtered_list.append(item)
-
+        for item in self._base_station_list:
+            filtered_list.append(item)
         if filters is not None:
             for filter in filters:
                 if filter.is_active:

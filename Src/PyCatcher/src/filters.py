@@ -6,12 +6,6 @@ class Filter:
     def execute(self, station_list):
         raise NotImplementedError('Filter not yet implemented')
 
-class BandFilter(Filter):
-    band = 0
-
-    def execute(self, station_list):
-        raise NotImplementedError('Band Filters should not be executed!')
-
 class ARFCNFilter(Filter):
     def execute(self, station_list):
         filtered_list = []
@@ -31,6 +25,4 @@ class ProviderFilter(Filter):
                 filtered_list.append(station) 
         return filtered_list
 
-class BandFilter900(BandFilter):
-    band = 900
 

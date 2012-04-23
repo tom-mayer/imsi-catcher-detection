@@ -93,11 +93,6 @@ class PyCatcherGUI:
         else:
             self._catcher_controller.arfcn_filter.is_active = False
 
-        if self._builder.get_object('cb_filter_900').get_active():
-            self._catcher_controller.band_filter.is_active = True
-        else:
-            self._catcher_controller.band_filter.is_active = False
-
         self._catcher_controller.trigger_evaluation()
 
     def _update_rules(self):
@@ -116,6 +111,10 @@ class PyCatcherGUI:
 
     def _update_evaluators(self):
         pass
+
+    def _on_csv_clicked(self, widget):
+        self._update_databases()
+        self._catcher_controller.export_csv()
 
     def _update_databases(self):
         self._catcher_controller.use_google =  self._builder.get_object('cb_google').get_active()

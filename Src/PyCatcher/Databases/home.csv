@@ -1,0 +1,3 @@
+Country, Provider, ARFCN, rxlev, BSIC, LAC, Cell ID, Evaluation, Latitude, Longitude, Encryption, DB Status, DB Provider, Neighbours
+Germany, Vodafone, 62, -76, 7/4, 793, 21791, Ok, 0, 0, Not checked., Not looked up, None, 1 3 6 55 60 65 70 75 107 111 113 115 119
+Germany, Vodafone, 3, -83, 7/3, 793, 45352, Ok, 0, 0, Not checked., Not looked up, None, 1 6 55 62 65 70 75 111 113 119 725 729 731

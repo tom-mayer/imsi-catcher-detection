@@ -58,7 +58,7 @@ enum {
 };
 
 /* ranges of bands */
-static uint16_t band_range[][2] = {{0, 124}, {512, 885}, {955, 1023}, {0, 0}};
+static uint16_t band_range[][2] = {{0, 124}, {512, 890}, {955, 1023}, {0, 0}};
 
 #define INFO_FLG_PM	1
 #define INFO_FLG_SYNC	2
@@ -175,46 +175,88 @@ static void log_pm(void)
 	LOGFLUSH();
 }
 
+
+/* check if the cell 'talks' about DCS (0) or PCS (1) */
+uint8_t my_gsm_refer_pcs(uint16_t arfcn, struct gsm48_sysinfo *s)
+{
+	/* If ARFCN is PCS band, the cell refers to PCS */
+	if ((arfcn & ARFCN_PCS))
+		return 1;
+
+	/* If no SI1 is available, we assume DCS. Be sure to call this
+	 * function only if SI 1 is available. */
+	if (!s->si1)
+		return 0;
+
+	/* If band indicator indicates PCS band, the cell refers to PCSThe  */
+	return s->band_ind;
+}
+
+uint16_t my_index2arfcn(int index)
+{
+	if (index >= 1024)
+		return (index-1024+512) | ARFCN_PCS;
+	return index;
+}
+
 static void log_sysinfo(void)
 {
 	struct rx_meas_stat *meas = &ms->meas;
 	struct gsm48_sysinfo *s = &sysinfo;
 	struct gsm322_cellsel *cs = &ms->cellsel;
 	int8_t rxlev;
-	char ta_str[32] = "";
+	int refer_pcs, index;
+	uint16_t arfcn;
 
-	if (log_si.ta != 0xff)
-		sprintf(ta_str, " TA=%d", log_si.ta);
-
-
-
-	//LOGP(DSUM, LOGL_INFO, "Cell: ARFCN=%d MCC=%s MNC=%s (%s, %s)%s\n",
-	//	arfcn, gsm_print_mcc(s->mcc), gsm_print_mnc(s->mnc),
-	//	gsm_get_mcc(s->mcc), gsm_get_mnc(s->mcc, s->mnc), ta_str);
 	LOGFILE("[SysInfo]\n");
 	LOGFILE("Country: %s\n", gsm_get_mcc(s->mcc));
 	LOGFILE("Provider: %s\n", gsm_get_mnc(s->mcc, s->mnc));
 	LOGFILE("ARFCN: %d\n", s->arfcn);
 	LOGFILE("Cell ID: %d\n", s->cell_id);
 	LOGFILE("LAC: %d\n", s->lac);
-	//log_time();
-	//log_gps();
 	LOGFILE("BSIC: %d,%d\n", s->bsic >> 3, s->bsic & 7);
 	rxlev = meas->rxlev / meas->frames - 110;
 	LOGFILE("rxlev: %d\n", rxlev);
+	LOGFILE("Neighbours: ");
 
-	//if (s->si1)
-	//	log_frame("si1", s->si1_msg);
+	refer_pcs = my_gsm_refer_pcs(s->arfcn, s);
+	int i = 0;
+
+	for (i = 0; i <= 1023; i++) {
+#ifndef TEST_INCLUDE_SERV
+		if (s->freq[i].mask & FREQ_TYPE_NCELL) {
+#else
+		if (s->freq[i].mask & (FREQ_TYPE_NCELL | FREQ_TYPE_SERV)) {
+#endif
+			index = i;
+			if (refer_pcs && i >= 512 && i <= 810)
+				index = i-512+1024;
+			arfcn = my_index2arfcn(index);
+#ifndef TEST_INCLUDE_SERV
+			if (arfcn == s->arfcn) {
+				//LOGP(DNB, LOGL_INFO, "Omitting serving cell %s."
+				//	"\n", gsm_print_arfcn(s->arfcn));
+				continue;
+			}
+#endif
+			LOGFILE("%d ",  arfcn & 1023);
+		}
+	}
+
+	LOGFILE("\n");
+
+	if (s->si1)
+		log_frame("SI1: ", s->si1_msg);
+	if (s->si3)
+		log_frame("SI3: ", s->si3_msg);
+	if (s->si4)
+		log_frame("SI4: ", s->si4_msg);
 	if (s->si2)
-		log_frame("si2", s->si2_msg);
+		log_frame("SI2: ", s->si2_msg);
 	if (s->si2ter)
-		log_frame("si2ter", s->si2t_msg);
+		log_frame("SI2ter: ", s->si2t_msg);
 	if (s->si2bis)
-		log_frame("si2bis", s->si2b_msg);
-	//if (s->si3)
-	//	log_frame("si3", s->si3_msg);
-	//if (s->si4)
-	//	log_frame("si4", s->si4_msg);
+		log_frame("SI2bis: ", s->si2b_msg);
 	//if (s->si5)
 	//	log_frame("si5", s->si5_msg);
 	//if (s->si5bis)
