@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  19 APR 2012 17:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  2 MAY 2012 16:22
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1032,10 +1032,10 @@ Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)            on input line 40.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 61.
+(scrbook)            on input line 62.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 62.
+(scrbook)            on input line 63.
  [1
 
 
@@ -1045,28 +1045,37 @@ Class scrbook Info: You've told me to use the font selection of the element
 ]
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 65.
-Class scrbook Info: You've told me to use the font selection of the element
-(scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 66.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 70.
+(scrbook)            on input line 67.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 73.
+(scrbook)            on input line 71.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 74.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 77.
+(scrbook)            on input line 75.
+
+Overfull \hbox (6.13179pt too wide) detected at line 76
+ []\T1/ptm/m/n/10.95 XVII
+ []
+
+
+Overfull \hbox (6.13179pt too wide) detected at line 77
+ []\T1/ptm/m/n/10.95 XVII
+ []
+
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 78.
 )
 \tf@toc=\write8
 \openout8 = `Master.toc'.
 
-
-[2] (../Content/Motivation.tex
+ [2] (../Content/Motivation.tex
 Chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -1190,75 +1199,73 @@ File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 
 ]
 Chapter 3.
-
-LaTeX Warning: Citation `osmo_rationale' on page 39 undefined on input line 14.
-
-
-[39] <../Images/OsmoStructure.png, id=177, 387.00584pt x 79.13565pt>
-File: ../Images/OsmoStructure.png Graphic file (type png)
-
-<use ../Images/OsmoStructure.png>
-
-LaTeX Warning: Citation `konrad' on page 40 undefined on input line 50.
-
-[40 <../Images/OsmoStructure.png (PNG copy)>]
-<../Images/c123_pcb.jpg, id=181, 1284.8pt x 856.19875pt>
+[39] <../Images/c123_pcb.jpg, id=177, 1284.8pt x 856.19875pt>
 File: ../Images/c123_pcb.jpg Graphic file (type jpg)
 
-<use ../Images/c123_pcb.jpg>
+<use ../Images/c123_pcb.jpg> [40] [41]
+<../Images/OsmoStructure.png, id=184, 387.00584pt x 79.13565pt>
+File: ../Images/OsmoStructure.png Graphic file (type png)
 
-LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
+<use ../Images/OsmoStructure.png> [42 <../Images/c123_pcb.jpg>] [43 <../Images/
+OsmoStructure.png (PNG copy)>] [44] [45]
+Underfull \vbox (badness 4441) has occurred while \output is active []
 
-
-
-LaTeX Warning: Citation `osmo_wiki_c123' on page 41 undefined on input line 99.
-
-
-[41] [42] [43 <../Images/c123_pcb.jpg>] [44] [45] [46]
-<../Images/neighbourhoods_fak.png, id=201, 3155.79pt x 2726.185pt>
+ [46]
+<../Images/neighbourhoods_fak.png, id=201, 907.39pt x 941.5175pt>
 File: ../Images/neighbourhoods_fak.png Graphic file (type png)
 
-<use ../Images/neighbourhoods_fak.png>
+<use ../Images/neighbourhoods_fak.png> [47] [48 <../Images/neighbourhoods_fak.p
+ng>]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 305.
- [47] [48 <../Images/neighbourhoods_fak.png (PNG copy)>] [49] [50]
-
-LaTeX Warning: Citation `wiki_cells' on page 51 undefined on input line 386.
-
-<../Images/Architecture_software.png, id=215, 341.8371pt x 183.78261pt>
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 318.
+ [49] [50] [51]
+<../Images/Architecture_software.png, id=220, 341.8371pt x 183.78261pt>
 File: ../Images/Architecture_software.png Graphic file (type png)
 
-<use ../Images/Architecture_software.png> [51] [52 <../Images/Architecture_soft
-ware.png (PNG copy)>]
+<use ../Images/Architecture_software.png> [52 <../Images/Architecture_software.
+png (PNG copy)>]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 464.
- [53]
-<../Images/ICDS.png, id=226, 1343.0175pt x 821.0675pt>
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 472.
+ [53] <../Images/ICDS.png, id=227, 1352.05125pt x 835.12pt>
 File: ../Images/ICDS.png Graphic file (type png)
 
-<use ../Images/ICDS.png> [54 <../Images/ICDS.png>] [55]
-<../Images/databases.png, id=236, 358.33875pt x 373.395pt>
+<use ../Images/ICDS.png> [54] [55 <../Images/ICDS.png>] [56]
+<../Images/filter_window.png, id=240, 311.1625pt x 218.8175pt>
+File: ../Images/filter_window.png Graphic file (type png)
+
+<use ../Images/filter_window.png>
+<../Images/rules_window.png, id=241, 278.03876pt x 358.33875pt>
+File: ../Images/rules_window.png Graphic file (type png)
+
+<use ../Images/rules_window.png>
+<../Images/databases.png, id=242, 358.33875pt x 373.395pt>
 File: ../Images/databases.png Graphic file (type png)
 
 <use ../Images/databases.png>
 File: ../Images/databases.png Graphic file (type png)
  <use ../Images/databases.png>
-Overfull \hbox (10.40205pt too wide) in paragraph at lines 557--572
+Underfull \hbox (badness 1297) in paragraph at lines 581--581
+[]\T1/ptm/m/n/9 (d) En-cryp-tion win-dow (not yet im-ple-
+ []
+
+
+Overfull \hbox (10.40205pt too wide) in paragraph at lines 596--611
 [] \T1/ptm/b/n/10.95 Cel-lID In-for-ma-tion:[][] \T1/ptm/m/n/10.95 Cel-lID in-f
 or-ma-tion can be ob-tained through sev-eral dif-fer-ent means.
  []
 
-[56]) (../Content/Evaluation.tex [57 <../Images/databases.png>] [58]
+[57] [58 <../Images/filter_window.png> <../Images/rules_window.png> <../Images/
+databases.png>]) (../Content/Evaluation.tex [59] [60
+
+
+]
 Chapter 4.
-) (../Content/Conclusion.tex [59
-
-
-] [60
+) (../Content/Conclusion.tex [61] [62
 
 
 ]
 Chapter 5.
-) [61] [62
+) [63] [64
 
 
 
@@ -1314,29 +1321,47 @@ Underfull \hbox (badness 3428) in paragraph at lines 73--76
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--126
+Underfull \hbox (badness 2680) in paragraph at lines 83--88
+[]\T1/ptm/m/sc/10.95 Harald Welte, S. M.  \T1/ptm/m/n/10.95 Os-mo-combb - run-n
+ing your own gsm stack
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 83--88
+\T1/ptm/m/n/10.95 on a phone.  $\T1/pcr/m/n/10.95 http : / / events . ccc . de 
+/ congress / 2010 / Fahrplan /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--143
 []\T1/ptm/m/sc/10.95 Security, H.  \T1/ptm/m/n/10.95 Imsi-catcher für 1500 euro
  im eigen-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--126
+Underfull \hbox (badness 10000) in paragraph at lines 138--143
 \T1/ptm/m/n/10.95 bau.  $\T1/pcr/m/n/10.95 http : / / www . heise . de / securi
 ty / meldung /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--126
+Underfull \hbox (badness 10000) in paragraph at lines 138--143
 \T1/pcr/m/n/10.95 IMSI-[]Catcher-[]fuer-[]1500-[]Euro-[]im-[]Eigenbau-[]1048919
  . html$\T1/ptm/m/n/10.95 ,
  []
 
-) [2] (../Content/Appendix.tex
-Appendix A.
-[3
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 158--161
+[]\T1/ptm/m/sc/10.95 Wikipedia\T1/ptm/m/n/10.95 .  Cell id.  $\T1/pcr/m/n/10.95
+ http : / / bb . osmocom . org / trac / wiki /
+ []
+
+) [3] (../Content/Appendix.tex [4
 
 
 ]
+Appendix A.
+[5]
 Overfull \hbox (25.37581pt too wide) in paragraph at lines 31--33
 \T1/ptm/m/n/10.95 moved to \T1/pcr/m/n/10.95 osmocom-bb/src/host/layer23/src/mi
 sc \T1/ptm/m/n/10.95 and the \T1/pcr/m/n/10.95 Makefile.am
@@ -1347,48 +1372,48 @@ Overfull \hbox (5.82301pt too wide) in paragraph at lines 46--47
 [][][][][][][][][][][][][][][][][][] 
  []
 
-<../Images/t191cable.jpg, id=270, 702.625pt x 609.27625pt>
+<../Images/t191cable.jpg, id=288, 702.625pt x 609.27625pt>
 File: ../Images/t191cable.jpg Graphic file (type jpg)
 
-<use ../Images/t191cable.jpg> [4] [5 <../Images/t191cable.jpg>] [6
+<use ../Images/t191cable.jpg> [6] [7 <../Images/t191cable.jpg>] [8
 
 
 ]
 Appendix B.
-[7] [8
+[9] [10
 
 
 ]
 Appendix C.
-<../Images/sysinfo1.png, id=287, 260.172pt x 393.1488pt>
+<../Images/sysinfo1.png, id=304, 260.172pt x 393.1488pt>
 File: ../Images/sysinfo1.png Graphic file (type png)
 
 <use ../Images/sysinfo1.png>
 
 LaTeX Warning: Float too large for page by 0.9002pt on input line 79.
 
-<../Images/sysinfo2.png, id=288, 261.32832pt x 440.55792pt>
+<../Images/sysinfo2.png, id=305, 261.32832pt x 440.55792pt>
 File: ../Images/sysinfo2.png Graphic file (type png)
 
 <use ../Images/sysinfo2.png>
 
 LaTeX Warning: Float too large for page by 61.98238pt on input line 84.
 
-<../Images/sysinfo3.png, id=289, 284.45473pt x 373.49136pt>
+<../Images/sysinfo3.png, id=306, 284.45473pt x 373.49136pt>
 File: ../Images/sysinfo3.png Graphic file (type png)
 
 <use ../Images/sysinfo3.png>
-<../Images/sysinfo4.png, id=290, 252.07776pt x 370.0224pt>
+<../Images/sysinfo4.png, id=307, 252.07776pt x 370.0224pt>
 File: ../Images/sysinfo4.png Graphic file (type png)
 
-<use ../Images/sysinfo4.png> [9] [10 <../Images/sysinfo1.png (PNG copy)>]
-[11 <../Images/sysinfo2.png (PNG copy)>] [12 <../Images/sysinfo3.png (PNG copy)
->] [13 <../Images/sysinfo4.png (PNG copy)>] [14
+<use ../Images/sysinfo4.png> [11] [12 <../Images/sysinfo1.png (PNG copy)>]
+[13 <../Images/sysinfo2.png (PNG copy)>] [14 <../Images/sysinfo3.png (PNG copy)
+>] [15 <../Images/sysinfo4.png (PNG copy)>] [16
 
 
 ]
 Appendix D.
-) (./Master.acr [15] [16
+) (./Master.acr [17] [18
 
 
 ]
@@ -1401,39 +1426,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 []|\T1/ptm/m/n/10.95 Electrically Erasable Pro-grammable Read-Only
  []
 
-[17
+[19
 
 
-] [18]) [19] (./Master.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] [20]) [21] (./Master.aux) ) 
 Here is how much of TeX's memory you used:
- 24802 strings out of 493848
- 464233 string characters out of 1152824
- 669802 words of memory out of 3000000
- 27436 multiletter control sequences out of 15000+50000
+ 24837 strings out of 493848
+ 464940 string characters out of 1152824
+ 670196 words of memory out of 3000000
+ 27469 multiletter control sequences out of 15000+50000
  80434 words of font info for 106 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/
-fonts/type1/public/eurosym/feymr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf-texlive/fonts/type1/urw/c
-ourier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb
-></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texm
-f-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.p
-fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (85 pages, 14250338 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.
+enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/share/texmf-texlive/fonts/type1/public/eurosym/feymr10.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texm
+f-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/urw/courier/ucrro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/
+uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/sha
+re/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fon
+ts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on Master.pdf (89 pages, 13409296 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
+ 397 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 158 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

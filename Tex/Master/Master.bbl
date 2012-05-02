@@ -29,8 +29,8 @@ Digital cellular telecommunications system (phase 2+): Mobile stations (ms)
 \bibitem{ISO7810}
 Identification cards -- physical characteristics.
 \newblock ISO/IEC 7810:2003,
-  \url{http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=31432},
-  2003.
+  \url{http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?%
+csnumber=31432}, 2003.
 
 \bibitem{gsm0502}
 Multiplexing and multiple access on the radio path.
@@ -79,6 +79,13 @@ Brief history of gsm and the gsma.
 \newblock \url{http://www.gsm.org/about-us/history.htm}, 2011.
 \newblock [Accessed: 28/11/2011].
 
+\bibitem{osmo_slides}
+{\sc Harald~Welte, S.~M.}
+\newblock Osmocombb - running your own gsm stack on a phone.
+\newblock
+  \url{http://events.ccc.de/congress/2010/Fahrplan/attachments/1771_osmocombb-%
+27c3.pdf}, 2010.
+
 \bibitem{overview1994}
 {\sc Haug, T.}
 \newblock Overview of gsm: philosophy and results.
@@ -99,6 +106,16 @@ Brief history of gsm and the gsma.
 Medium access control (mac) protocol specification.
 \newblock 3GPP TS 25.321,
   \url{http://www.3gpp.org/ftp/Specs/html-info/25321.htm}, 2011.
+
+\bibitem{osmo_rationale}
+{\sc OsmocomBB}.
+\newblock Project rationale.
+\newblock \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, 2012.
+
+\bibitem{osmo_wiki_c123}
+{\sc OsmocomBB}.
+\newblock Project rationale.
+\newblock \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, 2012.
 
 \bibitem{criminal_justice}
 {\sc Safferling, C.}
@@ -121,8 +138,8 @@ Medium access control (mac) protocol specification.
 {\sc Security, H.}
 \newblock Imsi-catcher für 1500 euro im eigenbau.
 \newblock
-  \url{http://www.heise.de/security/meldung/IMSI-Catcher-fuer-1500-Euro-im-Eigenbau-1048919.html},
-  2010.
+  \url{http://www.heise.de/security/meldung/IMSI-Catcher-fuer-1500-Euro-im-Eig%
+enbau-1048919.html}, 2010.
 
 \bibitem{ITU1200}
 {\sc {Telecomunication standardization sector of ITU}}.
@@ -136,6 +153,11 @@ Medium access control (mac) protocol specification.
 \bibitem{dennis}
 {\sc Wehrle, D.}
 \newblock Open source imsi catcher.
+
+\bibitem{wiki_cells}
+{\sc Wikipedia}.
+\newblock Cell id.
+\newblock \url{http://bb.osmocom.org/trac/wiki/MotorolaC123}, 2012.
 
 \bibitem{blacklisting}
 {\sc Wikipedia}.
