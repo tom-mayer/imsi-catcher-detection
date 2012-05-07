@@ -282,7 +282,7 @@ Figure \ref{fig:neighbourhood_example} shows an example of the neighbourhood gra
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{../Images/neighbourhoods_fak}
-\caption{T-Mobile and Vodafone stations at the Technische Fakult\"at.}
+\caption{Base stations and their neighbourhood connections at the Technische Fakult\"at.}
 \label{fig:neighbourhood_example}
 \end{figure}
 It can be seen that for each provider, the neighbourhood forms an isolated, nearly fully connected subgraph.
@@ -511,13 +511,12 @@ After a brief loading time the main window shown in Figure \ref{fig:icds} should
 
 The different elements shown in the main window are:
 \begin{enumerate}
-%TODO: correct the numbering after the final picture is there
 \item Firmware Loader: This button is used to load the OsmoconBB firmware onto the Motorola C123. 
 For this to work, the mobile phone must be connected correctly to the computer and available on the configured \texttt{tty} interface.
 After pressing the button on-screen instructions will lead the user through the process of flashing.
 
 \item Scanner: This starts the \texttt{catcher} subprocess in the background and fills the data model with information on the discovered base stations.
-During this process the Base Station List (10) and the Base Station Graph (12) will also be populated in realtime.
+During this process the Base Station List (11) and the Base Station Graph (13) will also be populated in realtime.
 Re-evaluation on all base stations is done for every new \gls{bts} that has been found.
 
 \item Filter Window: This brings up the window shown in Figure \ref{fig:filters_window}, where different view filters for the Base Station List and the Base Station Graph can be set.
@@ -563,7 +562,7 @@ The report is separated into four main parts, the first being all the harvested 
  
 \item Log Window: Every important event inside the \gls{icds} is reported in the log together with a time stamp when it occurred.
 
-\item Base Station Graph: This graph displays the base station found in the Base Station List (10).
+\item Base Station Graph: This graph displays the base station found in the Base Station List (11).
 A node represents a single \gls{bts} and is labelled with its respective \gls{arfcn}.
 An edge from note $A$ to $B$ is drawn if node $B$ occurs in the Neighbouring Cells List of $A$.
 Nodes with a white background have only been found inside Neighbouring Cell Lists but not yet by the \gls{icds} scanner itself whereas nodes with a red, yellow or green background have been found and evaluated with the colour representing either a critical, a warning or an ok status respectively.

@@ -142,7 +142,7 @@ class PyCatcherController:
                     station.latitude = lat
                     station.longitude = long
                     station.db_provider = CIDDatabases.OPENCID
-                elif staus == CellIDDBStatus.APPROXIMATED:
+                elif status == CellIDDBStatus.APPROXIMATED:
                     self._gui.log_line('...approximated.')
                     station.latitude = lat
                     station.longitude = long

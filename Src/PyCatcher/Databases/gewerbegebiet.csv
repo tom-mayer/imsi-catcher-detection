@@ -1,0 +1,54 @@
+Country, Provider, ARFCN, rxlev, BSIC, LAC, Cell ID, Evaluation, Latitude, Longitude, Encryption, DB Status, DB Provider, Neighbours
+Germany, Vodafone, 58, -65, 3/6, 793, 14021, Ok, 0, 0, Not checked., Not looked up, None, 9 55 62 65 70 71 75 80 107 111 117
+Germany, T-Mobile, 19, -64, 7/1, 21015, 14649, Ok, 0, 0, Not checked., Not looked up, None, 29 42 48 82 89 97 100
+Germany, T-Mobile, 29, -72, 7/3, 21015, 39190, Ok, 0, 0, Not checked., Not looked up, None, 19 21 31 82 86 87 89 94 100
+Germany, T-Mobile, 48, -71, 3/4, 21015, 26599, Ok, 0, 0, Not checked., Not looked up, None, 19 24 42 44 82 83 85 88 93 95 97
+Germany, Vodafone, 70, -65, 7/7, 793, 14023, Ok, 0, 0, Not checked., Not looked up, None, 9 54 58 64 66 73 74 75 111
+Germany, Vodafone, 75, -75, 3/0, 793, 6183, Ok, 0, 0, Not checked., Not looked up, None, 9 55 58 62 65 70 71 80 107 117
+Germany, E-Plus, 979, -64, 3/3, 588, 50988, Ok, 0, 0, Not checked., Not looked up, None, 778 789 794 810 814 816 818 820 822 981 983 986 988
+Germany, E-Plus, 981, -68, 3/5, 588, 50978, Ok, 0, 0, Not checked., Not looked up, None, 789 794 808 810 814 816 818 820 825 979 983 988 989 995 996
+Germany, Vodafone, 9, -82, 7/3, 793, 14022, Ok, 0, 0, Not checked., Not looked up, None, 58 62 66 68 70 71 74 75 111 117
+Germany, T-Mobile, 94, -86, 3/4, 21015, 39193, Ok, 0, 0, Not checked., Not looked up, None, 29 31 86 88 89 97
+Germany, T-Mobile, 97, -78, 3/3, 21015, 26600, Ok, 0, 0, Not checked., Not looked up, None, 19 31 43 44 48 88 89 94 95
+Germany, O2, 702, -67, 7/7, 50945, 59548, Ok, 0, 0, Not checked., Not looked up, None, 654 676 691 700 704 706 707 709 712 718 719 1002 1006 1016
+Germany, E-Plus, 818, -80, 3/6, 588, 7148, Ok, 0, 0, Not checked., Not looked up, None, 778 789 794 810 814 816 820 822 979 981 983 986 988
+Germany, T-Mobile, 100, -87, 7/4, 21015, 20074, Ok, 0, 0, Not checked., Not looked up, None, 19 21 29 31 34 82 86 87
+Germany, O2, 1002, -72, 7/0, 50945, 1384, Ok, 0, 0, Not checked., Not looked up, None, 654 660 673 675 690 699 700 702 704 706 707 708 709 710 711 712 715 719 1012 1016
+Germany, T-Mobile, 42, -95, 7/5, 21015, 5016, Ok, 0, 0, Not checked., Not looked up, None, 19 30 44 48 82
+Germany, T-Mobile, 95, -93, 3/3, 21015, 53270, Ok, 0, 0, Not checked., Not looked up, None, 14 43 44 48 86 88 97
+Germany, E-Plus, 820, -95, 3/6, 588, 7168, Ok, 0, 0, Not checked., Not looked up, None, 778 780 808 816 818 825 827 979 981 986 988 989 994 996
+Germany, E-Plus, 983, -87, 3/1, 588, 573, Ok, 0, 0, Not checked., Not looked up, None, 778 787 788 806 810 814 816 818 822 979 981 986 989 991 993
+Germany, E-Plus, 986, -82, 3/3, 588, 53053, Ok, 0, 0, Not checked., Not looked up, None, 778 787 814 818 820 825 827 979 983 988 989 993 994
+Germany, T-Mobile, 82, -88, 7/0, 21015, 20080, Ok, 0, 0, Not checked., Not looked up, None, 19 29 42 85 87 93 100
+Germany, Vodafone, 68, -88, 7/1, 793, 28851, Ok, 0, 0, Not checked., Not looked up, None, 9 51 53 59 62 65 66 67 69 71 74 78 117 120 121 725 726 736
+Germany, Vodafone, 111, -85, 3/0, 793, 19741, Ok, 0, 0, Not checked., Not looked up, None, 9 59 62 66 70 74 121
+Germany, E-Plus, 988, -76, 3/2, 588, 50968, Ok, 0, 0, Not checked., Not looked up, None, 778 780 808 816 818 820 825 827 979 981 986 989 994 996
+Germany, T-Mobile, 86, -94, 7/3, 21015, 29512, Ok, 0, 0, Not checked., Not looked up, None, 21 29 31 84 94 100
+Germany, Vodafone, 117, -89, 3/7, 793, 6182, Ok, 0, 0, Not checked., Not looked up, None, 2 9 55 58 62 66 68 69 71 75 80 736
+Germany, O2, 710, -99, 7/6, 50945, 29797, Ok, 0, 0, Not checked., Not looked up, None, 660 676 680 690 699 701 704 706 707 708 714 715 1002 1006 1009 1012 1016
+Germany, O2, 691, -103, 7/0, 50945, 59558, Ok, 0, 0, Not checked., Not looked up, None, 654 661 670 676 679 700 702 706 711 719 1001 1011
+Germany, E-Plus, 816, -84, 3/7, 588, 7158, Ok, 0, 0, Not checked., Not looked up, None, 789 794 808 810 814 818 820 825 979 981 983 988 989 995 996
+Germany, O2, 1016, -68, 7/7, 50945, 21384, Ok, 0, 0, Not checked., Not looked up, None, 676 680 701 702 703 704 707 708 709 710 712 715 719 1002 1006 1009 1012
+Germany, O2, 712, -93, 7/4, 50945, 59272, Ok, 0, 0, Not checked., Not looked up, None, 654 660 699 700 702 704 706 708 719 1002 1016
+Germany, T-Mobile, 24, -96, 3/0, 21015, 35640, Ok, 0, 0, Not checked., Not looked up, None, 40 44 48 82 83 85 93 101
+Germany, Vodafone, 80, -98, 7/3, 793, 6181, Ok, 0, 0, Not checked., Not looked up, None, 2 53 55 58 65 69 71 75 76 107 117 728 736
+Germany, T-Mobile, 85, -100, 7/4, 21015, 38939, Ok, 0, 0, Not checked., Not looked up, None, 22 43 45 87 123 605
+Germany, T-Mobile, 45, -99, 7/2, 21015, 2746, Ok, 0, 0, Not checked., Not looked up, None, 25 43 85 86 87 88 123 605
+Germany, O2, 708, -101, 7/2, 50945, 39272, Ok, 0, 0, Not checked., Not looked up, None, 660 680 699 701 704 710 712 715 1002 1016 1017
+Germany, O2, 719, -91, 7/7, 50945, 39558, Ok, 0, 0, Not checked., Not looked up, None, 642 654 661 676 691 700 702 704 706 709 712 713 715 1002 1016
+Germany, T-Mobile, 21, -97, 3/2, 21015, 29241, Ok, 0, 0, Not checked., Not looked up, None, 17 29 34 39 40 84 86 87 100 124
+Germany, T-Mobile, 44, -98, 3/7, 21015, 53271, Ok, 0, 0, Not checked., Not looked up, None, 24 30 42 48 83 85 93 95 97 101 605
+Germany, Vodafone, 79, -94, 7/4, 793, 17632, Ok, 0, 0, Not checked., Not looked up, None, 4 59 73 74 112 120
+Germany, O2, 706, -97, 7/4, 50945, 49027, Ok, 0, 0, Not checked., Not looked up, None, 654 661 670 675 691 700 702 704 712 718 719 1002 1012
+Germany, E-Plus, 810, -94, 3/5, 588, 2138, Ok, 0, 0, Not checked., Not looked up, None, 789 794 803 806 808 812 814 816 818 822 828 979 981 983 985 987 988 991 996
+Germany, E-Plus, 995, -98, 3/4, 588, 43748, Ok, 0, 0, Not checked., Not looked up, None, 812 816 818 827 981 984 985 986 988 991
+Germany, O2, 700, -90, 7/4, 50945, 49796, Ok, 0, 0, Not checked., Not looked up, None, 654 660 661 670 673 675 676 677 679 691 702 704 705 706 707 711 712 718 719 721 1002 1012
+Germany, O2, 709, -95, 7/3, 50945, 49838, Ok, 0, 0, Not checked., Not looked up, None, 641 642 649 661 674 702 703 704 705 707 711 713 714 715 719 1006 1008 1010 1012 1016 1017
+Germany, E-Plus, 778, -87, 3/7, 588, 52123, Ok, 0, 0, Not checked., Not looked up, None, 787 814 818 820 825 827 979 983 986 988 989 993 994
+Germany, DB Systel GSM-R, 963, -106, 7/1, 6052, 7089, Critical, 0, 0, Not checked., Not looked up, None, 958 961
+Germany, O2, 1012, -104, 7/1, 50945, 41221, Ok, 0, 0, Not checked., Not looked up, None, 638 659 660 661 670 671 673 674 675 677 681 699 700 703 704 706 707 710 711 714 715 718 721 1002 1003 1009
+Germany, Vodafone, 120, -99, 7/0, 793, 19782, Ok, 0, 0, Not checked., Not looked up, None, 2 51 53 62 65 66 67 68 71 74 78 79 112 117 726 728 736
+Germany, O2, 715, -93, 7/5, 50945, 9838, Ok, 0, 0, Not checked., Not looked up, None, 641 642 703 704 705 707 708 709 710 713 719 1006 1010 1016 1017
+Germany, E-Plus, 794, -92, 3/3, 588, 1978, Ok, 0, 0, Not checked., Not looked up, None, 789 797 803 808 810 816 818 979 981 985 988 992 996
+Germany, T-Mobile, 14, -100, 3/0, 21015, 57369, Ok, 0, 0, Not checked., Not looked up, None, 27 31 43 47 84 86 88 95 605
+Germany, T-Mobile, 89, -60, 7/2, 21015, 39194, Ok, 0, 0, Not checked., Not looked up, None, 19 29 94 97

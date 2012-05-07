@@ -1,1 +1,233 @@
 \chapter{Evaluation}
+The following chapter presents the results of some experiments done with the \gls{icds}.
+Evaluation has been done in different areas to give a complete impression of how the \gls{icds} performs.
+In the first section some general findings will be described that affect overall performance.
+Afterwards the test environment and setup of the IMSI catcher is discussed.
+The last two sections evaluate the \gls{icds} against a configured catcher, first to test the individual rules and second against the attacks that were listed earlier.
+
+\section{Performance Evaluation}
+In order to evaluate general performance it has to be considered that the \gls{icds} can be deployed in different environments.
+To reflect different compositions and densities of base stations form different areas, four distinct data sets will be used for the experiments in this section.
+The data sets have been taken in areas surrounding the city of Freiburg.
+Table shows some of data sets' key values.
+
+\begin{table}
+\centering
+\begin{tabular}{llrr}
+\toprule
+Name					&Description					&Number of BTS	&Scan Duration\\
+\midrule
+\texttt{cdb}			&CBD around the area of			&54				&6:13		\\
+						&Bertholdsbrunnen				&				&			\\
+\texttt{airport}		&Airport and university area	&68				&6:25		\\
+						&around Georges Koehler Allee	&				&			\\
+\texttt{ind\_park}		&Industrial park Haid in 		&53				&4:52		\\
+						&Freiburg West,  Hausener Weg	&				&			\\
+\texttt{house\_area}	&Housing area at the rim of 	&22				&3:59		\\
+						&Freiburg Zähringen, Thuner Weg	&				&			\\
+\bottomrule
+\end{tabular}
+\caption{Key values of the data sets used for performance tests.}
+\label{tab:key_data}
+\end{table}
+
+Apart from nodes from the four public \gls{gsm} providers E-Plus, T-Mobile, Vodafone and O2, nodes from Deutsche Bahn also occur in these scans.
+These nodes form a private network used for internal communications by Deutsche Bahn.
+They are identified by their broadcast name 'DB Systel GSM-R' and their frequency which is outside the regular bands.
+Since the distribution of these nodes is very sparse, only one node can be found in each scan they yield a false positive for no neighbouring nodes can be discovered.
+These nodes are not relevant to subscribers because they are not able to connect to them.
+Therefore they will be ignored and factored out for the remainder of this evaluation.
+
+\subsection{Scan Duration}
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=0.3\textheight,
+	xlabel=Total BTS, 
+	ylabel=Scan duration in s,
+	xticklabel style={/pgf/number format/1000 sep=}
+	]
+	\addplot [mark=*,blue] plot coordinates {
+		(68, 385)
+		(54, 373)
+		(53, 292)
+		(22, 239)
+	};
+\end{axis}
+\end{tikzpicture}
+\caption{Scan durations for the sample data sets.}
+\label{fig:durations}
+\end{figure}
+Table \ref{tab:key_data} shows that the times for scans in the Freiburg area can differ by large amounts depending on how many base stations are scanned.
+Generally said it takes longer the more dense the base station distribution is in the scanned area.
+This is however not the only factor, as Figure \ref{fig:durations} visualises.
+If the scan duration would only depend on the number of base station scanned, a linear growth could be expected.
+
+There is a large increase in scan duration between the \texttt{ind\_park} and the \texttt{cbd} data sets although only one more base station was detected.
+This jump can be explained considering the context of the scan.
+The scans were done on a Saturday between 14:00 and 16:00.
+The Freiburg CBD was crowded at the time of the scan as was the university campus due to an event held there.
+Contrary to that the industrial park area was very calm, as was the housing area.
+Whenever the \gls{icds} discovers a \gls{bts} it needs to wait until all system information messages are gathered before it can continue scanning for further base stations.
+In a crowded area reception is far worse due to radio inference therefore it takes longer to accumulate the information needed resulting in increased scanning times.
+
+A crowded area with high density of \glspl{bts} could be seen as a worst case for scan duration.
+Re-evaluation of a base station based on its own parameters thus occurs only every 7 minutes in this worst case.
+This is an inherent problem to the approach of scanning and updating all base stations and not only monitoring a subset from a single provider.
+If an IMSI catcher replaces a base station directly after it was scanned, it could take up to 7 minutes until it is discovered.
+To lessen this threat, if the \gls{icds} is used in user mode, the base station with the strongest reception is scanned again, to eliminate the possibility of having been taken over and not being detected.
+
+\subsection{Cell ID Databases}
+The usefulness of the Cell ID Rule is subject to the completeness of the database that is used.
+That is even more so since a database with a low coverage will yield false positives, \eg legitimate base stations will be evaluated as being IMSI catchers because they are not found in the database.
+
+The coverage for the OpenCellID database and the Google Mobile Maps service evaluated against the data sets can be seen in Table \ref{tab:coverage}.
+\begin{table}
+\centering
+\begin{tabular}{lrrcrrcrrcrr}
+\toprule
+& \multicolumn{2}{c}{\texttt{cdb}} &\phantom{a}& \multicolumn{2}{c}{\texttt{airport}} &\phantom{a} & \multicolumn{2}{c}{\texttt{ind\_park}}&\phantom{a} & \multicolumn{2}{c}{\texttt{house\_area}}\\
+\cmidrule{2-3} \cmidrule{5-6} \cmidrule{8-9} \cmidrule{11-12}
+&Cov.&Time&	&Cov.&Time&	&Cov.&Time&	&Cov.&Time\\
+\midrule
+Google&		1.00&5&	&0.99&8&	&1.00&5&	&1.00&2\\
+OCID&		0.57&51&	&0.58&68&	&0.58&55&	&0.41&19\\
+\bottomrule
+\end{tabular}
+\caption{Coverage for Google Mobile Maps and OpenCellID on the data sets with the time needed in s for fetching the information.}
+\label{tab:coverage}
+\end{table}
+Google Mobile Maps service scored a complete coverage on all the data sets while Open Cell ID could cover about half the nodes in the different sets.
+The reason the Google service had only a 99\% coverage on the \texttt{airport} data set is that base station that has not been found was the one operated by the chair of communication systems, therefore it can be factored out.
+The OpenCellID database is not a good source of information for this project as is shown by its coverage scores.
+However it must be said that these two services are intended for localisation and thus do not have the demand to yield a complete coverage of all the base stations in the area.
+Therefore it must be kept in mind when using this rule for analysis that false positives might still be brought forth.
+What can be said though is that a base station that has been found may only be subject to a type of attack that replaces an existing base station and can thus be investigated more specifically.
+
+\subsection{Encryption Detection Speed}
+
+\section{IMSI Catcher Detection}
+
+\subsection{Open Source IMSI Catcher}
+The remainder of the rules cannot be tested without an active IMSI catcher.
+For this purpose the Open Source IMSI Catcher \cite{dennis} is used.
+
+This project builds up an IMSI catcher using only Open Source systems and freely available hardware so it can basically be used by anybody.
+On the hardware side a computer running a Linux operating system is used, as well as the \gls{usrp} as the radio transmitter.
+The \gls{usrp} allows the signal processing for radio transmissions to be done in software, therefore it can be used for a multitude of purposes and protocols.
+Some hardware modifications have to be done to the device to empower it to send and receive data on the frequency bands used for \gls{gsm} communication.
+An external clock needs to be used since \gls{gsm} operations are very time critical.
+
+On the software side GNU Radio\footnote{GNU Radio Project Wiki, \url{http://gnuradio.org/redmine/projects/gnuradio/wiki} [Online; Accessed 05.2012]}, OpenBTS\footnote{OpenBTS Project Wiki, \url{http://wush.net/trac/rangepublic} [Online; Accessed 05.2012]} and Asterisk\footnote{Asterisk, \url{http://www.asterisk.org} [Online; Accessed 05.2012]} are used to achieve the functionality provided by a IMSI catcher.
+Figure \ref{fig:osic} shows how these components are chained and used together.
+\begin{figure}
+\caption{Open Source IMSI Catcher.}
+\label{fig:osic}
+\end{figure}
+The raw data that is received by the \gls{usrp} is sent to the GNU Radio component which works as a software side interface to the \gls{usrp}.
+This data is taken by the OpenBTS software that emulates base station behaviour and has an integrated module simulating a \gls{vlr} and handing out \glspl{tmsi}.
+OpenBTS implements an open source version of the \gls{gsm} stack with the goal to provide cheap access points to the \gls{gsm} network in areas with bad coverage.
+The user accounts are as well as encoding of voice data and recording of calls is handled inside the Asterisk software, basically combining the \gls{trau}, \gls{hlr} and authentication centre of a real \gls{gsm} network.
+Calls are routed from here on to the \gls{voip} network of the university.
+
+Since we do not want to actually connect to the IMSI catcher, the Asterisk part and user configuration will be omitted here.
+The parameters necessary to simulate a \gls{gsm} cell have to be set inside the \texttt{OpenBTS.conf}.
+Figure \ref{fig:openbts_parameters} shows an annotated example for a configuration simulating a T-Mobile cell.
+\begin{figure}
+\begin{lstlisting}
+#Do not let people connect
+Control.OpenRegistration 0
+
+#Basic cell parameters
+GSM.MCC 262			GSM.ARFCN 54
+GSM.MNC 01			GSM.ShortName T-Mobile
+GSM.LAC 29184		
+GSM.CI 61858
+	
+#Transmission strength ranging from 0 to 23
+GSM.PowerAttenDB 20
+
+#Neighbouring cell list, space separated
+GSM.Neighbours 69 53 20
+
+#Force location Updates, multiple of 6 minutes
+GSM.T3212 1
+\end{lstlisting}
+\caption{Excerpt of a \texttt{OpenBTS.conf}.}
+\label{fig:openbts_parameters}
+\end{figure}
+\texttt{Control.OpenRegistration} is explicitly set to 0 which prevents anyone from connecting to the IMSI catcher since connections are not part of the test and we do not want to interfere with other peoples' communications in the area.
+
+
+\subsection{Rule Evaluation}
+
+\subsection{Attack Scenarios}
+Since all the rules have been tested we assume from this point on the IMSI catcher is configured correctly, meaning that  parameters like the \gls{arfcn}, \gls{lac} or provider have been set up in correct and consistent way so the respective rules will not show an alarm.
+Consistent parameters for the four providers in Germany can be found in Tables \ref{tab:consistent_parameters} (a)-(d).
+\begin{table}
+\centering
+\subtable[T-Mobile]{
+\begin{tabular}{ll}
+\toprule
+Parameter	&Range\\
+\midrule
+Name		&T-Mobile\\
+ARFCN		&13-49, 81-102,\\
+			&122-124, 587-611\\
+LAC			&21014 / 21015\\
+MCC			&262\\
+MNC			&01\\
+\bottomrule
+\end{tabular}
+}
+\subtable[Vodafone]{
+\begin{tabular}{ll}
+\toprule
+Parameter	&Range\\
+\midrule
+Name		&Vodafone\\
+ARFCN		&1-12, 50-80,\\
+			&103-121, 725-751\\
+LAC			&793\\
+MCC			&262\\
+MNC			&02\\
+\bottomrule
+\end{tabular}
+}
+\subtable[E-Plus]{
+\begin{tabular}{ll}
+\toprule
+Parameter	&Range\\
+\midrule
+Name		&E-Plus\\
+ARFCN		&975-999,\\
+			&777-863\\
+LAC			&588 / 138\\
+MCC			&262\\
+MNC			&03\\
+\bottomrule
+\end{tabular}
+}
+\subtable[O2]{
+\begin{tabular}{ll}
+\toprule
+Parameter	&Range\\
+\midrule
+Name		&O2\\
+ARFCN		&0, 1000-1023,\\
+			&637-723\\
+LAC			&50945\\
+MCC			&262\\
+MNC			&07\\
+\bottomrule
+\end{tabular}
+}
+\caption{Consistent parameter configurations in the Freiburg area for the four German providers.}
+\label{tab:consistent_parameters}
+\end{table}
+Note that the Cell ID can be a arbitrary value as long as it is unique in the area of reception. 
+Cell IDs measured from different base stations do not follow any particular schema.
+
+\subsection{Long Term Test}

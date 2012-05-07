@@ -662,7 +662,7 @@ CSV
   <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">IMSI Catcher Detection System</property>
-    <property name="default_width">800</property>
+    <property name="default_width">1000</property>
     <property name="default_height">600</property>
     <property name="has_resize_grip">False</property>
     <signal name="destroy" handler="_on_main_window_destroy" swapped="no"/>
@@ -1289,6 +1289,51 @@ CSV
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">11</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHSeparator" id="separator3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">12</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="cb_lac_change">
+                <property name="label" translatable="yes">LAC Change</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="xalign">0</property>
+                <property name="active">True</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">13</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="cb_rx_change">
+                <property name="label" translatable="yes">rx Change</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="xalign">0</property>
+                <property name="active">True</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">14</property>
               </packing>
             </child>
           </object>

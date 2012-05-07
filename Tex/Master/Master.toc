@@ -7,7 +7,7 @@
 \contentsline {section}{\numberline {2.2}The GSM Network}{5}
 \contentsline {subsection}{\numberline {2.2.1}Mobile Station}{6}
 \contentsline {subsection}{\numberline {2.2.2}Network Subsystem}{9}
-\contentsline {subsubsection}{Mobile Switching Center}{9}
+\contentsline {subsubsection}{Mobile Switching Center}{10}
 \contentsline {subsubsection}{Home Location Register}{10}
 \contentsline {subsubsection}{Visitor Location Register}{12}
 \contentsline {subsubsection}{Equipment Identification Register}{12}
@@ -41,13 +41,13 @@
 \contentsline {section}{\numberline {3.1}Framework and Hardware}{39}
 \contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{39}
 \contentsline {subsubsection}{Project Status}{40}
-\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{40}
+\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{41}
 \contentsline {subsubsection}{OsmocomBB and ICDS}{42}
 \contentsline {section}{\numberline {3.2}Procedure}{43}
 \contentsline {subsection}{\numberline {3.2.1}Information Gathering}{43}
 \contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{45}
 \contentsline {subsubsection}{Neighbourhood Structure}{47}
-\contentsline {subsubsection}{Base Station Evaluation}{49}
+\contentsline {subsubsection}{Base Station Evaluation}{48}
 \contentsline {subsection}{\numberline {3.2.3}Forged Parameters}{50}
 \contentsline {subsubsection}{Database Rules}{51}
 \contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{52}
@@ -60,19 +60,27 @@
 \contentsline {paragraph}{Scan Encryption:}{59}
 \contentsline {paragraph}{User Mode:}{59}
 \contentsline {chapter}{\numberline {4}Evaluation}{61}
-\contentsline {chapter}{\numberline {5}Conclusion}{63}
-\contentsline {section}{\numberline {5.1}Related Projects}{63}
-\contentsline {section}{\numberline {5.2}Future Work}{63}
-\contentsline {chapter}{Bibliography}{I}
-\contentsline {chapter}{\numberline {A}OsmocomBB}{V}
-\contentsline {section}{\numberline {A.1}Installation}{V}
-\contentsline {section}{\numberline {A.2}Usage}{VI}
-\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{VI}
-\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{IX}
-\contentsline {section}{\numberline {B.1}Extextions}{IX}
-\contentsline {section}{\numberline {B.2}Example Configuration}{IX}
-\contentsline {chapter}{\numberline {C}System Information}{XI}
-\contentsline {chapter}{\numberline {D}Evaluation Data}{XVII}
-\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{XVII}
-\contentsline {section}{\numberline {D.2}ICDS Scans}{XVII}
-\contentsline {chapter}{Acronyms}{XIX}
+\contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
+\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{62}
+\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{63}
+\contentsline {subsection}{\numberline {4.1.3}Encryption Detection Speed}{64}
+\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{64}
+\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{64}
+\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{65}
+\contentsline {subsection}{\numberline {4.2.3}Attack Scenarios}{65}
+\contentsline {subsection}{\numberline {4.2.4}Long Term Test}{65}
+\contentsline {chapter}{\numberline {5}Conclusion}{67}
+\contentsline {section}{\numberline {5.1}Future Work}{67}
+\contentsline {chapter}{Bibliography}{69}
+\contentsline {chapter}{\numberline {A}OsmocomBB}{73}
+\contentsline {section}{\numberline {A.1}Installation}{73}
+\contentsline {section}{\numberline {A.2}Usage}{74}
+\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{74}
+\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{77}
+\contentsline {section}{\numberline {B.1}Extextions}{77}
+\contentsline {section}{\numberline {B.2}Example Configuration}{77}
+\contentsline {chapter}{\numberline {C}System Information}{79}
+\contentsline {chapter}{\numberline {D}Evaluation Data}{85}
+\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{85}
+\contentsline {section}{\numberline {D.2}ICDS Scans}{85}
+\contentsline {chapter}{Acronyms}{87}
