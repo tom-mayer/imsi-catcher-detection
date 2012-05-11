@@ -1,4 +1,5 @@
-from settings import Provider_list, Provider_Country_list, LAC_mapping, ARFCN_mapping, LAC_threshold, RX_threshold
+from settings import Provider_list, Provider_Country_list, LAC_mapping, ARFCN_mapping, LAC_threshold, DB_RX_threshold, \
+    CH_RX_threshold
 from cellIDDatabase import CellIDDBStatus
 import math
 
@@ -62,8 +63,10 @@ class ARFCNMappingRule (Rule):
         for station in base_station_list:
             if station.arfcn == arfcn:
                 if station.provider in ARFCN_mapping:
-                    if ARFCN_mapping[station.provider][0] < station.arfcn < ARFCN_mapping[station.provider][1]:
-                        result = RuleResult.OK
+                    for lower,upper in ARFCN_mapping[station.provider]:
+                        if lower < station.arfcn < upper:
+                            result = RuleResult.OK
+                            break
         return result
 
 class LACMappingRule (Rule):
@@ -75,8 +78,10 @@ class LACMappingRule (Rule):
         for station in base_station_list:
             if station.arfcn == arfcn:
                 if station.provider in LAC_mapping:
-                    if LAC_mapping[station.provider][0] < station.lac < LAC_mapping[station.provider][1]:
-                        result = RuleResult.OK
+                    for lac in LAC_mapping[station.provider]:
+                        if station.lac == lac:
+                            result = RuleResult.OK
+                            break
         return result
 
 class UniqueCellIDRule (Rule):
@@ -202,8 +207,8 @@ class LocationAreaDatabaseRule(Rule):
                     return RuleResult.CRITICAL
                 rxmin = result[6]
                 rxmax = result[7]
-                rxmin_thresh = rxmin - math.fabs(rxmin * RX_threshold)
-                rxmax_thresh = rxmax + math.fabs(rxmax * RX_threshold)
+                rxmin_thresh = rxmin - math.fabs(rxmin * DB_RX_threshold)
+                rxmax_thresh = rxmax + math.fabs(rxmax * DB_RX_threshold)
                 if rxmin_thresh <= float(item.rxlev) <= rxmax_thresh:
                     return RuleResult.OK
                 else:
@@ -221,3 +226,69 @@ class CellIDDatabaseRule (Rule):
                     return RuleResult.OK
                 else:
                     return RuleResult.CRITICAL
+
+#TODO: remove debug crap
+class LACChangeRule (Rule):
+    identifier = 'LAC Change Rule'
+
+    def __init__(self):
+        self._old_lac = {}
+
+    def check(self, arfcn, base_station_list):
+        for item in base_station_list:
+            if item.arfcn == arfcn:
+                if self._old_lac.has_key(arfcn):
+                    lac, old_scanned = self._old_lac[arfcn]
+                    if item.times_scanned > 1:
+                        if item.times_scanned > old_scanned:
+                            #print 'evaluating lac change on %d(%d): old lac %d / new lac %d'%(item.times_scanned,arfcn, lac, item.lac)
+                            if item.lac == lac:
+                                self._old_lac[arfcn] = item.lac, item.times_scanned
+                                #print '     return ok'
+                                return RuleResult.OK
+                            else:
+                                self._old_lac[arfcn] = item.lac, item.times_scanned
+                                #print '     return critical'
+                                return RuleResult.CRITICAL
+                        else:
+                            return RuleResult.IGNORE
+                    else:
+                        return RuleResult.IGNORE
+                else:
+                    self._old_lac[arfcn] = item.lac, item.times_scanned
+                    return RuleResult.IGNORE
+
+
+#TODO: remove debug crap
+class RxChangeRule (Rule):
+    identifier = 'rx Change Rule'
+
+    def __init__(self):
+        self._old_rx = {}
+
+    def check(self, arfcn, base_station_list):
+        for item in base_station_list:
+            if item.arfcn == arfcn:
+                if self._old_rx.has_key(arfcn):
+                    rx, old_scanned = self._old_rx[arfcn]
+                    if item.times_scanned > 1:
+                        if item.times_scanned > old_scanned:
+                            #print 'evaluating rx change on %d(%d): old rx %d / new rx %d'%(item.times_scanned,arfcn, rx, item.rxlev)
+                            lower_bound = rx - math.fabs(rx * CH_RX_threshold)
+                            upper_bound = rx + math.fabs(rx * CH_RX_threshold)
+                            #print '     thresholds: %d/%d'%(lower_bound, upper_bound)
+                            if lower_bound <= item.rxlev <= upper_bound:
+                                self._old_rx[arfcn] = item.rxlev, item.times_scanned
+                                #print '     return ok'
+                                return RuleResult.OK
+                            else:
+                                self._old_rx[arfcn] = item.rxlev, item.times_scanned
+                                #print '     return critical '
+                                return RuleResult.CRITICAL
+                        else:
+                            return RuleResult.IGNORE
+                    else:
+                        return RuleResult.IGNORE
+                else:
+                    self._old_rx[arfcn] = item.rxlev, item.times_scanned
+                    return RuleResult.IGNORE

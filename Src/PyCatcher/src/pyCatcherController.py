@@ -7,7 +7,7 @@ from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,ProviderFilter
 from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
 from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
-    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule
+    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule, RxChangeRule, LACChangeRule
 import pickle
 from localAreaDatabse import LocalAreaDatabase
 from cellIDDatabase import CellIDDatabase, CellIDDBStatus, CIDDatabases
@@ -59,11 +59,15 @@ class PyCatcherController:
         self.location_area_database_rule =  LocationAreaDatabaseRule()
         self.location_area_database_rule.is_active = False
         self.location_area_database_rule.location_database_object = self._local_area_database
+        self.lac_change_rule = LACChangeRule()
+        self.lac_change_rule.is_active = True
+        self.rx_change_rule = RxChangeRule()
+        self.rx_change_rule.is_active = True
 
         self._rules = [self.provider_rule, self.country_mapping_rule, self.arfcn_mapping_rule, self.lac_mapping_rule,
                         self.unique_cell_id_rule, self.lac_median_rule, self.neighbourhood_structure_rule,
                         self.pure_neighbourhood_rule, self.full_discovered_neighbourhoods_rule, self.cell_id_db_rule,
-                        self.location_area_database_rule]
+                        self.location_area_database_rule, self.lac_change_rule, self.rx_change_rule]
 
         self.use_google = False
         self.use_open_cell_id = False

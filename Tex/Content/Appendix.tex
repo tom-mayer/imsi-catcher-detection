@@ -1,4 +1,5 @@
 \chapter{OsmocomBB}
+This section contains general information about how to operate and setup the OsmocomBB framework and the Motorola C123.
 \section{Installation}
 \label{sec:osmo_install}
 The environment used for this project was a Thinkpad X220 Tablet running Xubuntu Linux 11.10.
@@ -50,28 +51,154 @@ After \texttt{osmocon} is started and running any application can be started wit
 cd ../layer23/src/misc/
 sudo catcher
 \end{lstlisting}
-
+\newpage
 \section{Serial Cable Schematics}
 \label{sec:osmo_serial_schematics}
 A T191 unlock cable used to connect the Motorola C123 can either be obtained by ordering it from one of the mentioned stores or by building it from scratch.
-The schematics can be seen in Figure \ref{fig:schematics}.
-
-\begin{figure}
-\centering
+These are the schematics required for building the unlock cable.
+\vfill
+\begin{center}
 \includegraphics[width=.9\textwidth]{../Images/t191cable}
-\caption{Schematics for the T191 unlock cable.}
-\label{fig:schematics}
-\end{figure}
-
+\end{center}
+\vfill
 \chapter{IMSI Catcher Detection System}
+This section will cover some code related topics of the ICDS.
 \section{Extextions}
 \label{sec:extensions}
+Rules, evaluators and filters are implemented in a way that new modules can be added quickly by way of inheritance and instantiating them in the constructor of the controller so they are known to the system.
+The following example shows how to implement a new rule and add it to the system.
+This exemplary process is nearly the same for filters and evaluators.
+
+At first this base class has to be derived.
+\begin{lstlisting}
+class Rule:
+    #set whether the rule should be used by the 
+    #controller
+    is_active = False
+    #string that will identify the rule in the report
+    identifier = 'Rule'
+
+    #the logic of the rule, will be called by controller
+    def check(self, arfcn, base_station_list):
+        return RuleResult.CRITICAL
+\end{lstlisting}
+
+The new rule class needs to override the check method to do something meaningful.
+The identifier should also be set to a proper value.
+\begin{lstlisting}
+class MyRule (Rule):
+    identifier = 'My own Rule'
+    def check(self,arfcn, base_station_list):
+        result = RuleResult.CRITICAL
+        #do some logic here and set result 
+        return result
+\end{lstlisting}
+\texttt{arfcn} and \texttt{base\_station\_list} are given to the check method by the controller.
+The first parameter is the ARFCN of the base station to which the evaluation will be applied.
+The second one is a list of all the base stations with complete information as far as it has been
+obtained by the ICDS.
+
+After it has been implemented it can be instatiated and added to the list of active rules in the 
+constructor of the controller.
+\begin{lstlisting}
+class PyCatcherController:
+    ...
+    def __init__ (self):
+        ...
+        self.my_rule = MyRule()
+        self.my_rule.is_active = True
+        self._rules.add(self._my_rule)
+        ...
+\end{lstlisting}
 \section{Example Configuration}
 \label{sec:example_config}
+This example configuration has been used for the evaluation in the Freiburg area.
+\begin{lstlisting}
+#Core Configuration ---------------------------------------
+
+#Settings for the Motorola C123 .
+Device_settings = { 'mobile_device' : '/dev/ttyUSB0',
+                    'xor_type' : 'c123xor',
+                    'firmware' : 'compal_e88',
+                   }
+
+#Location of the osmocom library.
+Osmocon_lib = '''/home/tom/imsi-catcher-detection/Src/
+osmolib/src'''
+
+#Generates commands from location and device settings.
+#Does normally not have to be edited.
+Commands = {'osmocon_command' : [Osmocon_lib + 
+    '/host/osmocon/osmocon', 
+    '-p', Device_settings['mobile_device'], 
+    '-m', Device_settings['xor_type'], 
+    Osmocon_lib + '/target/firmware/board/' 
+    + Device_settings['firmware']
+    + '/layer1.compalram.bin'],
+    'scan_command' : [Osmocon_lib 
+    + '/host/layer23/src/misc/catcher'],
+}
+
+#Rules Configuration --------------------------------------
+
+#A list of providers that should be taken as legitimate.
+Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus']
+
+#Countries where the given providers have presence.
+Provider_Country_list = {
+    'T-Mobile':'Germany',
+    'O2':'Germany',
+    'Vodafone':'Germany',
+    'E-Plus':'Germany'
+}
+
+#Comma separated list of LACs that can be observed in the
+#given area.
+LAC_mapping = {
+    'T-Mobile' : [21014,21015],
+    'O2' : [50945],
+    'Vodafone' : [793],
+    'E-Plus' : [138,588]
+}
+
+#Frequency intervals that are registered to the 
+#given providers.
+ARFCN_mapping = {
+    'T-Mobile' : [(13,39),(81, 102),(122,124),(587,611)],
+    'O2' : [(0,0),(1000,1023),(637,723)],
+    'Vodafone' : [(1,12),(50,80),(103,121),(725,751)],
+    'E-Plus' : [(975,999),(777,863)]
+}
+
+#How much % the LAC of a base station can deviate from the
+#median before throwing an error (range 0 to 1 where 0 
+#means no tolerance).
+LAC_threshold = 0
+
+#How much % the rx level is allowed to be away from the
+#interval located in the Location Area Database
+DB_RX_threshold = 0.05
+
+#How much % the rx is allowed to change during the course
+#of a scan.
+CH_RX_threshold = 0.02
+
+#Database Configuration -----------------------------------
+
+#The API key for OpenCellID.
+#Can be freely obtained by registering on the web site. 
+Open_Cell_ID_Key = 'd7a5bc3f21b44d4bf93d1ec2b3f83dc4'
+
+#Path to the folder where databases should be saved to or
+#loaded from. The ICDS will look in this folder if databa-
+#ses are available.
+Database_path = '''/home/tom/imsi-catcher-detection/Src
+/PyCatcher/Databases/'''
+\end{lstlisting}
+
 \chapter{System Information}
 \label{sec:system_infos}
 The following pages contain parsed System Information Messages of type 1-4  for reference.
-
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{../Images/sysinfo1}
@@ -94,4 +221,49 @@ The following pages contain parsed System Information Messages of type 1-4  for 
 \end{figure}
 \chapter{Evaluation Data}
 \section{IMSI Catcher Configurations}
-\section{ICDS Scans}
+\label{sec:config_data}
+The folliwing tables contain the configurations that have been used throughout the long term test period.
+The configurations have been used in the order they appear in the tables.
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+			&Conf. 1		&Conf. 2		&Conf. 3		&Conf. 4\\
+\midrule
+ARFCN		&50				&2				&978			&695	\\
+ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
+MCC			&262			&262			&262			&505	\\
+MNC			&01				&02				&03				&07		\\
+LAC			&21010			&793			&588			&50945	\\
+Cell ID		&1				&2				&3				&4		\\
+Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
+\bottomrule
+\end{tabular}\\
+\vspace{1cm}
+\begin{tabular}{lllll}
+\toprule
+			&Conf. 5		&Conf. 6		&Conf. 7		&Conf. 8\\
+\midrule
+ARFCN		&50				&2				&978			&695	\\
+ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
+MCC			&262			&262			&262			&505	\\
+MNC			&01				&02				&03				&07		\\
+LAC			&21010			&793			&588			&50945	\\
+Cell ID		&1				&2				&3				&4		\\
+Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
+\bottomrule
+\end{tabular}\\
+\vspace{1cm}
+\begin{tabular}{lllll}
+\toprule
+			&Conf. 9		&Conf. 10		&Conf. 11		&Conf. 12\\
+\midrule
+ARFCN		&50				&2				&978			&695	\\
+ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
+MCC			&262			&262			&262			&505	\\
+MNC			&01				&02				&03				&07		\\
+LAC			&21010			&793			&588			&50945	\\
+Cell ID		&1				&2				&3				&4		\\
+Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
+\bottomrule
+\end{tabular}
+\end{center}

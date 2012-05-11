@@ -165,6 +165,13 @@ Afterwards \texttt{catcher} tunes the phone to those specific frequencies where 
 
 At each such frequency it waits until all the System Information Messages are gathered and extracts parameters where possible.
 The parameters along with the raw data are forwarded to the main \gls{icds} application for further evaluation.
+An example of a fully parsed System Information Type 1 can be seen in Figure \ref{fig:si1} \cite{protocols1999}.
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{../Images/sysinfo1}
+\caption{System Information 1 Message \cite{protocols1999}.}
+\label{fig:si1}
+\end{figure}
 Examples for all the System Information Messages used, along with an interpretation are located in Appendix \ref{sec:system_infos}.
 As long as scanning mode is active all the available stations are scanned repeatedly and changes in the \glspl{bts} will continuously update the data model inside the \gls{icds} software.
 The parameters harvested are:

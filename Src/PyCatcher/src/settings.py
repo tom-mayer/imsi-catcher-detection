@@ -1,6 +1,6 @@
 #Core Configuration ------------------------------------------------------------------------------------------
 
-PyCatcher_settings = {'debug' : False,
+PyCatcher_settings = {'debug' : True,
                     }
 
 Device_settings = { 'mobile_device' : '/dev/ttyUSB0',
@@ -13,7 +13,8 @@ Osmocon_lib = '/home/tom/imsi-catcher-detection/Src/osmolib/src'
 Commands = {'osmocon_command' : [Osmocon_lib + '/host/osmocon/osmocon', 
                                     '-p', Device_settings['mobile_device'], 
                                     '-m', Device_settings['xor_type'], 
-                                    Osmocon_lib + '/target/firmware/board/' + Device_settings['firmware'] + '/layer1.compalram.bin'],   
+                                    Osmocon_lib + '/target/firmware/board/' + Device_settings['firmware']
+                                    + '/layer1.compalram.bin'],
             'scan_command' : [Osmocon_lib + '/host/layer23/src/misc/catcher'],
            }
 
@@ -30,24 +31,26 @@ Provider_Country_list = {
 }
 
 LAC_mapping = {
-    'DB Systel GSM-R': [0,999999],
-    'T-Mobile' : [21000,22000],
-    'O2' : [0,99999],
-    'Vodafone' : [0,100000],
-    'E-Plus' : [0,100000]
+    'DB Systel GSM-R': [0],
+    'T-Mobile' : [21014,21015],
+    'O2' : [50945],
+    'Vodafone' : [793],
+    'E-Plus' : [138,588]
 }
 
 ARFCN_mapping = {
-    'DB Systel GSM-R': [0,9999],
-    'T-Mobile' : [0,9999],
-    'O2' : [0,9999],
-    'Vodafone' : [0,9999],
-    'E-Plus' : [0,9999]
+    'DB Systel GSM-R': [(0,1)],
+    'T-Mobile' : [(13,39),(81, 102),(122,124),(587,611)],
+    'O2' : [(0,0),(1000,1023),(637,723)],
+    'Vodafone' : [(1,12),(50,80),(103,121),(725,751)],
+    'E-Plus' : [(975,999),(777,863)]
 }
 
 LAC_threshold = 0
 
-RX_threshold = 0.05
+DB_RX_threshold = 0.05
+
+CH_RX_threshold = 0.02
 
 #Database Configuration ----------------------------------------------------------------------------------------
 

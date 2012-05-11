@@ -109,9 +109,14 @@ What can be said though is that a base station that has been found may only be s
 \subsection{Encryption Detection Speed}
 
 \section{IMSI Catcher Detection}
+Before using an IMSI catcher for testing purpose or a launching an OpenBTS base station it should be ensured that licenses for the specific frequencies that are used, have been obtained.
+This way it can be ensured that the operation does not interfere with regular radio communication.
+Extra care should be taken when configuring the IMSI catcher to simulate a real base station to reject incoming connections when the experiments are done within a radio sealed room.
+Otherwise subscribers might get caught by the catcher and might not be able to initiate calls.
+How this can be done for the Open Source IMSI Catcher that is used to test the \gls{icds} is explained in the next section.
 
 \subsection{Open Source IMSI Catcher}
-The remainder of the rules cannot be tested without an active IMSI catcher.
+The rules themselves cannot be tested without an active IMSI catcher.
 For this purpose the Open Source IMSI Catcher \cite{dennis} is used.
 
 This project builds up an IMSI catcher using only Open Source systems and freely available hardware so it can basically be used by anybody.
@@ -119,12 +124,12 @@ On the hardware side a computer running a Linux operating system is used, as wel
 The \gls{usrp} allows the signal processing for radio transmissions to be done in software, therefore it can be used for a multitude of purposes and protocols.
 Some hardware modifications have to be done to the device to empower it to send and receive data on the frequency bands used for \gls{gsm} communication.
 An external clock needs to be used since \gls{gsm} operations are very time critical.
+Figure \ref{fig:setup} shows the Open Source IMSI Catcher and the \gls{icds} side by side.
 
 On the software side GNU Radio\footnote{GNU Radio Project Wiki, \url{http://gnuradio.org/redmine/projects/gnuradio/wiki} [Online; Accessed 05.2012]}, OpenBTS\footnote{OpenBTS Project Wiki, \url{http://wush.net/trac/rangepublic} [Online; Accessed 05.2012]} and Asterisk\footnote{Asterisk, \url{http://www.asterisk.org} [Online; Accessed 05.2012]} are used to achieve the functionality provided by a IMSI catcher.
-Figure \ref{fig:osic} shows how these components are chained and used together.
 \begin{figure}
-\caption{Open Source IMSI Catcher.}
-\label{fig:osic}
+\caption{Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}
+\label{fig:setup}
 \end{figure}
 The raw data that is received by the \gls{usrp} is sent to the GNU Radio component which works as a software side interface to the \gls{usrp}.
 This data is taken by the OpenBTS software that emulates base station behaviour and has an integrated module simulating a \gls{vlr} and handing out \glspl{tmsi}.
@@ -160,74 +165,140 @@ GSM.T3212 1
 \end{figure}
 \texttt{Control.OpenRegistration} is explicitly set to 0 which prevents anyone from connecting to the IMSI catcher since connections are not part of the test and we do not want to interfere with other peoples' communications in the area.
 
-
 \subsection{Rule Evaluation}
-
-\subsection{Attack Scenarios}
-Since all the rules have been tested we assume from this point on the IMSI catcher is configured correctly, meaning that  parameters like the \gls{arfcn}, \gls{lac} or provider have been set up in correct and consistent way so the respective rules will not show an alarm.
-Consistent parameters for the four providers in Germany can be found in Tables \ref{tab:consistent_parameters} (a)-(d).
+With the environment set up we will now evaluate the individual rules.
+The IMSI catcher was launched with the four different configurations shown in Table \ref{tab:err_configs}.
 \begin{table}
 \centering
-\subtable[T-Mobile]{
-\begin{tabular}{ll}
+\begin{tabular}{lllll}
 \toprule
-Parameter	&Range\\
+			&Conf. 1		&Conf. 2		&Conf. 3		&Conf. 4\\
 \midrule
-Name		&T-Mobile\\
-ARFCN		&13-49, 81-102,\\
-			&122-124, 587-611\\
-LAC			&21014 / 21015\\
-MCC			&262\\
-MNC			&01\\
+ARFCN		&50				&2				&978			&695	\\
+ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
+MCC			&262			&262			&262			&505	\\
+MNC			&01				&02				&03				&07		\\
+LAC			&21010			&793			&588			&50945	\\
+Cell ID		&1				&2				&3				&4		\\
+Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
 \bottomrule
 \end{tabular}
-}
-\subtable[Vodafone]{
-\begin{tabular}{ll}
+\caption{Erroneous configurations for the IMSI catcher.}
+\label{tab:err_configs}
+\end{table}
+With each of these configurations the \gls{icds} detected the catcher for various reasons:
+%TODO: fill in the missing rules
+\begin{itemize}
+	\item Config 1: For this configuration the \gls{icds} detected that \gls{arfcn} 50 is not in the range registered to the provider T-Mobile.
+	Apart from that the \gls{lac} differed from the ones found in the Freiburg area.
+	The neighbouring cell list was also empty which is a strong indication for an IMSI catcher.\\
+	Rules triggered:  
+	\item Config 2: The detected errors within this configuration are that none of the neighbours mentioned was in range to be detected, which is very unlikely for a normal base station.\\
+	Rules triggered:
+	\item Config 3: In this configuration one of the neighbours, namely 695 is not consistent with the set provider.
+	The base stations breaks up the isolated subgraph for E-Plus and is thus detected.\\
+	Rules triggered:
+	\item Config 4: The \gls{mcc} is not consistent with the chosen provider. 
+	Additionally another warning is thrown since the neighbourhood list only contained nodes that were only found indirectly.\\
+	Rules triggered:
+\end{itemize}
+The \emph{LAC Change} and the \emph{rx Change} rules remain to be tested.
+For this purpose the procedure was as follows.
+At first the \gls{icds} was turned on an scanning commenced.
+Afterwards the IMSI catcher was turned on, operating on the same frequency as a base station that was previously discovered.
+This was repeated several times with the IMSI catcher replacing another node each time.
+Table \ref{tab:par_change} summarises the findings.
+The configurations used can be found in Appendix \ref{sec:config_data}.
+In all cases the \gls{icds} was able to detect the IMSI catcher after about 2 minutes.
+These times can vary however depending on the timing of the catcher being turned on and the time it takes for rescanning a base stations as described in the beginning of this chapter.
+\begin{table}
+\centering
+\begin{tabular}{lrrcrrrllr}
 \toprule
-Parameter	&Range\\
+		&				&\multicolumn{2}{c}{rx}		&\phantom{a}	&\multicolumn{2}{c}{LAC}	&				&	&		\\
+							\cmidrule{3-4} 								\cmidrule{6-7} 
+Config 	&Cell	&Old	&New				&				&Old	&New				&rx det.	&LAC det.		&Time\\
 \midrule
-Name		&Vodafone\\
-ARFCN		&1-12, 50-80,\\
-			&103-121, 725-751\\
-LAC			&793\\
-MCC			&262\\
-MNC			&02\\
+Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
 \bottomrule
 \end{tabular}
-}
-\subtable[E-Plus]{
-\begin{tabular}{ll}
+\caption{failzor}
+\label{tab:par_change}
+\end{table}
+
+\subsection{Long Term Test}
+To evaluate the \emph{Location Area Database} rule a long term test has been carried out.
+This has been done to find out whether base stations in the surrounding area change on a regular basis or stay the same (including their respective configurations and reception levels).
+This is essential for a Location Area Database to be usable over a longer period of time.
+
+The database itself has been built over the course of one week in Freiburg, Thuner Weg.
+%TODO: flil in exact values here
+During this period no parameter changes were detected and the reception of base stations only varied inside a very small interval.
+After that each day for another week, two scans per day were done.
+One of them while the IMSI catcher was operating, the other without the device present.
+This was done to evaluate if false positives or negatives occurred using the database and all the methods mentioned above over a larger period of time.
+The results on a per day basis are summarised in Table \ref{tab:longterm_test}.
+\begin{table}
+\centering
+\begin{tabular}{lllllrr}
 \toprule
-Parameter	&Range\\
+Date	&Time	&Catcher	&Detected	&Detected by	&False positives	&False negatives\\
 \midrule
-Name		&E-Plus\\
-ARFCN		&975-999,\\
-			&777-863\\
-LAC			&588 / 138\\
-MCC			&262\\
-MNC			&03\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
+		&		&			&			&				&					&				\\
 \bottomrule
 \end{tabular}
-}
-\subtable[O2]{
-\begin{tabular}{ll}
+\caption{Results of the long term evaluation.}
+\label{tab:longterm_test}
+\end{table}
+
+\subsection{Attack Scenarios}
+Since all the configuration rules have been tested we assume from this point on that the IMSI catcher is configured correctly, meaning that  parameters like the \gls{arfcn}, \gls{lac} or provider have been set up in correct and consistent way so the respective rules will not show an alarm.
+Consistent parameters for the four providers in Germany can be found in Table \ref{tab:consistent_parameters}.
+\begin{table}
+\centering
+\begin{tabular}{lllll}
 \toprule
-Parameter	&Range\\
+Parameter	&T-Mobile				&Vodafone			&E-Plus			&O2\\
 \midrule
-Name		&O2\\
-ARFCN		&0, 1000-1023,\\
-			&637-723\\
-LAC			&50945\\
-MCC			&262\\
-MNC			&07\\
+ARFCN		&13-49, 81-102,			&1-12, 50-80,		&975-999,		&0, 1000-1023,\\
+			&122-124, 587-611		&103-121, 725-751	&777-863		&637-723\\
+LAC			&21014/21015			&793				&588/138		&50945\\
+MCC			&262					&262				&262			&262\\
+MNC			&01						&02					&03				&07\\
 \bottomrule
 \end{tabular}
-}
 \caption{Consistent parameter configurations in the Freiburg area for the four German providers.}
 \label{tab:consistent_parameters}
 \end{table}
 Note that the Cell ID can be a arbitrary value as long as it is unique in the area of reception. 
 Cell IDs measured from different base stations do not follow any particular schema.
+The scenarios are built after the attacks described in Section \ref{sec:attacks}.
 
-\subsection{Long Term Test}
+The first scenario will simulate the case where the catcher opened up a new cell with a good reception and forced the \gls{ms} into normal cell selection mode by disconnecting it from the current base station via a jammer.
+
+The second scenario simulates the attack where the IMSI catcher replaces a base station with a bad reception in the neighbourhood of the cell the \gls{ms} is connected to.
+This way the reception drastically improves on that particular frequency suggesting to the \gls{ms} that the subscriber moved to the close perimeter of that \gls{bts} and initiating a handover.
+Figure \ref{fig:takeover_attack} illustrates this particular attack.
+\begin{figure}
+\centering
+\caption{Takeover attack of an IMSI catcher on a base station.}
+\label{fig:takeover_attack}
+\end{figure}

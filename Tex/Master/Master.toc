@@ -45,42 +45,41 @@
 \contentsline {subsubsection}{OsmocomBB and ICDS}{42}
 \contentsline {section}{\numberline {3.2}Procedure}{43}
 \contentsline {subsection}{\numberline {3.2.1}Information Gathering}{43}
-\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{45}
-\contentsline {subsubsection}{Neighbourhood Structure}{47}
-\contentsline {subsubsection}{Base Station Evaluation}{48}
-\contentsline {subsection}{\numberline {3.2.3}Forged Parameters}{50}
-\contentsline {subsubsection}{Database Rules}{51}
-\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{52}
-\contentsline {subsection}{\numberline {3.3.1}Implemetation}{52}
-\contentsline {subsection}{\numberline {3.3.2}Configuration}{53}
-\contentsline {subsection}{\numberline {3.3.3}Operation}{54}
-\contentsline {paragraph}{Sweep scans:}{57}
-\contentsline {paragraph}{CellID Information:}{57}
-\contentsline {paragraph}{Location Area Database:}{59}
-\contentsline {paragraph}{Scan Encryption:}{59}
-\contentsline {paragraph}{User Mode:}{59}
+\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{46}
+\contentsline {subsubsection}{Neighbourhood Structure}{48}
+\contentsline {subsubsection}{Base Station Evaluation}{49}
+\contentsline {subsection}{\numberline {3.2.3}Forged Parameters}{51}
+\contentsline {subsubsection}{Database Rules}{52}
+\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{53}
+\contentsline {subsection}{\numberline {3.3.1}Implemetation}{53}
+\contentsline {subsection}{\numberline {3.3.2}Configuration}{54}
+\contentsline {subsection}{\numberline {3.3.3}Operation}{55}
+\contentsline {paragraph}{Sweep scans:}{58}
+\contentsline {paragraph}{CellID Information:}{58}
+\contentsline {paragraph}{Location Area Database:}{60}
+\contentsline {paragraph}{Scan Encryption:}{60}
+\contentsline {paragraph}{User Mode:}{60}
 \contentsline {chapter}{\numberline {4}Evaluation}{61}
 \contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
 \contentsline {subsection}{\numberline {4.1.1}Scan Duration}{62}
 \contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{63}
-\contentsline {subsection}{\numberline {4.1.3}Encryption Detection Speed}{64}
-\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{64}
+\contentsline {subsection}{\numberline {4.1.3}Encryption Detection Speed}{63}
+\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{63}
 \contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{64}
 \contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{65}
-\contentsline {subsection}{\numberline {4.2.3}Attack Scenarios}{65}
-\contentsline {subsection}{\numberline {4.2.4}Long Term Test}{65}
-\contentsline {chapter}{\numberline {5}Conclusion}{67}
-\contentsline {section}{\numberline {5.1}Future Work}{67}
-\contentsline {chapter}{Bibliography}{69}
-\contentsline {chapter}{\numberline {A}OsmocomBB}{73}
-\contentsline {section}{\numberline {A.1}Installation}{73}
-\contentsline {section}{\numberline {A.2}Usage}{74}
-\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{74}
-\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{77}
-\contentsline {section}{\numberline {B.1}Extextions}{77}
-\contentsline {section}{\numberline {B.2}Example Configuration}{77}
-\contentsline {chapter}{\numberline {C}System Information}{79}
-\contentsline {chapter}{\numberline {D}Evaluation Data}{85}
-\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{85}
-\contentsline {section}{\numberline {D.2}ICDS Scans}{85}
-\contentsline {chapter}{Acronyms}{87}
+\contentsline {subsection}{\numberline {4.2.3}Long Term Test}{66}
+\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{67}
+\contentsline {chapter}{\numberline {5}Conclusion}{69}
+\contentsline {section}{\numberline {5.1}Future Work}{69}
+\contentsline {chapter}{Bibliography}{71}
+\contentsline {chapter}{\numberline {A}OsmocomBB}{75}
+\contentsline {section}{\numberline {A.1}Installation}{75}
+\contentsline {section}{\numberline {A.2}Usage}{76}
+\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{77}
+\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{79}
+\contentsline {section}{\numberline {B.1}Extextions}{79}
+\contentsline {section}{\numberline {B.2}Example Configuration}{80}
+\contentsline {chapter}{\numberline {C}System Information}{83}
+\contentsline {chapter}{\numberline {D}Evaluation Data}{89}
+\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{89}
+\contentsline {chapter}{Acronyms}{91}
