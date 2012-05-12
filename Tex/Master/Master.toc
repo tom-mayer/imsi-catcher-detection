@@ -69,17 +69,17 @@
 \contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{65}
 \contentsline {subsection}{\numberline {4.2.3}Long Term Test}{66}
 \contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{67}
-\contentsline {chapter}{\numberline {5}Conclusion}{69}
-\contentsline {section}{\numberline {5.1}Future Work}{69}
-\contentsline {chapter}{Bibliography}{71}
-\contentsline {chapter}{\numberline {A}OsmocomBB}{75}
-\contentsline {section}{\numberline {A.1}Installation}{75}
-\contentsline {section}{\numberline {A.2}Usage}{76}
-\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{77}
-\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{79}
-\contentsline {section}{\numberline {B.1}Extextions}{79}
-\contentsline {section}{\numberline {B.2}Example Configuration}{80}
-\contentsline {chapter}{\numberline {C}System Information}{83}
-\contentsline {chapter}{\numberline {D}Evaluation Data}{89}
-\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{89}
-\contentsline {chapter}{Acronyms}{91}
+\contentsline {chapter}{\numberline {5}Conclusion}{71}
+\contentsline {section}{\numberline {5.1}Future Work}{71}
+\contentsline {chapter}{Bibliography}{73}
+\contentsline {chapter}{\numberline {A}OsmocomBB}{77}
+\contentsline {section}{\numberline {A.1}Installation}{77}
+\contentsline {section}{\numberline {A.2}Usage}{78}
+\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{79}
+\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{81}
+\contentsline {section}{\numberline {B.1}Extextions}{81}
+\contentsline {section}{\numberline {B.2}Example Configuration}{82}
+\contentsline {chapter}{\numberline {C}System Information}{85}
+\contentsline {chapter}{\numberline {D}Evaluation Data}{91}
+\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{91}
+\contentsline {chapter}{Acronyms}{93}

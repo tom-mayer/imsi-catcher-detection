@@ -1,6 +1,5 @@
 \glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{1}
 \glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{1}
-\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{1}
 \glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{3}
 \glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{3}
 \glossaryentry{CEPT?\glossaryentryfield{cept}{\glsnamefont{CEPT}}{Conf\'{e}rence Europ\'{e}enne des Administrations des Postes et des T\'{e}l\'{e}communications}{\relax }|setentrycounter{page}\glsnumberformat}{3}
@@ -612,3 +611,11 @@
 \glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{67}
 \glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{67}
 \glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{67}
+\glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{67}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{67}
+\glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{67}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{67}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{69}
+\glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{69}
+\glossaryentry{LAC?\glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }|setentrycounter{page}\glsnumberformat}{69}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{69}

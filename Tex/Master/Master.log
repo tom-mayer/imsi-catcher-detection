@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  11 MAY 2012 17:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  12 MAY 2012 14:49
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1008,18 +1008,39 @@ Non-PDF special ignored!
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../Images/unisiegel.pdf>])
+ [2] (../Content/Declaration.tex
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--4
+
+ []
+
+) [1] (../Content/Acknowledgements.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 122.
- (../Content/Abstract.tex) [2]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 136.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
+) [2
+
+] (../Content/Abstract.tex)
+(../Content/Disclaimer.tex) [3
+
+] [4
+
+
+
+]
+LaTeX Font Info:    Try loading font information for T1+phv on input line 148.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 136.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 136.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 148.
  (./Master.toc
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
@@ -1033,10 +1054,7 @@ Class scrbook Info: You've told me to use the font selection of the element
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 62.
- [1
-
-
-
+ [5
 
 
 ]
@@ -1066,7 +1084,7 @@ Class scrbook Info: You've told me to use the font selection of the element
 \openout8 = `Master.toc'.
 
 
-[2] (../Content/Motivation.tex
+[6] (../Content/Motivation.tex
 Chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -1101,7 +1119,7 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 85.
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<../Images/Architecture.png, id=42, 370.45602pt x 204.81319pt>
+<../Images/Architecture.png, id=54, 370.45602pt x 204.81319pt>
 File: ../Images/Architecture.png Graphic file (type png)
 
 <use ../Images/Architecture.png> [5]
@@ -1111,74 +1129,74 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-[9] [10] [11] <../Images/Authentication.png, id=66, 359.1819pt x 323.0469pt>
+[9] [10] [11] <../Images/Authentication.png, id=79, 359.1819pt x 323.0469pt>
 File: ../Images/Authentication.png Graphic file (type png)
 
 <use ../Images/Authentication.png> [12] [13 <../Images/Authentication.png (PNG 
-copy)>] [14] <../Images/Mapping.png, id=76, 337.28409pt x 115.19838pt>
+copy)>] [14] <../Images/Mapping.png, id=89, 337.28409pt x 115.19838pt>
 File: ../Images/Mapping.png Graphic file (type png)
 
 <use ../Images/Mapping.png> [15] [16 <../Images/Mapping.png (PNG copy)>]
-[17] <../Images/Cells.png, id=87, 98.72083pt x 88.8921pt>
+[17] <../Images/Cells.png, id=100, 98.72083pt x 88.8921pt>
 File: ../Images/Cells.png Graphic file (type png)
 
 <use ../Images/Cells.png>
-<../Images/real_Cells.PNG, id=88, 743.02594pt x 496.10344pt>
+<../Images/real_Cells.PNG, id=101, 743.02594pt x 496.10344pt>
 File: ../Images/real_Cells.PNG Graphic file (type png)
 
 <use ../Images/real_Cells.PNG>
-<../Images/Standart_config.png, id=90, 199.4652pt x 133.26588pt>
+<../Images/Standart_config.png, id=103, 199.4652pt x 133.26588pt>
 File: ../Images/Standart_config.png Graphic file (type png)
 
 <use ../Images/Standart_config.png>
-<../Images/Umbrella.png, id=91, 209.3662pt x 181.46997pt>
+<../Images/Umbrella.png, id=104, 209.3662pt x 181.46997pt>
 File: ../Images/Umbrella.png Graphic file (type png)
 
 <use ../Images/Umbrella.png>
-<../Images/Sectorised.png, id=92, 147.64761pt x 147.64761pt>
+<../Images/Sectorised.png, id=105, 147.64761pt x 147.64761pt>
 File: ../Images/Sectorised.png Graphic file (type png)
 
 <use ../Images/Sectorised.png> [18 <../Images/Cells.png (PNG copy)> <../Images/
 real_Cells.PNG>] [19 <../Images/Standart_config.png (PNG copy)> <../Images/Umbr
 ella.png (PNG copy)> <../Images/Sectorised.png (PNG copy)>] [20] [21]
-<../Images/Cipher.png, id=108, 387.72855pt x 131.02551pt>
+<../Images/Cipher.png, id=120, 387.72855pt x 131.02551pt>
 File: ../Images/Cipher.png Graphic file (type png)
 
 <use ../Images/Cipher.png> [22 <../Images/Cipher.png (PNG copy)>]
-<../Images/TDMAFDMA.png, id=113, 254.53494pt x 133.33815pt>
+<../Images/TDMAFDMA.png, id=125, 254.53494pt x 133.33815pt>
 File: ../Images/TDMAFDMA.png Graphic file (type png)
 
 <use ../Images/TDMAFDMA.png>
 Underfull \vbox (badness 1406) has occurred while \output is active []
 
  [23 <../Images/TDMAFDMA.png (PNG copy)>]
-<../Images/Frames.png, id=117, 367.42068pt x 252.29457pt>
+<../Images/Frames.png, id=130, 367.42068pt x 252.29457pt>
 File: ../Images/Frames.png Graphic file (type png)
 
 <use ../Images/Frames.png> [24] [25 <../Images/Frames.png (PNG copy)>]
-<../Images/Bursts.png, id=124, 371.9737pt x 91.92744pt>
+<../Images/Bursts.png, id=137, 371.9737pt x 91.92744pt>
 File: ../Images/Bursts.png Graphic file (type png)
 
 <use ../Images/Bursts.png> [26 <../Images/Bursts.png (PNG copy)>]
-<../Images/Channels.png, id=128, 272.60245pt x 169.47314pt>
+<../Images/Channels.png, id=141, 272.60245pt x 169.47314pt>
 File: ../Images/Channels.png Graphic file (type png)
 
 <use ../Images/Channels.png> [27 <../Images/Channels.png (PNG copy)>] [28]
-<../Images/channel_example.png, id=136, 926.71219pt x 1127.71312pt>
+<../Images/channel_example.png, id=148, 926.71219pt x 1127.71312pt>
 File: ../Images/channel_example.png Graphic file (type png)
 
 <use ../Images/channel_example.png> [29] [30] [31 <../Images/channel_example.pn
-g>] <../Images/imsi_catcher.jpg, id=147, 280.15778pt x 225.73222pt>
+g>] <../Images/imsi_catcher.jpg, id=160, 280.15778pt x 225.73222pt>
 File: ../Images/imsi_catcher.jpg Graphic file (type jpg)
 
 <use ../Images/imsi_catcher.jpg>
-<../Images/usrp.jpg, id=148, 1204.5pt x 844.65562pt>
+<../Images/usrp.jpg, id=161, 1204.5pt x 844.65562pt>
 File: ../Images/usrp.jpg Graphic file (type jpg)
  <use ../Images/usrp.jpg>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-<../Images/catcher_attack.png, id=153, 321.52924pt x 277.08318pt>
+<../Images/catcher_attack.png, id=166, 321.52924pt x 277.08318pt>
 File: ../Images/catcher_attack.png Graphic file (type png)
 
 <use ../Images/catcher_attack.png> [33 <../Images/imsi_catcher.jpg> <../Images/
@@ -1191,16 +1209,16 @@ File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 
 ]
 Chapter 3.
-[39] <../Images/c123_pcb.jpg, id=177, 1284.8pt x 856.19875pt>
+[39] <../Images/c123_pcb.jpg, id=189, 1284.8pt x 856.19875pt>
 File: ../Images/c123_pcb.jpg Graphic file (type jpg)
 
 <use ../Images/c123_pcb.jpg> [40] [41]
-<../Images/OsmoStructure.png, id=184, 387.00584pt x 79.13565pt>
+<../Images/OsmoStructure.png, id=197, 387.00584pt x 79.13565pt>
 File: ../Images/OsmoStructure.png Graphic file (type png)
 
 <use ../Images/OsmoStructure.png> [42 <../Images/c123_pcb.jpg>] [43 <../Images/
 OsmoStructure.png (PNG copy)>]
-<../Images/sysinfo1.png, id=191, 260.172pt x 393.1488pt>
+<../Images/sysinfo1.png, id=204, 260.172pt x 393.1488pt>
 File: ../Images/sysinfo1.png Graphic file (type png)
 
 <use ../Images/sysinfo1.png>
@@ -1208,7 +1226,7 @@ File: ../Images/sysinfo1.png Graphic file (type png)
 LaTeX Warning: Float too large for page by 0.9002pt on input line 174.
 
 [44] [45 <../Images/sysinfo1.png (PNG copy)>] [46] [47]
-<../Images/neighbourhoods_fak.png, id=205, 907.39pt x 941.5175pt>
+<../Images/neighbourhoods_fak.png, id=218, 907.39pt x 941.5175pt>
 File: ../Images/neighbourhoods_fak.png Graphic file (type png)
 
 <use ../Images/neighbourhoods_fak.png>
@@ -1221,26 +1239,26 @@ he Tech-nis-che
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 325.
  [49] [50 <../Images/neighbourhoods_fak.png>] [51] [52]
-<../Images/Architecture_software.png, id=224, 341.8371pt x 183.78261pt>
+<../Images/Architecture_software.png, id=236, 341.8371pt x 183.78261pt>
 File: ../Images/Architecture_software.png Graphic file (type png)
 
 <use ../Images/Architecture_software.png> [53 <../Images/Architecture_software.
 png (PNG copy)>]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 479.
- [54] <../Images/ICDS.png, id=233, 1287.81125pt x 881.2925pt>
+ [54] <../Images/ICDS.png, id=246, 1287.81125pt x 881.2925pt>
 File: ../Images/ICDS.png Graphic file (type png)
 
 <use ../Images/ICDS.png> [55] [56 <../Images/ICDS.png>] [57]
-<../Images/filter_window.png, id=245, 311.1625pt x 218.8175pt>
+<../Images/filter_window.png, id=257, 311.1625pt x 218.8175pt>
 File: ../Images/filter_window.png Graphic file (type png)
 
 <use ../Images/filter_window.png>
-<../Images/rules_window.png, id=246, 278.03876pt x 358.33875pt>
+<../Images/rules_window.png, id=258, 278.03876pt x 358.33875pt>
 File: ../Images/rules_window.png Graphic file (type png)
 
 <use ../Images/rules_window.png>
-<../Images/databases.png, id=247, 358.33875pt x 373.395pt>
+<../Images/databases.png, id=259, 358.33875pt x 373.395pt>
 File: ../Images/databases.png Graphic file (type png)
 
 <use ../Images/databases.png>
@@ -1267,12 +1285,17 @@ Overfull \hbox (3.33815pt too wide) in paragraph at lines 16--30
 [61
 
 
-] [62] [63] [64] [65] [66]) (../Content/Conclusion.tex [67] [68]
+] [62] [63] [64] [65] [66]
+<../Images/replace_attack.png, id=292, 356.94153pt x 162.67976pt>
+File: ../Images/replace_attack.png Graphic file (type png)
+
+<use ../Images/replace_attack.png>) (../Content/Conclusion.tex [67] [68]
+[69 <../Images/replace_attack.png (PNG copy)>] [70
+
+
+]
 Chapter 5.
-) [69
-
-
-] [70
+) [71] [72
 
 
 
@@ -1318,7 +1341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--52
 []a30 . zip$\T1/ptm/m/n/10.95 ,
  []
 
-[71
+[73
 
 
 ]
@@ -1357,18 +1380,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 138--143
  . html$\T1/ptm/m/n/10.95 ,
  []
 
-[72]
+[74]
 Underfull \hbox (badness 10000) in paragraph at lines 158--161
 []\T1/ptm/m/sc/10.95 Wikipedia\T1/ptm/m/n/10.95 .  Cell id.  $\T1/pcr/m/n/10.95
  http : / / bb . osmocom . org / trac / wiki /
  []
 
-) [73] (../Content/Appendix.tex [74
+) [75] (../Content/Appendix.tex [76
 
 
 ]
 Appendix A.
-[75]
+[77]
 Overfull \hbox (25.37581pt too wide) in paragraph at lines 32--34
 \T1/ptm/m/n/10.95 moved to \T1/pcr/m/n/10.95 osmocom-bb/src/host/layer23/src/mi
 sc \T1/ptm/m/n/10.95 and the \T1/pcr/m/n/10.95 Makefile.am
@@ -1379,46 +1402,46 @@ Overfull \hbox (5.82301pt too wide) in paragraph at lines 47--48
 [][][][][][][][][][][][][][][][][][] 
  []
 
-[76] <../Images/t191cable.jpg, id=311, 702.625pt x 609.27625pt>
+[78] <../Images/t191cable.jpg, id=331, 702.625pt x 609.27625pt>
 File: ../Images/t191cable.jpg Graphic file (type jpg)
 
-<use ../Images/t191cable.jpg> [77 <../Images/t191cable.jpg>] [78
+<use ../Images/t191cable.jpg> [79 <../Images/t191cable.jpg>] [80
 
 
 ]
 Appendix B.
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 74.
-[79] [80]
+[81] [82]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [81]
-[82]
+ [83]
+[84]
 Appendix C.
 File: ../Images/sysinfo1.png Graphic file (type png)
 <use ../Images/sysinfo1.png>
 
 LaTeX Warning: Float too large for page by 0.9002pt on input line 206.
 
-<../Images/sysinfo2.png, id=332, 261.32832pt x 440.55792pt>
+<../Images/sysinfo2.png, id=352, 261.32832pt x 440.55792pt>
 File: ../Images/sysinfo2.png Graphic file (type png)
 
 <use ../Images/sysinfo2.png>
 
 LaTeX Warning: Float too large for page by 61.98238pt on input line 211.
 
-<../Images/sysinfo3.png, id=333, 284.45473pt x 373.49136pt>
+<../Images/sysinfo3.png, id=353, 284.45473pt x 373.49136pt>
 File: ../Images/sysinfo3.png Graphic file (type png)
 
 <use ../Images/sysinfo3.png>
-<../Images/sysinfo4.png, id=334, 252.07776pt x 370.0224pt>
+<../Images/sysinfo4.png, id=354, 252.07776pt x 370.0224pt>
 File: ../Images/sysinfo4.png Graphic file (type png)
 
-<use ../Images/sysinfo4.png> [83
+<use ../Images/sysinfo4.png> [85
 
 
-] [84] [85 <../Images/sysinfo2.png (PNG copy)>] [86 <../Images/sysinfo3.png (PN
-G copy)>] [87 <../Images/sysinfo4.png (PNG copy)>] [88
+] [86] [87 <../Images/sysinfo2.png (PNG copy)>] [88 <../Images/sysinfo3.png (PN
+G copy)>] [89 <../Images/sysinfo4.png (PNG copy)>] [90
 
 
 ]
@@ -1426,8 +1449,8 @@ Appendix D.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [89])
-(./Master.acr [90]
+ [91])
+(./Master.acr [92]
 Underfull \hbox (badness 2626) in paragraph at lines 24--24
 []|\T1/ptm/m/n/10.95 Conférence Eu-ropéenne des Ad-min-is-tra-tions des
  []
@@ -1437,18 +1460,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 []|\T1/ptm/m/n/10.95 Electrically Erasable Pro-grammable Read-Only
  []
 
-[91
+[93
 
 
 
 
-] [92]) [93] (./Master.aux) ) 
+] [94]) [95] (./Master.aux) ) 
 Here is how much of TeX's memory you used:
- 24948 strings out of 493848
- 466619 string characters out of 1152824
+ 24972 strings out of 493848
+ 467261 string characters out of 1152824
  689951 words of memory out of 3000000
- 27578 multiletter control sequences out of 15000+50000
- 81055 words of font info for 108 fonts, out of 3000000 for 9000
+ 27592 multiletter control sequences out of 15000+50000
+ 82699 words of font info for 109 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  69i,13n,72p,1076b,1689s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.
@@ -1466,9 +1489,9 @@ rro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
 hare/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times
 /utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (97 pages, 13560498 bytes).
+Output written on Master.pdf (103 pages, 14034894 bytes).
 PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
+ 447 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 168 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 

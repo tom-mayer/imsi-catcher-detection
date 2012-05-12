@@ -296,9 +296,19 @@ The first scenario will simulate the case where the catcher opened up a new cell
 
 The second scenario simulates the attack where the IMSI catcher replaces a base station with a bad reception in the neighbourhood of the cell the \gls{ms} is connected to.
 This way the reception drastically improves on that particular frequency suggesting to the \gls{ms} that the subscriber moved to the close perimeter of that \gls{bts} and initiating a handover.
+
 Figure \ref{fig:takeover_attack} illustrates this particular attack.
+The station with the \gls{arfcn} 42 has the lowest reception with its signal to noise ratio of -95\,dB.
+In this particular scenario the \gls{ms} would first connect to the station on 23 because of its good reception.
+After that the IMSI catcher is turned on also on \gls{arfcn} 42.
+Due to its location it has the best reception level of all the available base station.
+Since it replaced station 42 it is most likely in the neighbourhood list of 23.
+When the \gls{ms} conducts a neighbouring cell measurement it will find that the catcher has the best reception and will switch to it.
+Disconnection and cell re-selection of the \gls{ms} could also be achieved instantly by jamming \gls{arfcn} 23.
+Since the catcher sends a different \gls{lac} the \gls{ms} will send a location update to the IMSI catcher announcing its presence.
 \begin{figure}
 \centering
+\includegraphics{../Images/replace_attack}
 \caption{Takeover attack of an IMSI catcher on a base station.}
 \label{fig:takeover_attack}
 \end{figure}
