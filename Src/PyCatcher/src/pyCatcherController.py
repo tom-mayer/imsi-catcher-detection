@@ -5,7 +5,7 @@ from driverConnector import DriverConnector
 from pyCatcherModel import BaseStationInformation, BaseStationInformationList
 from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,ProviderFilter
-from evaluators import EvaluatorSelect, BayesEvaluator, ConservativeEvaluator, WeightedEvaluator
+from evaluators import EvaluatorSelect, ConservativeEvaluator, WeightedEvaluator, GroupEvaluator
 from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
     LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule, RxChangeRule, LACChangeRule
 import pickle
@@ -32,7 +32,7 @@ class PyCatcherController:
         self._cell_id_database = CellIDDatabase()
 
         self._conservative_evaluator = ConservativeEvaluator()
-        self._bayes_evaluator = BayesEvaluator()
+        self._group_evaluator = GroupEvaluator()
         self._weighted_evaluator = WeightedEvaluator()
         self._active_evaluator = self._conservative_evaluator
 
@@ -118,10 +118,17 @@ class PyCatcherController:
     def set_evaluator (self, evaluator):
         if evaluator == EvaluatorSelect.CONSERVATIVE:
             self._active_evaluator = self._conservative_evaluator
-        elif evaluator == EvaluatorSelect.BAYES:
-            self._active_evaluator = self._bayes_evaluator
+        elif evaluator == EvaluatorSelect.GROUP:
+            self._active_evaluator = self._group_evaluator
         elif evaluator == EvaluatorSelect.WEIGHTED:
             self._active_evaluator = self._weighted_evaluator
+        self.trigger_evaluation()
+
+    def user_go(self, provider):
+        pass
+
+    def scan_encryption(self, arfcn_list, timeout):
+        pass
 
     def update_with_web_services(self):
         self._gui.log_line('Starting online lookups...')
@@ -211,7 +218,7 @@ class PyCatcherController:
            elif item.evaluation == 'Critical':
                result = RuleResult.CRITICAL
                break
-        self._gui.set_image(result)
+        self._gui.set_evaluator_image(result)
 
     def export_csv(self):
         if self._location == '':

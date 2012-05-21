@@ -106,7 +106,7 @@ However it must be said that these two services are intended for localisation an
 Therefore it must be kept in mind when using this rule for analysis that false positives might still be brought forth.
 What can be said though is that a base station that has been found may only be subject to a type of attack that replaces an existing base station and can thus be investigated more specifically.
 
-\subsection{Encryption Detection Speed}
+\subsection{PCH Scan Speed}
 
 \section{IMSI Catcher Detection}
 Before using an IMSI catcher for testing purpose or a launching an OpenBTS base station it should be ensured that licenses for the specific frequencies that are used, have been obtained.
@@ -164,6 +164,21 @@ GSM.T3212 1
 \label{fig:openbts_parameters}
 \end{figure}
 \texttt{Control.OpenRegistration} is explicitly set to 0 which prevents anyone from connecting to the IMSI catcher since connections are not part of the test and we do not want to interfere with other peoples' communications in the area.
+
+\begin{figure}
+\centering
+\subfigure[Connected cell information.]{}
+\subfigure[Neighbouring cell measurements.]{}
+\caption{Nokia 3310 NetMonitor screenshots.}
+\label{fig:netmonitor}
+\end{figure}
+
+\subsubsection{Nokia 3310}
+To get feedback on whether the IMSI catcher is working as intended or see if an attack succeeded a Nokia 3310 phone can be used.
+Nikia has a software called NetMonitor\footnote{ofo} that can be used to measure base stations in the perimeter and gives feedback when the \gls{ms} is going to switch to a new cell.
+This NetMonitor consists of several pages, of which the first shows the active cell that the phone is connected to.
+On the following pages neighbouring cell measurements can be seen ordered by a score that is used by the phone to determine when and if to change the cell.
+Figure \ref{fig:netmonitor} shows the home screen with information on the connected cell (a) as well as the first page of the neighbouring cell measurements (b).
 
 \subsection{Rule Evaluation}
 With the environment set up we will now evaluate the individual rules.

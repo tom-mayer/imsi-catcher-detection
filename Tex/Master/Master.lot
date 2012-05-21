@@ -1,17 +1,22 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Subset of data stored on a SIM card. Adopted from \cite {protocols1999}}}{8}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Mobile Country and Network Codes. (R) denotes that the MCC is reserved but not operational as of yet, whereas (T) denotes a operational test network.}}{9}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Interfaces inside the core network (upper part) and the radio network (lower part)}}{11}
-\contentsline {table}{\numberline {2.4}{\ignorespaces Frequencies in the different bands \cite {kommsys2006}.}}{16}
-\contentsline {table}{\numberline {2.5}{\ignorespaces Possible combinations of logical channels for the base station. From \cite {GSM2009}.}}{29}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Subset of data stored on a SIM card. Adopted from \cite {protocols1999}}}{10}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Mobile Country and Network Codes. (R) denotes that the MCC is reserved but not operational as of yet, whereas (T) denotes a operational test network.}}{11}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Interfaces inside the core network (upper part) and the radio network (lower part)}}{13}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Frequencies in the different bands \cite {kommsys2006}.}}{17}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Technical specifications for the Motorola C123.}}{42}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Type Codes and the corresponding System Information Types \cite {GSM2009}.}}{44}
-\contentsline {table}{\numberline {3.3}{\ignorespaces Configuration Rules implemented inside the ICDS.}}{46}
-\contentsline {table}{\numberline {3.4}{\ignorespaces Context Rules implemented inside the ICDS.}}{47}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Technical specifications for the Motorola C123.}}{37}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Type Codes and the corresponding System Information Types \cite {GSM2009}.}}{40}
+\contentsline {table}{\numberline {3.3}{\ignorespaces Configuration Rules implemented inside the ICDS.}}{43}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Context Rules implemented inside the ICDS.}}{44}
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Key values of the data sets used for performance tests.}}{61}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Coverage for Google Mobile Maps and OpenCellID on the data sets with the time needed in s for fetching the information.}}{63}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Erroneous configurations for the IMSI catcher.}}{66}
+\contentsline {table}{\numberline {4.4}{\ignorespaces failzor}}{67}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Results of the long term evaluation.}}{68}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Consistent parameter configurations in the Freiburg area for the four German providers.}}{69}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

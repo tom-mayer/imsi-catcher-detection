@@ -52,6 +52,12 @@ DB_RX_threshold = 0.05
 
 CH_RX_threshold = 0.02
 
+#Evaluator Configuration ---------------------------------------------------------------------------------------
+
+Rule_Groups = []
+
+Rule_Weights = {}
+
 #Database Configuration ----------------------------------------------------------------------------------------
 
 Open_Cell_ID_Key = 'd7a5bc3f21b44d4bf93d1ec2b3f83dc4'

@@ -96,7 +96,7 @@ Another issue is virtualisation.
 The bootloader and the firmware can fail to be deployed correctly if a virtual machine is used as development system.
 This is because the protocol used by Motorola to do the actual flashing process is \emph{very} time critical and thus timeouts can occur that are caused by the overhead the virtual machine imposes on the hardware/software communication.
 
-\subsubsection{OsmocomBB and ICDS}
+\subsection{OsmocomBB and ICDS}
 The setup that is used for the \gls{icds} project can be seen in Figure \ref{fig:osmo_setup}.
 It was build and tested in a Xubuntu 11.10 environment \footnote{Xubuntu, \url{http://xubuntu.org/} [Online; Accessed 04.2012]} which is a more lightweight variant of the popular Debian based Ubuntu Linux distribution.
 The process of acquiring, compiling and running the OsmocomBB framework itself in this environment is explained in Appendix \ref{sec:osmo_install}.
@@ -175,7 +175,6 @@ An example of a fully parsed System Information Type 1 can be seen in Figure \re
 Examples for all the System Information Messages used, along with an interpretation are located in Appendix \ref{sec:system_infos}.
 As long as scanning mode is active all the available stations are scanned repeatedly and changes in the \glspl{bts} will continuously update the data model inside the \gls{icds} software.
 The parameters harvested are:
-%TODO: add more detail of format
 \begin{itemize}
 	\item Country: The interpreted country code the base station is broadcasting.
 	\item Provider: The interpreted provider code the base station is broadcasting.
@@ -426,6 +425,38 @@ To that end the \gls{icds} can monitor reception levels to build up databases wi
 The\emph{Location Area Databse Rule} then checks if reception levels differ significantly for a given location.
 If no database has been build beforehand but the \gls{icds} is stationary the \emph{rx Level Rule} can watch the reception level during the course of a scan and ensure that no change occured suddenly.
 
+\subsubsection{Remaining Issues and Paging}
+At this stage, if local information is given an IMSI catcher should be identified with a high probability.
+However some issues still remain.
+If a catcher is configured in a consistent way, replaces a cell and by chance has an \emph{appropriate distance} from the subscriber that is its target, the \gls{icds} will not unveil it up to now.
+'Appropriate distance' in this case means that the distance is chosen in a way that the reception of the catcher on the \gls{icds} side resides inside the same bounds that were established for the base station it replaced.
+To identify such devices an extra source of information has to be added.
+
+If a mobile phone is connected to a base station and not actively participating in a communication process, it is in a passive mode to save battery waiting for either the user to initiate communication or the network to contact it.
+As mentioned in Section \ref{sec:log_channels} the network contacts the \gls{ms} on the \gls{pch} if there is a text message or a call waiting to be delivered.
+\begin{figure}
+\centering
+\caption{Procedure taken when the network has a call/text waiting for a passive subscriber.}
+\label{fig:paging}
+\end{figure}
+The procedure is outlined in Figure \ref{fig:paging}.
+A paging request by the network is answered by the \gls{ms} by requesting a dedicated channel, which is assigned by the network in turn with an Immediate Assigmnemt message.
+From this point on the connection can be set up.
+
+An IMSI catcher however is not part of a provider's network, it is merely a proxy for a base station.
+At best it can route calls into a network but it cannot take calls that are intended for a subscriber and route them.
+Therefore an IMSI catcher will not page connected subscribers while a normal base station will have a very high number of pagings depending on the number of subscribers that are connected.
+This is a significant difference between a catcher and a regular base station.
+Since the \gls{pch} can be accessed publicly the \gls{icds} can use it as a source for information.
+The \gls{pch} scan feature uses this finding, it tunes in to the \gls{pch} of a particular base station and scans the channel for a given amount of time, watching out for subscribers being paged and assigned channels.
+
+This is an additional feature that can be used to identify an IMSI catcher.
+It has not been implemented as a regular rule since each given base station needs some time to be scanned.
+If that would be done on a regular basis for every station that has been discovered it would delay the whole scan by a large amount and the time difference between re-evaluations would be very high.
+Therefore it was implemented as an extra feature to be used when needed.
+The \gls{icds} also uses this method on particularly filtered base stations in User Mode as will be explained later.
+
+
 \section{IMSI Catcher Detection System}
 \label{sec:icds}
 This section will discuss some technical aspects of the \gls{icds} software itself.
@@ -577,7 +608,6 @@ Nodes with a white background have only been found inside Neighbouring Cell List
 \item Graph Controls: These are meant to make navigating the graph a bit easier.
 From left to right the functionality is zoom in, zoom out, fit the whole graph to the viewport and display the graph in original size.
 Zooming can also be done with the mouse wheel and it is possible to drag the graph around by clicking and holding it with the mouse and then moving it in the desired direction.
-
 \end{enumerate}
 \begin{figure}
 \centering
@@ -622,8 +652,50 @@ If there was no existing database for that location it will be created, otherwis
 To raise the quality of a Location Area Database it is recommended to do multiple sweep scans and integrate them rather than to only rely on a single scan.
 This raises the probability that all \gls{bts} in the perimeter are found is higher and it solidifies the interval in which the base station signal strength varies.
 
-\paragraph{Scan Encryption:} To be implemented $\ldots$
-%TODO: write this once implementation is finished
-\paragraph{User Mode:} To be implemented $\ldots$
+\paragraph{PCH Scan:} A \gls{pch} scan can be conducted in addition to a sweep scan or as a standalone method therefore no scan data needs to be present.
+If scan data is present however this feature will automatically augment the present data with its findings.
+The first parameter is a comma separated list of \glspl{arfcn} that will be scanned.
+The second parameter is the timeout. 
+A scan for a particular \gls{arfcn} will tune in on the \gls{pch} of each \gls{arfcn} given and wait there until the timeout is reached gathering all paging messages that occur during the time period.
+In the lower part of the dialog, after the scan has finished, a number will be given for each base station of how many pagings occured on average in five seconds.
 
-%TODO: write catcher-catcher section
+\paragraph{User Mode:} Data needs to be present inside the \gls{icds} either by loading a project file for the corresponding location the system is used in or by having performed a sweep scan in advance.
+There is only one input field in the dialog as Figure \ref{fig:user_mode} illustrates.
+The user has to enter the provider name in this field and push the \emph{Start Evaluation} button.
+From the scan data, the \gls{icds} extracts the base station with the highest reception for the given provider since this would be the station a \gls{ms} would connect to if started up.
+It then performs a \gls{pch} scan on that station and accumulates the results from this additional scan with the data from the sweeps scan in a conservative manner.
+Timeouts and retry attempts are taken from the \gls{pch} scan dialog.
+Any adjustment made there will carry over in User Mode.
+
+After the evaluation has been completed, the picture on the bottom will change to reflect the result found.
+
+\section{Related Projects}
+IMSI catcher detection is a topic that has not emerged until recently therefore not a lot of work and research has been done upon that topic.
+This is mainly due to the fact that is was very hard to get information from the mobile network onto a computer for evaluation.
+A fact that changed, or to be exact is now more accessible due to the OsmocomBB framework.
+
+About the same time as this project, in December 2011, another project was announced with the same goals of detecting an IMSI catcher.
+The project is called 'Catcher Catcher'\footnote{Catcher Catcher Wiki, \url{http://opensource.srlabs.de/projects/catcher/wiki/Tutorial} [Online; Accessed 05.2012]} and also builds up on the OsmocomBB framework.
+The goals are the same however the means are very different.
+As a codebase 'Catcher Catcher' uses the \texttt{mobile} application, a software that implements the firmware part of a mobile phone.
+This results in an active approach to IMSI catcher detection.
+An active connection is established between the phone and the base station in question.
+One could say they try to identify the catcher by letting a bait phone get caught by it.
+
+The advantage compared to the passive approach this project uses is that one has more sure means at hand of identifying a potential catcher.
+Features that are already implemented are\cite{catcher_catcher}:
+\begin{itemize}
+	\item Encryption: Check whether encryption is enabled when doing a phone call.
+	\item IMEI: \gls{imei} is not requested in Cipher Mode Complete message.
+	\item LAC: \gls{lac} of a base station changes.
+	\item Location Updates: IMEI is requested during Location Updates.
+	\item Silent Text: Checks whether a silent text message is received.
+	\item Call Setup: Do not receive a Call Setup message while being on a traffic channel for two seconds.
+\end{itemize}
+As one can see, missing encryption and reception of a silent text message are very strong indicators of being connected to a catcher.
+This however comes at the cost of being discovered oneself.
+Additionally if the IMSI catcher is configured only to allow specific IMSI numbers an active approach cannot be used to evaluate it.
+A list of all the features that are planned can be found in Appendix \ref{sec:catcher_features}.
+
+It is not clear whether the project has been abandoned since December 2012 or whether it is developed further. 
+Activity on the wiki has seized after December 2012.

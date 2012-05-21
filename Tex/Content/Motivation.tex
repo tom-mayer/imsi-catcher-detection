@@ -1,12 +1,65 @@
 \chapter{Introduction}
-Boundless communication for everyone, everywhere, anytime.
+
+\section{Motivation}
+Boundless communication for everyone, everywhere, any time.
 That was the main idea and dream behind the development of the \gls{gsm} technology.
 Considering its reception and growth \cite{GSM2009,GSM_history2011,GSM_stats2011} it can be said that \gls{gsm} was one of the most successful technologies of the last 30 years.
 Since the advent of portable radio equipment and portable microprocessors, mobile phones became technologically possible in the 80's.
-From this point on, 
+
+From that point on commercialisation started with more and more providers emerging.
+With more and more users, security became an ever more important aspect since important telephone calls were now made over radio instead of fixed landlines.
+In 1996 a device was released that took advantage of a security hole in the \gls{gsm} protocol which enabled it to record phone calls and track users.
+This device was developed by Rhode \& Schwartz and was called IMSI catcher.
+The name refers to the IMSI number, a unique identification of the user inside the \gls{gsm} network.
+It can be obtained by the device by impersonating a base station, which is the entry point of the subscriber to the network.
+In the way of a classical man-in-the-middle attack the IMSI catcher gets the subscriber to connect to it and relay the information to a real base station while harvesting the needed information like calls or IMSI numbers.
+
+This risk is intensified by the fact that several other projects like the Open Source IMSI catcher \cite{dennis} succeeded in building such an IMSI catcher at a very low cost, using hardware and software that is freely available.
+With this hardware it is considerably easier to eavesdrop on and thus breach the privacy of a neighbour or other person than it was when only landlines were used.
+Industrial espionage is another, higher impact area where these devices can be used.
+
+Up until now countermeasures to IMSI catchers have been given much attention since the commercial grade devices were only available to authorities and abuse was thus not a large topic.
+This is where this project is aimed at.
+Different ways will be explored on how to identify an IMSI catcher based on its differences to a regular base station.
+Additionally information of the surrounding area and tracking of different parameters over time is used to isolate suspicious base stations in the perimeter.
+A toolbox is developed that makes it possible to gather and analyse information from all available base stations in an easy manner, the IMSI Catcher Detection System.
+It is also designed to operate in an end user mode where only the provider of the subscriber has to be given to the system and an evaluation is yielded of whether it is safe to place a phone call or not.
+The tool operates in a completely passive manner only on information that is freely broadcasted, never connecting to base stations in question.
+This way the system itself stays invisible to the base stations and thus potential IMSI catchers while evaluating them.
 
 \section{Structure}
+The remainder of this thesis is structured as follows:
+The second chapter will give an overview of how a \gls{gsm} network is build up to create a general understanding of the infrastructure in which an IMSI catcher and the detection system work.
+Protocol specifics of the interface on which the two systems operate, the interface between a mobile phone and the base station will be discussed in the second part.
+The chapter concludes with a description of how an IMSI catcher works and which attacks are possible.
+
+In the third chapter, the software framework and hardware that is used to develop the IMSI Catcher Detection System is introduced.
+The different procedures used for information gathering and evaluation are also discussed in this chapter based on possible attacks an IMSI catcher can perform and differences in parameters to a valid base station.
+Finally a explanation of how to set up and operate the system together with some use cases is outlined.
+
+The fourth chapter contains an evaluation of how the system performs in several categories.
+First some general performance statistics and results on the individual methods used are collected.
+Afterwards a long term test over the course of a week is done to examine the false positive and false negative rate considering the discovery of an IMSI catcher.
+The chapter ends with a two simulated attack scenarios.
+
+In the last chapter, a short summary of the results will be given as well as am outlook of how the system can be extended.
 
 \section{Disclaimer}
-%senden im eigenen netz mit catcher
-%unieigene lizenz
+During the practical part of this thesis precautions have been made, not to interrupt or influence radio transmissions made by regular subscribers.
+They main part of the experiments is passive information gathering which only harvests information that is freely available and thus does not influence regular communication procedures.
+
+The IMSI catcher was configured in a way to not let subscribers connect, therefore it is not interfering with regular connection procedures.
+
+\section{On Typesetting}
+To make the thesis more readable a few conventions will be kept throughout this document.
+Important words or components of the IMSI Catcher Detection System will be printed \emph{emphasised}.
+\texttt{Typewriter} font will be used whenever a console command or a file name will be used in the running text.
+Code examples and whole command lines can be distinguished by a code listing box that surrounds them.
+\begin{lstlisting}
+if __name___ == '__main__':
+    print 'Hello World'
+\end{lstlisting} 
+
+Generally a lot of acronyms will be used due to the nature of \gls{gsm} and telephony dialects, where every possible word has an acronym associated with it.
+The first appearance will always be written out followed by the acronym in parenthesis that will be used from that point henceforth.
+A complete list of all acronyms for reference can be found in the back of the document.
