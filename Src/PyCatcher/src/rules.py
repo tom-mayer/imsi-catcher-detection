@@ -64,7 +64,7 @@ class ARFCNMappingRule (Rule):
             if station.arfcn == arfcn:
                 if station.provider in ARFCN_mapping:
                     for lower,upper in ARFCN_mapping[station.provider]:
-                        if lower < station.arfcn < upper:
+                        if lower <= station.arfcn <= upper:
                             result = RuleResult.OK
                             break
         return result
@@ -227,7 +227,6 @@ class CellIDDatabaseRule (Rule):
                 else:
                     return RuleResult.CRITICAL
 
-#TODO: remove debug crap
 class LACChangeRule (Rule):
     identifier = 'LAC Change Rule'
 
@@ -238,28 +237,26 @@ class LACChangeRule (Rule):
         for item in base_station_list:
             if item.arfcn == arfcn:
                 if self._old_lac.has_key(arfcn):
-                    lac, old_scanned = self._old_lac[arfcn]
+                    lac, old_scanned, old_result = self._old_lac[arfcn]
                     if item.times_scanned > 1:
                         if item.times_scanned > old_scanned:
                             #print 'evaluating lac change on %d(%d): old lac %d / new lac %d'%(item.times_scanned,arfcn, lac, item.lac)
                             if item.lac == lac:
-                                self._old_lac[arfcn] = item.lac, item.times_scanned
+                                self._old_lac[arfcn] = item.lac, item.times_scanned, RuleResult.OK
                                 #print '     return ok'
                                 return RuleResult.OK
                             else:
-                                self._old_lac[arfcn] = item.lac, item.times_scanned
+                                self._old_lac[arfcn] = lac, item.times_scanned, RuleResult.CRITICAL
                                 #print '     return critical'
                                 return RuleResult.CRITICAL
                         else:
-                            return RuleResult.IGNORE
+                            return old_result
                     else:
-                        return RuleResult.IGNORE
+                        return old_result
                 else:
-                    self._old_lac[arfcn] = item.lac, item.times_scanned
+                    self._old_lac[arfcn] = item.lac, item.times_scanned, RuleResult.IGNORE
                     return RuleResult.IGNORE
 
-
-#TODO: remove debug crap
 class RxChangeRule (Rule):
     identifier = 'rx Change Rule'
 
@@ -270,7 +267,7 @@ class RxChangeRule (Rule):
         for item in base_station_list:
             if item.arfcn == arfcn:
                 if self._old_rx.has_key(arfcn):
-                    rx, old_scanned = self._old_rx[arfcn]
+                    rx, old_scanned, old_result = self._old_rx[arfcn]
                     if item.times_scanned > 1:
                         if item.times_scanned > old_scanned:
                             #print 'evaluating rx change on %d(%d): old rx %d / new rx %d'%(item.times_scanned,arfcn, rx, item.rxlev)
@@ -278,17 +275,17 @@ class RxChangeRule (Rule):
                             upper_bound = rx + math.fabs(rx * CH_RX_threshold)
                             #print '     thresholds: %d/%d'%(lower_bound, upper_bound)
                             if lower_bound <= item.rxlev <= upper_bound:
-                                self._old_rx[arfcn] = item.rxlev, item.times_scanned
+                                self._old_rx[arfcn] = item.rxlev, item.times_scanned, RuleResult.OK
                                 #print '     return ok'
                                 return RuleResult.OK
                             else:
-                                self._old_rx[arfcn] = item.rxlev, item.times_scanned
+                                self._old_rx[arfcn] = item.rxlev, item.times_scanned, RuleResult.CRITICAL
                                 #print '     return critical '
                                 return RuleResult.CRITICAL
                         else:
-                            return RuleResult.IGNORE
+                            return old_result
                     else:
-                        return RuleResult.IGNORE
+                        return old_result
                 else:
-                    self._old_rx[arfcn] = item.rxlev, item.times_scanned
+                    self._old_rx[arfcn] = item.rxlev, item.times_scanned, RuleResult.IGNORE
                     return RuleResult.IGNORE

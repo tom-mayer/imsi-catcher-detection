@@ -164,6 +164,8 @@ GSM.T3212 1
 \label{fig:openbts_parameters}
 \end{figure}
 \texttt{Control.OpenRegistration} is explicitly set to 0 which prevents anyone from connecting to the IMSI catcher since connections are not part of the test and we do not want to interfere with other peoples' communications in the area.
+More precisely this will only let users connect that have been set up in the \texttt{sip.conf} of the Asterisk server.
+Only the test phone does have a valid account.
 
 \begin{figure}
 \centering
@@ -192,30 +194,31 @@ The IMSI catcher was launched with the four different configurations shown in Ta
 ARFCN		&50				&2				&978			&695	\\
 ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
 MCC			&262			&262			&262			&505	\\
-MNC			&01				&02				&03				&07		\\
+MNC			&01				&02				&03				&07	\\
 LAC			&21010			&793			&588			&50945	\\
 Cell ID		&1				&2				&3				&4		\\
-Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
+Neighbours	&-				&10,11,12		&695, 20		&1022, 1001 \\
 \bottomrule
 \end{tabular}
 \caption{Erroneous configurations for the IMSI catcher.}
 \label{tab:err_configs}
 \end{table}
 With each of these configurations the \gls{icds} detected the catcher for various reasons:
-%TODO: fill in the missing rules
 \begin{itemize}
 	\item Config 1: For this configuration the \gls{icds} detected that \gls{arfcn} 50 is not in the range registered to the provider T-Mobile.
-	Apart from that the \gls{lac} differed from the ones found in the Freiburg area.
-	The neighbouring cell list was also empty which is a strong indication for an IMSI catcher.\\
-	Rules triggered:  
+	Apart from that the \gls{lac} differed from the ones found in the Freiburg area and thus different from the neighbouring \glspl{lac}.
+	The neighbouring cell list was also empty which is a strong indication for an IMSI catcher. 
+	An interesting fact to be noted here is, when an empty neighbourhood list is given to OpenBTS it still transmits a neighbourhood list containing the element '0'.
+	The Neighbourhood Structure Rule triggered nevertheless since no other T-Mobile station in the area had \gls{arfcn} 0 as a neighbour, nor was it discovered during the scan.\\
+	Rules triggered: LAC/Provider Mapping, Neighbourhood Structure, ARFCN/Provider Mapping, LAC Median Deviation
 	\item Config 2: The detected errors within this configuration are that none of the neighbours mentioned was in range to be detected, which is very unlikely for a normal base station.\\
-	Rules triggered:
+	Rules triggered: Neighbourhood Structure
 	\item Config 3: In this configuration one of the neighbours, namely 695 is not consistent with the set provider.
 	The base stations breaks up the isolated subgraph for E-Plus and is thus detected.\\
-	Rules triggered:
-	\item Config 4: The \gls{mcc} is not consistent with the chosen provider. 
+	Rules triggered: Pure Neighbourhoods
+	\item Config 4:	The chosen provider is not consistent with the country set.
 	Additionally another warning is thrown since the neighbourhood list only contained nodes that were only found indirectly.\\
-	Rules triggered:
+	Rules triggered: Country/Provider Mapping, Neighbourhood Structure (warning) 
 \end{itemize}
 The \emph{LAC Change} and the \emph{rx Change} rules remain to be tested.
 For this purpose the procedure was as follows.
@@ -230,14 +233,14 @@ These times can vary however depending on the timing of the catcher being turned
 \centering
 \begin{tabular}{lrrcrrrllr}
 \toprule
-		&				&\multicolumn{2}{c}{rx}		&\phantom{a}	&\multicolumn{2}{c}{LAC}	&				&	&		\\
-							\cmidrule{3-4} 								\cmidrule{6-7} 
-Config 	&Cell	&Old	&New				&				&Old	&New				&rx det.	&LAC det.		&Time\\
+			&				&\multicolumn{2}{c}{rx}		&\phantom{a}	&\multicolumn{2}{c}{LAC}	&				&	&		\\
+								\cmidrule{3-4} 								\cmidrule{6-7} 
+Config 		&Cell			&Old	&New				&				&Old	&New				&rx det.	&LAC det.		&Time\\
 \midrule
-Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
-Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
-Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
-Conf1	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+T-Mobile	&17				&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+O2			&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+E-Plus		&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
+Vodafone	&877			&-94 dB	&-55dB				&				&138	&139				&Yes		&Yes	&42 s\\
 \bottomrule
 \end{tabular}
 \caption{failzor}
@@ -250,7 +253,6 @@ This has been done to find out whether base stations in the surrounding area cha
 This is essential for a Location Area Database to be usable over a longer period of time.
 
 The database itself has been built over the course of one week in Freiburg, Thuner Weg.
-%TODO: flil in exact values here
 During this period no parameter changes were detected and the reception of base stations only varied inside a very small interval.
 After that each day for another week, two scans per day were done.
 One of them while the IMSI catcher was operating, the other without the device present.
@@ -306,12 +308,25 @@ MNC			&01						&02					&03				&07\\
 Note that the Cell ID can be a arbitrary value as long as it is unique in the area of reception. 
 Cell IDs measured from different base stations do not follow any particular schema.
 The scenarios are built after the attacks described in Section \ref{sec:attacks}.
+Local information in terms of a Local Area Database was available.
 
+\subsubsection{IMSI Catcher as a new Cell}
 The first scenario will simulate the case where the catcher opened up a new cell with a good reception and forced the \gls{ms} into normal cell selection mode by disconnecting it from the current base station via a jammer.
+First the IMSI catcher was turned on, faking a legitimate T-Mobile cell with a new cell ID.
+Afterwards the \gls{icds} was started and a sweep scan was performed.
+As soon as the cell was scanned which occurred very early since the reception was very good (-45) it was detected that this cell was not in the Local Area Database.
+After the sweep scan cell IDs from Google were also fetched.
+Both the Local Area Database Rule and the Cell ID Database Rule indicated a Critical status.
 
-The second scenario simulates the attack where the IMSI catcher replaces a base station with a bad reception in the neighbourhood of the cell the \gls{ms} is connected to.
+As a further step to simulate the case where no local information is available, the Local Area Database and Cell ID Rules were turned off.
+The \gls{icds} then yielded an Ok evaluation since the configuration of the catcher cell was consistent.
+The next step was to put the \gls{icds} into User Mode with T-Mobile as its fixed provider. 
+It selected the IMSI catcher cell as its target cell because of the good reception level and since it's evaluation was 'Ok' an additional PCH scan was started.
+No paging messages or Immediate Assignments were caught so the end result was a 'Critical' status for the IMSI catcher cell.
+
+\subsubsection{IMSI Catcher replacing an old Cell}
+The second scenario simulated the attack where the IMSI catcher replaces a base station with a bad reception in the neighbourhood of the cell the \gls{ms} is connected to.
 This way the reception drastically improves on that particular frequency suggesting to the \gls{ms} that the subscriber moved to the close perimeter of that \gls{bts} and initiating a handover.
-
 Figure \ref{fig:takeover_attack} illustrates this particular attack.
 The station with the \gls{arfcn} 42 has the lowest reception with its signal to noise ratio of -95\,dB.
 In this particular scenario the \gls{ms} would first connect to the station on 23 because of its good reception.
@@ -327,3 +342,6 @@ Since the catcher sends a different \gls{lac} the \gls{ms} will send a location 
 \caption{Takeover attack of an IMSI catcher on a base station.}
 \label{fig:takeover_attack}
 \end{figure}
+
+Due to its strong increase in reception and the change in the \gls{lac} the IMSI catcher cell obtained a 'Critical' status immediately after it had been scanned a second time.
+User Mode did not start a PCH scan since the evaluation had already been 'Critical'.

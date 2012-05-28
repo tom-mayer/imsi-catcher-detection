@@ -23,7 +23,7 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{46}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Procedure taken when the network has a call/text waiting for a passive subscriber.}}{49}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{50}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{51}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{52}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{53}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{56}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Filters window.}}}{56}
@@ -37,7 +37,7 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Nokia 3310 NetMonitor screenshots.}}{66}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Connected cell information.}}}{66}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Neighbouring cell measurements.}}}{66}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{69}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{70}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

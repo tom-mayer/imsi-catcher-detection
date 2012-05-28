@@ -40,7 +40,7 @@ class LocalAreaDatabase:
                     base_station.lac,
                     base_station.rxlev,
                     base_station.rxlev,
-                    1
+                    base_station.times_scanned
                  )
         sql = 'INSERT INTO basestations VALUES (?,?,?,?,?,?,?,?,?)'
         self._cursor.execute(sql, values)
@@ -58,7 +58,7 @@ class LocalAreaDatabase:
             rmax = current_rx
         else:
             rmax = old_rmax
-        sightings = old_sightings + 1
+        sightings = old_sightings + base_station.times_scanned
         values = (rmin,rmax,sightings,base_station.cell)
         sql = 'UPDATE basestations SET rxmin=?, rxmax=?, sightings=? WHERE cellid=?'
         self._cursor.execute(sql, values)

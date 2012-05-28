@@ -26,7 +26,7 @@ class PyCatcherGUI:
         self._evaluation_image = self._builder.get_object('evaluation_image')
         self._user_image = self._builder.get_object('img_user')
         self._databases_window = self._builder.get_object('databases_window')
-        self._encryption_window = self._builder.get_object('encryption_window')
+        self._pch_window = self._builder.get_object('pch_window')
         self._user_window = self._builder.get_object('user_window')
 
 
@@ -34,8 +34,9 @@ class PyCatcherGUI:
         self._warning_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/warning.png')
         self._critical_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/critical.png')
         self._plain_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/plain.png')
+        self._busy_image = gtk.gdk.pixbuf_new_from_file('../GUI/Images/foundstation.png')
         self.set_evaluator_image(RuleResult.IGNORE)
-        self.set_user_image(RuleResult.IGNORE)
+        self.set_user_image()
 
         self._catcher_controller = catcher_controller        
         
@@ -79,16 +80,18 @@ class PyCatcherGUI:
         pixbuf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
         self._evaluation_image.set_from_pixbuf(pixbuf)
 
-    def set_user_image(self, status):
+    def set_user_image(self, status=None):
         pixbuf = self._plain_image
-        if status == RuleResult.OK:
+        if not status:
+           pass
+        elif status == RuleResult.OK:
             pixbuf = self._ok_image
         elif status == RuleResult.WARNING:
             pixbuf = self._warning_image
         elif status == RuleResult.CRITICAL:
             pixbuf = self._critical_image
         elif status == RuleResult.IGNORE:
-            pixbuf = self._plain_image
+            pixbuf = self._busy_image
         pixbuf = pixbuf.scale_simple(320, 240, gtk.gdk.INTERP_BILINEAR)
         self._user_image.set_from_pixbuf(pixbuf)
 
@@ -171,25 +174,35 @@ class PyCatcherGUI:
     def _on_user_close_clicked(self, widget):
         self._user_window.hide()
 
-    def _on_encryption_close_clicked(self, widget):
+    def _on_pch_close_clicked(self, widget):
         self._catcher_controller.trigger_evaluation()
-        self._encryption_window.hide()
+        self._pch_window.hide()
 
-    def _on_scan_enc_clicked(self, widget):
-        arfcn_list = map(int,(self._builder.get_object('te_enc_arfcns').get_text()).split(','))
-        timeout = int(self._builder.get_object('te_enc_timeout').get_text())
-        result = self._catcher_controller.scan_encryption(arfcn_list, timeout)
-        self._builder.get_object('lbl_enc_result').set_text('Result: ' + result)
-    def _on_go_clicked(self, widget):
+    def _on_pch_scan_clicked(self, widget):
+        arfcns = map(int, self._builder.get_object('te_pch_arfcns').get_text().strip().split(','))
+        timeout = int(self._builder.get_object('te_pch_timeout').get_text())
+        self._catcher_controller.normal_pch_scan(arfcns, timeout)
+
+    def set_pch_results(self, results):
+        results_label = self._builder.get_object('lbl_pch_result')
+        result_text = 'Results:\n'
+        for scan in results:
+            arfcn, pagings = scan
+            result_text += 'ARFCN %d:\n'%arfcn
+            for key, value in pagings.items():
+                result_text += '    %s: %d\n'%(key, value)
+            result_text += '\n'
+        results_label.set_text(result_text)
+
+    def _on_user_evaluate_clicked(self, widget):
         provider = self._builder.get_object('te_user_provider').get_text()
-        result = self._catcher_controller.user_go()
-        self.set_user_image(result)
+        self._catcher_controller.user_pch_scan(provider)
 
     def _on_user_mode_clicked(self, widget):
         self._user_window.show()
 
-    def _on_encryption_clicked(self, widget):
-        self._encryption_window.show()
+    def _on_pch_clicked(self, widget):
+        self._pch_window.show()
 
     def _on_web_services_clicked(self, widget):
         self._update_databases()

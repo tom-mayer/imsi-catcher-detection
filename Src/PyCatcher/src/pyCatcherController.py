@@ -11,7 +11,7 @@ from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMapping
 import pickle
 from localAreaDatabse import LocalAreaDatabase
 from cellIDDatabase import CellIDDatabase, CellIDDBStatus, CIDDatabases
-from settings import Database_path
+from settings import Database_path, USR_timeout, Pagings_per_10s_threshold, Assignment_limit
 
 class PyCatcherController:
     def __init__(self):
@@ -35,6 +35,12 @@ class PyCatcherController:
         self._group_evaluator = GroupEvaluator()
         self._weighted_evaluator = WeightedEvaluator()
         self._active_evaluator = self._conservative_evaluator
+
+        self._pch_scan_running = False
+        self._user_mode_flag = False
+        self._remaining_pch_arfcns = []
+        self._accumulated_pch_results = []
+        self._pch_timeout = 10
 
         self.provider_rule = ProviderRule()
         self.provider_rule.is_active = True
@@ -124,11 +130,76 @@ class PyCatcherController:
             self._active_evaluator = self._weighted_evaluator
         self.trigger_evaluation()
 
-    def user_go(self, provider):
-        pass
+    def user_pch_scan(self, provider):
+        if not provider:
+            self._gui.set_user_image()
+            return
+        else:
+            self._gui.set_user_image(RuleResult.IGNORE)
+        self._user_mode_flag = True
+        strongest_station = None
+        max_rx = -1000
+        for station in self._base_station_list._get_unfiltered_list():
+            if station.provider == provider:
+                if station.rxlev > max_rx:
+                    max_rx = station.rxlev
+                    strongest_station = station
+        if strongest_station:
+            if strongest_station.evaluation == RuleResult.OK:
+                self._remaining_pch_arfcns = [strongest_station.arfcn]
+                self._accumulated_pch_results = []
+                self._do_next_pch_scan()
+            else:
+                self._gui.set_user_image(strongest_station.evaluation)
+        else:
+            self._gui.set_user_image()
 
-    def scan_encryption(self, arfcn_list, timeout):
-        pass
+
+    def normal_pch_scan(self, arfcns, timeout):
+        self._accumulated_pch_results = []
+        self._user_mode_flag = False
+        self._scan_pch(arfcns, timeout)
+
+    def _scan_pch(self, arfcns, timeout):
+        self._remaining_pch_arfcns = arfcns
+        self._pch_timeout = timeout
+        self._do_next_pch_scan()
+
+    def _do_next_pch_scan(self):
+        if not self._remaining_pch_arfcns:
+            return
+        arfcn = self._remaining_pch_arfcns.pop()
+        self._gui.log_line('Starting PCH scan on ARFCN %d'%arfcn)
+        if self._pch_scan_running:
+            return
+        else:
+            self._pch_scan_running = True
+            self._driver_connector.start_pch_scan(arfcn, self._pch_timeout, self._pch_done_callback)
+
+    def _pch_done_callback(self, results):
+        arfcn, values = results
+        self._accumulated_pch_results.append(results)
+        self._gui.log_line('Finished PCH scan on ARFCN %d'%arfcn)
+        self._pch_scan_running = False
+        if not self._user_mode_flag :
+            if self._remaining_pch_arfcns:
+                self._do_next_pch_scan()
+            else:
+                self._gui.set_pch_results(self._accumulated_pch_results)
+        else:
+            arfcn, results = self._accumulated_pch_results.pop()
+            if results['Assignments_non_hopping'] > 0:
+                self._gui.log_line('Non hopping channel found')
+                self._gui.set_user_image(RuleResult.CRITICAL)
+            elif results['Assignments_hopping'] >= Assignment_limit and self._return_normalised_pagings(results['Pagings']) >= Pagings_per_10s_threshold:
+                self._gui.log_line('Scan Ok')
+                self._gui.set_user_image(RuleResult.OK)
+            else:
+                self._gui.log_line('Paging/Assignment threshold not met')
+                self._gui.set_user_image(RuleResult.CRITICAL)
+
+    def _return_normalised_pagings(self, pagings):
+        return (float(pagings) / float(USR_timeout))*10
 
     def update_with_web_services(self):
         self._gui.log_line('Starting online lookups...')

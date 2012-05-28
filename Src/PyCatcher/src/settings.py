@@ -16,6 +16,7 @@ Commands = {'osmocon_command' : [Osmocon_lib + '/host/osmocon/osmocon',
                                     Osmocon_lib + '/target/firmware/board/' + Device_settings['firmware']
                                     + '/layer1.compalram.bin'],
             'scan_command' : [Osmocon_lib + '/host/layer23/src/misc/catcher'],
+            'pch_command' : [Osmocon_lib + '/host/layer23/src/misc/pch_scan'],
            }
 
 #Rules Configuration -------------------------------------------------------------------------------------------
@@ -40,17 +41,27 @@ LAC_mapping = {
 
 ARFCN_mapping = {
     'DB Systel GSM-R': [(0,1)],
-    'T-Mobile' : [(13,39),(81, 102),(122,124),(587,611)],
+    'T-Mobile' : [(13,49),(81, 102),(122,124),(587,611)],
     'O2' : [(0,0),(1000,1023),(637,723)],
     'Vodafone' : [(1,12),(50,80),(103,121),(725,751)],
     'E-Plus' : [(975,999),(777,863)]
 }
 
-LAC_threshold = 0
+LAC_threshold = 0.05
 
 DB_RX_threshold = 0.05
 
-CH_RX_threshold = 0.02
+CH_RX_threshold = 0.07
+
+Pagings_per_10s_threshold = 20
+
+Assignment_limit = 0
+
+#PCH Parameters ------------------------------------------------------------------------------------------------
+
+PCH_retries = 5
+
+USR_timeout = 15
 
 #Evaluator Configuration ---------------------------------------------------------------------------------------
 

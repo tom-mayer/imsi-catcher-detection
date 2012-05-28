@@ -55,10 +55,10 @@
 \contentsline {subsection}{\numberline {3.3.2}Configuration}{51}
 \contentsline {subsection}{\numberline {3.3.3}Operation}{52}
 \contentsline {paragraph}{Sweep scans:}{55}
-\contentsline {paragraph}{CellID Information:}{55}
+\contentsline {paragraph}{CellID Information:}{57}
 \contentsline {paragraph}{Location Area Database:}{57}
 \contentsline {paragraph}{PCH Scan:}{57}
-\contentsline {paragraph}{User Mode:}{57}
+\contentsline {paragraph}{User Mode:}{58}
 \contentsline {section}{\numberline {3.4}Related Projects}{58}
 \contentsline {chapter}{\numberline {4}Evaluation}{61}
 \contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
@@ -71,6 +71,8 @@
 \contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{66}
 \contentsline {subsection}{\numberline {4.2.3}Long Term Test}{67}
 \contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{68}
+\contentsline {subsubsection}{IMSI Catcher as a new Cell}{69}
+\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{69}
 \contentsline {chapter}{\numberline {5}Conclusion}{71}
 \contentsline {section}{\numberline {5.1}Future Work}{71}
 \contentsline {chapter}{Bibliography}{73}
@@ -83,5 +85,6 @@
 \contentsline {section}{\numberline {B.2}Example Configuration}{82}
 \contentsline {chapter}{\numberline {C}System Information}{85}
 \contentsline {chapter}{\numberline {D}Evaluation Data}{91}
-\contentsline {section}{\numberline {D.1}IMSI Catcher Configurations}{91}
+\contentsline {section}{\numberline {D.1}Rx and LAC Change Test}{91}
+\contentsline {section}{\numberline {D.2}Long Term Test}{91}
 \contentsline {chapter}{Acronyms}{93}

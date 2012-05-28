@@ -5,12 +5,6 @@ from cellIDDatabase import CellIDDBStatus
 from cellIDDatabase import CIDDatabases
 from rules import RuleResult
 
-class Encryption:
-    A0 = 'A5/0'
-    A1 = 'A5/1'
-    A2 = 'A5/2'
-    NA = 'Not checked.'
-
 class BaseStationInformation:
 
     def __init__ (self):
@@ -37,9 +31,10 @@ class BaseStationInformation:
         self.evaluation_by = 'NYE'
         self.latitude = 0
         self.longitude = 0
-        self.encryption = Encryption.NA
         self.db_status = CellIDDBStatus.NOT_LOOKED_UP
         self.db_provider = CIDDatabases.NONE
+        self.imm_ass = 0
+        self.pagings = 0
 
                
     def get_list_model(self):
@@ -55,13 +50,12 @@ BSIC: %s
 LAC: %s
 Cell ID: %s
 Neighbours: %s
-Encryption: %s
 Latitude: %s
 Longitude: %s
 Database Status: %s
 Database Provider: %s
 Evaluation: %s\n
-'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.neighbours)),self.encryption,self.latitude,self.longitude,self.db_status, self.db_provider,self.evaluation)
+'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.neighbours)),self.latitude,self.longitude,self.db_status, self.db_provider,self.evaluation)
 
         report_rules ='------- Rule Results -----------\n'
         for key in self.rules_report.keys():
@@ -93,10 +87,22 @@ class BaseStationInformationList:
     def add_station(self, base_station):
         base_station.found = True
         for item in self._base_station_list:
-            #TODO: check if this works like i thought
-            if item.arfcn == base_station.arfcn and item.bsic == base_station.bsic:
+            if item.arfcn == base_station.arfcn:
                 item.discovery_time = datetime.datetime.now().strftime('%T')
                 item.times_scanned += 1
+                item.rxlev = base_station.rxlev
+                item.lac = base_station.lac
+                item.cell = base_station.cell
+                item.bsic = base_station.bsic
+                item.neighbours = base_station.neighbours
+                item.country = base_station.country
+                item.provider = base_station.provider
+                item.system_info_t1 = base_station.system_info_t1
+                item.system_info_t3 = base_station.system_info_t3
+                item.system_info_t4 = base_station.system_info_t4
+                item.system_info_t2 = base_station.system_info_t2
+                item.system_info_t2bis = base_station.system_info_t2bis
+                item.system_info_t2ter = base_station.system_info_t2ter
                 break
         else:
             self._base_station_list.append(base_station)

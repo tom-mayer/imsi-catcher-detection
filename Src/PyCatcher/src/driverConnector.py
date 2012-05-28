@@ -2,9 +2,15 @@ from pyCatcherModel import BaseStationInformation
 import subprocess
 import threading 
 import re
-from settings import Commands
+from settings import Commands, PCH_retries
 import time
-import gtk 
+import gtk
+import datetime
+import thread
+from threading import Timer
+import os
+import signal
+import select
 
 class DriverConnector:        
     def __init__ (self):
@@ -15,6 +21,8 @@ class DriverConnector:
         self._base_station_found_callback = None
         self._firmware_thread = None
         self._scan_thread = None
+        self._pch_thread = None
+        self._pch_callback = None
         
     def start_scanning (self, base_station_found_callback):
         self._base_station_found_callback = base_station_found_callback
@@ -26,6 +34,11 @@ class DriverConnector:
         self._firmware_loaded_callback = firmware_loaded_callback      
         self._firmware_thread = FirmwareThread(self._firmware_waiting_callback, self._firmware_loaded_callback)
         self._firmware_thread.start()
+
+    def start_pch_scan(self, arfcn, timeout, scan_finished_callback):
+        self._pch_callback = scan_finished_callback
+        self._pch_thread = PCHThread(arfcn, timeout, self._pch_callback)
+        self._pch_thread.start()
         
     def stop_scanning (self):
         self._scan_thread.terminate()
@@ -38,6 +51,8 @@ class DriverConnector:
             self._firmware_thread.join(3)
         if self._scan_thread:
             self._scan_thread.join(3)
+        if self._pch_thread:
+            self._pch_thread.join(3)
         
 class FirmwareThread(threading.Thread):
     def __init__(self, firmware_waiting_callback, firmware_loaded_callback):
@@ -76,6 +91,7 @@ class ScanThread(threading.Thread):
         def run(self): 
             scan_process = subprocess.Popen(Commands['scan_command'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
             time.sleep(2)
+            printall = False
             while not self._thread_break:
                 line = scan_process.stdout.readline()
                 if line:
@@ -157,4 +173,92 @@ class ScanThread(threading.Thread):
                         
                         self._base_station_found_callback(base_station)
             scan_process.terminate()
-    
+
+class PCHThread(threading.Thread):
+    def __init__(self, arfcn, timeout, finished_callback):
+        gtk.gdk.threads_init()
+        threading.Thread.__init__(self)
+        self._arfcn = arfcn
+        self._timeout = timeout
+        self._thread_break = False
+        self._scan_finished_callback = finished_callback
+
+    def terminate(self):
+        self._thread_break = True
+
+    def run(self):
+        pch_retries = PCH_retries
+        max_scan_time = self._timeout
+        arfcn = self._arfcn
+        pages_found = 0
+        ia_non_hop_found = 0
+        ia_hop_fund = 0
+        retry = False
+        buffer = []
+
+        command = Commands['pch_command'] + ['-a', str(arfcn)]
+        scan_process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        time.sleep(2)
+        poll_obj = select.poll()
+        poll_obj.register(scan_process.stdout, select.POLLIN)
+
+        start_time = datetime.datetime.now()
+        scan_time = datetime.datetime.now() - start_time
+
+        while(True and not self._thread_break):
+
+            if(retry):
+                scan_process.terminate()
+                scan_process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                poll_obj.register(scan_process.stdout, select.POLLIN)
+                retry = False
+
+            while(pch_retries > 0 and scan_time.seconds < max_scan_time and not self._thread_break):
+                scan_time = datetime.datetime.now() - start_time
+                poll_result = poll_obj.poll(0)
+                if poll_result:
+                    line = scan_process.stdout.readline()
+                else:
+                    line = None
+
+                if line:
+                    if 'Paging' in line:
+                        pages_found += 1
+                    if 'IMM' in line:
+                        if 'HOP' in line:
+                            ia_hop_fund += 1
+                        else:
+                            ia_non_hop_found += 1
+                    if 'FBSB RESP: result=255' in line:
+                        if(pch_retries > 0):
+                            retry = True
+                        break
+
+            if(retry):
+                print 'SCAN: retry (%d)'%pch_retries
+                pch_retries -= 1
+            else:
+                break
+
+        if scan_process:
+            scan_process.kill()
+
+        result = {
+            'Pagings': pages_found,
+            'Assignments_hopping': ia_hop_fund,
+            'Assignments_non_hopping': ia_non_hop_found
+        }
+
+        if not self._thread_break:
+            self._scan_finished_callback((arfcn, result))
+
+class BufferFillerThread(threading.Thread):
+    def __init__(self, buffer, process):
+        gtk.gdk.threads_init()
+        threading.Thread.__init__(self)
+        self._buffer = buffer
+        self._process = process
+
+    def run(self):
+        while(True):
+            self._buffer.append(self._process.stdout.readline())

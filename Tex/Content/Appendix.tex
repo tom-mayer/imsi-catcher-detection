@@ -220,8 +220,26 @@ The following pages contain parsed System Information Messages of type 1-4  for 
 \caption{System Information 4 Message}
 \end{figure}
 \chapter{Evaluation Data}
-\section{IMSI Catcher Configurations}
-\label{sec:config_data}
+\section{Rx and LAC Change Test}
+\label{sec_lac_change_test}
+The following table contains the four configuration that have been used to replace real base stations with the IMSI catcher.
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+			&T-Mobile		&O2				&E-Plus			&Vodafone\\
+\midrule
+ARFCN		&50				&2				&978			&695	\\
+ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
+MCC			&262			&262			&262			&505	\\
+MNC			&01				&02				&03				&07		\\
+LAC			&21010			&793			&588			&50945	\\
+Cell ID		&1				&2				&3				&4		\\
+Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
+\bottomrule
+\end{tabular}
+\end{center}
+\section{Long Term Test}
+\label{sec:long_term_test}
 The folliwing tables contain the configurations that have been used throughout the long term test period.
 The configurations have been used in the order they appear in the tables.
 \begin{center}
