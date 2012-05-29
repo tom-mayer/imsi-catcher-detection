@@ -426,6 +426,7 @@ The\emph{Location Area Databse Rule} then checks if reception levels differ sign
 If no database has been build beforehand but the \gls{icds} is stationary the \emph{rx Level Rule} can watch the reception level during the course of a scan and ensure that no change occured suddenly.
 
 \subsubsection{Remaining Issues and Paging}
+\label{sec:paging}
 At this stage, if local information is given an IMSI catcher should be identified with a high probability.
 However some issues still remain.
 If a catcher is configured in a consistent way, replaces a cell and by chance has an \emph{appropriate distance} from the subscriber that is its target, the \gls{icds} will not unveil it up to now.
@@ -506,12 +507,15 @@ Appendix \ref{sec:extensions} gives an example of how this can be done.
 \subsection{Configuration}
 \label{sec:configuration}
 \begin{figure}
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
 dictionary = {
 	"key_1": value_1,		#single value
 	"key_2": [value_2,value_3]	#value range
 }
 \end{lstlisting}
+\end{minipage}
 \caption{Configuration Dictionary in the settings file.}
 \label{fig:python_dict}
 \end{figure}
@@ -536,9 +540,7 @@ This way python code can also be used to change settings dynamically depending o
 \label{sec:icds_operation}
 The \gls{icds} main application has to be started with root privileges since it needs to work with Unix sockets and open up connections to the Motorola C123.
 This should be done by starting up the \texttt{main} class that initialises everything else.
-\begin{lstlisting}
-sudo python /path-to-project/Src/PyCatcher/src/main.py
-\end{lstlisting}
+\[\texttt{sudo python /path-to-project/Src/PyCatcher/src/main.py}\]
 After a brief loading time the main window shown in Figure \ref{fig:icds} should appear if a valid configuration is set up.
 
 \begin{figure}

@@ -106,7 +106,35 @@ However it must be said that these two services are intended for localisation an
 Therefore it must be kept in mind when using this rule for analysis that false positives might still be brought forth.
 What can be said though is that a base station that has been found may only be subject to a type of attack that replaces an existing base station and can thus be investigated more specifically.
 
-\subsection{PCH Scan Speed}
+\subsection{PCH Scans}
+In order to establish a baseline on what to expect from the \gls{pch} scans different measurements have been done.
+Table \ref{tab:pagings} shows scans that have been done in three different areas.
+In each area the cell with the strongest reception for each provider was chosen as a representative for the respective provider.
+The duration of each scan was set to 60\;s, while the values in the table have been averaged for 10\;s since this is the unit the \gls{icds} is using.
+
+A comparison of the results suggests that the different providers also have different policies when to page.
+Vodafone has about six times the paging rate O$_{2}$ has but only half the Immediate Assignments.
+
+Another scan was also done on the IMSI catcher.
+No Paging Messages or Immediate Assignments were detected although \glspl{ms} were connected to it.
+That was to be expected as formerly discussed in Section \ref{sec:paging} because the IMSI catcher is not actually part of the providers network and thus cannot receive and forward paging requests.
+\begin{table}
+\centering
+\begin{tabular}{lrrcrrcrr}
+\toprule
+& \multicolumn{2}{c}{\texttt{house\_area}} &\phantom{a}& \multicolumn{2}{c}{\texttt{cbd}} &\phantom{a} & \multicolumn{2}{c}{\texttt{airport}}\\
+\cmidrule{2-3} \cmidrule{5-6} \cmidrule{8-9}
+&Pagings&Imm. Ass.&	&Pagings &Imm. Ass.&	&Pagings&Imm. Ass.\\
+\midrule
+T-Mobile&		89&3&	&75&3&	&109&4\\
+E-Plus&		119&1&	&67&2&	&70&1\\
+Vodafone&		776&6&	&720&5&	&712&6\\
+O2&		117&9&	&106&16&	&94&11\\
+\bottomrule
+\end{tabular}
+\caption{Number of Pagings and Immediate Assignments (per 10\;s) for the four German providers at different locations.}
+\label{tab:pagings}
+\end{table}
 
 \section{IMSI Catcher Detection}
 Before using an IMSI catcher for testing purpose or a launching an OpenBTS base station it should be ensured that licenses for the specific frequencies that are used, have been obtained.
@@ -141,6 +169,8 @@ Since we do not want to actually connect to the IMSI catcher, the Asterisk part 
 The parameters necessary to simulate a \gls{gsm} cell have to be set inside the \texttt{OpenBTS.conf}.
 Figure \ref{fig:openbts_parameters} shows an annotated example for a configuration simulating a T-Mobile cell.
 \begin{figure}
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
 #Do not let people connect
 Control.OpenRegistration 0
@@ -160,6 +190,7 @@ GSM.Neighbours 69 53 20
 #Force location Updates, multiple of 6 minutes
 GSM.T3212 1
 \end{lstlisting}
+\end{minipage}
 \caption{Excerpt of a \texttt{OpenBTS.conf}.}
 \label{fig:openbts_parameters}
 \end{figure}
@@ -344,4 +375,5 @@ Since the catcher sends a different \gls{lac} the \gls{ms} will send a location 
 \end{figure}
 
 Due to its strong increase in reception and the change in the \gls{lac} the IMSI catcher cell obtained a 'Critical' status immediately after it had been scanned a second time.
+Also due to this fact the reception level differed too much from the interval that had been measured for this Cell ID  in the Local Area Database and received as a result also a 'Critical' rating from the respective rule.
 User Mode did not start a PCH scan since the evaluation had already been 'Critical'.

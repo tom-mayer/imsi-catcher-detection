@@ -32,18 +32,18 @@
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Encryption window (not yet implemented).}}}{56}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{62}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{64}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{65}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{65}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{66}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Nokia 3310 NetMonitor screenshots.}}{66}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Connected cell information.}}}{66}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Neighbouring cell measurements.}}}{66}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{70}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{71}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces System Information 1 Message}}{86}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces System Information 2 Message}}{87}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces System Information 3 Message}}{88}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces System Information 4 Message}}{89}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces System Information 1 Message}}{88}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces System Information 2 Message}}{89}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces System Information 3 Message}}{90}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces System Information 4 Message}}{91}
 \addvspace {10\p@ }

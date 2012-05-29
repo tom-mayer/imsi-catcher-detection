@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  28 MAY 2012 19:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  29 MAY 2012 17:28
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -550,9 +550,6 @@ Package: lipsum 2005/01/26 v1.0 150 paragraphs of Lorem Ipsum dummy text
 File: lipsum.dtx 2005/01/26 v1.0 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count136
 )
-(/usr/share/texmf-texlive/tex/latex/pgfplots/pgfplots.sty
-Package: pgfplots 2009/02/14 Version 1.2.2
-
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
@@ -775,8 +772,11 @@ File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
-))) (/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplots.code.tex (/usr/shar
-e/texmf-texlive/tex/generic/pgfplots/pgfplotscore.code.tex
+))) (/usr/share/texmf-texlive/tex/latex/pgfplots/pgfplots.sty
+Package: pgfplots 2009/02/14 Version 1.2.2
+
+(/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplotscore.code.tex
 \t@pgfplots@toka=\toks47
 \t@pgfplots@tokb=\toks48
 \t@pgfplots@tokc=\toks49
@@ -860,6 +860,9 @@ File: tikzlibraryplotmarks.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
 )))
+(/usr/share/texmf-texlive/tex/latex/pgfplots/pgfplotstable.sty
+Package: pgfplotstable 2008/02/14
+)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrow
 s.code.tex
 File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
@@ -923,35 +926,35 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 \glo@main@file=\write6
 \openout6 = `Master.glo'.
 
-Package glossaries Info: Writing glossary file Master.glo on input line 95.
+Package glossaries Info: Writing glossary file Master.glo on input line 97.
 \glo@acronym@file=\write7
 \openout7 = `Master.acn'.
 
-Package glossaries Info: Writing glossary file Master.acn on input line 95.
+Package glossaries Info: Writing glossary file Master.acn on input line 97.
  (./Glossary.tex)
 (./Master.aux)
 \openout1 = `Master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 112.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 114.
  (/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package scrbase Info: No captions found for `german'
-(scrbase)             --> skipped on input line 112.
+(scrbase)             --> skipped on input line 114.
 Package scrbase Info: No captions found for `ngerman'
-(scrbase)             --> skipped on input line 112.
+(scrbase)             --> skipped on input line 114.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
@@ -1034,13 +1037,13 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 146.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 148.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 146.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 148.
  (./Master.lof
 Overfull \hbox (7.0206pt too wide) in paragraph at lines 20--20
  [][] []\T1/ptm/m/n/10.95 Base sta-tions and their neigh-bour-hood con-nec-tion
@@ -1087,22 +1090,22 @@ Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)            on input line 76.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 78.
-Class scrbook Info: You've told me to use the font selection of the element
-(scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 79.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 83.
+(scrbook)            on input line 80.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 86.
+(scrbook)            on input line 84.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
 (scrbook)            on input line 87.
 Class scrbook Info: You've told me to use the font selection of the element
 (scrbook)           `sectioning' that is an alias of element `disposition'
-(scrbook)            on input line 90.
+(scrbook)            on input line 88.
+Class scrbook Info: You've told me to use the font selection of the element
+(scrbook)           `sectioning' that is an alias of element `disposition'
+(scrbook)            on input line 91.
 )
 \tf@toc=\write10
 \openout10 = `Master.toc'.
@@ -1124,10 +1127,15 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 
 
 
-] [2]
+]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 59.
-) (../Content/GSM_short.tex [3] [4
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 61.
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--66
+
+ []
+
+[2]) (../Content/GSM_short.tex [3] [4
 
 
 ]
@@ -1242,7 +1250,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
  [45] [46 <../Images/neighbourhoods_fak.png>] [47] [48]
 
 LaTeX Warning: Reference `sec:log_channels' on page 49 undefined on input line 
-436.
+437.
 
 <../Images/Paging.png, id=234, 167.95547pt x 144.61227pt>
 File: ../Images/Paging.png Graphic file (type png)
@@ -1254,7 +1262,7 @@ File: ../Images/Architecture_software.png Graphic file (type png)
 <use ../Images/Architecture_software.png> [50 <../Images/Architecture_software.
 png (PNG copy)>]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 511.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 514.
  [51] <../Images/ICDS.png, id=246, 1287.81125pt x 881.2925pt>
 File: ../Images/ICDS.png Graphic file (type png)
 
@@ -1273,12 +1281,12 @@ File: ../Images/databases.png Graphic file (type png)
 <use ../Images/databases.png>
 File: ../Images/databases.png Graphic file (type png)
  <use ../Images/databases.png>
-Underfull \hbox (badness 1297) in paragraph at lines 618--618
+Underfull \hbox (badness 1297) in paragraph at lines 620--620
 []\T1/ptm/m/n/9 (d) En-cryp-tion win-dow (not yet im-ple-
  []
 
 
-Overfull \hbox (10.40205pt too wide) in paragraph at lines 633--648
+Overfull \hbox (10.40205pt too wide) in paragraph at lines 635--650
 [] \T1/ptm/b/n/10.95 Cel-lID In-for-ma-tion:[][] \T1/ptm/m/n/10.95 Cel-lID in-f
 or-ma-tion can be ob-tained through sev-eral dif-fer-ent means.
  []
@@ -1286,17 +1294,17 @@ or-ma-tion can be ob-tained through sev-eral dif-fer-ent means.
 [55] [56 <../Images/filter_window.png> <../Images/rules_window.png> <../Images/
 databases.png>] [57]
 
-LaTeX Warning: Reference `fig:user_mode' on page 58 undefined on input line 664
+LaTeX Warning: Reference `fig:user_mode' on page 58 undefined on input line 666
 .
 
 
 LaTeX Warning: Citation `catcher_catcher' on page 58 undefined on input line 68
-7.
+9.
 
 [58]
 
 LaTeX Warning: Reference `sec:catcher_features' on page 59 undefined on input l
-ine 699.
+ine 701.
 
 ) (../Content/Evaluation.tex [59] [60
 
@@ -1308,111 +1316,112 @@ Overfull \hbox (3.33815pt too wide) in paragraph at lines 16--30
  [][] 
  []
 
-[61] [62] [63] [64]
-Overfull \hbox (9.98987pt too wide) in paragraph at lines 172--172
+[61] [62] [63]
+Overfull \hbox (12.5839pt too wide) in paragraph at lines 123--135
+ [][] 
+ []
+
+[64]
+Overfull \hbox (9.98987pt too wide) in paragraph at lines 203--203
 []\T1/ptm/m/n/9 (a)
  []
 
 
-Overfull \hbox (17.9999pt too wide) in paragraph at lines 172--172
+Overfull \hbox (17.9999pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 Con-
  []
 
 
-Overfull \hbox (23.48973pt too wide) in paragraph at lines 172--172
+Overfull \hbox (23.48973pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 nected
  []
 
 
-Overfull \hbox (12.9957pt too wide) in paragraph at lines 172--172
+Overfull \hbox (12.9957pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 cell
  []
 
 
-Overfull \hbox (9.99887pt too wide) in paragraph at lines 172--172
+Overfull \hbox (9.99887pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 in-
  []
 
 
-Overfull \hbox (13.31093pt too wide) in paragraph at lines 172--172
+Overfull \hbox (13.31093pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 for-
  []
 
 
-Overfull \hbox (13.99481pt too wide) in paragraph at lines 172--172
+Overfull \hbox (13.99481pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 ma-
  []
 
 
-Overfull \hbox (16.25381pt too wide) in paragraph at lines 172--172
+Overfull \hbox (16.25381pt too wide) in paragraph at lines 203--203
 \T1/ptm/m/n/9 tion. 
  []
 
 
-Overfull \hbox (10.49393pt too wide) in paragraph at lines 173--173
+Overfull \hbox (10.49393pt too wide) in paragraph at lines 204--204
 []\T1/ptm/m/n/9 (b)
  []
 
 
-Overfull \hbox (24.99278pt too wide) in paragraph at lines 173--173
+Overfull \hbox (24.99278pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 Neigh-
  []
 
 
-Overfull \hbox (19.31396pt too wide) in paragraph at lines 173--173
+Overfull \hbox (19.31396pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 bour-
  []
 
 
-Overfull \hbox (11.5019pt too wide) in paragraph at lines 173--173
+Overfull \hbox (11.5019pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 ing
  []
 
 
-Overfull \hbox (12.9957pt too wide) in paragraph at lines 173--173
+Overfull \hbox (12.9957pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 cell
  []
 
 
-Overfull \hbox (17.99075pt too wide) in paragraph at lines 173--173
+Overfull \hbox (17.99075pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 mea-
  []
 
 
-Overfull \hbox (17.99077pt too wide) in paragraph at lines 173--173
+Overfull \hbox (17.99077pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 sure-
  []
 
 
-Overfull \hbox (23.75066pt too wide) in paragraph at lines 173--173
+Overfull \hbox (23.75066pt too wide) in paragraph at lines 204--204
 \T1/ptm/m/n/9 ments. 
  []
 
-[65]
-Overfull \hbox (13.2843pt too wide) in paragraph at lines 208--214
+[65] [66]
+Overfull \hbox (13.2843pt too wide) in paragraph at lines 239--245
 \T1/ptm/m/n/10.95 Rules trig-gered: LAC/Provider Map-ping, Neigh-bour-hood Stru
 c-ture, AR-FC-N/Provider
  []
 
-[66]
-
-LaTeX Warning: Reference `sec:config_data' on page 67 undefined on input line 2
-29.
-
 [67]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [68]
-<../Images/replace_attack.png, id=309, 356.94153pt x 162.67976pt>
+LaTeX Warning: Reference `sec:config_data' on page 68 undefined on input line 2
+60.
+
+[68] [69] <../Images/replace_attack.png, id=312, 356.94153pt x 162.67976pt>
 File: ../Images/replace_attack.png Graphic file (type png)
 
-<use ../Images/replace_attack.png> [69]) (../Content/Conclusion.tex [70 <../Ima
-ges/replace_attack.png (PNG copy)>]
+<use ../Images/replace_attack.png>) (../Content/Conclusion.tex [70] [71 <../Ima
+ges/replace_attack.png (PNG copy)>] [72
+
+
+]
 Chapter 5.
-) [71
-
-
-] [72
+) [73] [74
 
 
 
@@ -1458,7 +1467,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--52
 []a30 . zip$\T1/ptm/m/n/10.95 ,
  []
 
-[73
+[75
 
 
 ]
@@ -1497,18 +1506,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 138--143
  . html$\T1/ptm/m/n/10.95 ,
  []
 
-[74]
+[76]
 Underfull \hbox (badness 10000) in paragraph at lines 158--161
 []\T1/ptm/m/sc/10.95 Wikipedia\T1/ptm/m/n/10.95 .  Cell id.  $\T1/pcr/m/n/10.95
  http : / / bb . osmocom . org / trac / wiki /
  []
 
-) [75] (../Content/Appendix.tex [76
+) [77] (../Content/Appendix.tex [78
 
 
 ]
 Appendix A.
-[77]
+[79]
 Overfull \hbox (25.37581pt too wide) in paragraph at lines 32--34
 \T1/ptm/m/n/10.95 moved to \T1/pcr/m/n/10.95 osmocom-bb/src/host/layer23/src/mi
 sc \T1/ptm/m/n/10.95 and the \T1/pcr/m/n/10.95 Makefile.am
@@ -1516,79 +1525,79 @@ sc \T1/ptm/m/n/10.95 and the \T1/pcr/m/n/10.95 Makefile.am
 
 
 Overfull \hbox (5.82301pt too wide) in paragraph at lines 47--48
-[][][][][][][][][][][][][][][][][][] 
+[][][][][][][][][][][][][][][][][] 
  []
 
-[78] <../Images/t191cable.jpg, id=341, 702.625pt x 609.27625pt>
+[80] <../Images/t191cable.jpg, id=348, 702.625pt x 609.27625pt>
 File: ../Images/t191cable.jpg Graphic file (type jpg)
 
-<use ../Images/t191cable.jpg> [79 <../Images/t191cable.jpg>] [80
+<use ../Images/t191cable.jpg> [81 <../Images/t191cable.jpg>] [82
 
 
 ]
 Appendix B.
-[81] [82]
+[83] [84]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [83]
-[84]
+ [85]
+[86]
 Appendix C.
 File: ../Images/sysinfo1.png Graphic file (type png)
 <use ../Images/sysinfo1.png>
 
 LaTeX Warning: Float too large for page by 0.9002pt on input line 206.
 
-<../Images/sysinfo2.png, id=361, 261.32832pt x 440.55792pt>
+<../Images/sysinfo2.png, id=368, 261.32832pt x 440.55792pt>
 File: ../Images/sysinfo2.png Graphic file (type png)
 
 <use ../Images/sysinfo2.png>
 
 LaTeX Warning: Float too large for page by 61.98238pt on input line 211.
 
-<../Images/sysinfo3.png, id=362, 284.45473pt x 373.49136pt>
+<../Images/sysinfo3.png, id=369, 284.45473pt x 373.49136pt>
 File: ../Images/sysinfo3.png Graphic file (type png)
 
 <use ../Images/sysinfo3.png>
-<../Images/sysinfo4.png, id=363, 252.07776pt x 370.0224pt>
+<../Images/sysinfo4.png, id=370, 252.07776pt x 370.0224pt>
 File: ../Images/sysinfo4.png Graphic file (type png)
 
-<use ../Images/sysinfo4.png> [85
+<use ../Images/sysinfo4.png> [87
 
 
-] [86] [87 <../Images/sysinfo2.png (PNG copy)>] [88 <../Images/sysinfo3.png (PN
-G copy)>] [89 <../Images/sysinfo4.png (PNG copy)>] [90
+] [88] [89 <../Images/sysinfo2.png (PNG copy)>] [90 <../Images/sysinfo3.png (PN
+G copy)>] [91 <../Images/sysinfo4.png (PNG copy)>] [92
 
 
 ]
 Appendix D.
-[91]) (./Master.acr [92]
-Underfull \hbox (badness 2626) in paragraph at lines 24--24
+[93]) (./Master.acr [94]
+Underfull \hbox (badness 2626) in paragraph at lines 73--74
 []|\T1/ptm/m/n/10.95 Conférence Eu-ropéenne des Ad-min-is-tra-tions des
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 []|\T1/ptm/m/n/10.95 Electrically Erasable Pro-grammable Read-Only
  []
 
-[93
+[95
 
 
 
 
-] [94]) [95] (./Master.aux)
+] [96] [97]) [98] (./Master.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24987 strings out of 493848
- 467381 string characters out of 1152824
- 689963 words of memory out of 3000000
- 27604 multiletter control sequences out of 15000+50000
- 82699 words of font info for 109 fonts, out of 3000000 for 9000
+ 24993 strings out of 493848
+ 467649 string characters out of 1152824
+ 688983 words of memory out of 3000000
+ 27607 multiletter control sequences out of 15000+50000
+ 83343 words of font info for 111 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 69i,13n,72p,1076b,1689s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 61i,13n,72p,1076b,1689s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
@@ -1605,9 +1614,9 @@ nts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (107 pages, 13383627 bytes).
+Output written on Master.pdf (110 pages, 13388524 bytes).
 PDF statistics:
- 459 PDF objects out of 1000 (max. 8388607)
+ 470 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

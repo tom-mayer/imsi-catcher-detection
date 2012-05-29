@@ -54,12 +54,16 @@ The IMSI catcher was configured in a way to not let subscribers connect, therefo
 To make the thesis more readable a few conventions will be kept throughout this document.
 Important words or components of the IMSI Catcher Detection System will be printed \emph{emphasised}.
 \texttt{Typewriter} font will be used whenever a console command or a file name will be used in the running text.
-Code examples and whole command lines can be distinguished by a code listing box that surrounds them.
-\begin{lstlisting}
+Code examples can be distinguished by a code listing box that surrounds them.\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
+\begin{lstlisting} 
 if __name___ == '__main__':
-    print 'Hello World'
+    print 'Hello ICDS'
 \end{lstlisting} 
-
+\end{minipage}\\
+If a complete command line is given it will be put into a new line and the \texttt{typewriter} font will be used.
+\[\texttt{sudo do\_it -t now}\]
 Generally a lot of acronyms will be used due to the nature of \gls{gsm} and telephony dialects, where every possible word has an acronym associated with it.
 The first appearance will always be written out followed by the acronym in parenthesis that will be used from that point henceforth.
 A complete list of all acronyms for reference can be found in the back of the document.

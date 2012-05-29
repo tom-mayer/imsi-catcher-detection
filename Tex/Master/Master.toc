@@ -64,27 +64,28 @@
 \contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
 \contentsline {subsection}{\numberline {4.1.1}Scan Duration}{62}
 \contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{63}
-\contentsline {subsection}{\numberline {4.1.3}PCH Scan Speed}{63}
-\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{63}
+\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{63}
+\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{64}
 \contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{64}
 \contentsline {subsubsection}{Nokia 3310}{65}
-\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{66}
-\contentsline {subsection}{\numberline {4.2.3}Long Term Test}{67}
-\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{68}
+\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{67}
+\contentsline {subsection}{\numberline {4.2.3}Long Term Test}{68}
+\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{69}
 \contentsline {subsubsection}{IMSI Catcher as a new Cell}{69}
-\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{69}
-\contentsline {chapter}{\numberline {5}Conclusion}{71}
-\contentsline {section}{\numberline {5.1}Future Work}{71}
-\contentsline {chapter}{Bibliography}{73}
-\contentsline {chapter}{\numberline {A}OsmocomBB}{77}
-\contentsline {section}{\numberline {A.1}Installation}{77}
-\contentsline {section}{\numberline {A.2}Usage}{78}
-\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{79}
-\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{81}
-\contentsline {section}{\numberline {B.1}Extextions}{81}
-\contentsline {section}{\numberline {B.2}Example Configuration}{82}
-\contentsline {chapter}{\numberline {C}System Information}{85}
-\contentsline {chapter}{\numberline {D}Evaluation Data}{91}
-\contentsline {section}{\numberline {D.1}Rx and LAC Change Test}{91}
-\contentsline {section}{\numberline {D.2}Long Term Test}{91}
-\contentsline {chapter}{Acronyms}{93}
+\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{70}
+\contentsline {chapter}{\numberline {5}Conclusion}{73}
+\contentsline {section}{\numberline {5.1}Summary}{73}
+\contentsline {section}{\numberline {5.2}Future Work}{73}
+\contentsline {chapter}{Bibliography}{75}
+\contentsline {chapter}{\numberline {A}OsmocomBB}{79}
+\contentsline {section}{\numberline {A.1}Installation}{79}
+\contentsline {section}{\numberline {A.2}Usage}{80}
+\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{81}
+\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{83}
+\contentsline {section}{\numberline {B.1}Extextions}{83}
+\contentsline {section}{\numberline {B.2}Example Configuration}{84}
+\contentsline {chapter}{\numberline {C}System Information}{87}
+\contentsline {chapter}{\numberline {D}Evaluation Data}{93}
+\contentsline {section}{\numberline {D.1}Rx and LAC Change Test}{93}
+\contentsline {section}{\numberline {D.2}Long Term Test}{93}
+\contentsline {chapter}{Acronyms}{95}
