@@ -270,38 +270,7 @@ A procedure called Handover achieves just that.
 
 For this central role to work it is necessary to be connected to all the other components of the \gls{nss}.
 This is done via different connections called Interfaces.
-A brief description of what the different interfaces in a GSM network are and what their respective function is can be seen in Table \ref{tab:interfaces}.
-
-\begin{table}
-\centering
-\begin{tabular}{lll}
-\toprule
-Name			&Between					&Function\\
-\midrule
-$A$				&MSC $\leftrightarrow$ BSS	&BSS management data for Mobility Management\\
-				&							&and Call Control\\
-$B$				&MSC $\leftrightarrow$ VLR	&MSC receives data about MSs in the current area\\
-				&							& and sends data from Location Updates\\
-$C$				&MSC $\leftrightarrow$ HLR	&MSC can request routing data during call setup\\
-				&							&and send \eg charging information\\
-$D$				&HLR $\leftrightarrow$ VLR	&Exchange of location-dependent subscriber data\\
-				&							&and updating the HLR (MSRN \etc)\\
-$E$				&MSC $\leftrightarrow$ MSC	&Executing a Handover when subscriber changes\\
-				&							&to a new MSC\\
-$F$				&MSC $\leftrightarrow$ EIR	&Checking white-/grey- and blacklists before\\
-				&							&giving access to the network\\
-$G$				&VLR $\leftrightarrow$ VLR	&Connects VLR of different MSCs to exchange\\
-				&							&subscriber data during a handover\\
-\midrule
-$A_\text{bis}$	&BSC $\leftrightarrow$ BTS	&BSC receives data from MS via the BTS\\
-$U_m$			&BTS $\leftrightarrow$ MS	&Registration procedure, call data \etc as well\\
-				&							&as broadcast information about the network\\
-				&							&and the base station\\
-\bottomrule
-\end{tabular}
-\caption{Interfaces inside the core network (upper part) and the radio network (lower part)}
-\label{tab:interfaces}
-\end{table}
+A brief description of what the different interfaces in a GSM network are and what their respective function is can be seen in Appendix \ref{sec:interfaces}.
 
 \subsubsection{Home Location Register}
 The \gls{hlr} is the central database in which all personal subscriber related data is stored.
@@ -375,7 +344,7 @@ The \gls{bss} is the part of the network that provides the hard- and software fo
 Its main components are the \gls{bsc}, the \gls{bts} and the \gls{trau}.
 Connecting a mobile subscriber works via radio which is why this subsystem is sometimes also called the radio network \cite{kommsys2006}.
 Inside the radio network of a certain area there is one \gls{bsc} that connects to multiple \glspl{bts} and one more \glspl{trau} depending on whether the \gls{trau} is attached to the \gls{bsc} or to all the \glspl{bts}.
-While the Transceiver station act as receiver for radio signals the controller coordinates the different receivers and relays the incoming signals  to the core network.
+While the Transceiver station acts as receiver for radio signals the controller coordinates the different receivers and relays the incoming signals  to the core network.
 Since signals inside the core network are transmitted at other rates than in the radio network, rates need to be adapted which is done by the \gls{trau}.
 
 Before discussing the individual components of this subsystem it is important to understand how the frequencies of the radio network are used and what architectural impacts this sparse resource has on the network and the components itself.
@@ -571,43 +540,26 @@ An illustration of how these multiplexing methods work together can be seen in F
 
 \subsubsection{Frame Numbering}
 Another important aspect is the frame hierarchy and the resulting frame numbering since it is used for ciphering as well as channel mapping and synchronisation.
-The frame number is broadcasted frequently on the \gls{sch} to keep mobile subscribers in sync and inform subscribers that are about to connect or request a channel for communication.
-Figure \ref{fig:frame_hierarchy} shows a complete diagram of the numbering scheme and frame hierarchy for reference.
+The frame number is one of the inputs required to generate the ciphering key and is broadcasted frequently on the \gls{sch} to keep mobile subscribers in sync.
 
-The timeslots on the lowest level of the hierarchy have a length of $4.615\text{\,ms} \div 8 = 577~\mu\text{s}$ and are also known as Bursts numbered from 0 to 7.
+The timeslots  on the lowest level of the hierarchy have a length of $4.615\text{\,ms} \div 8 = 577~\mu\text{s}$ and are also known as Bursts numbered from 0 to 7.
 Every new \gls{tdma} frame the sequence number is increased by one.
 Since this number cannot be increased endlessly is repeated every 3\,h 28\,m 53\,s and 760\,ms.
 This is the largest chunk in the frame hierarchy and it is called Hyperframe.
-Superframes and Multiframes are layers in between the Hyperframe and the \gls{tdma} frame.
-As can be seen in the diagram the two variants of Multiframes, the 26-Multiframe containing 26 \gls{tdma} frames transports traffic channels as well as the respective control channels and the 51-Multiframe with its 51 \gls{tdma} frames with signalling data only.
-Superframes wrap these different kinds of Multiframes into packages of the same size.
-So either 51 26-Multiframes can be carried by a Superframe or 51 26-Multiframes yielding a duration of 6\,s and 120\,ms each.
-Finally 2048 Superframes make up one Hyperframe.
+Superframes and Multiframes are layers between the Hyperframe and the \gls{tdma} frame which can occur in different configurations.
+The 51-Multiframe consists of 51 TDMA frames and carries only signalling data whereas the 26-Multiframe contains 26 TDMA frames and carries traffic and control channels.
+Superframes can be seen as packages to wrap these different Multiframes in one package of the same length.
 
 \begin{figure}
 	\centering
 	\includegraphics{../Images/Frames}
-	\caption{Hierarchical Composition of the different frames.}
+	\caption{Hierarchical composition of the different frames.}
 	\label{fig:frame_hierarchy}
 \end{figure}
 
-The frequency number thus is repeated every 3 hours this way which makes cracking the ciphering algorithm that has the sequence number as one of its inputs and thus intercepting a call considerably  more difficult.
 When a \gls{ms} and \gls{bts} start to communicate the frame number has to be obtained by the \gls{ms} through the \gls{sch} before it can ask for a channel.
 This is important since the frame number is a vital information indicating the chronological order of control channels.
 If the \gls{ms} asks for a channel assignment in frame $n$ and a channel is assigned to the \gls{ms}, the assigned channels refers back to the frame $n$ and thus the \gls{ms} can find its channel amongst the others.
-
-The last task mentioned above was synchronisation.
-Since the mobile station and the transceiver station cannot send at exactly the same time, uplink and downlink of a channel are shifted by three timeslots.
-The time in between uplink and downlink however cannot be fixed for all situations like that.
-During a call a participant may move around and since radio waves travel at the speed of light slight variations in timing need to be dealt with.
-If not data from two participants might overlap and be rendered unusable.
-To avoid this problem each Burst has a Guard Time at the beginning and at the end, where no data is transmitted.
-The complete structure of such a Normal Burst is outlined in Figure \ref{fig:burst_types}.
-However this does not suffice if a subscriber moves away or to a \gls{bts} at considerable speed.
-Therefore a mechanism called Timing Advance is used.
-Basically the farther a subscriber is away from a base station the earlier a burst has to be sent, to compensate for the distance.
-The value for the Timing Advance is determined by the \gls{bsc} after receiving a channel request message from the mobile station and afterwards constantly updated by the respective \gls{bts}.
-The channel request message itself has only little data and large Guard Times since Timing Advance can only be used after this first measurement.
 
 \begin{figure}
 	\centering
@@ -617,13 +569,20 @@ The channel request message itself has only little data and large Guard Times si
 \end{figure}
 
 \subsubsection{Burst Types}
-%TODO make explanation more consistent with image
 As suggested by the paragraph above there are different kinds of Bursts which are shown in \ref{fig:burst_types} \cite{GSM2009}.
-All Bursts contain the before mentioned Guard Times which separate them from the next Burst.
+
 In addition to data bits and known fixed bit sequences every frame has tail bits, which mark the beginning and the end of a frame.
-The training sequence is a fixed bit sequence that appears in conjunction with data bit sequences.
+The fixed bit sequence is called training sequence and appears in conjunction with the data bit sequences.
 During a radio transmission procedure the signal can be distorted by shadowing, reflection, or other factors which would result in a loss of data.
 But since the training sequence is known it is possible to reconstruct the original signal by comparing the incoming training sequence with the expected one and thus conserving the data bits.
+
+All Bursts contain Guard Times which separate them from the next Burst.
+This is necessary subscribers can move around and thus slight variations in timing may occur.
+These variations could result in the collision of data from several different sources rendering it unusable.
+For subscribers that move at considerable speeds \eg in a car this is not sufficient and an extra mechanism called Timing Advance is used.
+Basically the farther a subscriber is away from a base station the earlier a burst has to be sent, to compensate for the distance.
+The value for the Timing Advance is determined by the \gls{bsc} after receiving a channel request message from the mobile station and afterwards constantly updated by the respective \gls{bts}.
+
 \begin{itemize}
 	\item Normal Burst: The basic information transmitting Burst.
 	All information on traffic and control channels is transmitted by this Burst except for the \gls{rach}.
@@ -699,6 +658,7 @@ These are point to multi-point channels.
 \subsubsection{Combinations}
 These channels cannot arbitrarily be mapped onto Multiframes.
 There is a complex multiplexing scheme defined in GSM 05.02 \cite{gsm0502} that explains which channel combinations can occur inside a Multiframe.
+A table containing the possible combinations can be found in Appendix \ref{sec:combinations}.
 The mapping of these specific Multiframe-configurations onto timeslots is not arbitrary either.
 Normally TS-0 and TS-1, the first two time slots, are used handle channels with signalling information.
 The \gls{bcch} for example, which we will use to harvest information uses TS-0 of the carrier frequency.

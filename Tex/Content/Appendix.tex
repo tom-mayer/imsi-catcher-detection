@@ -1,3 +1,68 @@
+\chapter{GSM}
+\section{Interfaces}
+\label{sec:interfaces}
+The following table contains a brief description of the interfaces used inside a GSM network.
+On the upper part the interfaces for the Network Subsystem are listed and on the lower part the interfaces for the Base Station Subsystem can be found.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+\toprule
+Name			&Between					&Function\\
+\midrule
+$A$				&MSC $\leftrightarrow$ BSS	&BSS management data for Mobility Management\\
+				&							&and Call Control\\
+$B$				&MSC $\leftrightarrow$ VLR	&MSC receives data about MSs in the current area\\
+				&							& and sends data from Location Updates\\
+$C$				&MSC $\leftrightarrow$ HLR	&MSC can request routing data during call setup\\
+				&							&and send \eg charging information\\
+$D$				&HLR $\leftrightarrow$ VLR	&Exchange of location-dependent subscriber data\\
+				&							&and updating the HLR (MSRN \etc)\\
+$E$				&MSC $\leftrightarrow$ MSC	&Executing a Handover when subscriber changes\\
+				&							&to a new MSC\\
+$F$				&MSC $\leftrightarrow$ EIR	&Checking white-/grey- and blacklists before\\
+				&							&giving access to the network\\
+$G$				&VLR $\leftrightarrow$ VLR	&Connects VLR of different MSCs to exchange\\
+				&							&subscriber data during a handover\\
+\midrule
+$A_\text{bis}$	&BSC $\leftrightarrow$ BTS	&BSC receives data from MS via the BTS\\
+$U_m$			&BTS $\leftrightarrow$ MS	&Registration procedure, call data \etc as well\\
+				&							&as broadcast information about the network\\
+				&							&and the base station\\
+\bottomrule
+\end{tabular}
+\caption{Interface found in the GSM network.}
+\end{table}
+
+\newpage
+\section{Channel Combinations}
+\label{sec:combinations}
+The following table contains the possible combinations of channels inside the different Multiframes.
+The respective frame type is also indicated in the lower part of the table.
+\begin{table}[h!]
+\centering
+\begin{tabular}{lccccccccc}
+\toprule
+					&M1&M2&M3&M4&M5&M6&M7&M8&M9\\
+\midrule
+TCH/F				&\cellcolor[gray]{0.7}&&&&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}\\
+TCH/H				&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&&&\\
+TCH/H				&&&\cellcolor[gray]{0.7}&&&&&&\\
+BCCH				&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&\\
+FCCH				&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&\\
+SCH					&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&\\
+CCCH				&&&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&\\
+SDCCH				&&&&&\cellcolor[gray]{0.7}&&\cellcolor[gray]{0.7}&&\\
+SACCH				&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&\cellcolor[gray]{0.7}&&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}\\
+FACCH				&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&\cellcolor[gray]{0.7}&&&&&\cellcolor[gray]{0.7}&\\
+\midrule
+Multiframe Type		&26&26&26&51&51&51&51&26&26\\
+\bottomrule
+\end{tabular}
+\caption{Possible mappings of channels onto Multiframes}
+\end{table}
+
+
 \chapter{OsmocomBB}
 This section contains general information about how to operate and setup the OsmocomBB framework and the Motorola C123.
 \section{Installation}

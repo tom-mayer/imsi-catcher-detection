@@ -11,81 +11,84 @@
 \contentsline {subsection}{\numberline {2.2.2}Network Subsystem}{11}
 \contentsline {subsubsection}{Mobile Switching Center}{12}
 \contentsline {subsubsection}{Home Location Register}{12}
-\contentsline {subsubsection}{Visitor Location Register}{14}
-\contentsline {subsubsection}{Authentication Center}{14}
-\contentsline {subsection}{\numberline {2.2.3}Base Station Subsystem}{16}
-\contentsline {subsubsection}{Frequencies and the Cellular Principle}{16}
-\contentsline {subsubsection}{Base Transceiver Station}{18}
-\contentsline {subsubsection}{Base Station Controller}{19}
-\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{21}
-\contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{21}
-\contentsline {subsubsection}{Frame Numbering}{22}
-\contentsline {subsubsection}{Burst Types}{24}
-\contentsline {subsection}{\numberline {2.3.2}Logical Channels}{25}
+\contentsline {subsubsection}{Visitor Location Register}{13}
+\contentsline {subsubsection}{Authentication Center}{13}
+\contentsline {subsection}{\numberline {2.2.3}Base Station Subsystem}{15}
+\contentsline {subsubsection}{Frequencies and the Cellular Principle}{15}
+\contentsline {subsubsection}{Base Transceiver Station}{17}
+\contentsline {subsubsection}{Base Station Controller}{18}
+\contentsline {section}{\numberline {2.3}The $U_m$ Interface}{20}
+\contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{20}
+\contentsline {subsubsection}{Frame Numbering}{21}
+\contentsline {subsubsection}{Burst Types}{22}
+\contentsline {subsection}{\numberline {2.3.2}Logical Channels}{24}
 \contentsline {subsubsection}{Dedicated Channels}{25}
-\contentsline {subsubsection}{Common Channels}{26}
-\contentsline {subsubsection}{Combinations}{27}
-\contentsline {subsection}{\numberline {2.3.3}Layers}{27}
-\contentsline {paragraph}{Physical Layer (Layer 1):}{27}
-\contentsline {paragraph}{Data Link (Layer 2):}{28}
-\contentsline {paragraph}{Network (Layer 3):}{28}
-\contentsline {section}{\numberline {2.4}IMSI-Catcher}{28}
-\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{29}
-\contentsline {subsubsection}{Attacks}{31}
-\contentsline {paragraph}{MS is in normal cell selection mode:}{31}
-\contentsline {paragraph}{MS is already connected to a network:}{31}
-\contentsline {subsubsection}{Risks and Irregularities}{32}
-\contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{32}
-\contentsline {chapter}{\numberline {3}IMSI Catcher Detection}{35}
-\contentsline {section}{\numberline {3.1}Framework and Hardware}{35}
-\contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{35}
-\contentsline {subsubsection}{Project Status}{36}
-\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{37}
-\contentsline {subsection}{\numberline {3.1.3}OsmocomBB and ICDS}{38}
-\contentsline {section}{\numberline {3.2}Procedure}{39}
-\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{39}
-\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{42}
-\contentsline {subsubsection}{Neighbourhood Structure}{44}
-\contentsline {subsubsection}{Base Station Evaluation}{45}
-\contentsline {subsection}{\numberline {3.2.3}Forged Parameters}{47}
-\contentsline {subsubsection}{Database Rules}{48}
-\contentsline {subsubsection}{Remaining Issues and Paging}{49}
-\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{50}
-\contentsline {subsection}{\numberline {3.3.1}Implemetation}{50}
-\contentsline {subsection}{\numberline {3.3.2}Configuration}{51}
-\contentsline {subsection}{\numberline {3.3.3}Operation}{52}
-\contentsline {paragraph}{Sweep scans:}{55}
-\contentsline {paragraph}{CellID Information:}{57}
-\contentsline {paragraph}{Location Area Database:}{57}
-\contentsline {paragraph}{PCH Scan:}{57}
-\contentsline {paragraph}{User Mode:}{58}
-\contentsline {section}{\numberline {3.4}Related Projects}{58}
-\contentsline {chapter}{\numberline {4}Evaluation}{61}
-\contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
-\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{62}
-\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{63}
-\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{63}
-\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{64}
-\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{64}
-\contentsline {subsubsection}{Nokia 3310}{65}
-\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{67}
-\contentsline {subsection}{\numberline {4.2.3}Long Term Test}{68}
-\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{69}
-\contentsline {subsubsection}{IMSI Catcher as a new Cell}{69}
-\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{70}
-\contentsline {chapter}{\numberline {5}Conclusion}{73}
-\contentsline {section}{\numberline {5.1}Summary}{73}
+\contentsline {subsubsection}{Common Channels}{25}
+\contentsline {subsubsection}{Combinations}{26}
+\contentsline {subsection}{\numberline {2.3.3}Layers}{26}
+\contentsline {paragraph}{Physical Layer (Layer 1):}{26}
+\contentsline {paragraph}{Data Link (Layer 2):}{26}
+\contentsline {paragraph}{Network (Layer 3):}{27}
+\contentsline {section}{\numberline {2.4}IMSI-Catcher}{27}
+\contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{28}
+\contentsline {subsubsection}{Attacks}{30}
+\contentsline {paragraph}{MS is in normal cell selection mode:}{30}
+\contentsline {paragraph}{MS is already connected to a network:}{30}
+\contentsline {subsubsection}{Risks and Irregularities}{31}
+\contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{31}
+\contentsline {chapter}{\numberline {3}IMSI Catcher Detection}{33}
+\contentsline {section}{\numberline {3.1}Framework and Hardware}{33}
+\contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{33}
+\contentsline {subsubsection}{Project Status}{34}
+\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{35}
+\contentsline {subsection}{\numberline {3.1.3}OsmocomBB and ICDS}{36}
+\contentsline {section}{\numberline {3.2}Procedure}{37}
+\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{37}
+\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{40}
+\contentsline {subsubsection}{Neighbourhood Structure}{42}
+\contentsline {subsubsection}{Base Station Evaluation}{43}
+\contentsline {subsection}{\numberline {3.2.3}Forged Parameters}{45}
+\contentsline {subsubsection}{Database Rules}{46}
+\contentsline {subsubsection}{Remaining Issues and Paging}{47}
+\contentsline {section}{\numberline {3.3}IMSI Catcher Detection System}{48}
+\contentsline {subsection}{\numberline {3.3.1}Implemetation}{48}
+\contentsline {subsection}{\numberline {3.3.2}Configuration}{49}
+\contentsline {subsection}{\numberline {3.3.3}Operation}{50}
+\contentsline {paragraph}{Sweep scans:}{53}
+\contentsline {paragraph}{CellID Information:}{55}
+\contentsline {paragraph}{Location Area Database:}{55}
+\contentsline {paragraph}{PCH Scan:}{55}
+\contentsline {paragraph}{User Mode:}{56}
+\contentsline {section}{\numberline {3.4}Related Projects}{56}
+\contentsline {chapter}{\numberline {4}Evaluation}{59}
+\contentsline {section}{\numberline {4.1}Performance Evaluation}{59}
+\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{60}
+\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{61}
+\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{61}
+\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{62}
+\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{62}
+\contentsline {subsubsection}{Nokia 3310}{63}
+\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{65}
+\contentsline {subsection}{\numberline {4.2.3}Long Term Test}{66}
+\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{67}
+\contentsline {subsubsection}{IMSI Catcher as a new Cell}{67}
+\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{68}
+\contentsline {chapter}{\numberline {5}Conclusion}{71}
+\contentsline {section}{\numberline {5.1}Summary}{71}
 \contentsline {section}{\numberline {5.2}Future Work}{73}
 \contentsline {chapter}{Bibliography}{75}
-\contentsline {chapter}{\numberline {A}OsmocomBB}{79}
-\contentsline {section}{\numberline {A.1}Installation}{79}
-\contentsline {section}{\numberline {A.2}Usage}{80}
-\contentsline {section}{\numberline {A.3}Serial Cable Schematics}{81}
-\contentsline {chapter}{\numberline {B}IMSI Catcher Detection System}{83}
-\contentsline {section}{\numberline {B.1}Extextions}{83}
-\contentsline {section}{\numberline {B.2}Example Configuration}{84}
-\contentsline {chapter}{\numberline {C}System Information}{87}
-\contentsline {chapter}{\numberline {D}Evaluation Data}{93}
-\contentsline {section}{\numberline {D.1}Rx and LAC Change Test}{93}
-\contentsline {section}{\numberline {D.2}Long Term Test}{93}
-\contentsline {chapter}{Acronyms}{95}
+\contentsline {chapter}{\numberline {A}GSM}{79}
+\contentsline {section}{\numberline {A.1}Interfaces}{79}
+\contentsline {section}{\numberline {A.2}Channel Combinations}{80}
+\contentsline {chapter}{\numberline {B}OsmocomBB}{81}
+\contentsline {section}{\numberline {B.1}Installation}{81}
+\contentsline {section}{\numberline {B.2}Usage}{82}
+\contentsline {section}{\numberline {B.3}Serial Cable Schematics}{83}
+\contentsline {chapter}{\numberline {C}IMSI Catcher Detection System}{85}
+\contentsline {section}{\numberline {C.1}Extextions}{85}
+\contentsline {section}{\numberline {C.2}Example Configuration}{86}
+\contentsline {chapter}{\numberline {D}System Information}{89}
+\contentsline {chapter}{\numberline {E}Evaluation Data}{95}
+\contentsline {section}{\numberline {E.1}Rx and LAC Change Test}{95}
+\contentsline {section}{\numberline {E.2}Long Term Test}{95}
+\contentsline {chapter}{Acronyms}{97}

@@ -3,47 +3,49 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Growth of mobile GSM subscriptions. Compiled from \cite {GSM2009,GSM_history2011,GSM_stats2011}}}{6}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The main components of a GSM network.}}{8}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Authentication procedure.}}{15}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900\tmspace +\thinmuskip {.1667em}MHz\ band.}}{17}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite {GSM2009}.}}{19}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Ciphering procedure for one frame of voice data. Adopted from \cite {kommsys2006}.}}{21}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces The combination of FDMA and TDMA.}}{22}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Hierarchical Composition of the different frames.}}{23}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Structural Comparison of different Burst types. After \cite {GSM2009}.}}{24}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Mapping of virtual channels on time slots.}}{26}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces A commercial catcher by Rhode \& Schwarz \cite {fox} and a self built catcher introduced at Defcon 2010 \cite {def_catcher}.}}{29}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces IMSI catching procedure. Adopted and simplified from \cite {mueller}.}}{30}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Authentication procedure.}}{14}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Mapping of functional entities on the 900\tmspace +\thinmuskip {.1667em}MHz\ band.}}{16}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Theoretical arrangement of radio cells compared to a realistic alignment. Cells with the same number share the same frequency \cite {GSM2009}.}}{18}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Ciphering procedure for one frame of voice data. Adopted from \cite {kommsys2006}.}}{20}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The combination of FDMA and TDMA.}}{21}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Hierarchical composition of the different frames.}}{22}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Structural Comparison of different Burst types. After \cite {GSM2009}.}}{23}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Mapping of virtual channels on time slots.}}{24}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces A commercial catcher by Rhode \& Schwarz \cite {fox} and a self built catcher introduced at Defcon 2010 \cite {def_catcher}.}}{28}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces IMSI catching procedure. Adopted and simplified from \cite {mueller}.}}{29}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{38}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{39}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 1 Message \cite {protocols1999}.}}{41}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Base stations and their neighbourhood connections at the Technische Fakult\"at.}}{46}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Comparison between a normal neighbourhood subgraph and a tainted one.}}{46}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{46}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{46}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Procedure taken when the network has a call/text waiting for a passive subscriber.}}{49}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{50}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{52}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{53}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{56}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Filters window.}}}{56}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Rules window.}}}{56}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Databases window.}}}{56}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Encryption window (not yet implemented).}}}{56}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{36}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{37}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 1 Message \cite {protocols1999}.}}{39}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Base stations and their neighbourhood connections at the Technische Fakult\"at.}}{44}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Comparison between a normal neighbourhood subgraph and a tainted one.}}{44}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{44}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{44}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Procedure taken when the network has a call/text waiting for a passive subscriber.}}{47}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{48}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{50}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{51}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{54}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{54}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Rules window.}}}{54}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Filters window.}}}{54}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {PCH scan window.}}}{54}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{62}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{65}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{66}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Nokia 3310 NetMonitor screenshots.}}{66}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Connected cell information.}}}{66}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Neighbouring cell measurements.}}}{66}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{71}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{60}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{63}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{64}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Nokia 3310 NetMonitor screenshots.}}{64}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Connected cell information.}}}{64}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Neighbouring cell measurements.}}}{64}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{69}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces ICDS decision finding process outlined.}}{72}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces System Information 1 Message}}{88}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces System Information 2 Message}}{89}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces System Information 3 Message}}{90}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces System Information 4 Message}}{91}
+\contentsline {figure}{\numberline {D.1}{\ignorespaces System Information 1 Message}}{90}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces System Information 2 Message}}{91}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces System Information 3 Message}}{92}
+\contentsline {figure}{\numberline {D.4}{\ignorespaces System Information 4 Message}}{93}
 \addvspace {10\p@ }
