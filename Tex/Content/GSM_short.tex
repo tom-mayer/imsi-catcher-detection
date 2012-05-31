@@ -405,7 +405,7 @@ Even though the number by itself seems high it would never suffice to service a 
 This is one of the reasons why another frequency band in the 1800\MHz range has been opened with 75\MHz up- and downlink supporting 375 channels.
 That by itself would also never suffice to service the huge number of subscribers therefore the \gls{gsm} network like any other modern mobile radio network is based on a cellular architecture which makes it possible to reuse frequencies.
 The range of one receiver station is drastically reduced to service only a small area.
-This is called the cell of the \gls{bts} which in theory can be approximated by a hexagon, each of which has its own \glspl{ci}.
+This is called the cell of the \gls{bts} which in theory can be approximated by a hexagon, each of which has its own \glspl{cid}.
 Each of these cells is assigned a different frequency to avoid interference.
 However after a certain distance, the frequency reuse distance $D$, is covered the exact same frequency can be used again by another \gls{bts}.
 $D$ is chosen large enough so that interference doesn't have an impact on overall call quality.
@@ -444,7 +444,7 @@ On the countryside where population is less dense the constraining factor can al
 Therefore cells with a radius of above 15\,km are seldom seen.
 
 \glspl{bts} and their corresponding cells can have different configurations depending on load or morph structure of the surroundings.
-In a \emph{standard configuration} every base station has its own \gls{ci}, it is a one to one mapping of cells to \gls{bts}.
+In a \emph{standard configuration} every base station has its own \gls{cid}, it is a one to one mapping of cells to \gls{bts}.
 This is a cost effective way of providing service to a rural or sparse settled area since only one \gls{bts} is used to cover a large area.
 For urban, densely settled areas the  \emph{sectorised configuration} has become the de facto standard.
 The main idea is to not have a $360^\circ$ coverage for a base station handling a cell but rather split the cell in multiple sectors, each with its own \gls{bts} covering $120^\circ$ for example. 
@@ -646,6 +646,7 @@ These are point to multi-point channels.
 	This channel will be the main source of information for this project since it allows harvesting information without actively participating in the network and will thus be discussed in further detail in Chapter \ref{sec:info_gathering}.
 	\item \gls{pch}: If a subscriber is not assigned a dedicated channel yet, \ie he/she is not active, they are notified on this channel if there is an incoming call or text.
 	The subscribers are identified by their \gls{tmsi} which has been previously assigned upon entering the network so the \gls{imsi} does not have to be broadcasted.
+	This channel will be used as an additional source of information for the \gls{icds}.
 	\item \gls{rach}: A subscriber that has been notified over the \gls{pch} can contact the network and request a \gls{sdcch}.
 	Since this is a channel used by all connected and idle \glspl{ms}, access has to be regulated.
 	As the name implies access is random thus it can happen that two or more \gls{ms} try to send at the same time.

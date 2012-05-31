@@ -62,7 +62,6 @@ Multiframe Type		&26&26&26&51&51&51&51&26&26\\
 \caption{Possible mappings of channels onto Multiframes}
 \end{table}
 
-
 \chapter{OsmocomBB}
 This section contains general information about how to operate and setup the OsmocomBB framework and the Motorola C123.
 \section{Installation}
@@ -72,55 +71,63 @@ The instructions should work for any other distribution of the Ubuntu product pa
 
 \begin{enumerate}
 	\item Build libraries must be installed on the operating system to enable compiling libraries.
-	\begin{lstlisting}
-sudo apt-get install libtool shtool autoconf git-core 
+\begin{verbatim}
+sudo apt-get install libtool shtool autoconf git-core
 pkg-config make gcc wget
-	\end{lstlisting}
+\end{verbatim}
 	\item The GNU Arm cross compiler toolchain needs to be installed so the firmware for the Motorola C123 can be built.
 	It will be added as a repository to \texttt{sources} so it can be easily removed if it is not required any more.
-	\begin{lstlisting}
+	\begin{verbatim}
 sudo add-apt-repository ppa:bdrung/bsprak
 sudo apt-get update
 sudo apt-get install arm-elf-toolchain
-	\end{lstlisting}
+	\end{verbatim}
 	\item The source code needs to be obtained.
 	This can be either done by checking out the latest version of the framework from the developers, or by using the code on the CD.
-	\begin{lstlisting}
+\begin{verbatim}
 git clone git://git.osmocom.org/osmocom-bb.git
-	\end{lstlisting}
+\end{verbatim}
 	\item At this point some firmwares had build errors, therefore we will compile only the firmware for the Calypso board used by the Motorola C123.
 	This constraint might not be necessary if a newer version of the framework is used.
 	In the \texttt{src} directory of the OsmocomBB framework the build process can be started.
-	\begin{lstlisting}
+	\begin{verbatim}
 make BOARDS=compal_e88
-	\end{lstlisting}
+	\end{verbatim}
 	\item If a new version of OsmocomBB is used, the extra code from this project must be included in the build.
-	The two files \texttt{catcher.c} and \texttt{app\_catcher.c} must be moved to \texttt{osmocom-bb/src/host/layer23/src/misc} and the \texttt{Makefile.am} must be edited to include the new code.
-	\begin{lstlisting}
-bin_PROGRAMS = bcch_scan ... cbch_sniff catcher
-catcher_SOURCES = ../common/main.c app_catcher.c
-	\end{lstlisting}
+	The three files \texttt{catcher.c}, \texttt{app\_catcher.c} and \texttt{pch\_scan.c}must be moved to \texttt{osmocom-bb/src/host/layer23/src/misc} and the \texttt{Makefile.am} must be edited to include the new code.
+	\begin{verbatim}
+bin_PROGRAMS = bcch_scan ... cbch_sniff catcher pch_scan
+catcher_LDADD = $(LDADD) -lm
+catcher_SOURCES = ../common/main.c app_catcher.c \ 
+	catcher.c ../../../gsmmap/geo.c
+pch_scan_SOURCES = ../common/main.c pch_scan.c rslms.c
+	\end{verbatim}
 \end{enumerate}
 
 \section{Usage}
 \label{sec:osmo_usage}
 To use a program written in the framework, the Motorola C123 needs to be flashed with the custom firmware.
 This can be done with the \texttt{osmocon} application. 
-\begin{lstlisting}
+\begin{verbatim}
 cd src/host/osmocon
 sudo ./osmocon -p /dev/ttyUSB0 -m c123xor
  ../../target/firmware/board/compal_e88/layer1.compalram.bin
-\end{lstlisting}
+\end{verbatim}
 After \texttt{osmocon} is started and running any application can be started with root privileges.
-\begin{lstlisting}
+\begin{verbatim}
 cd ../layer23/src/misc/
-sudo catcher
-\end{lstlisting}
+sudo ./catcher
+\end{verbatim}
+The \texttt{pch\_scan} program requires an ARFCN as an input.
+For example, to conduct a scan on the PCH of ARFCN 127 one would call:
+\begin{verbatim}
+sudo ./pch_scan -a 127
+\end{verbatim}
 \newpage
 \section{Serial Cable Schematics}
 \label{sec:osmo_serial_schematics}
 A T191 unlock cable used to connect the Motorola C123 can either be obtained by ordering it from one of the mentioned stores or by building it from scratch.
-These are the schematics required for building the unlock cable.
+These are the schematics required for building the unlock cable taken from a GSM Blog \footnote{GSM Box Schematics, \url{http://gsmringtonefree.blogspot.de/} [Online; Accessed 05.2012]}, which features images of many more cables for different brands.
 \vfill
 \begin{center}
 \includegraphics[width=.9\textwidth]{../Images/t191cable}
@@ -128,13 +135,16 @@ These are the schematics required for building the unlock cable.
 \vfill
 \chapter{IMSI Catcher Detection System}
 This section will cover some code related topics of the ICDS.
+
 \section{Extextions}
 \label{sec:extensions}
 Rules, evaluators and filters are implemented in a way that new modules can be added quickly by way of inheritance and instantiating them in the constructor of the controller so they are known to the system.
 The following example shows how to implement a new rule and add it to the system.
 This exemplary process is nearly the same for filters and evaluators.
 
-At first this base class has to be derived.
+At first this base class has to be derived.\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
 class Rule:
     #set whether the rule should be used by the 
@@ -147,9 +157,12 @@ class Rule:
     def check(self, arfcn, base_station_list):
         return RuleResult.CRITICAL
 \end{lstlisting}
+\end{minipage}\\\\
 
 The new rule class needs to override the check method to do something meaningful.
-The identifier should also be set to a proper value.
+The identifier should also be set to a proper value.\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
 class MyRule (Rule):
     identifier = 'My own Rule'
@@ -158,13 +171,15 @@ class MyRule (Rule):
         #do some logic here and set result 
         return result
 \end{lstlisting}
+\end{minipage}\\\\
 \texttt{arfcn} and \texttt{base\_station\_list} are given to the check method by the controller.
 The first parameter is the ARFCN of the base station to which the evaluation will be applied.
 The second one is a list of all the base stations with complete information as far as it has been
 obtained by the ICDS.
-
-After it has been implemented it can be instatiated and added to the list of active rules in the 
-constructor of the controller.
+After it has been implemented it can be instantiated and added to the list of active rules in the 
+constructor of the controller.\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
 class PyCatcherController:
     ...
@@ -175,11 +190,15 @@ class PyCatcherController:
         self._rules.add(self._my_rule)
         ...
 \end{lstlisting}
+\end{minipage}
+\newpage
 \section{Example Configuration}
 \label{sec:example_config}
-This example configuration has been used for the evaluation in the Freiburg area.
+This example configuration has been used for the evaluation in the Freiburg area.\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
-#Core Configuration ---------------------------------------
+#Core Configuration -----------------------------------
 
 #Settings for the Motorola C123 .
 Device_settings = { 'mobile_device' : '/dev/ttyUSB0',
@@ -202,13 +221,23 @@ Commands = {'osmocon_command' : [Osmocon_lib +
     + '/layer1.compalram.bin'],
     'scan_command' : [Osmocon_lib 
     + '/host/layer23/src/misc/catcher'],
+    'pch_command' : [Osmocon_lib 
+    + '/host/layer23/src/misc/pch_scan'],
 }
 
-#Rules Configuration --------------------------------------
+#Rules Configuration ------------------------------------
 
 #A list of providers that should be taken as legitimate.
 Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus']
 
+
+
+#-----------Continues on next page-----------------------
+\end{lstlisting}
+\end{minipage}\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
+\begin{lstlisting}
 #Countries where the given providers have presence.
 Provider_Country_list = {
     'T-Mobile':'Germany',
@@ -229,15 +258,15 @@ LAC_mapping = {
 #Frequency intervals that are registered to the 
 #given providers.
 ARFCN_mapping = {
-    'T-Mobile' : [(13,39),(81, 102),(122,124),(587,611)],
+    'T-Mobile' : [(13,49),(81, 102),(122,124),(587,611)],
     'O2' : [(0,0),(1000,1023),(637,723)],
     'Vodafone' : [(1,12),(50,80),(103,121),(725,751)],
     'E-Plus' : [(975,999),(777,863)]
 }
 
-#How much % the LAC of a base station can deviate from the
-#median before throwing an error (range 0 to 1 where 0 
-#means no tolerance).
+#How much % the LAC of a base station can deviate from
+#the median before throwing an error (range 0 to 1 where
+#0 means no tolerance).
 LAC_threshold = 0
 
 #How much % the rx level is allowed to be away from the
@@ -248,7 +277,38 @@ DB_RX_threshold = 0.05
 #of a scan.
 CH_RX_threshold = 0.02
 
-#Database Configuration -----------------------------------
+#-------------Continues on next page---------------------
+
+
+\end{lstlisting}
+\end{minipage}\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
+\begin{lstlisting}
+#How much Pagings per 10s are required to give an Ok 
+#rating
+Pagings_per_10s_threshold = 20
+
+#How many hopping assignments are required to give
+#an Ok rating
+Assignment_limit = 0
+
+#PCH Parameters -----------------------------------------
+
+#How often a failed PCH scan should retry
+PCH_retries = 5
+
+#Time the PCH is scanned during Operation in 
+#User Mode
+USR_timeout = 15
+
+#Evaluator Configuration -------------------------------
+
+Rule_Groups = []
+
+Rule_Weights = {}
+
+#Database Configuration --------------------------------
 
 #The API key for OpenCellID.
 #Can be freely obtained by registering on the web site. 
@@ -260,6 +320,7 @@ Open_Cell_ID_Key = 'd7a5bc3f21b44d4bf93d1ec2b3f83dc4'
 Database_path = '''/home/tom/imsi-catcher-detection/Src
 /PyCatcher/Databases/'''
 \end{lstlisting}
+\end{minipage}
 
 \chapter{System Information}
 \label{sec:system_infos}

@@ -118,6 +118,7 @@ Vodafone has about six times the paging rate O$_{2}$ has but only half the Immed
 Another scan was also done on the IMSI catcher.
 No Paging Messages or Immediate Assignments were detected although \glspl{ms} were connected to it.
 That was to be expected as formerly discussed in Section \ref{sec:paging} because the IMSI catcher is not actually part of the providers network and thus cannot receive and forward paging requests.
+
 \begin{table}
 \centering
 \begin{tabular}{lrrcrrcrr}
@@ -156,6 +157,8 @@ Figure \ref{fig:setup} shows the Open Source IMSI Catcher and the \gls{icds} sid
 
 On the software side GNU Radio\footnote{GNU Radio Project Wiki, \url{http://gnuradio.org/redmine/projects/gnuradio/wiki} [Online; Accessed 05.2012]}, OpenBTS\footnote{OpenBTS Project Wiki, \url{http://wush.net/trac/rangepublic} [Online; Accessed 05.2012]} and Asterisk\footnote{Asterisk, \url{http://www.asterisk.org} [Online; Accessed 05.2012]} are used to achieve the functionality provided by a IMSI catcher.
 \begin{figure}
+\centering
+\includegraphics[width=.95\textwidth]{../Images/catcherICDS}
 \caption{Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}
 \label{fig:setup}
 \end{figure}
@@ -208,7 +211,7 @@ Only the test phone does have a valid account.
 
 \subsubsection{Nokia 3310}
 To get feedback on whether the IMSI catcher is working as intended or see if an attack succeeded a Nokia 3310 phone can be used.
-Nikia has a software called NetMonitor\footnote{ofo} that can be used to measure base stations in the perimeter and gives feedback when the \gls{ms} is going to switch to a new cell.
+Nikia has a software called NetMonitor\footnote{Nokia Net Monitor Manual, \url{www.nobbi.com/download/nmmanual.pdf} [Online; Accessed 05.2012]} that can be used to measure base stations in the perimeter and gives feedback when the \gls{ms} is going to switch to a new cell.
 This NetMonitor consists of several pages, of which the first shows the active cell that the phone is connected to.
 On the following pages neighbouring cell measurements can be seen ordered by a score that is used by the phone to determine when and if to change the cell.
 Figure \ref{fig:netmonitor} shows the home screen with information on the connected cell (a) as well as the first page of the neighbouring cell measurements (b).

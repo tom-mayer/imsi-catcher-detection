@@ -2,60 +2,57 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Master.aux
 The style file: acm.bst
 Database file #1: ../Content/Bibliography.bib
-Repeated entry---line 205 of file ../Content/Bibliography.bib
- : @misc{osmo_rationale
- :                     ,
-I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "catcher_catcher"
 Warning--to sort, need author or key in GSM0207
-Warning--to sort, need author or key in GSM0505
 Warning--to sort, need author or key in ISO7810
 Warning--to sort, need author or key in GSM23003
-Warning--to sort, need author or key in GSM23078
 Warning--to sort, need author or key in gsm0502
 Warning--to sort, need author or key in GSM0405
 Warning--to sort, need author or key in GSM0406
+Warning--to sort, need author or key in GSM0505
+Warning--to sort, need author or key in GSM23078
 Warning--can't use both author and editor fields in GSM2009
 Warning--empty journal in mueller
 Warning--empty journal in dennis
-You've used 31 entries,
+You've used 32 entries,
             2253 wiz_defined-function locations,
-            686 strings with 7735 characters,
-and the built_in function-call counts, 6426 in all, are:
-= -- 615
-> -- 170
+            690 strings with 7814 characters,
+and the built_in function-call counts, 6640 in all, are:
+= -- 635
+> -- 177
 < -- 0
-+ -- 80
-- -- 48
-* -- 328
-:= -- 973
-add.period$ -- 80
-call.type$ -- 31
-change.case$ -- 118
++ -- 83
+- -- 50
+* -- 336
+:= -- 1008
+add.period$ -- 83
+call.type$ -- 32
+change.case$ -- 122
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 257
-empty$ -- 699
-format.name$ -- 48
-if$ -- 1424
+cite$ -- 43
+duplicate$ -- 265
+empty$ -- 722
+format.name$ -- 50
+if$ -- 1471
 int.to.chr$ -- 0
-int.to.str$ -- 31
+int.to.str$ -- 32
 missing$ -- 14
-newline$ -- 145
-num.names$ -- 38
-pop$ -- 207
+newline$ -- 150
+num.names$ -- 40
+pop$ -- 215
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 93
 quote$ -- 0
-skip$ -- 201
+skip$ -- 208
 stack$ -- 0
-substring$ -- 247
-swap$ -- 49
+substring$ -- 252
+swap$ -- 51
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 118
+type$ -- 122
 warning$ -- 11
-while$ -- 46
-width$ -- 33
-write$ -- 282
-(There was 1 error message)
+while$ -- 48
+width$ -- 34
+write$ -- 292
+(There were 12 warnings)

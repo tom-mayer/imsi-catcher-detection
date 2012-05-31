@@ -107,12 +107,17 @@ Medium access control (mac) protocol specification.
 \newblock 3GPP TS 25.321,
   \url{http://www.3gpp.org/ftp/Specs/html-info/25321.htm}, 2011.
 
-\bibitem{osmo_rationale}
+\bibitem{osmo_c123}
+{\sc OsmocomBB}.
+\newblock Motorola c123.
+\newblock \url{http://en.wikipedia.org/wiki/Cell_ID}, 2012.
+
+\bibitem{osmo_wiki_c123}
 {\sc OsmocomBB}.
 \newblock Project rationale.
 \newblock \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, 2012.
 
-\bibitem{osmo_wiki_c123}
+\bibitem{osmo_rationale}
 {\sc OsmocomBB}.
 \newblock Project rationale.
 \newblock \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, 2012.
@@ -159,15 +164,15 @@ enbau-1048919.html}, 2010.
 \newblock Cell id.
 \newblock \url{http://bb.osmocom.org/trac/wiki/MotorolaC123}, 2012.
 
+\bibitem{imsi_wiki}
+{\sc Wikipedia}.
+\newblock Equipment identity register.
+\newblock \url{http://de.wikipedia.org/wiki/IMSI-Catcher}, 2012.
+
 \bibitem{blacklisting}
 {\sc Wikipedia}.
 \newblock Equipment identity register.
 \newblock
   \url{http://en.wikipedia.org/wiki/Central_Equipment_Identity_Register}, 2012.
-
-\bibitem{imsi_wiki}
-{\sc Wikipedia}.
-\newblock Equipment identity register.
-\newblock \url{http://de.wikipedia.org/wiki/IMSI-Catcher}, 2012.
 
 \end{thebibliography}

@@ -21,7 +21,7 @@ Commands = {'osmocon_command' : [Osmocon_lib + '/host/osmocon/osmocon',
 
 #Rules Configuration -------------------------------------------------------------------------------------------
 
-Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus', 'DB Systel GSM-R']
+Provider_list = ['T-Mobile', 'O2', 'Vodafone', 'E-Plus']
 
 Provider_Country_list = {
     'DB Systel GSM-R':'Germany',
@@ -57,17 +57,17 @@ Pagings_per_10s_threshold = 20
 
 Assignment_limit = 0
 
-#PCH Parameters ------------------------------------------------------------------------------------------------
-
-PCH_retries = 5
-
-USR_timeout = 15
-
 #Evaluator Configuration ---------------------------------------------------------------------------------------
 
 Rule_Groups = []
 
 Rule_Weights = {}
+
+#PCH Parameters ------------------------------------------------------------------------------------------------
+
+PCH_retries = 5
+
+USR_timeout = 15
 
 #Database Configuration ----------------------------------------------------------------------------------------
 
