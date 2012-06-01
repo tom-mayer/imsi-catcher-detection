@@ -124,14 +124,16 @@ For example, to conduct a scan on the PCH of ARFCN 127 one would call:
 sudo ./pch_scan -a 127
 \end{verbatim}
 \newpage
+
 \section{Serial Cable Schematics}
 \label{sec:osmo_serial_schematics}
 A T191 unlock cable used to connect the Motorola C123 can either be obtained by ordering it from one of the mentioned stores or by building it from scratch.
 These are the schematics required for building the unlock cable taken from a GSM Blog \footnote{GSM Box Schematics, \url{http://gsmringtonefree.blogspot.de/} [Online; Accessed 05.2012]}, which features images of many more cables for different brands.
 \vfill
-\begin{center}
+\begin{figure}[h!]
 \includegraphics[width=.9\textwidth]{../Images/t191cable}
-\end{center}
+\caption{Serial cable schematics.}
+\end{figure}
 \vfill
 \chapter{IMSI Catcher Detection System}
 This section will cover some code related topics of the ICDS.
@@ -324,7 +326,7 @@ Database_path = '''/home/tom/imsi-catcher-detection/Src
 
 \chapter{System Information}
 \label{sec:system_infos}
-The following pages contain parsed System Information Messages of type 1-4  for reference.
+The following pages contain parsed System Information Messages of type 1--4  for reference.
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{../Images/sysinfo1}
@@ -347,67 +349,26 @@ The following pages contain parsed System Information Messages of type 1-4  for 
 \end{figure}
 \chapter{Evaluation Data}
 \section{Rx and LAC Change Test}
-\label{sec_lac_change_test}
+\label{sec:lac_change_test}
 The following table contains the four configuration that have been used to replace real base stations with the IMSI catcher.
-\begin{center}
+\begin{table}[h!]
+\centering
 \begin{tabular}{lllll}
 \toprule
 			&T-Mobile		&O2				&E-Plus			&Vodafone\\
 \midrule
-ARFCN		&50				&2				&978			&695	\\
+ARFCN		&877			&877			&877			&877	\\
 ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
-MCC			&262			&262			&262			&505	\\
+MCC			&262			&262			&262			&262	\\
 MNC			&01				&02				&03				&07		\\
-LAC			&21010			&793			&588			&50945	\\
-Cell ID		&1				&2				&3				&4		\\
-Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
+LAC			&666			&4711			&666			&4711	\\
+Cell ID		&1				&1				&1				&1		\\
+Neighbours	&---				&---				&---				&---		\\
 \bottomrule
 \end{tabular}
-\end{center}
+\caption{Configurations used for the rx\,/\,LAC Change Rules test.}
+\end{table}
 \section{Long Term Test}
 \label{sec:long_term_test}
 The folliwing tables contain the configurations that have been used throughout the long term test period.
 The configurations have been used in the order they appear in the tables.
-\begin{center}
-\begin{tabular}{lllll}
-\toprule
-			&Conf. 1		&Conf. 2		&Conf. 3		&Conf. 4\\
-\midrule
-ARFCN		&50				&2				&978			&695	\\
-ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
-MCC			&262			&262			&262			&505	\\
-MNC			&01				&02				&03				&07		\\
-LAC			&21010			&793			&588			&50945	\\
-Cell ID		&1				&2				&3				&4		\\
-Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
-\bottomrule
-\end{tabular}\\
-\vspace{1cm}
-\begin{tabular}{lllll}
-\toprule
-			&Conf. 5		&Conf. 6		&Conf. 7		&Conf. 8\\
-\midrule
-ARFCN		&50				&2				&978			&695	\\
-ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
-MCC			&262			&262			&262			&505	\\
-MNC			&01				&02				&03				&07		\\
-LAC			&21010			&793			&588			&50945	\\
-Cell ID		&1				&2				&3				&4		\\
-Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
-\bottomrule
-\end{tabular}\\
-\vspace{1cm}
-\begin{tabular}{lllll}
-\toprule
-			&Conf. 9		&Conf. 10		&Conf. 11		&Conf. 12\\
-\midrule
-ARFCN		&50				&2				&978			&695	\\
-ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
-MCC			&262			&262			&262			&505	\\
-MNC			&01				&02				&03				&07		\\
-LAC			&21010			&793			&588			&50945	\\
-Cell ID		&1				&2				&3				&4		\\
-Neighbours	&-				&1,2,3			&695, 20		&10, 20, 30\\
-\bottomrule
-\end{tabular}
-\end{center}

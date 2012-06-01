@@ -693,24 +693,25 @@ This protocol handles configuration and allocation of radio channels as well as 
 Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to Layer 3 functionality but is only transported via \gls{rr} between \gls{ms} and the \gls{nss} \cite{protocols1999}.
 
 \section{IMSI-Catcher}
-%TODO more motivation (espacially fact that everyone is concerned)
 \label{sec:catcher}
-An \gls{imsi}-Catcher is a technical device that is used to capture the \gls{imsi} and \gls{imei} numbers of mobile subscribers.
+An \gls{imsi}-Catcher is a device that is used to capture the \gls{imsi} and \gls{imei} numbers of mobile subscribers.
 The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into the participant's calls or pinpoint the location of the subscriber \cite{fox}.
 Another less known functionality is that if catchers do not relay intercepted calls they can be used to suppress mobile communication in a certain area \eg during a police operation \cite{imsi_wiki}.
 
 This topic came up in conjunction with crime fighting and prevention with the advent of mobile telephones.
-A mobile phone cannot be tapped in the same way as a landline phone since the subscriber can change places and also phones thus there is no designated line associated with him/her.
+A mobile phone cannot be tapped in the same way as a landline phone since the subscriber can change places and also phones thus there is no designated line associated with him\,/\,her.
 This has proven to be a challenge to the authorities.
 
-In 1996 Rohde \& Schwarz a company based in Munich, Germany has developed a device called ''GA 090'' which was the first \gls{imsi}-catcher.
+In 1996 Rohde \& Schwarz a company based in Munich, Germany has developed a device called \emph{GA 090} which was the first \gls{imsi}-catcher.
 Its was capable of yielding a list with all the \gls{imsi} numbers in the perimeter as well as pinpointing the location of a subscriber given the \gls{imsi}.
-Short thereafter the ''GA 900'' was presented which had the additional capability of tapping into calls that originated from a particular \gls{imsi}.
+Short thereafter the \emph{GA 900} was presented which had the additional capability of tapping into calls that originated from a particular \gls{imsi}.
 These commercial versions of catchers produced by Rohde \& Schwarz were priced between 200\,000\,\euro{} and 300\,000\,\euro{} in 2001 \cite{fox}.
-Regulations prohibit the use of \gls{imsi}-catchers for individuals since the frequency bands the \gls{gsm} network uses are reserved for providers.
+Regulations prohibit the use of IMSI catchers for individuals since the frequency bands the \gls{gsm} network uses are reserved for providers.
 However it cannot be guaranteed that such a catcher is not used illegally.
 In addition to these commercial products different projects \cite{dennis, def_catcher} have shown that such devices can be built at a very low budget.
 This only intensifies the risk that is imposed by the abusive usage of such a catcher.
+Examples would be curious neighbours eavesdropping, or a jealous husband tapping into phone calls of his wife.
+On a more large scale, these devices are of great value for industrial espionage.
 Figure \ref{fig:catchers} shows a commercial model side by side with a self built catcher.
 \begin{figure}
 \centering
@@ -719,14 +720,15 @@ Figure \ref{fig:catchers} shows a commercial model side by side with a self buil
 \label{fig:catchers}
 \end{figure}
 
-Section \ref{sec:catcher_operation} will show how an \gls{imsi}-catcher works and how subscribers can be caught.
+Section \ref{sec:catcher_operation} will show how an \gls{imsi} catcher works and how subscribers can be caught.
 In addition the potency of these attacks will be evaluated and what risks these impose from a technical perspective.
 The next section will explain under which circumstances a catcher can be used in Germany from a legal perspective and show that this handling poses the risk of privacy breach to citizens.
 
 \subsection{Mode of Operation}
 \label{sec:catcher_operation}
 Basically an \gls{imsi}-Catcher masks itself as a base station and lures subscribers in its perimeter to connect to it without their knowledge.
-The attack shown in Figure \ref{fig:catcher_catch} is broadcasting a new \gls{lai} to the \gls{ms} at very high power, suggesting that the \gls{ms} entered a new area and has to re-authenticate \cite{mueller}.
+In the attack\cite{mueller} shown in Figure \ref{fig:catcher_catch} the IMSI catcher is broadcasting a new \gls{lai} to the \gls{ms} at very high power.
+This lures the \gls{ms} to connect to the alleged base station due to stronger reception and announce itself since the \gls{lac} has changed.
 
 \begin{figure}
 	\centering
@@ -738,8 +740,7 @@ The attack shown in Figure \ref{fig:catcher_catch} is broadcasting a new \gls{la
 Once a subscriber connects to the device, a command is sent to the \gls{ms} which asks for the \gls{sim}'s \gls{imsi}.
 This command is normally only used in case of an error \cite{fox} but can be abused this way.
 
-%TODO übergang verfeinern
-This is only possible since authentication in a \gls{gsm} network is one-sided as discussed earlier in Section \ref{sec:authentication}.
+An IMSI catcher can only impersonate a base station because authentication in a \gls{gsm} network is one-sided as discussed earlier in Section \ref{sec:authentication}.
 The subscriber has no way of checking the authenticity of a base station but rather has to trust the broadcasted identifier which can be easily forged by a catcher.
 At this stage, the subscriber can already be localized as being in a certain distance of the catcher.
 

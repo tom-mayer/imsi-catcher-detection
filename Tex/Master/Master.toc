@@ -53,15 +53,15 @@
 \contentsline {subsubsection}{Remaining Issues and Paging}{48}
 \contentsline {subsection}{\numberline {3.2.3}Base Station Evaluation}{49}
 \contentsline {section}{\numberline {3.3}Implementation}{49}
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{49}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{50}
 \contentsline {subsection}{\numberline {3.3.2}Configuration}{51}
 \contentsline {subsection}{\numberline {3.3.3}Graphical User Interface}{52}
-\contentsline {subsection}{\numberline {3.3.4}Usage}{54}
-\contentsline {paragraph}{Conducting sweep scans:}{56}
-\contentsline {paragraph}{Using and obtaining Cell ID Information:}{56}
-\contentsline {paragraph}{Building or using a Local Area Database:}{56}
+\contentsline {subsection}{\numberline {3.3.4}Usage}{55}
+\contentsline {paragraph}{Conducting sweep scans:}{55}
+\contentsline {paragraph}{Using and obtaining Cell ID Information:}{55}
+\contentsline {paragraph}{Building or using a Local Area Database:}{57}
 \contentsline {paragraph}{Conducting a PCH Scan:}{57}
-\contentsline {paragraph}{Utilising User Mode:}{57}
+\contentsline {paragraph}{Utilising User Mode:}{58}
 \contentsline {section}{\numberline {3.4}Related Projects}{58}
 \contentsline {chapter}{\numberline {4}Evaluation}{61}
 \contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
@@ -70,10 +70,10 @@
 \contentsline {subsection}{\numberline {4.1.3}PCH Scans}{63}
 \contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{64}
 \contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{64}
-\contentsline {subsubsection}{Nokia 3310}{66}
-\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{67}
-\contentsline {subsection}{\numberline {4.2.3}Long Term Test}{68}
-\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{69}
+\contentsline {subsubsection}{Modifications to the ICDS Configuration}{66}
+\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{66}
+\contentsline {subsection}{\numberline {4.2.3}Long-Term Test}{68}
+\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{68}
 \contentsline {subsubsection}{IMSI Catcher as a new Cell}{70}
 \contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{70}
 \contentsline {chapter}{\numberline {5}Conclusion}{73}

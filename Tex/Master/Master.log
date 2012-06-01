@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  31 MAY 2012 21:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.7)  1 JUN 2012 17:55
 entering extended mode
  %&-line parsing enabled.
 **Master.tex
@@ -1141,14 +1141,14 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 61.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 60.
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--66
+Underfull \hbox (badness 10000) in paragraph at lines 53--65
 
  []
 
 
-Underfull \vbox (badness 4403) has occurred while \output is active []
+Underfull \vbox (badness 2302) has occurred while \output is active []
 
  [2])
 (../Content/GSM_short.tex [3] [4
@@ -1268,56 +1268,53 @@ ne 191.
 File: ../Images/Paging.png Graphic file (type png)
 
 <use ../Images/Paging.png> [40] [41 <../Images/Paging.png (PNG copy)>] [42]
-[43] <../Images/neighbourhoods_fak.png, id=217, 907.39pt x 941.5175pt>
+[43] <../Images/neighbourhoods_fak.png, id=217, 1829.83624pt x 2708.1175pt>
 File: ../Images/neighbourhoods_fak.png Graphic file (type png)
 
 <use ../Images/neighbourhoods_fak.png>
-Underfull \hbox (badness 1675) in paragraph at lines 327--327
-[]\T1/ptm/m/n/10.95 Base sta-tions and their neigh-bour-hood con-nec-tions at t
-he Fac-ulty of
- []
+
+LaTeX Warning: Float too large for page by 3.59608pt on input line 330.
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 364.
-[44] [45 <../Images/neighbourhoods_fak.png>] [46] [47] [48]
-<../Images/Architecture_software.png, id=235, 341.76483pt x 182.91537pt>
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 365.
+[44] [45 <../Images/neighbourhoods_fak.png (PNG copy)>] [46] [47] [48] [49]
+<../Images/Architecture_software.png, id=238, 341.76483pt x 182.91537pt>
 File: ../Images/Architecture_software.png Graphic file (type png)
 
-<use ../Images/Architecture_software.png> [49] [50 <../Images/Architecture_soft
-ware.png (PNG copy)>]
+<use ../Images/Architecture_software.png> [50 <../Images/Architecture_software.
+png (PNG copy)>]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 577.
- [51]
-<../Images/ICDS.png, id=247, 1287.81125pt x 881.2925pt>
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 578.
+ [51] <../Images/ICDS.png, id=246, 1325.95375pt x 864.22874pt>
 File: ../Images/ICDS.png Graphic file (type png)
 
-<use ../Images/ICDS.png> [52 <../Images/ICDS.png>] [53]
-<../Images/databases_window.png, id=255, 366.36874pt x 459.7175pt>
+<use ../Images/ICDS.png> [52] [53 <../Images/ICDS.png (PNG copy)>] [54]
+<../Images/databases_window.png, id=256, 366.36874pt x 459.7175pt>
 File: ../Images/databases_window.png Graphic file (type png)
 
 <use ../Images/databases_window.png>
-<../Images/rules_window.png, id=256, 284.06125pt x 568.1225pt>
+<../Images/rules_window.png, id=257, 284.06125pt x 568.1225pt>
 File: ../Images/rules_window.png Graphic file (type png)
 
 <use ../Images/rules_window.png>
-<../Images/filter_window.png, id=257, 332.24126pt x 293.095pt>
+<../Images/filter_window.png, id=258, 332.24126pt x 293.095pt>
 File: ../Images/filter_window.png Graphic file (type png)
 
 <use ../Images/filter_window.png>
-<../Images/pch_window.png, id=258, 270.00874pt x 273.02pt>
+<../Images/pch_window.png, id=259, 270.00874pt x 273.02pt>
 File: ../Images/pch_window.png Graphic file (type png)
 
-<use ../Images/pch_window.png> [54] [55 <../Images/databases_window.png> <../Im
+<use ../Images/pch_window.png> [55] [56 <../Images/databases_window.png> <../Im
 ages/rules_window.png> <../Images/filter_window.png (PNG copy)> <../Images/pch_
-window.png>] [56] <../Images/user_window.png, id=272, 368.37625pt x 469.755pt>
+window.png>] [57] <../Images/user_window.png, id=273, 368.37625pt x 469.755pt>
 File: ../Images/user_window.png Graphic file (type png)
 
-<use ../Images/user_window.png> [57 <../Images/user_window.png>]
+<use ../Images/user_window.png> [58 <../Images/user_window.png>]
 
-LaTeX Warning: Citation `catcher_catcher' on page 58 undefined on input line 76
-6.
+LaTeX Warning: Citation `catcher_catcher' on page 59 undefined on input line 76
+7.
 
-[58]) (../Content/Evaluation.tex [59] [60
+) (../Content/Evaluation.tex [59] [60
 
 
 ]
@@ -1327,117 +1324,27 @@ Overfull \hbox (3.33815pt too wide) in paragraph at lines 16--30
  [][] 
  []
 
-[61] [62] [63] <../Images/catcherICDS.jpg, id=296, 3474.9825pt x 1906.12125pt>
+[61] [62] [63] [64]
+<../Images/catcherICDS.jpg, id=297, 3474.9825pt x 1906.12125pt>
 File: ../Images/catcherICDS.jpg Graphic file (type jpg)
 
-<use ../Images/catcherICDS.jpg> [64] [65 <../Images/catcherICDS.jpg>]
-Overfull \hbox (9.98987pt too wide) in paragraph at lines 206--206
-[]\T1/ptm/m/n/9 (a)
- []
-
-
-Overfull \hbox (17.9999pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 Con-
- []
-
-
-Overfull \hbox (23.48973pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 nected
- []
-
-
-Overfull \hbox (12.9957pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 cell
- []
-
-
-Overfull \hbox (9.99887pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 in-
- []
-
-
-Overfull \hbox (13.31093pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 for-
- []
-
-
-Overfull \hbox (13.99481pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 ma-
- []
-
-
-Overfull \hbox (16.25381pt too wide) in paragraph at lines 206--206
-\T1/ptm/m/n/9 tion. 
- []
-
-
-Overfull \hbox (10.49393pt too wide) in paragraph at lines 207--207
-[]\T1/ptm/m/n/9 (b)
- []
-
-
-Overfull \hbox (24.99278pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 Neigh-
- []
-
-
-Overfull \hbox (19.31396pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 bour-
- []
-
-
-Overfull \hbox (11.5019pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 ing
- []
-
-
-Overfull \hbox (12.9957pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 cell
- []
-
-
-Overfull \hbox (17.99075pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 mea-
- []
-
-
-Overfull \hbox (17.99077pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 sure-
- []
-
-
-Overfull \hbox (23.75066pt too wide) in paragraph at lines 207--207
-\T1/ptm/m/n/9 ments. 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [66]
-Overfull \hbox (13.2843pt too wide) in paragraph at lines 242--248
+<use ../Images/catcherICDS.jpg> [65 <../Images/catcherICDS.jpg>]
+Overfull \hbox (20.58582pt too wide) in paragraph at lines 236--242
 \T1/ptm/m/n/10.95 Rules trig-gered: LAC/Provider Map-ping, Neigh-bour-hood Stru
-c-ture, AR-FC-N/Provider
+c-ture, AR-FCN/Provider
  []
 
-[67]
-
-LaTeX Warning: Reference `sec:config_data' on page 68 undefined on input line 2
-63.
-
-[68]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [69]
-<../Images/replace_attack.png, id=316, 356.94153pt x 162.67976pt>
+[66] [67] [68] [69]
+<../Images/replace_attack.png, id=314, 356.94153pt x 162.67976pt>
 File: ../Images/replace_attack.png Graphic file (type png)
 
-<use ../Images/replace_attack.png> [70]) (../Content/Conclusion.tex [71 <../Ima
-ges/replace_attack.png (PNG copy)>] [72
+<use ../Images/replace_attack.png> [70 <../Images/replace_attack.png (PNG copy)
+>]) (../Content/Conclusion.tex [71] [72
 
 
 ]
 Chapter 5.
-<../Images/flowchart.png, id=326, 340.31943pt x 407.31372pt>
+<../Images/flowchart.png, id=324, 340.31943pt x 407.31372pt>
 File: ../Images/flowchart.png Graphic file (type png)
 
 <use ../Images/flowchart.png> [73] [74 <../Images/flowchart.png (PNG copy)>])
@@ -1560,7 +1467,7 @@ Overfull \hbox (5.81935pt too wide) in paragraph at lines 115--115
 n[] 
  []
 
-[84] <../Images/t191cable.jpg, id=365, 702.625pt x 609.27625pt>
+[84] <../Images/t191cable.jpg, id=363, 702.625pt x 609.27625pt>
 File: ../Images/t191cable.jpg Graphic file (type jpg)
 
 <use ../Images/t191cable.jpg> [85 <../Images/t191cable.jpg>] [86
@@ -1569,32 +1476,32 @@ File: ../Images/t191cable.jpg Graphic file (type jpg)
 ]
 Appendix C.
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--161
+Underfull \hbox (badness 10000) in paragraph at lines 147--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--161
+Underfull \hbox (badness 10000) in paragraph at lines 147--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--161
+Underfull \hbox (badness 10000) in paragraph at lines 147--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--194
+Underfull \hbox (badness 10000) in paragraph at lines 164--196
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--194
+Underfull \hbox (badness 10000) in paragraph at lines 164--196
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--194
+Underfull \hbox (badness 10000) in paragraph at lines 164--196
 
  []
 
@@ -1603,22 +1510,22 @@ Underfull \vbox (badness 7981) has occurred while \output is active []
 
  [87]
 [88]
-Overfull \hbox (5.4829pt too wide) in paragraph at lines 318--319
+Overfull \hbox (5.4829pt too wide) in paragraph at lines 320--321
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--324
+Underfull \hbox (badness 10000) in paragraph at lines 199--326
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--324
+Underfull \hbox (badness 10000) in paragraph at lines 199--326
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--324
+Underfull \hbox (badness 10000) in paragraph at lines 199--326
 
  []
 
@@ -1631,23 +1538,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Appendix D.
-<../Images/sysinfo1.png, id=392, 260.172pt x 393.1488pt>
+<../Images/sysinfo1.png, id=390, 260.172pt x 393.1488pt>
 File: ../Images/sysinfo1.png Graphic file (type png)
 
 <use ../Images/sysinfo1.png>
 
-LaTeX Warning: Float too large for page by 0.9002pt on input line 332.
+LaTeX Warning: Float too large for page by 0.9002pt on input line 334.
 
 File: ../Images/sysinfo2.png Graphic file (type png)
 <use ../Images/sysinfo2.png>
 
-LaTeX Warning: Float too large for page by 61.98238pt on input line 337.
+LaTeX Warning: Float too large for page by 61.98238pt on input line 339.
 
-<../Images/sysinfo3.png, id=393, 284.45473pt x 373.49136pt>
+<../Images/sysinfo3.png, id=391, 284.45473pt x 373.49136pt>
 File: ../Images/sysinfo3.png Graphic file (type png)
 
 <use ../Images/sysinfo3.png>
-<../Images/sysinfo4.png, id=394, 252.07776pt x 370.0224pt>
+<../Images/sysinfo4.png, id=392, 252.07776pt x 370.0224pt>
 File: ../Images/sysinfo4.png Graphic file (type png)
 
 <use ../Images/sysinfo4.png> [93] [94 <../Images/sysinfo1.png (PNG copy)>]
@@ -1657,7 +1564,10 @@ copy)>] [98
 
 ]
 Appendix E.
-[99]) (./Master.acr [100]
+) (./Master.acr [99] [100
+
+
+]
 Underfull \hbox (badness 2626) in paragraph at lines 73--74
 []|\T1/ptm/m/n/10.95 Conférence Eu-ropéenne des Ad-min-is-tra-tions des
  []
@@ -1670,18 +1580,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--90
 [101
 
 
-
-
 ] [102] [103]) [104] (./Master.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 25032 strings out of 493848
- 468954 string characters out of 1152824
- 738813 words of memory out of 3000000
- 27635 multiletter control sequences out of 15000+50000
+ 25028 strings out of 493848
+ 468895 string characters out of 1152824
+ 738794 words of memory out of 3000000
+ 27631 multiletter control sequences out of 15000+50000
  83343 words of font info for 111 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  61i,13n,72p,1076b,1344s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1701,9 +1609,9 @@ nts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (116 pages, 17995314 bytes).
+Output written on Master.pdf (116 pages, 18950381 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
+ 492 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  178 words of extra memory for PDF output out of 10000 (max. 10000000)
 
