@@ -352,29 +352,14 @@ The next step was to put the \gls{icds} into \emph{User Mode} with T-Mobile as i
 It selected the IMSI catcher cell as its target cell because of the good reception level and since it's evaluation was \emph{Ok} an additional PCH scan was started.
 No paging messages or \glspl{ia} were caught so the end result was a \emph{Critical} status for the IMSI catcher cell.
 
-\begin{figure}
-\centering
-\includegraphics{../Images/replace_attack}
-\caption{Takeover attack of an IMSI catcher on a base station.}
-\label{fig:takeover_attack}
-\end{figure}
 
 \subsubsection{IMSI Catcher replacing an old Cell}
 The second scenario simulated the attack where the IMSI catcher replaces a base station with a bad reception in the neighbourhood of the cell the \gls{ms} is connected to.
 This way the reception drastically improves on that particular frequency suggesting to the \gls{ms} that the subscriber moved to the close perimeter of that \gls{bts} and .
-Figure \ref{fig:takeover_attack} illustrates this particular attack.
 
-The station with the \gls{arfcn} 42 has the lowest reception with its signal to noise ratio of -95\,dB.
-In this particular scenario the \gls{ms} would first connect to the station on 23 because of its good reception.
-After that the IMSI catcher is turned on also on \gls{arfcn} 42.
-Due to its location it has the best reception level of all the available base station.
-Since it replaced station 42 it is most likely in the neighbourhood list of 23.
-When the \gls{ms} conducts a neighbouring cell measurement it will find that the catcher has the best reception and will switch to it.
-Disconnection and cell re-selection of the \gls{ms} could also be achieved instantly by jamming \gls{arfcn} 23.
-For this experiment, the cell to be replaced was the universities own base station at \gls{arfcn} 877.
+We used the university base station on \gls{arfcn} 877 as our target.
+A sweep scan was conducted with the \gls{icds} and after the base station had been found the IMSI catcher was started on the same frequency.
 
-Since the catcher sends a different \gls{lac} the \gls{ms} will send a location update to the IMSI catcher announcing its presence.
-
-Due to its strong increase in reception and the change in the \gls{lac} the IMSI catcher cell obtained a \emph{Critical} status immediately after it had been scanned a second time.
+Due to its strong increase in reception and the change in the \gls{lac} the IMSI catcher cell obtained a \emph{Critical} status immediately after \gls{arfcn} 877 had been scanned a second time.
 Also due to this fact the reception level differed too much from the interval that had been measured for this \gls{cid}  in the \emph{Local Area Database} also yielded a \emph{Critical} rating.
 \emph{User Mode} did not start a PCH scan since the evaluation had already been \emph{Critical}.

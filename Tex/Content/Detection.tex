@@ -1,25 +1,25 @@
 \chapter{IMSI Catcher Detection System}
 
-This chapter will give an overview of the \gls{icds} and the technologies and techniques used.
+This chapter will give outline the \gls{icds} and the technologies and techniques used.
 The first part summarises the frameworks and hardware upon which the system has been developed.
 From this point on the second part explains how this framework can be used to harvest information and describes the process that is used by the \gls{icds} to evaluate this information.
 The last part shows how to configure and use the system to gather information from the surroundings and unveil IMSI catchers.
 
 \section{Framework and Hardware}
 The following section will give an overview of the OsmocomBB framework and how it works in conjunction with the Motorola C123 mobile phone to enable information harvesting for the \gls{icds}.
-OsmocomBB is one of many \gls{osmo} projects\footnote{Osmocom, \url{http://osmocom.org/} [Online; Accessed 04.2012]}. It delivers an Open Source implementation for the base band chip for certain mobile phones.
+OsmocomBB is one of many \gls{osmo} projects\footnote{Osmocom, \url{http://osmocom.org/} [Online; Accessed 04.2012]}. It delivers an open source implementation for the base band chip for certain mobile phones.
 Another \gls{osmo} project is OpenBTS which delivers software for configuring and operating a \gls{bts}.
-OpenBTS was used to realise the Open Source IMSI Catcher \cite{dennis} and the base station that will be used later to evaluate the performance of the \gls{icds}.
+OpenBTS was used to realise the open source IMSI Catcher \cite{dennis} and the base station that will be used later to evaluate the performance of the \gls{icds}.
 
 \subsection{OsmocomBB}
-OscmocomBB implements the baseband part of \gls{gsm} as an Open Source project.
-Baseband part in this case means that it is an Open Source software to control the baseband chip inside the mobile phone.
+OscmocomBB implements the baseband part of \gls{gsm} as an open source project.
+Baseband part in this case means that it is an open source software to control the baseband chip inside the mobile phone.
 The baseband chip is the processor that manages the radio functionality of a mobile device.
-The goal is to have, by using compatible hardware, a phone using free software only as opposed proprietary baseband implementations.
+The goal is to have a phone, when using compatible hardware, operating on open source software only as opposed to proprietary baseband implementations.
 Therefore the project scope is implementing \gls{gsm} Layer 1--3 as well as hardware drivers for the baseband chipset.
 A simple user interface on the phone is planned but not yet implemented.
 At this stage a verbose user interface on the computer is used.
-The implementation being Open Source could be beneficial to multiple areas \cite{osmo_rationale}:
+The implementation being open source is beneficial to multiple areas \cite{osmo_rationale}:
 \begin{itemize}
 	\item \textbf{Security:} The software running on the baseband chips is highly proprietary and closed.
 	The source is often disclosed only to the mobile phone manufacturers using the specific chipset.
@@ -28,16 +28,16 @@ The implementation being Open Source could be beneficial to multiple areas \cite
 	An open source implementation as a reference could serve to educate more developers generally interested in the subject of mobile communications and thus improve products and software.
 	Additionally this implementation enables universities to hold practical lab courses and interested individuals to do hands-on experiments.
 	\item \textbf{Research:} A free implementation can decouple research on \gls{gsm} technologies from the industry since key technologies are no longer only available to researchers employed by a specific company.
-	Additionally this way security holes can be uncovered more easily.
+	Additionally this way security holes can be uncovered and fixed more easily.
 	Modifications to the protocol stack can be deployed and tested in a real environment.
-	It is also possible to redirect all received and sent packages directly 
+	It is also possible to redirect all received and sent packages directly to Wireshark\footnote{Wireshark, \url{http://www.wireshark.org/} [Online; Accessed 04.2012]} for further analysis.
 \end{itemize}
 
 \subsubsection{Project Status}
-At this point layer two and three do not actually run on the phone but rather on a computer to which the phone is connected via a serial cable.
+At this point Layer 2 and Layer 3 do not actually run on the phone but rather on a computer to which the phone is connected via a serial cable.
 Layer 1 runs inside the custom firmware on the \gls{me} itself, since the procedures involving Layer 1 are time critical.
 This has advantages as well as disadvantages.
-The disadvantage is that in order to run an application written using OsmocomBB you always have to have a notebook in addition to the phone.
+The disadvantage is that in order to run an application written using OsmocomBB you always have to have a computer in addition to the phone.
 The benefit however is that during the development process, the phone does not have to be touched after an initial deployment of the firmware.
 This means code can be modified, compiled and tested locally without the need of remote debugging.
 Experimenting is considerably easier this way.
@@ -46,11 +46,11 @@ It is called Layer 1 Control, L1CTL.
 
 The current state of the project is, according to a presentation given on the 27$^\text{th}$ chaos communication congress\footnote{27C3 public wiki (Day 3), \url{http://events.ccc.de/congress/2010/wiki/Welcome} [Online; Accessed 04.2012]} by Dieter Spaar and Harald Welte, that the network Layers 1--3 are fully implemented, SIM cards can be accessed or emulated and \gls{gsm} cell selection and reselection are working.
 A3/A8 as well as A5/1 and A/52, Full Rate and Enhanced Full Rate codecs are there, so it is possible to do voice calls with an OsmocomBB application written for that purpose, called \texttt{mobile}.
-It features a terminal/telnet based interface much like Cisco routers however there is no user interface for the phone so far.
+It features a terminal\,/\,telnet based interface much like Cisco routers however there is no user interface for the phone so far.
 
 \subsection{Motorola C123}
 \label{sec:osmo_phones}
-Since the general idea behind OsmocomBB was to become a vendor independent Open Source \gls{gsm} implementation for everyone to use, there were certain requirements the targeted hardware would have to meet.
+Since the general idea behind OsmocomBB was to become a vendor independent open source \gls{gsm} implementation for everyone to use, there were certain requirements the targeted hardware would have to meet.
 For the consumer side requirements these were having a low price and a good availability.
 This criterion rules out \gls{diy} approaches since the number of produced devices would be low and thus costly or a significant technical knowledge would be expected from all users to assemble the hardware.
 For the developer side this would also mean implementing a lot on the lower levels of analog logic.
@@ -90,9 +90,9 @@ In order to use the Motorola C123 in combination with the OsmocomBB framework th
 This has to be done using a RS332 serial cable that is connected to the 2.5\,mm audio jack.
 The audio jack of the Motorola C123 and other Calypso based mobile phones typically have a 3.3 V serial port on their audio jacks.
 These cables are normally referred to as T191 unlock cables.
-A variety of stores around the internet sell the cables ready made for about \$10--\$15\footnote{FoneFunShop, \url{http://www.fonefunshop.co.uk/cable_picker/773_Motorola_T191_W220_W375_OSMOCOM_etc._USB_Unlock_Cable.html} [Online; Accessed 04.2012]}.
+A variety of stores around the internet sell the cables ready made for about \$10--\$15\footnote{FoneFunShop, \url{http://www.fonefunshop.co.uk/table_picker/773_Motorola_T191_W220_W375_OSMOCOM_etc._USB_Unlock_Cable.html} [Online; Accessed 04.2012]}.
 One must be careful when using the PC's serial port to communicate with the phone though.
-Since the phone's serial operates at 3.3\,V and is internally connected to the 2.8\,V IO-pins of the baseband processor, directly connecting it to the computers 12\,V serial port will destroy the hardware.
+Since the phone's serial operates at 3.3\,V and is internally connected to the 2.8\,V IO-pins of the baseband processor, directly connecting it to the computer's 12\,V serial port will destroy the hardware.
 Therefore it is recommended to use a USB serial cable.
 Schematics for such an unlock cable are given in Appendix \ref{sec:osmo_serial_schematics}.
 
@@ -103,9 +103,9 @@ The process of acquiring, compiling and running the OsmocomBB framework itself i
 
 When setting up the system it is recommended \emph{not} to use a virtual machine.
 The bootloader and the firmware can fail to be deployed correctly if a virtual machine is used as development system.
-This is because the protocol used by Motorola to do the actual flashing process is \emph{very} time critical and thus timeouts can occur that are caused by the overhead the virtual machine imposes on the hardware/software communication.
+This is because the protocol used by Motorola to do the actual flashing process is \emph{very} time critical and thus timeouts can occur that are caused by the overhead the virtual machine imposes on the hardware\,/\,software communication.
 
-As can be seen in the figure, Layer 1 of the OsmocomBB \gls{gsm} stack runs on the phone which is connected via a serial cable to the computer running the \gls{icds}.
+As can be seen in Figure \ref{fig:osmo_setup} Layer 1 of the OsmocomBB \gls{gsm} stack runs on the phone which is connected via a serial cable to the computer running the \gls{icds}.
 On the computer side the \texttt{osmocon} program provides a general interface to the phone.
 \texttt{Osmocon} is also used to load the firmware up to the Motorola C123.
 Other software can communicate with \texttt{osmocon} and subsequently with the phone using Unix sockets.
@@ -116,7 +116,7 @@ Other software can communicate with \texttt{osmocon} and subsequently with the p
 \label{fig:osmo_setup}
 \end{figure}
 
-The program \texttt{Catcher}, the OsmocomBB part of the \gls{icds}, is a modified version of the \texttt{cell\_log} by Andreas Eversberg that interfaces with \texttt{osmocon} to harvest information from \glspl{bts} and forward it to the core \gls{icds}.
+The program \texttt{catcher}, the OsmocomBB part of the \gls{icds}, is a modified version of the \texttt{cell\_log} by Andreas Eversberg that interfaces with \texttt{osmocon} to harvest information from \glspl{bts} and forward it to the core \gls{icds}.
 It can be seen as a Layer 3 program that scans through available frequencies and reads information from the \gls{bcch} whenever one such channel is available on the frequency at hand.
 The forwarding is done directly via \texttt{stdout} since it runs as a child process of the \gls{icds}.
 In a similar way, \texttt{pch\_scan} gathers information on the \gls{pch} of a specific base station.
@@ -124,23 +124,23 @@ The functionality of \texttt{catcher} and \texttt{pch\_scan} will be explained i
 
 \section{Procedure}
 The main goal of the \gls{icds} is to reach a conclusion on whether it is safe to initiate a phone call or not, in other words if the base station our mobile phone will connect to is trustworthy.
-As mentioned before, as soon as a subscriber connects to an IMSI catcher it automatically gives up information on his/her location.
+As mentioned before, as soon as a subscriber connects to an IMSI catcher it automatically gives up information on his\,/\,her location.
 Therefore this project will use a passive approach on information harvesting, meaning we will only use information that is broadcasted or freely available as to not give up any hints of the \gls{icds} being active.
 
 To that end a four-step process is taken.
-First the information is gathered.
+First \emph{information is gathered}.
 This process is explained in detail in Section \ref{sec:info_gathering}.
-After information on the surrounding \glspl{bts} is ready in the \gls{icds}, a set of checks is evaluated on each base station individually, with each yielding a specific result for the station.
-These checks are called \emph{Rules} and discussed further along with the next two steps in Section \ref{sec:info_evaluation}.
-Afterwards the results the Rules yielded for each base station have to be aggregated into one single result for each \gls{bts}.
-At last, after every \gls{bts} has its evaluation it can be decided whether to tell the subscriber if it is safe to initiate a phone call or not.
+After information on the surrounding \glspl{bts} is ready inside the \gls{icds}, a set of checks is evaluated on each base station individually, with each yielding a specific result for the station.
+These checks are called \emph{rules} and discussed further along with the next two steps in Section \ref{sec:info_evaluation}.
+Afterwards the results the rules yielded for each base station have to be aggregated into one single result for each \gls{bts} by an \emph{evaluator}.
+At last, after every \gls{bts} has its evaluation it can be decided whether to \emph{tell the subscriber} if it is safe to initiate a phone call or not.
 
 \subsection{Information Gathering}
 \label{sec:info_gathering}
 As explained in Section \ref{sec:common_channels} every base station has an associated \gls{bcch} where information about the station and its network is spread.
 \gls{bcch} frames are always sent inside a 51-Multiframe.
 After the \gls{ms} has synchronised using the values on the \gls{fcch} and \gls{sch} it can determine which kind of information is hosted inside the \gls{bcch} message.
-These so called System Information Messages originate at the \gls{bsc} and are produced for each \gls{bts} individually and then periodically broadcasted.
+These so called \emph{System Information Messages} originate at the \gls{bsc} and are produced for each \gls{bts} individually and then periodically broadcasted.
 Since all the required information would not fit inside a single frame there are different kinds of System Information Messages that are distinguished by their \gls{tc} and host different kinds of information.
 The type can be extracted using the \gls{fn} of the frame the message is sent in \cite{GSM2009}:
 \[\text{TC}=(\text{FN} \text{ div } 51)\text{ mod } 8\]
@@ -171,7 +171,7 @@ Afterwards \texttt{catcher} tunes the phone to those specific frequencies where 
 At each such frequency it waits until all the System Information Messages are gathered and extracts parameters where possible.
 The parameters along with the raw data are forwarded to the main \gls{icds} application for further evaluation.
 An example of a fully parsed System Information Type 2 can be seen in Figure \ref{fig:si1} \cite{protocols1999}.
-The Neighbouring Cell List which is a very valuable source of information is located in the middle of the message.
+The Neighbouring Cell List which is a very valuable source of information is located in inside the highlighted section of the message.
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{../Images/sysinfo2}
@@ -185,10 +185,9 @@ The parameters harvested so far are:
 	\item MCC: The Mobile Country Code the base station is broadcasting.
 	\item MNC: The Mobile Network Code the base station is broadcasting.
 	\item ARFCN: The \gls{arfcn} on which the base station is located.
-	\item rxlev: Receiving strength in db.
+	\item rxlev: Receiving strength in dB.
 	This parameter is measured by the Motorola C123 and not part of the System Information Messages.
 	Even small changes in the location can have a large impact on this parameter due to shadowing and reflection.
-	However it can be used in certain cases as will be discussed in Section \ref{sec:fake_parameters}.
 	\item BSIC: Because of frequency reuse in a cellular network it is possible that two different base stations can sent at the same \gls{arfcn}.
 	In order for the \gls{ms} to keep these apart the \gls{bsic} is also broadcasted.
 	It consists of a \gls{ncc} identifying the provider, so the \gls{ms} can filter out messages that it does not need beforehand and the \gls{bcc} that must be unique for a given provider over all base station in a large area.
@@ -227,28 +226,28 @@ The \texttt{pch\_scan} listens for activity on this channel and harvests the fol
 Each base station is evaluated the moment the data completely arrived at the \gls{icds} application.
 Additionally when a new \gls{bts} has been found and added all formerly discovered stations are also re-evaluated since new discoveries can have an impact on the rules that evaluate the context surrounding an old base station.
 
-As mentioned above, evaluation is done based on constructs called Rules.
-Each Rule represents one check that can be performed on a base station and yields a result based on its findings.
-A Rule can also be seen as a mapping from a set of input parameters to one of the values \emph{Critical}, \emph{Warning}, \emph{Ok}, \emph{Ignore}.
+As mentioned above, evaluation is done based on constructs called \emph{rules}.
+Each rule represents one check that can be performed on a base station and yields a result based on its findings.
+A rule can also be seen as a mapping from a set of input parameters to one of the values \emph{Ok}, \emph{Warning}, \emph{Critical}, \emph{Ignore}.
 \[\lbrace \text{Base station parameters}\rbrace \mapsto \lbrace \text{Ok}\lvert\text{Warning}\lvert\text{Critical}\lvert\text{Ignore}\rbrace\]
 
 A \emph{Critical} result means that the base station evaluated has a critical configuration error or critical settings that are not found on normal base stations, \eg unknown provider names or empty neighbourhood lists.
 This station should not be trusted.
 
 If a \emph{Warning} status is yielded the \gls{bts} at hand has some concerning features but it could not be said whether it really is an IMSI catcher or sheer coincidence.
-An example would be a base station having a  Neighbouring Cell List of which none of the cells therein have actually been found up to that point.
+An example would be a base station having a  Neighbouring Cell List of which none of the cells therein have actually been discovered up to that point.
 The list could either be a fake or it could simply be coincidence that the scan has not found any.
 They could have been out of range for example.
 
 In some cases a rule cannot yield a finding.
 That is when the state is explicitly set to \emph{Ignore} so the evaluator knows that this rule should have no influence on the final outcome.	
-This is the case for example when trying to find whether the base station uses encryption or not and no other subscriber connects until a set timeout is reached.
+This is the case for example when a rule refers to a parameter that has not been looked up or scanned.
 
 If everything went as expected, \emph{Ok} is returned.
 
-The Rules can be divided into four different categories depending on how they work and which situations they are tailored to.
+The rules can be divided into four different categories depending on how they work and which situations they are tailored to.
 Most of the rules are parametrised so they can be tweaked to different environments and standards.
-The different Rule categories are \emph{Configuration Rules}, \emph{Context Rules}, \emph{Databse Rules} and \emph{Scan Rules}.
+The different rule categories are \emph{Configuration Rules}, \emph{Context Rules}, \emph{Databse Rules} and \emph{Scan Rules}.
 
 \subsubsection{Configuration Rules}
 The first set of rules called \emph{Configuration Rules} targets the base station itself.
@@ -275,7 +274,7 @@ ARFCN\,/\,Provider Map		&Checks whether the ARFCN is in the officially registere
 \end{table}
 
 A few things have to be noted when configuring these rules.
-Since there is no official listing or rule how the \gls{lac} is derived the LAC/Provider Mapping Rule needs knowledge of the area in which the \gls{icds} is used.
+Since there is no official listing or rule how the \gls{lac} is derived the LAC\,/\,Provider Mapping Rule needs knowledge of the area in which the \gls{icds} is used.
 The \gls{icds} itself can be used to gather that knowledge but it has to be done prior to using the rule for base station evaluation. 
 The \gls{arfcn} range each provider has registered in Germany can be looked up at the website of the Bundesnetzagentur\footnote{Bundesnetzagentur Vergabeverfahren, \url{http://www.bundesnetzagentur.de/cln_1911/DE/Sachgebiete/Telekommunikation/RegulierungTelekommunikation/Frequenzordnung/OeffentlicherMobilfunk/VergabeVerfahrenDrahtlosNetzzugang/vergabeVerfahrenDrahtlosNetzzugang_node.html} [Online, Accessed 04.2012]} which is needed for the ARFCN\,/\,Provider Mapping Rule.
 
@@ -284,9 +283,9 @@ If these are set in a consistent way this set of rules is not sufficient to iden
 Therefore another set of rules has to be added that incorporates information of the surrounding nodes.
 
 \subsubsection{Context Rules}
-The second set of Rules is called \emph{Context Rules}.
-As the name suggests these Rules serve the purpose of checking how well a given \gls{bts} fits into its neighbourhood.
-Table \ref{tab:context_rules} shows which Rules have been implemented.
+The second set of rules is called \emph{Context Rules}.
+As the name suggests these rules serve the purpose of checking how well a given \gls{bts} fits into its neighbourhood.
+Table \ref{tab:context_rules} shows which rules have been implemented.
 \begin{table}
 \centering
 \begin{tabular}{ll}
@@ -312,10 +311,10 @@ Cell ID Uniqueness 		&Checks whether there are other cells with the same\\
 
 For the LAC Median Deviation the median was chosen over the average since an extreme value (ill configured IMSI catcher) would have too strong an impact on the average to which all the \gls{bts} are compared.
 It could even have such a strong effect on the average that legitimate base stations would fall below the threshold and be recognised as catchers.
-The threshold when a deviation is evaluated as being 'Critical' can be set in the configuration section for the Rule.
+The threshold when a deviation is evaluated as being \emph{Critical} can be set in the configuration section for the rule.
 A value of 0 would mean that no deviation from the median is allowed.
 This could lead to problems as some experimental scans have shown.
-However in none of the scans more than two different Location Areas have been found per provider and since these were neighbouring areas, the difference in the code was only 1.
+However in none of the scans more than two different \glspl{la} have been found per provider and since these were neighbouring areas, the difference in the code was only 1.
 For the Freiburg area a 1\% threshold for the deviation yielded good results.
 
 \paragraph{Neighbourhood Structure}
@@ -330,18 +329,19 @@ The E-Plus subgraph has been enlarged.
 \end{figure}
 It can be seen that for each provider, the neighbourhood forms an isolated, nearly fully connected subgraph.
 Nodes with a green background have an \emph{Ok} rating, while the red node has a \emph{Critical} rating.
-The bordering white nodes have not yet been discovered therefore they have no outgoing edges.
+The bordering white nodes have not yet been discovered and evaluated therefore they have no outgoing edges.
 This could be the case because they are too far away for the Motorola to receive or because of signal damping due to shadowing and reflection effects.
 In the \gls{icds} the aspect of isolated subgraphs for neighbourhoods is captured inside the \emph{Pure Neighbourhoods Rule}.
 
 An interesting fact is that one node inside the E-Plus subgraph on the upper right is marked \emph{Critical}.
-This is because it is a \gls{bts} of the universities own \gls{gsm} network.
+This is because it is a \gls{bts} of the university's own \gls{gsm} network.
 It was set up to be in a E-Plus neighbourhood but is not consistent with the E-Plus nodes surrounding it.
 Therefore it is marked by the \gls{icds}.
+%TODO: cite richy
 The node was set up inside the E-Plus neighbourhood for another Master project\footnote{Cite Richy} at the Chair of Communication Systems where the goal was to estimate the most probably position of a subscriber given his\,/\,her reception strengths.
 
 Some of the attacks discussed in Section \ref{sec:attacks} imply a certain structure of the neighbourhood graph.
-Since the IMSI catcher tries lock in \glspl{ms} that have connected from switching back to a normal cell, the neighbourhood list of such a catcher cell would either be empty or would only host neighbour cells that have a lower reception strength than itself.
+Since the IMSI catcher tries to lock in \glspl{ms} that have connected from switching back to a normal cell, the neighbourhood list of such a catcher cell would either be empty or would only host neighbour cells that have a lower reception strength than itself.
 An empty Neighbouring Cell List is represented in the graph by a node that has been discovered and has no outgoing edges.
 A Neighbouring Cell list containing only imaginary nodes serves the same purpose.
 \begin{figure}
@@ -387,9 +387,9 @@ A Neighbouring Cell list containing only imaginary nodes serves the same purpose
 Figure \ref{fig:structure_comparison} shows a simplified regular neighbourhood graph compared to a graph with two catcher nodes inside.
 In this case catcher C chose the attack where it replaces a previously existent \gls{bts} whereas catcher D opened up a new cell.
 Replacing has several advantages, one being already integrated in the neighbourhood of other nodes.
-Mobile phones will constantly monitor the reception strength of all neighbouring nodes and thus also the reception strength of the IMSI catcher.
+Mobile phones will constantly monitor the reception strength of all neighbouring nodes and thus also the reception strength of the IMSI catcher which replaced one.
 For catcher D it is the other way around, it has only outgoing edges.
-This means that this cell is not known by any other node of the same provider (of course the catchers provider is fake!).
+This means that this cell is not known by any other node of the same provider.
 Nevertheless it has some outgoing edges to nodes with significantly less transmission strength to not stick out too much as a completely isolated node.
 Combinations of these two approaches are also possible.
 These thoughts are basically what is captured inside the \emph{Neighbourhood Structure Rule}.
@@ -401,13 +401,13 @@ For both attack types presented it is possible to find a parameter configuration
 Therefore the Configuration Rules and most of the Context Rules will yield an \emph{Ok} result.
 
 The Neighbouring Cell List is a bit different.
-Since the catcher wants to keep lured subscribers it will normally have an empty list or a list pointing only to \glspl{bts} that have a lower reception level. 
+Since the catcher wants to keep lured subscribers it will normally have an empty list or a list pointing only to \glspl{bts} imaginary neighbours. 
 Both of these cases can be detected.
 However the operator \emph{may} also choose to set a list consistent with the neighbouring cells.
 This would lower the chances of success for the catcher but also make it blend better in its environment and thus harder to detect.
  
-For the \gls{cid} there are basically two possibilities depending on which attack is used.
-The first possibility is that the IMSI catcher opens up a new cell and the second one is that it replaces a formerly existent cell.
+For the \gls{cid} there are basically two possibilities depending on which attack type is used.
+The first possibility was that the IMSI catcher opens up a new cell and the second one was that it replaces a formerly existent cell.
 In the first case parameters can be chosen in a consistent way although a new \gls{cid} has to be chosen, as the \gls{cid} needs to be unique.
 In the second case all parameters can be copied from the original cell.
 Both possibilities can be resolved by adding outside knowledge to the \gls{icds} thus circumventing the problem of other parameters being forged.
@@ -427,14 +427,14 @@ Local Area Databse 		&Checks whether the LAC of the given BTS deviates.\\
 \label{tab:database_rules}
 \end{table}
 
-Table \ref{tab:database_rules} rules that each handles one of these cases.
+Table \ref{tab:database_rules} shows the rules that each handles one of these cases.
 The first case is the easier of both.
 We know that the catcher cell has a new \gls{cid} that has not been there before.
 Therefore the \emph{Cell ID Database Rule} has two different means to exploit this fact:
 \begin{itemize}
 	\item A database of \glspl{cid} can be learned by the \gls{icds} beforehand. 
 	This can be used to detect new \glspl{cid} that have not been seen before.
-	\item A commercial \gls{cid} database can be used to compare against the \glspl{cid} found by the \gls{icds}.
+	\item A commercial or public \gls{cid} database can be used to compare against the \glspl{cid} found by the \gls{icds}.
 	A web service also offered by most providers of Cell ID databases.
 \end{itemize}
 The three largest Cell ID databases are the two commercial ones by Ericson\footnote{Ericson Labs, \url{https://labs.ericsson.com/apis/mobile-location/} [Online; Accessed 04.2012]} and combain\footnote{Mobile Positioning Solutions, \url{http://location-api.com/} [Online; Accessed 04.2012]} as well as the free alternative OpenCellID\footnote{OpenCellID, \url{http://www.opencellid.org/} [Online; Accessed 04.2012]} \cite{wiki_cells}.
@@ -442,15 +442,14 @@ Ericson and combain have trial modes, where the first 1000 requests are free for
 Another free alternative with a large coverage is Google Mobile Maps, that also offers a web service where \glspl{cid} and their respective \glspl{lai} can be checked against their database to obtain localisation information (or simply check if they are part of the database).
 By adding this information new cells can be identified.
 
-The second where an existing cell is replaced is a bit more complicated since its parameters are an exact copy of the old cell.
+The second attack type where an existing cell is replaced is a bit more complicated since its parameters are an exact copy of the old cell.
 Attacking by replacing a cell works in a way that the cell with the worst reception is targeted.
-That way when the IMSI catcher finished replacing it, the reception goes up a significant amount and the mobile phone will initiate a handover to that cell.
+That way when the IMSI catcher finished replacing it, the reception goes up a significant amount and the mobile phone will move over to that cell.
 The difference in reception can be used to identify this kind of attack.
-In general the reception cannot be well used as a parameter because shadowing and reflection can substantially change the reception from one moment to the other.
-However when reception intervals are logged for a fixed location like an office and important calls made from that specific location can be protected against this kind of attack.
-To that end the \gls{icds} can monitor reception levels to build up databases with information about the reception intervals of the particular cells in different locations.
+In general the reception cannot be used well as a parameter because shadowing and reflection can substantially change the reception from one moment to the other.
+However if reception intervals are logged for a fixed location like an office then important calls made from that specific location can be protected against this kind of attack.
+To that end the \gls{icds} can monitor reception levels to build up databases with information on the reception intervals of the cells in different, fixed locations.
 The \emph{Local Area Database Rule} then checks if reception levels differ significantly for a given location.
-If no database has been build beforehand but the \gls{icds} is stationary the \emph{rx Level Rule} can watch the reception level during the course of a scan and ensure that no change occurred suddenly.
 
 \subsubsection{Scan Rules}
 \begin{table}
@@ -467,17 +466,17 @@ LAC Change				&Watches out for changes in LACs.\\
 \label{tab:scan_rules}
 \end{table}
 At this stage, if local information is present, an IMSI catcher should be identified with a high probability.
-However if local information has not been gethered in advance, the main idea of Database Rules can still be applied.
-In contrast to the other three categories of Rules mentioned before \emph{Scan Rules} evaluate parameters or better, parameter changes over time.
+However if local information has not been gathered in advance, the main idea of Database Rules can still be applied.
+In contrast to the other three categories of rules mentioned before, \emph{Scan Rules} evaluate parameter changes over time.
 This means parameters are being monitored over the duration of one or multiple sweep scans and changes are noted.
-The \emph{rx Change Rule} is basically the the same as the \emph{Local Area Database Rule} on a scan to scan basis.
+The \emph{rx Change Rule} builds upon the same idea as the \emph{Local Area Database Rule}, only applied to a scan to scan basis.
 Changes in reception are evaluated against the last known reception level for each base station.
 
 When watching for parameter changes the \gls{lac} is another interesting parameter.
 If a mobile phone connects to an IMSI catcher due to its better reception level the mobile phone will not immediately announce itself thus the IMSI catcher has no knowledge that a new subscriber connected to it.
 A mobile phone announces itself by sending Location Updates to the network, this is only done when a certain timeout is reached or when the phone enters a new \gls{la}.
-Since this timeout can be very large (the lowest value possible is 6 minutes) an IMSI catcher usually sends another \gls{lac} than the original cell to force the \gls{ms} to announce itself by sending a Location Update.
-IMSI catchers showing this kind of behaviour are filtered out by the \emph{LAC Change Rule}
+Since this timeout can be very large (the lowest value possible is 6 minutes) an IMSI catcher usually sends a different \gls{lac} than the original cell to force the \gls{ms} to announce itself by sending a Location Update.
+IMSI catchers showing this kind of behaviour are uncovered by the \emph{LAC Change Rule}
 
 \subsubsection{Remaining Issues and Paging}
 \label{sec:paging}
@@ -486,25 +485,25 @@ If a catcher is configured in a consistent way, replaces a cell and by chance ha
 
 An IMSI catcher is not part of a provider's network, it is merely a proxy for a base station.
 At best it can route calls into a network but it cannot take calls that are intended for a subscriber and route them.
-Therefore an IMSI catcher will not page connected subscribers while a normal base station will have a very high number of Pagings depending on the number of subscribers that are connected.
+Therefore an IMSI catcher will not page connected subscribers while a normal base station will have a very high number of pagings depending on the number of subscribers that are connected.
 This is a significant difference between a catcher and a regular base station.
 
 This is an additional information that can be used to identify an IMSI catcher.
-\emph{PCH Scan} tunes the Motorola C123 to the \gls{pch} of a particular base station and gathers Paging Messages and \glspl{ia}.
+The program \texttt{pch\_scan} tunes the Motorola C123 to the \gls{pch} of a particular base station and gathers Paging Messages and \glspl{ia}.
 If no Paging Messages could be collected during longer period of scanning it is a strong indicator towards being confronted with an IMSI catcher.
 Additionally when \glspl{ia} are found the scan extracts whether the assigned channel is a frequency hopping channel or not.
 Since frequency hopping is considered a security feature by providers, all German providers always assign frequency hopping channels.
 An IMSI catcher however may not support hopping since it does not have multiple frequencies at hand.
 
 The \emph{PCH Scan} feature has not been implemented as a regular rule since each given base station needs some time to be scanned.
-If that would be done on a regular basis for every station that has been discovered it would delay the whole scan by a large amount and the time difference between re-evaluations would be very high.
+If that would be done on a regular basis for every station that has been discovered it would delay the whole scan by a large amount of time and the interval between re-evaluations would be very high.
 Therefore it was implemented as an extra feature to be used when needed.
 The \gls{icds} also uses this method on particularly filtered base stations in \emph{User Mode} as will be explained in Section \ref{sec:user_mode}.
 
 \subsection{Base Station Evaluation}
 \label{sec:evaluators}
 All the rules are evaluated for each base station.
-Aggregation of these rule results into a single result is done by modules called \emph{Evaluators}.
+Aggregation of these rule results into a single result is done by modules called \emph{evaluators}.
 Currently there are three different evaluators implemented inside the \gls{icds}, with varying degrees of customisability.
 \begin{itemize}
 	\item Conservative Evaluator: This is a worst-case evaluator.
@@ -515,7 +514,10 @@ Currently there are three different evaluators implemented inside the \gls{icds}
 	\item Grouped Evaluator: With this evaluator rules can be grouped together.
 	Inside each group the result for the group is found by majority vote whereas the final result is conservatively found by comparing all the group results.
 \end{itemize}
-The different kinds of evaluators can be used to tweak the whole system more to a specific environment or purpose, if specific rules or groups of rules are given more weight.
+The different kinds of evaluators can be used to tweak the whole system more to a specific environment or purpose, if specific rules are given more weight.
+They are meant more for experimental purpose if the \gls{icds} is used as a toolbox for analysing base stations, to give more freedom in use to the operator.
+In case of the system being used in \emph{User Mode} or for the sole purpose of finding whether an IMSI catcher is active or not, the conservative evaluator should almost always be the evaluator of choice and tweaking should be done on the rule parameters rather than on the evaluator.
+
 After a result has been determined for each station, all the results are again aggregated into a final result.
 The overall result depends on which mode the \gls{icds} is used in.
 If it is used as analysis tool the final result will be a conservatively aggregated result over all the stations in the list.
@@ -536,36 +538,36 @@ The first section focuses on architectural aspects and how the architecture can 
 \end{figure}
 Figure \ref{fig:architecture} shows a diagram describing the system architecture, the modules in light blue have been implemented for this project.
 The application consists of two main parts.
-One part, the \texttt{catcher}, is implemented inside the OsmocomBB framework, the other part, \texttt{PyCatcher}, is a Python application that uses \texttt{catcher} to harvest information and evaluate it afterwards.
-Since the way \texttt{catcher} works has already been described in Section \ref{sec:info_gathering} this section will focus on the Python application part.
+One part, the \texttt{catcher}, is implemented inside the OsmocomBB framework, the other part, \emph{PyCatcher}, is a Python application that uses \texttt{catcher} and \texttt{pch\_scan} to harvest information and evaluate it afterwards.
+Since the way these two sub-programs work has already been described in Section \ref{sec:info_gathering} this section will focus on the Python application part.
 
-As mentioned before layer 1 of the \gls{gsm} stack is implemented in the firmware running on the Motorola C123.
-Layer 2 and 3 are implemented on the computer and are used by the \texttt{catcher} and \texttt{pch\_scan} software to harvest information from the \gls{bcch}.
+As mentioned before Layer 1 of the \gls{gsm} stack is implemented in the firmware running on the Motorola C123.
+Layer 2 and Layer 3 are implemented on the computer and are used by the \texttt{catcher} and the \texttt{pch\_scan} software to harvest information from the \gls{bcch} and \gls{pch} respectively.
 
-The \texttt{PyCatcher} application was designed with a \gls{mvc} approach in mind to make it easy to implement new functionality.
+The PyCatcher application was designed with a \gls{mvc} approach in mind to make it easy to implement new functionality.
 The \gls{mvc} pattern is used to separate the data model of an application from the logic as well as from the way it is presented to the user.
 That way each of the different components can be exchanged without affecting the other two.
-An additional module has been added, the \texttt{OsmoConnector} that is loaded by the controller and spawns \texttt{catcher} as a child process.
+An additional module has been added, the \emph{OsmoConnector} that is loaded by the controller and spawns \texttt{catcher} as a child process.
 It takes the output back in and transforms it into an object oriented representation of the discovered base stations.
 These are then handed over and update the data model.
 This way it can be ensured that only coherent and complete information is incorporated in the data model.
 Another benefit is that the parsing module is isolated from the main program logic.
-\texttt{OsmoConnector} is also the module that spawns \texttt{pch\_scan} when requested by the \texttt{Controller}.
+OsmoConnector is also the module that spawns \texttt{pch\_scan} when requested by the controller.
 
-The \texttt{Controller} is the main part of the program and instantiates all the other modules.
+The \emph{controller} is the main part of the program and instantiates all the other modules.
 It loads data from the model, triggers the evaluation and sends the results to the view to be displayed.
 As discussed before there are several rules that can be evaluated for each base station.
 These rules are stored within the controller and can be enabled or disabled by using the view that relays new rule configurations back to the controller to be applied. 
 Whenever a new evaluation is requested the controller evaluates the active rules and gives the results to the active evaluator, afterwards the results are send to the view for display to the user.
 Note that all the structures used are view independent, this way the current view could easily be exchanged with a web interface for example.
 
-The \texttt{View} in this project consists of a GTK3 window with several forms for user input.
-It is bound to the controller using PyGTK.
-Details on the \texttt{View} and how to use it will be explained in Section \ref{sec:icds_operation}.
+The \texttt{view} in this project consists of a GTK3\footnote{The GTK+ Project, \url{http://www.gtk.org/} [Online; Accessed 06.2012]} window with several forms for user input.
+It is bound to the controller using PyGTK\footnote{PyGTK, \url{http://www.pygtk.org/} [Online; Accessed 06.2012]}.
+Details on the view and how to use it will be explained in Section \ref{sec:icds_operation}.
 
-Rules and Evaluators were designed in a plugin fashion, since these are the main points where the program can be enhanced and new ideas can be realised.
-Implementing a new rule or a new evaluator works by extending the rule or evaluator base class and implementing one method inside that derived class that contains the actual logic.
-After that they only need to be added to the list of included evaluators and rules inside the \texttt{Controller}.
+Rules and evaluators were designed in a plugin fashion, since these are the main points where the program can be enhanced and new ideas can be realised.
+Implementing a new rule or a new evaluator works by extending the rule or evaluator base class and implementing one method inside the derived class that contains the actual logic.
+After that they only need to be added to the list of evaluators and rules included inside the controller.
 Appendix \ref{sec:extensions} gives an example of how this can be done.
 
 \subsection{Configuration}
@@ -575,20 +577,23 @@ Appendix \ref{sec:extensions} gives an example of how this can be done.
 \begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
 dictionary = {
-	"key_1": value_1,		#single value
-	"key_2": [value_2,value_3]	#value range
+	'key_1': value_1,           #single value
+	'key_2': (value_2,value_3)  #value range
+	'key_3': [value_5, value_6] #list of values
 }
+
+variable = value_7              #simple variable
 \end{lstlisting}
 \end{minipage}
 \caption{Configuration Dictionary in the settings file.}
 \label{fig:python_dict}
 \end{figure}
 The configuration of the system is done in the file \texttt{settings.py}.
-All configuration is done with python dictionaries, where each module has its own dictionary inside which it can have an arbitrary number of parameters with their respective values.
-Figure \ref{fig:python_dict} shows an example with the two common cases used for parameters in this project.
+All configuration is done within the python language, where each module has its own dictionary inside which it can have an arbitrary number of parameters with their respective values or if only few parameters are required they are read in as simple variables.
+Figure \ref{fig:python_dict} shows an example with the four common expressions used for parameters in this project.
 
 The file consists of five main sections.
-The first one contains parameters that are needed for the correct operation of the \gls{icds} system and have to be edited:
+The first one contains parameters that are needed for the correct operation of the \gls{icds} system and have to be edited depending on the environment:
 \begin{itemize}
 	\item \texttt{Device\_settings}: The setting for the mobile phone that is used.
 	In case the Motorola C123 is used, this section does not need to be edited.
@@ -606,7 +611,7 @@ This way python code can also be used to change settings dynamically depending o
 The \gls{icds} main application has to be started with root privileges since it needs to work with Unix sockets and open up connections to the Motorola C123.
 This should be done by starting up the \texttt{main} class that initialises everything else.
 \[\texttt{sudo python /path-to-project/Src/PyCatcher/src/main.py}\]
-After a brief loading time the main window shown in Figure \ref{fig:icds} should appear if a valid configuration is set up.
+After a brief loading time the main window shown in Figure \ref{fig:icds} will appear if a valid configuration is set up.
 
 \begin{figure}
 \centering
@@ -617,7 +622,7 @@ After a brief loading time the main window shown in Figure \ref{fig:icds} should
 
 The different elements shown in the main window are:
 \begin{enumerate}
-\item Firmware Loader: This button is used to load the OsmoconBB firmware onto the Motorola C123. 
+\item Firmware Loader: This button is used to load the OsmocomBB firmware onto the Motorola C123. 
 For this to work, the mobile phone must be connected correctly to the computer and available on the configured \texttt{tty} interface.
 After pressing the button on-screen instructions will lead the user through the process of flashing.
 
@@ -626,7 +631,7 @@ During this process the Base Station List (11) and the Base Station Graph (13) w
 Re-evaluation on all base stations is done for every new \gls{bts} that has been found.
 
 \item Filter Window: This brings up the window shown in Figure \ref{fig:filters_window}, where different view filters for the Base Station List and the Base Station Graph can be set.
-Note that these filters do not modify the underlying data model or the behaviour of the scanner, the manipulate merely the view.
+Note that these filters do not modify the underlying data model or the behaviour of the scanner, they merely manipulate the view.
 Hidden base stations will be scanned and added to the data model independent from the filters set, so they can be viewed at a later point if necessary.
 Available filters are:
 	\begin{itemize}
@@ -636,10 +641,10 @@ Available filters are:
 These two filters can arbitrarily be combined together.
 Filters are designed the same way as rules and evaluators, a new filter can be implemented by derivation of the base class.
 
-\item Rules Window: All the Rules implemented inside the \gls{icds} will be brought up with a check box to enable or disable these Rules.
+\item Rules Window: All the rules implemented inside the \gls{icds} will be brought up with a check box to enable or disable these rules.
 Disabling means that they will not be considered for the evaluation of a base station.
 A screenshot can be seen in Figure \ref{fig:rules_window}.
-If Rules are changed during a sweep scan, everything will be re-evaluated according to the new Rules set without interrupting the scan.
+If rules are changed during a sweep scan, everything will be re-evaluated according to the new rules set without interrupting the scan.
 
 \item Evaluator Window: This window will let the user choose  which evaluator already discussed in Section \ref{sec:evaluators} to use for \gls{bts} evaluation.
 Choosing a new evaluator will also trigger a re-evaluation of all the data collected so far.
@@ -652,15 +657,15 @@ Base stations that are filtered out are not considered.
 These settings are mandatory if the Local Area Database Rule or the Cell ID Rule is going to be used.
 It is also possible here to export the current scan as a \gls{csv} file or a Sqlite database to be used in other programs.
 
-\item PCH Scan Window: This button brings up a dialog in which an \gls{arfcn} or a list of \glspl{arfcn} can be scanned to discover Paging Messages and \glspl{ia} on the \glspl{pch}.
+\item PCH Scan Window: This button brings up the dialog illustrated in Figure \ref{fig:pch_window} in which an \gls{arfcn} or a list of \glspl{arfcn} can be scanned to discover Paging Messages and \glspl{ia} on the \glspl{pch}.
 The timeout sets the duration of a scan.
 Results of the scan will be shows in a list in the lower part of the window after the scan is finished.
 
-\item Save/Load Project: The current state of the application can be saved as or loaded from a \texttt{.cpf} file.
+\item Save\,/\,Load Project: The current state of the application can be saved as or loaded from a \texttt{.cpf} file.
 This enables the user to continue a scan at a later time or to compare different data sets scanned at different points in time or locations with one another.
 
 \item User Mode: The \gls{icds} is ultimately meant to be a tool that can be used by end users to check whether it is safe to initiate a phone call or not.
-This dialog presents a way the already configured tool could be presented to end users.
+This dialog presents a way the already configured tool could be shown to end users.
 Only the provider is to be entered and a final evaluation will be returned once the \gls{icds} is done with the process.
 
 \item Base Station List: This list gives an overview of which base stations have been discovered so far along with some distinguishing information including its evaluation.
@@ -691,7 +696,7 @@ Zooming can also be done with the mouse wheel and it is possible to drag the gra
 \subsection{Usage}
 \label{sec:user_mode}
 This section will list some common use cases and explain how to setup and operate the system to achieve the desired result.
-Button numbering refers back to Figure \ref{fig:icds} and Figure \ref{fig:dialogs}.
+Button numbering refers back to Figure \ref{fig:icds}.
 
 \paragraph{Conducting sweep scans:} This is the normal mode of operation, scanning and evaluating all base stations in the perimeter.
 This is also used for gathering various kinds of information to be used for analysis later.
@@ -705,33 +710,32 @@ The number of times a specific \gls{bts} has been scanned is shown in the \emph{
 
 \paragraph{Using and obtaining Cell ID Information:} \gls{cid} information can be obtained through several different means.
 The Databases window shown in Figure \ref{fig:databases_window} can be brought up by pressing (7).
-In the upper part settings concerning the acquisition of \gls{cid} can be found.
+In the upper part settings concerning the acquisition of \glspl{cid} can be found.
 The operator has the choice between three different methods which can also be used in combination.
-\emph{Google Mobile Maps Service} compares the station's CellIDs and \glspl{lai} to the ones in the Google database.
+\emph{Google Mobile Maps Service} compares the stations' \glspl{cid} and \glspl{lai} to the ones in the Google database.
 If they are found they are marked as such and additionally their location information will be set.
 \emph{OpenCellID Web Service} performs the same task if activated.
-As of now OpenCellID has a very low coverage compared to Google's service but it has been included since it is an open source approach that is actively developed and updated constantly.
-The \emph{Use Local Databse} feature allows to use a previously build Location Area Database as \gls{cid} Database for lookups.
-For this purpose the location to be used as database has to be entered in the textfield.
+As of now OpenCellID has a very low coverage compared to Google's service but it has been included since it is an open source approach that is in development and updated constantly.
+The \emph{Use Local Databse} feature allows to use a previously build Local Area Database as Cell ID Database for lookups.
+For this purpose the location to be used as database has to be entered in the textfield, \eg 'office' or 'home'.
 Offline lookups can be done that way, which are considerably faster that online lookups, the raw data used by the OpenCellID project can also be downloaded and used as a offline version for reference that way.
 Since these lookups take some time if performed using webservices, this is not done while the scan is taking place, to not delay the acquisition of information from new base stations.
-Pressing the button below the checkboxes will add the \gls{cid} Database information from the selected sources to all the stations currently in the base station list.
+Pressing the button below the checkboxes will add the Cell ID Database information from the selected sources to all the stations currently in the base station list.
 If more than one service is activated lookups will be done starting with the Google service, if active and using the next one in line only if the previous lookup failed.
-Having at least one service activated and run on the base station list is a precondition for the \gls{cid} Rule to work.
+Having at least one service activated and run on the base station list is a precondition for the Cell ID Database Rule to work.
 
-\paragraph{Building or using a Local Area Database:} Having set up the correct location in the \emph{Current Location} field of the databases window and having a valid database for that location are preconditions for the Location Are Database Rule to work.
+\paragraph{Building or using a Local Area Database:} Having set up the correct location in the \emph{Current Location} field of the databases window and having a valid database for that location are preconditions for the Local Area Database Rule to work.
 To build up a database for a specific location a sweep scan for this location has to be done.
-After the sweep scan is finished, the current location has to be set in the dialog and the button for adding/updating the database has to be pressed.
+After the sweep scan is finished, the current location has to be set in the dialog and the button for adding\,/\,updating the database has to be pressed.
 If there was no existing database for that location it will be created, otherwise the database will be updated with the new information acquired by the sweep scan.
-To raise the quality of a Location Area Database it is recommended to do multiple sweep scans and integrate them rather than to only rely on a single scan.
+To enhance the quality of a Local Area Database it is recommended to do multiple sweep scans and integrate them rather than relying on a single scan only.
 This raises the probability that all \gls{bts} in the perimeter are found is higher and it solidifies the interval in which the base station signal strength varies.
 
 \paragraph{Conducting a PCH Scan:} A \gls{pch} scan can be conducted in addition to a sweep scan or as a standalone method therefore no scan data needs to be present.
-If scan data is present however this feature will automatically augment the present data with its findings.
 The first parameter is a comma separated list of \glspl{arfcn} that will be scanned.
 The second parameter is the timeout. 
-A scan for a particular \gls{arfcn} will tune in on the \gls{pch} of each \gls{arfcn} given and wait there until the timeout is reached gathering all paging messages that occur during the time period.
-In the lower part of the dialog, after the scan has finished, a number will be given for each base station of how many pagings occured on average in five seconds.
+A scan for a particular \gls{arfcn} will tune in on the \gls{pch} of each \gls{arfcn} given and wait there until the timeout is reached gathering all paging messages and \gls{ia} that are sent in that time interval.
+In the lower part of the dialog, after the scan has finished, the statistics for the scanned \glspl{bts} will occur.
 
 \begin{figure}
 \centering
@@ -744,16 +748,14 @@ In the lower part of the dialog, after the scan has finished, a number will be g
 There is only one input field in the dialog as Figure \ref{fig:user_mode} illustrates.
 The user has to enter the provider name in this field and push the \emph{Start Evaluation} button.
 From the scan data, the \gls{icds} extracts the base station with the highest reception for the given provider since this would be the station a \gls{ms} would connect to if started up.
-It then performs a \gls{pch} scan on that station and accumulates the results from this additional scan with the data from the sweeps scan in a conservative manner.
-Timeouts and retry attempts are taken from the \gls{pch} scan dialog.
-Any adjustment made there will carry over in User Mode.
+If the station already has been evaluated as \emph{Critical}, \emph{User Mode} will instantly yield this as result.
+In all other cases it performs an additional \gls{pch} scan on that station to rule out the scenario where a catcher has not been detected by the currently active set of rules.
 
 After the evaluation has been completed, the picture on the bottom will change to reflect the result found.
 
 \section{Related Projects}
-IMSI catcher detection is a topic that has not emerged until recently therefore not a lot of work and research has been done upon that topic.
-This is mainly due to the fact that is was very hard to get information from the mobile network onto a computer for evaluation.
-A fact that changed, or to be exact is now more accessible due to the OsmocomBB framework.
+IMSI catcher detection is a topic that has not emerged until recently therefore not a lot of work and research has been done upon that subject.
+This is mainly due to the fact that is was very hard to get information from the mobile network onto a computer for evaluation and the threat seemed to be not as large as today with cheap self build IMSI catchers.
 
 About the same time as this project, in December 2011, another project was announced with the same goals of detecting an IMSI catcher.
 The project is called 'Catcher Catcher'\footnote{Catcher Catcher Wiki, \url{http://opensource.srlabs.de/projects/catcher/wiki/Tutorial} [Online; Accessed 05.2012]} and also builds up on the OsmocomBB framework.
@@ -761,10 +763,10 @@ The goals are the same however the means are very different.
 As a codebase 'Catcher Catcher' uses the \texttt{mobile} application, a software that implements the firmware part of a mobile phone.
 This results in an active approach to IMSI catcher detection.
 An active connection is established between the phone and the base station in question.
-One could say they try to identify the catcher by letting a bait phone get caught by it.
+Basically this means that identification is done be letting a bait-phone get caught.
 
-The advantage compared to the passive approach this project uses is that one has more sure means at hand of identifying a potential catcher.
-Features that are already implemented are\cite{catcher_catcher}:
+The advantage compared to the passive approach of this project uses is that one has more sure means at hand of identifying a potential catcher.
+Features that are already implemented are \cite{catcher_catcher}:
 \begin{itemize}
 	\item Encryption: Check whether encryption is enabled when doing a phone call.
 	\item IMEI: \gls{imei} is not requested in Cipher Mode Complete message.
@@ -777,5 +779,5 @@ As one can see, missing encryption and reception of a silent text message are ve
 This however comes at the cost of being discovered oneself.
 Additionally if the IMSI catcher is configured only to allow specific IMSI numbers an active approach cannot be used to evaluate it.g
 
-It is not clear whether the project has been abandoned since December 2012 or whether it is developed further. 
-Activity on the wiki has seized after December 2012.
+It is not clear whether the project has been abandoned or whether it is developed further.
+Activity on the Wiki and Git has seized after December 2012.

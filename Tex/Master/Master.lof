@@ -11,31 +11,31 @@
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Hierarchical composition of the different frames.}}{22}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Structural Comparison of different Burst types. After \cite {GSM2009}.}}{22}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Mapping of virtual channels on time slots.}}{24}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces A commercial catcher by Rhode \& Schwarz \cite {fox} and a self built catcher introduced at Defcon 2010 \cite {def_catcher}.}}{28}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces A commercial catcher by Rhode\tmspace +\thinmuskip {.1667em}\&\tmspace +\thinmuskip {.1667em}Schwarz \cite {fox} and a self built catcher introduced at Defcon 2010 \cite {def_catcher}.}}{28}
 \contentsline {figure}{\numberline {2.12}{\ignorespaces IMSI catching procedure. Adopted and simplified from \cite {mueller}.}}{29}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{31}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{36}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{37}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 2 Message \cite {protocols1999}.}}{39}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Procedure taken when the network has a call/text waiting for a passive subscriber.}}{41}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Some base stations and their neighbourhood connections at the Faculty of Engineering.}}{45}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Comparison between a normal neighbourhood subgraph and a tainted one.}}{46}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{46}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{46}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{50}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{51}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{53}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{56}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{56}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Rules window.}}}{56}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Filters window.}}}{56}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {PCH scan window.}}}{56}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces The User Mode window.}}{58}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{38}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{39}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 2 Message \cite {protocols1999}.}}{41}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Procedure taken when the network has a call/text waiting for a passive subscriber.}}{43}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Some base stations and their neighbourhood connections at the Faculty of Engineering.}}{47}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Comparison between a normal neighbourhood subgraph and a tainted one.}}{48}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{48}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{48}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{52}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{53}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{55}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{58}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{58}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Rules window.}}}{58}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Filters window.}}}{58}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {PCH scan window.}}}{58}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces The User Mode window.}}{60}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{62}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{65}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{66}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Takeover attack of an IMSI catcher on a base station.}}{70}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{64}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{67}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{68}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces ICDS decision finding process outlined.}}{74}
 \addvspace {10\p@ }

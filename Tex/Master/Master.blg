@@ -2,7 +2,6 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Master.aux
 The style file: acm.bst
 Database file #1: ../Content/Bibliography.bib
-Warning--I didn't find a database entry for "catcher_catcher"
 Warning--to sort, need author or key in GSM0207
 Warning--to sort, need author or key in ISO7810
 Warning--to sort, need author or key in GSM23003
@@ -14,45 +13,45 @@ Warning--to sort, need author or key in GSM23078
 Warning--can't use both author and editor fields in GSM2009
 Warning--empty journal in mueller
 Warning--empty journal in dennis
-You've used 32 entries,
+You've used 33 entries,
             2253 wiz_defined-function locations,
-            690 strings with 7814 characters,
-and the built_in function-call counts, 6640 in all, are:
-= -- 635
-> -- 177
+            692 strings with 7884 characters,
+and the built_in function-call counts, 6854 in all, are:
+= -- 655
+> -- 184
 < -- 0
-+ -- 83
-- -- 50
-* -- 336
-:= -- 1008
-add.period$ -- 83
-call.type$ -- 32
-change.case$ -- 122
++ -- 86
+- -- 52
+* -- 344
+:= -- 1043
+add.period$ -- 86
+call.type$ -- 33
+change.case$ -- 126
 chr.to.int$ -- 0
-cite$ -- 43
-duplicate$ -- 265
-empty$ -- 722
-format.name$ -- 50
-if$ -- 1471
+cite$ -- 44
+duplicate$ -- 273
+empty$ -- 745
+format.name$ -- 52
+if$ -- 1518
 int.to.chr$ -- 0
-int.to.str$ -- 32
+int.to.str$ -- 33
 missing$ -- 14
-newline$ -- 150
-num.names$ -- 40
-pop$ -- 215
+newline$ -- 155
+num.names$ -- 42
+pop$ -- 223
 preamble$ -- 1
-purify$ -- 93
+purify$ -- 96
 quote$ -- 0
-skip$ -- 208
+skip$ -- 215
 stack$ -- 0
-substring$ -- 252
-swap$ -- 51
+substring$ -- 257
+swap$ -- 53
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 122
+type$ -- 126
 warning$ -- 11
-while$ -- 48
-width$ -- 34
-write$ -- 292
-(There were 12 warnings)
+while$ -- 50
+width$ -- 35
+write$ -- 302
+(There were 11 warnings)

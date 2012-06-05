@@ -20,9 +20,9 @@
 \contentsline {section}{\numberline {2.3}The $U_m$ Interface}{20}
 \contentsline {subsection}{\numberline {2.3.1}Radio Transmission}{20}
 \contentsline {subsubsection}{Frame Numbering}{21}
-\contentsline {subsubsection}{Burst Types}{21}
+\contentsline {subsubsection}{Burst Types}{23}
 \contentsline {subsection}{\numberline {2.3.2}Logical Channels}{24}
-\contentsline {subsubsection}{Dedicated Channels}{24}
+\contentsline {subsubsection}{Dedicated Channels}{25}
 \contentsline {subsubsection}{Common Channels}{25}
 \contentsline {subsubsection}{Combinations}{26}
 \contentsline {subsection}{\numberline {2.3.3}Layers}{26}
@@ -34,48 +34,48 @@
 \contentsline {subsubsection}{Attacks}{30}
 \contentsline {paragraph}{MS is in normal cell selection mode:}{30}
 \contentsline {paragraph}{MS is already connected to a network:}{30}
-\contentsline {subsubsection}{Risks and Irregularities}{31}
-\contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{31}
-\contentsline {chapter}{\numberline {3}IMSI Catcher Detection System}{33}
-\contentsline {section}{\numberline {3.1}Framework and Hardware}{33}
-\contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{33}
-\contentsline {subsubsection}{Project Status}{34}
-\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{35}
-\contentsline {subsection}{\numberline {3.1.3}OsmocomBB and ICDS}{36}
-\contentsline {section}{\numberline {3.2}Procedure}{37}
-\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{38}
-\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{41}
-\contentsline {subsubsection}{Configuration Rules}{42}
-\contentsline {subsubsection}{Context Rules}{43}
-\contentsline {paragraph}{Neighbourhood Structure}{44}
-\contentsline {subsubsection}{Database Rules}{46}
-\contentsline {subsubsection}{Scan Rules}{47}
-\contentsline {subsubsection}{Remaining Issues and Paging}{48}
-\contentsline {subsection}{\numberline {3.2.3}Base Station Evaluation}{49}
-\contentsline {section}{\numberline {3.3}Implementation}{49}
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{50}
-\contentsline {subsection}{\numberline {3.3.2}Configuration}{51}
-\contentsline {subsection}{\numberline {3.3.3}Graphical User Interface}{52}
-\contentsline {subsection}{\numberline {3.3.4}Usage}{55}
-\contentsline {paragraph}{Conducting sweep scans:}{55}
-\contentsline {paragraph}{Using and obtaining Cell ID Information:}{55}
-\contentsline {paragraph}{Building or using a Local Area Database:}{57}
-\contentsline {paragraph}{Conducting a PCH Scan:}{57}
-\contentsline {paragraph}{Utilising User Mode:}{58}
-\contentsline {section}{\numberline {3.4}Related Projects}{58}
-\contentsline {chapter}{\numberline {4}Evaluation}{61}
-\contentsline {section}{\numberline {4.1}Performance Evaluation}{61}
-\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{62}
-\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{63}
-\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{63}
-\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{64}
-\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{64}
-\contentsline {subsubsection}{Modifications to the ICDS Configuration}{66}
-\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{66}
-\contentsline {subsection}{\numberline {4.2.3}Long-Term Test}{68}
-\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{68}
-\contentsline {subsubsection}{IMSI Catcher as a new Cell}{70}
-\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{70}
+\contentsline {subsubsection}{Risks and Irregularities}{32}
+\contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{32}
+\contentsline {chapter}{\numberline {3}IMSI Catcher Detection System}{35}
+\contentsline {section}{\numberline {3.1}Framework and Hardware}{35}
+\contentsline {subsection}{\numberline {3.1.1}OsmocomBB}{35}
+\contentsline {subsubsection}{Project Status}{36}
+\contentsline {subsection}{\numberline {3.1.2}Motorola C123}{37}
+\contentsline {subsection}{\numberline {3.1.3}OsmocomBB and ICDS}{38}
+\contentsline {section}{\numberline {3.2}Procedure}{39}
+\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{40}
+\contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{43}
+\contentsline {subsubsection}{Configuration Rules}{44}
+\contentsline {subsubsection}{Context Rules}{45}
+\contentsline {paragraph}{Neighbourhood Structure}{46}
+\contentsline {subsubsection}{Database Rules}{48}
+\contentsline {subsubsection}{Scan Rules}{49}
+\contentsline {subsubsection}{Remaining Issues and Paging}{50}
+\contentsline {subsection}{\numberline {3.2.3}Base Station Evaluation}{51}
+\contentsline {section}{\numberline {3.3}Implementation}{51}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{52}
+\contentsline {subsection}{\numberline {3.3.2}Configuration}{53}
+\contentsline {subsection}{\numberline {3.3.3}Graphical User Interface}{54}
+\contentsline {subsection}{\numberline {3.3.4}Usage}{57}
+\contentsline {paragraph}{Conducting sweep scans:}{57}
+\contentsline {paragraph}{Using and obtaining Cell ID Information:}{59}
+\contentsline {paragraph}{Building or using a Local Area Database:}{59}
+\contentsline {paragraph}{Conducting a PCH Scan:}{60}
+\contentsline {paragraph}{Utilising User Mode:}{60}
+\contentsline {section}{\numberline {3.4}Related Projects}{61}
+\contentsline {chapter}{\numberline {4}Evaluation}{63}
+\contentsline {section}{\numberline {4.1}Performance Evaluation}{63}
+\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{64}
+\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{65}
+\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{65}
+\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{66}
+\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{66}
+\contentsline {subsubsection}{Modifications to the ICDS Configuration}{68}
+\contentsline {subsection}{\numberline {4.2.2}Rule Evaluation}{68}
+\contentsline {subsection}{\numberline {4.2.3}Long-Term Test}{70}
+\contentsline {subsection}{\numberline {4.2.4}Attack Scenarios}{70}
+\contentsline {subsubsection}{IMSI Catcher as a new Cell}{72}
+\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{72}
 \contentsline {chapter}{\numberline {5}Conclusion}{73}
 \contentsline {section}{\numberline {5.1}Summary}{73}
 \contentsline {section}{\numberline {5.2}Future Work}{75}
