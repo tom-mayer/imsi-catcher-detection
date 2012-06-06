@@ -582,7 +582,6 @@
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{60}
 \glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{60}
 \glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{60}
-\glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{60}
 \glossaryentry{IMEI?\glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }|setentrycounter{page}\glsnumberformat}{61}
 \glossaryentry{LAC?\glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }|setentrycounter{page}\glsnumberformat}{61}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{63}
@@ -593,15 +592,15 @@
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{64}
 \glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{64}
 \glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{64}
-\glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{64}
+\glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{65}
 \glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{65}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{65}
 \glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{66}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{66}
 \glossaryentry{USRP?\glossaryentryfield{usrp}{\glsnamefont{USRP}}{Universal Software Radio Peripheral}{\relax }|setentrycounter{page}\glsnumberformat}{66}
 \glossaryentry{USRP?\glossaryentryfield{usrp}{\glsnamefont{USRP}}{Universal Software Radio Peripheral}{\relax }|setentrycounter{page}\glsnumberformat}{66}
-\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{66}
-\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{66}
+\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{67}
+\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{67}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{67}
 \glossaryentry{USRP?\glossaryentryfield{usrp}{\glsnamefont{USRP}}{Universal Software Radio Peripheral}{\relax }|setentrycounter{page}\glsnumberformat}{67}
 \glossaryentry{USRP?\glossaryentryfield{usrp}{\glsnamefont{USRP}}{Universal Software Radio Peripheral}{\relax }|setentrycounter{page}\glsnumberformat}{67}
@@ -619,8 +618,8 @@
 \glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{68}
 \glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{68}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{68}
-\glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{68}
-\glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{68}
+\glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{69}
+\glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{69}
 \glossaryentry{LAC?\glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }|setentrycounter{page}\glsnumberformat}{69}
 \glossaryentry{LAC?\glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }|setentrycounter{page}\glsnumberformat}{69}
 \glossaryentry{ARFCN?\glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }|setentrycounter{page}\glsnumberformat}{69}
@@ -656,11 +655,13 @@
 \glossaryentry{BCCH?\glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }|setentrycounter{page}\glsnumberformat}{73}
 \glossaryentry{LAC?\glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }|setentrycounter{page}\glsnumberformat}{73}
 \glossaryentry{LAC?\glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }|setentrycounter{page}\glsnumberformat}{75}
+\glossaryentry{MS?\glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{IA?\glossaryentryfield{ia}{\glsnamefont{IA}}{Immediate Assignment Message}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{75}
+\glossaryentry{GSM?\glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{BTS?\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{75}
@@ -675,4 +676,4 @@
 \glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{IA?\glossaryentryfield{ia}{\glsnamefont{IA}}{Immediate Assignment Message}{\relax }|setentrycounter{page}\glsnumberformat}{75}
 \glossaryentry{PCH?\glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }|setentrycounter{page}\glsnumberformat}{75}
-\glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{75}
+\glossaryentry{ICDS?\glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }|setentrycounter{page}\glsnumberformat}{76}

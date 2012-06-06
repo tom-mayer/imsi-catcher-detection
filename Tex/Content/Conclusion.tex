@@ -5,20 +5,20 @@ The first section starts by reviewing what has been done while the second sectio
 \section{Summary}
 The aim of this project was to find ways of unveiling whether an IMSI catcher is being operated in the close perimeter or not.
 In other words to find out whether it is safe to initiate a phone call or not.
-The main premise that distinguishes this project from other similar projects like the also  OsmocomBB based 'catcher catcher' is that the system is operating in a completely passive manner.
-Therefore it can only operate on a limited amount of information, namely on information that is broadcasted on publicly available channels.
+The main premise that distinguishes this project from other similar projects like the also  OsmocomBB based 'Catcher Catcher' is that the system is operating in a completely passive manner.
+Therefore it can only work on a limited amount of information, namely on information that is broadcasted on publicly available channels.
 The benefit this yields over other projects is that the IMSI Catcher Detection System itself is completely invisible to the IMSI catcher.
 
 Chapter 2 laid out basic concepts of \gls{gsm} communication to create a basis for understanding why and how an IMSI catcher works.
-Some more detailed concepts on the $U_m$ interface were discussed to enable the reader to grasp the concept of logical channels and how they can later be used to harvest information in a passive manner.
+Some more detailed concepts on the $U_m$ interface were discussed to enable the reader to grasp the concept of logical channels and how they can be used to harvest information in a passive manner.
 The chapter concluded with an account of how an IMSI catcher operates by outlining the two main ways of attacking a subscriber --- one by creating a new cell for the subscriber to connect to and the other by overtaking an already existent cell.
 
 Chapter 3 started by explaining how the OsmocomBB framework was used to build the \gls{icds}.
 It concluded with a summary of how to configure and use the system.
 The two main sources of information, the \gls{bcch} and the \gls{pch} were introduced along with the different parameters that the \gls{icds} bases its findings on.
 An outline of how this finding is reached is illustrated in Figure \ref{fig:decision_process}.
-At first a sweep scan is conducted or an old project is loaded to supply the \gls{icds} with base information of the surrounding base stations.
-During the scan or after the data has been loaded the \gls{icds} evaluates different Rules on the data.
+At first a sweep scan is conducted or an old project is loaded to supply the \gls{icds} with information of the surrounding base stations.
+During the scan or after the data has been loaded the \gls{icds} evaluates different rules on the data.
 This can be done with or without consulting databases containing local information.
 \begin{figure}
 \centering
@@ -26,14 +26,17 @@ This can be done with or without consulting databases containing local informati
 \caption{ICDS decision finding process outlined.}
 \label{fig:decision_process}
 \end{figure}
-The results show that some IMSI catcher configurations can be uncovered by these Rules which check basic configuration data obtained from System Information messages.
-In addition to this data broadcasted on the \gls{bcch} reception levels and \glspl{lac} are also monitored over time to unveil attacks in which existing base stations are replaced by IMSI catchers.
+The results show that some IMSI catcher configurations can be uncovered by these rules which check basic configuration data obtained from System Information messages.
+In addition to this data broadcasted on the \gls{bcch}, reception levels and \glspl{lac} are also monitored over time to unveil attacks in which existing base stations are replaced by IMSI catchers.
 This leaves IMSI catchers that have a consistent configuration and blend well in their surroundings concerning the reception levels.
-Additionally these catchers do not actively try to make mobile phones contact them by broadcasting a new \gls{lac}.
+They are also broadcasting the same \gls{lac} as the replaced base station, even if this means it could take a long time until the \gls{ms} announces itself.
 To handle this case the \gls{icds} can monitor the \gls{pch} of the base station in question to gather Paging Messages and \glspl{ia}.
 Since an IMSI catcher is not part of the provider's network no paging messages will be forwarded to the connected subscribers.
 These findings have been confirmed with the experiments in Chapter 4 where different attack scenarios have been tested.
-In cases where the \gls{icds} was not able to uncover the IMSI catcher by Rule evaluation the \gls{pch} scan yielded the desired result.
+In cases where the \gls{icds} was not able to uncover the IMSI catcher by rule evaluation the \gls{pch} scan yielded the desired result.
+It should be kept in mind that the evaluation has been done against a prototype IMSI catcher since data from a real IMSI catcher is not available.
+However the results provided in this thesis are based more on general procedures, the \gls{gsm} protocol itself and not tailored to the specific system.
+Therefore they should be applicable to any IMSI catcher that uses the attacks outlined here.
 
 \section{Future Work}
 There are several ways in which the \gls{icds} could be improved.
@@ -46,7 +49,7 @@ In case of the Open Source IMSI Catcher no Paging Messages were sent.
 However it would be possible for a catcher that is aware of this evaluation criterion to send fake Paging Messages to arbitrary \glspl{tmsi} to deceive the \gls{icds}.
 To face this the \gls{icds} could be extended.
 Since Paging Messages would be unreliable in such a case one would have to use \glspl{ia}.
-The experiments have shown that this might increase scanning time on the \gls{pch} since these messages are much more rare than pagings.
+The experiments have shown that this might increase scanning time on the \gls{pch} since these messages are much more rare than Paging Messages.
 An \gls{ia} sent to a subscriber contains the dedicated channel on which the conversation between the base station and the mobile phone is to continue.
 At this point the \gls{icds} already uses the information about dedicated channels to see whether frequency hopping is used or not.
 If an \gls{ia} is caught by the \gls{icds} one could follow on the assigned channel and catch the Cipher Mode Message.

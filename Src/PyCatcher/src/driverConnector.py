@@ -182,6 +182,7 @@ class PCHThread(threading.Thread):
         self._timeout = timeout
         self._thread_break = False
         self._scan_finished_callback = finished_callback
+        self._tmsi_dict = {}
 
     def terminate(self):
         self._thread_break = True
@@ -224,6 +225,13 @@ class PCHThread(threading.Thread):
                 if line:
                     if 'Paging' in line:
                         pages_found += 1
+                        match = re.search(r'M\((.*)\)',line)
+                        if match:
+                            tmsi = match.group(1)
+                            if not self._tmsi_dict.has_key(tmsi):
+                                self._tmsi_dict[tmsi] = 1
+                            else:
+                                self._tmsi_dict[tmsi] += 1
                     if 'IMM' in line:
                         if 'HOP' in line:
                             ia_hop_fund += 1
@@ -242,6 +250,10 @@ class PCHThread(threading.Thread):
 
         if scan_process:
             scan_process.kill()
+
+        print 'Different TMSI: %d'%len(self._tmsi_dict)
+        for key, value in self._tmsi_dict.iteritems():
+            print key, value
 
         result = {
             'Pagings': pages_found,
