@@ -2,47 +2,46 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Master.aux
 The style file: acm.bst
 Database file #1: ../Content/Bibliography.bib
-Warning--I didn't find a database entry for "syinfos"
 Warning--can't use both author and editor fields in GSM2009
-You've used 31 entries,
+You've used 32 entries,
             2253 wiz_defined-function locations,
-            693 strings with 8872 characters,
-and the built_in function-call counts, 7427 in all, are:
-= -- 699
-> -- 255
+            695 strings with 8933 characters,
+and the built_in function-call counts, 7643 in all, are:
+= -- 719
+> -- 262
 < -- 0
-+ -- 107
-- -- 76
-* -- 396
-:= -- 1212
-add.period$ -- 93
-call.type$ -- 31
-change.case$ -- 127
++ -- 110
+- -- 78
+* -- 406
+:= -- 1247
+add.period$ -- 96
+call.type$ -- 32
+change.case$ -- 131
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 283
-empty$ -- 746
-format.name$ -- 76
-if$ -- 1596
+cite$ -- 33
+duplicate$ -- 291
+empty$ -- 769
+format.name$ -- 78
+if$ -- 1643
 int.to.chr$ -- 0
-int.to.str$ -- 31
+int.to.str$ -- 32
 missing$ -- 11
-newline$ -- 158
-num.names$ -- 64
-pop$ -- 227
+newline$ -- 163
+num.names$ -- 66
+pop$ -- 235
 preamble$ -- 1
-purify$ -- 99
+purify$ -- 102
 quote$ -- 0
-skip$ -- 218
+skip$ -- 225
 stack$ -- 0
-substring$ -- 278
-swap$ -- 71
+substring$ -- 283
+swap$ -- 73
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 118
+type$ -- 122
 warning$ -- 1
-while$ -- 74
-width$ -- 33
-write$ -- 314
-(There were 2 warnings)
+while$ -- 76
+width$ -- 34
+write$ -- 324
+(There was 1 warning)

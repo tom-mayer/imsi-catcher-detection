@@ -58,7 +58,7 @@ class PyCatcherController:
         self.pure_neighbourhood_rule = PureNeighbourhoodRule()
         self.pure_neighbourhood_rule.is_active = True
         self.full_discovered_neighbourhoods_rule = DiscoveredNeighboursRule()
-        self.full_discovered_neighbourhoods_rule.is_active = False
+        self.full_discovered_neighbourhoods_rule.is_active = True
         self.cell_id_db_rule = CellIDDatabaseRule()
         self.cell_id_db_rule.is_active = False
         self.location_area_database_rule =  LocationAreaDatabaseRule()

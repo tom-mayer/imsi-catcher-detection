@@ -29,12 +29,12 @@
 \contentsline {paragraph}{Physical Layer (Layer 1):}{26}
 \contentsline {paragraph}{Data Link (Layer 2):}{26}
 \contentsline {paragraph}{Network (Layer 3):}{27}
-\contentsline {section}{\numberline {2.4}IMSI-Catcher}{27}
+\contentsline {section}{\numberline {2.4}IMSI Catcher}{27}
 \contentsline {subsection}{\numberline {2.4.1}Mode of Operation}{28}
 \contentsline {subsubsection}{Attacks}{30}
 \contentsline {paragraph}{MS is in normal cell selection mode:}{30}
 \contentsline {paragraph}{MS is already connected to a network:}{30}
-\contentsline {subsubsection}{Risks and Irregularities}{32}
+\contentsline {subsubsection}{Risks and Irregularities}{31}
 \contentsline {subsection}{\numberline {2.4.2}Law Situation in Germany}{32}
 \contentsline {chapter}{\numberline {3}IMSI Catcher Detection System}{35}
 \contentsline {section}{\numberline {3.1}Framework and Hardware}{35}
@@ -80,6 +80,7 @@
 \contentsline {chapter}{\numberline {5}Conclusion}{75}
 \contentsline {section}{\numberline {5.1}Summary}{75}
 \contentsline {section}{\numberline {5.2}Future Work}{77}
+\contentsline {paragraph}{}{78}
 \contentsline {chapter}{Bibliography}{79}
 \contentsline {chapter}{\numberline {A}GSM}{87}
 \contentsline {section}{\numberline {A.1}Interfaces}{87}
@@ -94,5 +95,5 @@
 \contentsline {chapter}{\numberline {D}System Information}{99}
 \contentsline {chapter}{\numberline {E}Evaluation Data}{105}
 \contentsline {section}{\numberline {E.1}Rx and LAC Change Test}{105}
-\contentsline {section}{\numberline {E.2}Database Rules Test}{105}
+\contentsline {section}{\numberline {E.2}Database Rules Test}{106}
 \contentsline {chapter}{Acronyms}{107}

@@ -3,45 +3,47 @@
 \section{Motivation}
 Boundless communication for everyone, everywhere, any time.
 That was the main idea and dream behind the development of the \gls{gsm} technology.
-Considering its reception and growth it can be said that \gls{gsm} was one of the most successful technologies of the last 30 years  \cite{GSM2009,GSM_history2011,GSM_stats2011}.
+Considering its reception and growth it can be said that \gls{gsm} was one of the most successful technologies of the last 30 years \cite{GSM2009,GSM_history2011,GSM_stats2011}.
 The advent of portable radio equipment and microprocessors in the 1980's made mobile phones technologically possible.
 
 From that point on commercialisation started with more and more providers emerging.
-With more users, security became an ever more important aspect since confidential telephone calls were now made over radio instead of fixed landlines.
-This is an inherent problem of the medium, anybody with suitable equipment can access radio waves while whit landlines physical access was required.
-In 1996 a device was released that took advantage of a security hole in the \gls{gsm} protocol which enabled it to record phone calls and track users \cite{fox}.
-This device was developed by Rhode\,\&\,Schwarz and was called IMSI catcher.
-The name refers to the IMSI number, a unique identification of the user inside the \gls{gsm} network.
-It can be obtained by the device by impersonating a base station which is the entry point of the subscriber to the network.
-By means of a classical man-in-the-middle attack the IMSI catcher lures the subscriber to connect to it and relay the information to a real base station while harvesting the needed information like calls or IMSI numbers invisibly.
-The mobile phone used by the subscriber cannot distinguish between a regular base station and an IMSI catcher and will always connect to the strongest base station available.
+With more users, security became an ever more important aspect, since confidential telephone calls were now made over radio instead of fixed landlines.
+An inherent problem of the air medium is that anybody with suitable equipment can access radio waves, while with landlines physical access is required.
+In 1996 Rhode\,\&\,Schwarz released the IMSI catcher \cite{fox}, a device that takes advantage of security flaws in the \gls{gsm} protocol which enables it to record phone calls and track users.
+The name refers to the \gls{imsi} number, a unique identification of the user inside the \gls{gsm} network.
+It can be obtained by the device by impersonating a base station which is the entry point of the subscriber into the network.
+To the mobile phone used by the subscriber there is no difference between a real base station and an IMSI catcher.
+It will always connect to the strongest base station available.
+By means of a classical man-in-the-middle attack the IMSI catcher operator lures the subscriber to connect to the device and relays the information to a legitimate base station while harvesting the desired information, like calls or \gls{imsi} numbers.
+This process is completely invisible to the user.
 
-This risk is intensified by the fact that several other projects like the Open Source IMSI-Catcher \cite{dennis} succeeded in building such an IMSI catcher at a very low cost, using hardware and software that is freely available.
-Basically it is now possible for anyone, be it a jealous spouse or a private investigator, to self-construct these devices in an cost-effective manner.
+
+Up until now countermeasures to IMSI catchers have not been given much attention to, since the commercial grade devices were only available to authorities and private abuse was thus not a important issue.
+This risk is intensified by the fact that several other projects like the Open Source IMSI-Catcher \cite{dennis} demonstrated that such an IMSI catcher can be built at very low cost, using hardware and software that is freely available.
+It is now possible for anyone to self-construct these devices in an cost-effective manner.
 With these systems it is considerably easier to eavesdrop on and thus breach the privacy of a neighbour, wife or husband.
-Corporate phone calls are also easier to target this way in the context of industrial espionage if done over a mobile phone.
+In the context of industrial espionage, corporate phone calls done over a mobile phone are also easier to target this way.
 
-Up until now countermeasures to IMSI catchers have not been given much attention to since the commercial grade devices were only available to authorities and private abuse was thus not a large issue.
-This is where this project is aimed at.
-In this project different ways will be explored on how to identify an IMSI catcher based on its differences to a regular base station.
-Additionally information of the surrounding area and tracking of different parameters over time is used to isolate suspicious base stations in the perimeter.
-We develop a toolbox that makes it possible to gather and analyse information from all available base stations in an easy manner, the \gls{icds}.
-It is also designed to operate in an end user mode where only a very simplified version of the GUI is presented and an evaluation is yielded of whether it is safe to place a phone call or not.
-The tool operates in a completely passive manner, only on information that is freely broadcasted, never connecting to base stations in question.
-This way the system itself stays invisible to the base stations and thus potential IMSI catchers while evaluating them.
+The detection of illegal private use of IMSI catchers is where this project is aimed at.
+Different ways will be explored on how to identify an IMSI catcher based on its differences to a regular base station.
+In particular, information about the surrounding area and tracking of different parameters over time is used to isolate suspicious base stations in the perimeter.
+We present a tool that makes it possible to gather and analyse information from all available base stations in an easy manner, using a sophisticated graphical interface: the \gls{icds}.
+It also allows switch to an end user mode, where only a very simplified version of the graphical interface is presented and the program evaluates whether it is safe to place a phone call or not.
+The tool operates in a passive manner, \ie it only uses information that is freely broadcasted, never connecting to base stations in question.
+This way the system itself stays invisible to base stations and thus potential IMSI catchers while evaluating them.
 
 \section{Structure}
 The remainder of this thesis is structured as follows: the second chapter will give an overview of how a \gls{gsm} network is built up to create a general understanding of the infrastructure in which an IMSI catcher and the detection system are situated.
-Protocol specifics of the interface on which the two systems operate, the interface between a mobile phone and the base station will be discussed in the second part.
-The chapter concludes with a description of how an IMSI catcher works and gives an account of what kind of attacks are possible.
+Protocol specifics of the interface on which the two systems operate, the $U_m$ or air interface will be discussed in the second part.
+The chapter concludes with a description of how an IMSI catcher works and gives an account of what kinds of attacks are possible.
 
 In the third chapter, the software framework and hardware is introduced on which the \gls{icds} is built upon.
 The different procedures used for information gathering and evaluation are also discussed in this chapter based on possible attacks an IMSI catcher can perform as well as the differences in parameters to a valid base station.
 Finally a explanation of how to set up and operate the system together with some use cases is outlined.
 
 The fourth chapter contains an evaluation of how the system performs in several categories.
-First some general performance statistics and results on the individual methods used are collected.
-Afterwards a longer test is conducted over the course of one week to see how well the databases the system uses work in a potentially changing environment.
+First, some general performance statistics and results on the individual methods used are collected.
+Afterwards, a longer test is conducted over the course of one week to see how well the databases the system uses work in a potentially changing environment.
 The chapter ends with two simulated attack scenarios.
 
 In the last chapter, a short summary of the results will be given as well as an outlook of how the system can be extended in several ways.
@@ -50,12 +52,13 @@ In the last chapter, a short summary of the results will be given as well as an 
 While conducting the practical part of this thesis precautions have been taken not to interrupt or influence radio transmissions made by regular subscribers.
 The main part of the experiments is passive information gathering which only harvests information that is freely available and thus does not influence regular communication procedures.
 
-The IMSI catcher was configured in a way to not let subscribers connect, therefore it is not interfering with regular connection procedures.
-Operation of the IMSI catcher was restricted to the ARFCN 877 which is officially registered to the university.
+Whenever the IMSI catcher was used, it was configured in a way to not let subscribers connect.
+Therefore, it is not interfering with regular connection procedures.
+Operation of the IMSI catcher and the OpenBTS base station were restricted to ARFCN 877 which is officially registered to the university.
 
 \section{On Typesetting}
-To make the thesis more readable a few conventions will be kept throughout this document.
-Important words or components of the \gls{icds} are printed \emph{emphasised}.
+To make the thesis more readable, a few conventions will be kept throughout this document.
+Important words or components of the \gls{icds} are printed \emph{emphasised} when they first appear.
 \texttt{Type\-writer} is used whenever a program or a file name are used in the running text.
 Code examples can be distinguished by a code listing box that surrounds them.\\\\
 \hspace*{\dimexpr\fboxsep+\fboxrule}% 
