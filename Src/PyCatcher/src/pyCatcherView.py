@@ -137,8 +137,6 @@ class PyCatcherGUI:
     def _update_evaluators(self):
         if self._builder.get_object('rb_conservative_evaluator').get_active():
             self._catcher_controller.set_evaluator(EvaluatorSelect.CONSERVATIVE)
-        elif self._builder.get_object('rb_weighted_evaluator').get_active():
-            self._catcher_controller.set_evaluator(EvaluatorSelect.WEIGHTED)
         elif self._builder.get_object('rb_grouped_evaluator').get_active():
             self._catcher_controller.set_evaluator(EvaluatorSelect.GROUP)
 
@@ -172,13 +170,16 @@ class PyCatcherGUI:
         print 'NODE CLICKED'
 
     def _on_user_close_clicked(self, widget):
+        self._catcher_controller.trigger_evaluation()
         self._user_window.hide()
 
     def _on_pch_close_clicked(self, widget):
+        self._catcher_controller.pch_scan_integration.is_active = self._builder.get_object('cb_integrate_pch').get_active()
         self._catcher_controller.trigger_evaluation()
         self._pch_window.hide()
 
     def _on_pch_scan_clicked(self, widget):
+        self._catcher_controller.pch_scan_integration.is_active = self._builder.get_object('cb_integrate_pch').get_active()
         arfcns = map(int, self._builder.get_object('te_pch_arfcns').get_text().strip().split(','))
         timeout = int(self._builder.get_object('te_pch_timeout').get_text())
         self._catcher_controller.normal_pch_scan(arfcns, timeout)

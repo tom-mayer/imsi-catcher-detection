@@ -18,33 +18,33 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Circuit board of the Motorola C123 with its components \cite {osmo_wiki_c123}.}}{38}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Interaction of the OsmocomBB components with the ICDS software.}}{39}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces System Information 2 Message \cite {protocols1999}.}}{41}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Procedure taken when the network has a call/text waiting for a passive subscriber.}}{43}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Procedure taken when the network has a call\tmspace +\thinmuskip {.1667em}/\tmspace +\thinmuskip {.1667em}text waiting for a passive subscriber.}}{43}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Some base stations and their neighbourhood connections at the Faculty of Engineering.}}{47}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Comparison between a normal neighbourhood subgraph and a tainted one.}}{48}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{48}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{48}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{52}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{53}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{55}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{58}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{58}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Rules window.}}}{58}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Filters window.}}}{58}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {PCH scan window.}}}{58}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces The User Mode window.}}{60}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{53}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{54}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{56}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{59}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{59}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Rules window.}}}{59}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Filters window.}}}{59}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {PCH scan window.}}}{59}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces The User Mode window.}}{61}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{64}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{67}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{68}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{68}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces ICDS decision finding process outlined.}}{74}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces ICDS decision finding process outlined.}}{76}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Serial cable schematics.}}{85}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Serial cable schematics.}}{91}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {D.1}{\ignorespaces System Information 1 Message}}{94}
-\contentsline {figure}{\numberline {D.2}{\ignorespaces System Information 2 Message}}{95}
-\contentsline {figure}{\numberline {D.3}{\ignorespaces System Information 3 Message}}{96}
-\contentsline {figure}{\numberline {D.4}{\ignorespaces System Information 4 Message}}{97}
+\contentsline {figure}{\numberline {D.1}{\ignorespaces System Information 1 Message}}{100}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces System Information 2 Message}}{101}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces System Information 3 Message}}{102}
+\contentsline {figure}{\numberline {D.4}{\ignorespaces System Information 4 Message}}{103}
 \addvspace {10\p@ }

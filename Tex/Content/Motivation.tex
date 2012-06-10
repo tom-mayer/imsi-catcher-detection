@@ -3,26 +3,30 @@
 \section{Motivation}
 Boundless communication for everyone, everywhere, any time.
 That was the main idea and dream behind the development of the \gls{gsm} technology.
-Considering its reception and growth \cite{GSM2009,GSM_history2011,GSM_stats2011} it can be said that \gls{gsm} was one of the most successful technologies of the last 30 years.
-The advent of portable radio equipment and microprocessors in the 80's made mobile phones technologically possible.
+Considering its reception and growth it can be said that \gls{gsm} was one of the most successful technologies of the last 30 years  \cite{GSM2009,GSM_history2011,GSM_stats2011}.
+The advent of portable radio equipment and microprocessors in the 1980's made mobile phones technologically possible.
 
 From that point on commercialisation started with more and more providers emerging.
 With more users, security became an ever more important aspect since confidential telephone calls were now made over radio instead of fixed landlines.
-In 1996 a device was released that took advantage of a security hole in the \gls{gsm} protocol which enabled it to record phone calls and track users.
-This device was developed by Rhode\,\&\,Schwartz and was called IMSI catcher.
+This is an inherent problem of the medium, anybody with suitable equipment can access radio waves while whit landlines physical access was required.
+In 1996 a device was released that took advantage of a security hole in the \gls{gsm} protocol which enabled it to record phone calls and track users \cite{fox}.
+This device was developed by Rhode\,\&\,Schwarz and was called IMSI catcher.
 The name refers to the IMSI number, a unique identification of the user inside the \gls{gsm} network.
 It can be obtained by the device by impersonating a base station which is the entry point of the subscriber to the network.
 By means of a classical man-in-the-middle attack the IMSI catcher lures the subscriber to connect to it and relay the information to a real base station while harvesting the needed information like calls or IMSI numbers invisibly.
+The mobile phone used by the subscriber cannot distinguish between a regular base station and an IMSI catcher and will always connect to the strongest base station available.
 
-This risk is intensified by the fact that several other projects like the Open Source IMSI catcher \cite{dennis} succeeded in building such an IMSI catcher at a very low cost, using hardware and software that is freely available.
-With this hardware it is considerably easier to eavesdrop on and thus breach the privacy of a neighbour or record corporate phone calls than it was when only landlines were available.
+This risk is intensified by the fact that several other projects like the Open Source IMSI-Catcher \cite{dennis} succeeded in building such an IMSI catcher at a very low cost, using hardware and software that is freely available.
+Basically it is now possible for anyone, be it a jealous spouse or a private investigator, to self-construct these devices in an cost-effective manner.
+With these systems it is considerably easier to eavesdrop on and thus breach the privacy of a neighbour, wife or husband.
+Corporate phone calls are also easier to target this way in the context of industrial espionage if done over a mobile phone.
 
 Up until now countermeasures to IMSI catchers have not been given much attention to since the commercial grade devices were only available to authorities and private abuse was thus not a large issue.
 This is where this project is aimed at.
 In this project different ways will be explored on how to identify an IMSI catcher based on its differences to a regular base station.
 Additionally information of the surrounding area and tracking of different parameters over time is used to isolate suspicious base stations in the perimeter.
 We develop a toolbox that makes it possible to gather and analyse information from all available base stations in an easy manner, the \gls{icds}.
-It is also designed to operate in an end user mode where only a very simplified version of the GUI is presented and an evaluation is yielded of whether it is safe to place a phone call or not at the moment.
+It is also designed to operate in an end user mode where only a very simplified version of the GUI is presented and an evaluation is yielded of whether it is safe to place a phone call or not.
 The tool operates in a completely passive manner, only on information that is freely broadcasted, never connecting to base stations in question.
 This way the system itself stays invisible to the base stations and thus potential IMSI catchers while evaluating them.
 
@@ -37,10 +41,10 @@ Finally a explanation of how to set up and operate the system together with some
 
 The fourth chapter contains an evaluation of how the system performs in several categories.
 First some general performance statistics and results on the individual methods used are collected.
-Afterwards a long-term test over the course of a week is done to examine the false positive and false negative rates of IMSI catcher detection.
+Afterwards a longer test is conducted over the course of one week to see how well the databases the system uses work in a potentially changing environment.
 The chapter ends with two simulated attack scenarios.
 
-In the last chapter, a short summary of the results will be given as well as am outlook of how the system can be extended in several ways.
+In the last chapter, a short summary of the results will be given as well as an outlook of how the system can be extended in several ways.
 
 \section{Disclaimer}
 While conducting the practical part of this thesis precautions have been taken not to interrupt or influence radio transmissions made by regular subscribers.
@@ -52,7 +56,7 @@ Operation of the IMSI catcher was restricted to the ARFCN 877 which is officiall
 \section{On Typesetting}
 To make the thesis more readable a few conventions will be kept throughout this document.
 Important words or components of the \gls{icds} are printed \emph{emphasised}.
-\texttt{Typewriter} is used whenever a program or a file name are used in the running text.
+\texttt{Type\-writer} is used whenever a program or a file name are used in the running text.
 Code examples can be distinguished by a code listing box that surrounds them.\\\\
 \hspace*{\dimexpr\fboxsep+\fboxrule}% 
 \begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 

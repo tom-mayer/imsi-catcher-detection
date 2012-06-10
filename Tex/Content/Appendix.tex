@@ -94,9 +94,10 @@ git clone git://git.osmocom.org/osmocom-bb.git
 make BOARDS=compal_e88
 	\end{verbatim}
 	\item If a new version of OsmocomBB is used, the extra code from this project must be included in the build.
-	The three files \texttt{catcher.c}, \texttt{app\_catcher.c} and \texttt{pch\_scan.c}must be moved to \texttt{osmocom-bb/src/host/layer23/src/misc} and the \texttt{Makefile.am} must be edited to include the new code.
+	The three files \texttt{catcher.c}, \texttt{app\_catcher.c} and \texttt{pch\_scan.c} must be moved to \path{osmocom-bb/src/host/layer23/src/misc} and the \texttt{Makefile.am} must be edited to include the new code.
 	\begin{verbatim}
-bin_PROGRAMS = bcch_scan ... cbch_sniff catcher pch_scan
+bin_PROGRAMS = bcch_scan ... cbch_sniff catcher \
+				pch_scan
 catcher_LDADD = $(LDADD) -lm
 catcher_SOURCES = ../common/main.c app_catcher.c \ 
 	catcher.c ../../../gsmmap/geo.c
@@ -110,8 +111,9 @@ To use a program written in the framework, the Motorola C123 needs to be flashed
 This can be done with the \texttt{osmocon} application. 
 \begin{verbatim}
 cd src/host/osmocon
+
 sudo ./osmocon -p /dev/ttyUSB0 -m c123xor
- ../../target/firmware/board/compal_e88/layer1.compalram.bin
+../../target/firmware/board/compal_e88/layer1.compalram.bin
 \end{verbatim}
 After \texttt{osmocon} is started and running any application can be started with root privileges.
 \begin{verbatim}
@@ -306,10 +308,30 @@ USR_timeout = 15
 
 #Evaluator Configuration -------------------------------
 
-Rule_Groups = []
+#This configuration separates the different groups of
+#rules from one another.
 
-Rule_Weights = {}
+Rule_Groups = [
+    ['Provider Check', 'Country Provider Mapping',
+     'ARFCN Mapping', 'LAC Mapping', 'Unique CellID'],
+    
+    ['LAC Median Deviation', 'Neighbourhood Structure', 
+    'Pure Neighbourhoods', 'Fully Discovered 
+    Neighbourhoods'],
+    
+    ['Local Area Database','CellID Database'],
+    
+    ['LAC Change Rule','rx Change Rule'],
+    
+    ['PCH Scan']
+]
 
+#-------------Continues on next page---------------------
+\end{lstlisting}
+\end{minipage}\\\\
+\hspace*{\dimexpr\fboxsep+\fboxrule}% 
+\begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
+\begin{lstlisting}
 #Database Configuration --------------------------------
 
 #The API key for OpenCellID.
@@ -317,8 +339,8 @@ Rule_Weights = {}
 Open_Cell_ID_Key = 'd7a5bc3f21b44d4bf93d1ec2b3f83dc4'
 
 #Path to the folder where databases should be saved to or
-#loaded from. The ICDS will look in this folder if databa-
-#ses are available.
+#loaded from. The ICDS will look in this folder if data-
+#bases are available.
 Database_path = '''/home/tom/imsi-catcher-detection/Src
 /PyCatcher/Databases/'''
 \end{lstlisting}
@@ -326,7 +348,7 @@ Database_path = '''/home/tom/imsi-catcher-detection/Src
 
 \chapter{System Information}
 \label{sec:system_infos}
-The following pages contain parsed System Information Messages of type 1--4  for reference.
+The following pages contain parsed System Information Messages of type 1--4  for reference \cite{protocols1999}.
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{../Images/sysinfo1}
@@ -350,25 +372,50 @@ The following pages contain parsed System Information Messages of type 1--4  for
 \chapter{Evaluation Data}
 \section{Rx and LAC Change Test}
 \label{sec:lac_change_test}
-The following table contains the four configuration that have been used to replace real base stations with the IMSI catcher.
+The following table contains the two configurations that have been used to test the LAC Change and rx Change Rules.
+Config 6 is identical to the configuration used on the base station and thus only triggers the rx Change Rule.
+Config 5 has a different LAC than the original base station and thus was used to test the former one.
+Additionally the rx Change Rule is also triggered for this configuration.
 \begin{table}[h!]
 \centering
-\begin{tabular}{lllll}
+\begin{tabular}{lll}
 \toprule
-			&T-Mobile		&O2				&E-Plus			&Vodafone\\
+			&Config 5		&Config 6\\
 \midrule
-ARFCN		&877			&877			&877			&877	\\
-ShortName	&T-Mobile		&Vodafone		&E-Plus			&O2		\\
-MCC			&262			&262			&262			&262	\\
-MNC			&01				&02				&03				&07		\\
-LAC			&666			&4711			&666			&4711	\\
-Cell ID		&1				&1				&1				&1		\\
-Neighbours	&---				&---				&---				&---		\\
+ARFCN		&877			&877\\
+ShortName	&23				&23\\
+MCC			&262			&262\\
+MNC			&23				&23\\
+LAC			&666			&4711\\
+Cell ID		&1800			&1800\\
+Neighbours	&806, 815, 817,	&806, 815, 817, \\
+			& 818, 823, 880	&818, 823, 880		\\
 \bottomrule
 \end{tabular}
 \caption{Configurations used for the rx\,/\,LAC Change Rules test.}
 \end{table}
-\section{Long Term Test}
+
+\section{Database Rules Test}
 \label{sec:long_term_test}
-The folliwing tables contain the configurations that have been used throughout the long term test period.
-The configurations have been used in the order they appear in the tables.
+The following table contains the two configurations used to test the Database Rules.
+Config 6 is the same as before.
+It is used to check whether the Local Area Database Rule can find the difference in reception for the replaced base station.
+Config 7 features a new CID and is thus used to check if the Cell ID Database Rule is operating correctly.
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+\toprule
+			&Config 6		&Config 7\\
+\midrule
+ARFCN		&877			&877\\
+ShortName	&23				&23\\
+MCC			&262			&262\\
+MNC			&23				&23\\
+LAC			&4711			&4711\\
+Cell ID		&1800			&666\\
+Neighbours	&806, 815, 817,	&806, 815, 817, \\
+			& 818, 823, 880	&818, 823, 880		\\
+\bottomrule
+\end{tabular}
+\caption{Configurations used for the Database Rules test.}
+\end{table}

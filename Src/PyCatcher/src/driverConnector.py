@@ -217,6 +217,7 @@ class PCHThread(threading.Thread):
             while(pch_retries > 0 and scan_time.seconds < max_scan_time and not self._thread_break):
                 scan_time = datetime.datetime.now() - start_time
                 poll_result = poll_obj.poll(0)
+                pch_failed = False
                 if poll_result:
                     line = scan_process.stdout.readline()
                 else:
@@ -240,6 +241,8 @@ class PCHThread(threading.Thread):
                     if 'FBSB RESP: result=255' in line:
                         if(pch_retries > 0):
                             retry = True
+                        else:
+                            pch_failed = True
                         break
 
             if(retry):
@@ -251,9 +254,6 @@ class PCHThread(threading.Thread):
         if scan_process:
             scan_process.kill()
 
-        print 'Different TMSI: %d'%len(self._tmsi_dict)
-        for key, value in self._tmsi_dict.iteritems():
-            print key, value
 
         result = {
             'Pagings': pages_found,
@@ -262,7 +262,7 @@ class PCHThread(threading.Thread):
         }
 
         if not self._thread_break:
-            self._scan_finished_callback((arfcn, result))
+            self._scan_finished_callback((arfcn, result), pch_failed)
 
 class BufferFillerThread(threading.Thread):
     def __init__(self, buffer, process):

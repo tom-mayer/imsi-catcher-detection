@@ -1,5 +1,5 @@
 from settings import Provider_list, Provider_Country_list, LAC_mapping, ARFCN_mapping, LAC_threshold, DB_RX_threshold, \
-    CH_RX_threshold
+    CH_RX_threshold, Pagings_per_10s_threshold, Assignment_limit, Neighbours_threshold
 from cellIDDatabase import CellIDDBStatus
 import math
 
@@ -133,6 +133,7 @@ class NeighbourhoodStructureRule (Rule):
     identifier = 'Neighbourhood Structure'
 
     def check(self, arfcn, base_station_list):
+        own_provider = self._extract_provider(arfcn, base_station_list)
         own_neighbours = self._extract_neighbours(arfcn, base_station_list)
         if not len(own_neighbours):
             return RuleResult.CRITICAL
@@ -149,13 +150,24 @@ class NeighbourhoodStructureRule (Rule):
                         if foreign_neighbour_arfcn in own_neighbours:
                             at_least_one_indirect_neighbour = True
 
-        if at_least_one_neighbour_found:
-            return RuleResult.OK
-        elif at_least_one_indirect_neighbour:
-            return RuleResult.WARNING
-        else:
-            return RuleResult.CRITICAL
+        incoming_edges = False
+        all_neighbours = []
+        for station in base_station_list:
+            if station.provider == own_provider:
+                for neighbour in station.neighbours:
+                    all_neighbours.append(neighbour)
+        for neighbour_arfcn in all_neighbours:
+            if neighbour_arfcn == arfcn:
+                incoming_edges = True
+                break
 
+        if at_least_one_neighbour_found and incoming_edges:
+            return RuleResult.OK
+
+        if at_least_one_neighbour_found or at_least_one_indirect_neighbour:
+            return RuleResult.WARNING
+
+        return RuleResult.CRITICAL
 
 class PureNeighbourhoodRule (Rule):
     identifier = 'Pure Neighbourhoods'
@@ -176,8 +188,8 @@ class PureNeighbourhoodRule (Rule):
             return RuleResult.CRITICAL
 
 
-class FullyDiscoveredNeighbourhoodsRule (Rule):
-    identifier = 'Fully Discovered Neighbourhoods'
+class DiscoveredNeighboursRule (Rule):
+    identifier = 'Discovered Neighbours'
 
     def check(self, arfcn, base_station_list):
 
@@ -187,13 +199,22 @@ class FullyDiscoveredNeighbourhoodsRule (Rule):
             if item.arfcn in neighbours:
                 found += 1
 
-        if len(neighbours) != found:
-            return RuleResult.CRITICAL
+        if Neighbours_threshold < 0:
+            return RuleResult.IGNORE
+
+        if 0 <= Neighbours_threshold <=1:
+            if (float(found) / float(neighbours)) >= Neighbours_threshold:
+                return RuleResult.OK
+            else:
+                return RuleResult.CRITICAL
         else:
-            return RuleResult.OK
+            if found >= int(Neighbours_threshold):
+                return RuleResult.OK
+            else:
+                return RuleResult.CRITICAL
 
 class LocationAreaDatabaseRule(Rule):
-    identifier = 'Location Area Database'
+    identifier = 'Local Area Database'
     def __init__(self):
         self.location_database_object = None
 
@@ -205,10 +226,11 @@ class LocationAreaDatabaseRule(Rule):
                 result = self.location_database_object.get_station(item.cell)
                 if not result:
                     return RuleResult.CRITICAL
-                rxmin = result[6]
-                rxmax = result[7]
+                rxmin = result.rxmin
+                rxmax = result.rxmax
                 rxmin_thresh = rxmin - math.fabs(rxmin * DB_RX_threshold)
                 rxmax_thresh = rxmax + math.fabs(rxmax * DB_RX_threshold)
+
                 if rxmin_thresh <= float(item.rxlev) <= rxmax_thresh:
                     return RuleResult.OK
                 else:
@@ -289,3 +311,25 @@ class RxChangeRule (Rule):
                 else:
                     self._old_rx[arfcn] = item.rxlev, item.times_scanned, RuleResult.IGNORE
                     return RuleResult.IGNORE
+
+class PCHRule (Rule):
+    identifier = 'PCH Scan'
+
+    def check(self, arfcn, base_station_list):
+        for item in base_station_list:
+            if arfcn == item.arfcn:
+                if not item.pch_scan_done:
+                    return RuleResult.IGNORE
+                else:
+                    if item.imm_ass_non_hop > 0:
+                        return RuleResult.CRITICAL
+                    if item.pagings >= Pagings_per_10s_threshold and item.imm_ass_hop >= Assignment_limit:
+                        return RuleResult.OK
+                    else:
+                        return RuleResult.CRITICAL
+
+
+
+
+
+

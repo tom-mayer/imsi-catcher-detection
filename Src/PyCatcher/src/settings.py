@@ -49,7 +49,7 @@ ARFCN_mapping = {
 
 LAC_threshold = 0.05
 
-DB_RX_threshold = 0.05
+DB_RX_threshold = 0.1
 
 CH_RX_threshold = 0.07
 
@@ -57,11 +57,17 @@ Pagings_per_10s_threshold = 20
 
 Assignment_limit = 0
 
+Neighbours_threshold = 4
+
 #Evaluator Configuration ---------------------------------------------------------------------------------------
 
-Rule_Groups = []
-
-Rule_Weights = {}
+Rule_Groups = [
+    ['Provider Check', 'Country Provider Mapping', 'ARFCN Mapping', 'LAC Mapping', 'Unique CellID'],
+    ['LAC Median Deviation', 'Neighbourhood Structure', 'Pure Neighbourhoods', 'Fully Discovered Neighbourhoods'],
+    ['Local Area Database','CellID Database'],
+    ['LAC Change Rule','rx Change Rule'],
+    ['PCH Scan']
+]
 
 #PCH Parameters ------------------------------------------------------------------------------------------------
 

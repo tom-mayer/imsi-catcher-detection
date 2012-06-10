@@ -33,14 +33,22 @@ class BaseStationInformation:
         self.longitude = 0
         self.db_status = CellIDDBStatus.NOT_LOOKED_UP
         self.db_provider = CIDDatabases.NONE
-        self.imm_ass = 0
+
+        self.imm_ass_hop = 0
+        self.imm_ass_non_hop = 0
         self.pagings = 0
+        self.pch_scan_done = False
 
                
     def get_list_model(self):
         return self.provider, str(self.arfcn), str(self.rxlev), str(self.cell),self.evaluation, self.discovery_time,self.times_scanned
 
     def create_report(self):
+
+        pch_scan_string = 'No'
+        if self.pch_scan_done:
+            pch_scan_string = 'Yes'
+
         report_params = '''------- Base Station Parameters -----------
 Country: %s
 Provider: %s
@@ -50,12 +58,16 @@ BSIC: %s
 LAC: %s
 Cell ID: %s
 Neighbours: %s
+PCH Scan done: %s
+IAs (hopping): %d
+IAs (non hopping): %d
+Pagings (hopping/10s): %d
 Latitude: %s
 Longitude: %s
 Database Status: %s
 Database Provider: %s
 Evaluation: %s\n
-'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.neighbours)),self.latitude,self.longitude,self.db_status, self.db_provider,self.evaluation)
+'''%(self.country,self.provider, self.arfcn, self.rxlev, self.bsic, self.lac,  self.cell, ', '.join(map(str,self.neighbours)),pch_scan_string,self.imm_ass_hop,self.imm_ass_non_hop,self.pagings,self.latitude,self.longitude,self.db_status, self.db_provider,self.evaluation)
 
         report_rules ='------- Rule Results -----------\n'
         for key in self.rules_report.keys():

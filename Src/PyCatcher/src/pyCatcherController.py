@@ -5,9 +5,9 @@ from driverConnector import DriverConnector
 from pyCatcherModel import BaseStationInformation, BaseStationInformationList
 from pyCatcherView import PyCatcherGUI
 from filters import ARFCNFilter,ProviderFilter
-from evaluators import EvaluatorSelect, ConservativeEvaluator, WeightedEvaluator, GroupEvaluator
+from evaluators import EvaluatorSelect, ConservativeEvaluator,GroupEvaluator
 from rules import ProviderRule, ARFCNMappingRule, CountryMappingRule, LACMappingRule, UniqueCellIDRule, \
-    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, FullyDiscoveredNeighbourhoodsRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule, RxChangeRule, LACChangeRule
+    LACMedianRule, NeighbourhoodStructureRule, PureNeighbourhoodRule, DiscoveredNeighboursRule, RuleResult, CellIDDatabaseRule, LocationAreaDatabaseRule, RxChangeRule, LACChangeRule,PCHRule
 import pickle
 from localAreaDatabse import LocalAreaDatabase
 from cellIDDatabase import CellIDDatabase, CellIDDBStatus, CIDDatabases
@@ -33,7 +33,6 @@ class PyCatcherController:
 
         self._conservative_evaluator = ConservativeEvaluator()
         self._group_evaluator = GroupEvaluator()
-        self._weighted_evaluator = WeightedEvaluator()
         self._active_evaluator = self._conservative_evaluator
 
         self._pch_scan_running = False
@@ -58,7 +57,7 @@ class PyCatcherController:
         self.neighbourhood_structure_rule.is_active = True
         self.pure_neighbourhood_rule = PureNeighbourhoodRule()
         self.pure_neighbourhood_rule.is_active = True
-        self.full_discovered_neighbourhoods_rule = FullyDiscoveredNeighbourhoodsRule()
+        self.full_discovered_neighbourhoods_rule = DiscoveredNeighboursRule()
         self.full_discovered_neighbourhoods_rule.is_active = False
         self.cell_id_db_rule = CellIDDatabaseRule()
         self.cell_id_db_rule.is_active = False
@@ -69,15 +68,20 @@ class PyCatcherController:
         self.lac_change_rule.is_active = True
         self.rx_change_rule = RxChangeRule()
         self.rx_change_rule.is_active = True
+        self.pch_scan_integration = PCHRule()
+        self.pch_scan_integration.is_active = True
 
         self._rules = [self.provider_rule, self.country_mapping_rule, self.arfcn_mapping_rule, self.lac_mapping_rule,
                         self.unique_cell_id_rule, self.lac_median_rule, self.neighbourhood_structure_rule,
                         self.pure_neighbourhood_rule, self.full_discovered_neighbourhoods_rule, self.cell_id_db_rule,
-                        self.location_area_database_rule, self.lac_change_rule, self.rx_change_rule]
+                        self.location_area_database_rule, self.lac_change_rule, self.rx_change_rule, self.pch_scan_integration]
 
         self.use_google = False
         self.use_open_cell_id = False
         self.use_local_db = (False, '')
+
+        self.pch_active = False
+        self.sweep_active = False
 
         self._location = ''
 
@@ -87,11 +91,18 @@ class PyCatcherController:
         self._gui.log_line(message)            
     
     def start_scan(self):
+        if self.pch_active:
+            self._gui.log_line('Cannot sweep while PCH is active')
+            return
         self._gui.log_line("start scan")
+        self.sweep_active = True
         self._driver_connector.start_scanning(self._found_base_station_callback)
         
     def stop_scan(self):
+        if not self.sweep_active:
+            return
         self._gui.log_line("stop scan")
+        self.sweep_active = False
         self._driver_connector.stop_scanning()
         
     def start_firmware(self):
@@ -126,11 +137,14 @@ class PyCatcherController:
             self._active_evaluator = self._conservative_evaluator
         elif evaluator == EvaluatorSelect.GROUP:
             self._active_evaluator = self._group_evaluator
-        elif evaluator == EvaluatorSelect.WEIGHTED:
-            self._active_evaluator = self._weighted_evaluator
         self.trigger_evaluation()
 
     def user_pch_scan(self, provider):
+        if self.sweep_active:
+            self._gui.log_line('Cannot PCH scan during active sweep scan.')
+            return
+        else:
+            self.pch_active = True
         if not provider:
             self._gui.set_user_image()
             return
@@ -156,6 +170,11 @@ class PyCatcherController:
 
 
     def normal_pch_scan(self, arfcns, timeout):
+        if self.sweep_active:
+            self._gui.log_line('Cannot PCH scan during active sweep scan.')
+            return
+        else:
+            self.pch_active = True
         self._accumulated_pch_results = []
         self._user_mode_flag = False
         self._scan_pch(arfcns, timeout)
@@ -176,8 +195,27 @@ class PyCatcherController:
             self._pch_scan_running = True
             self._driver_connector.start_pch_scan(arfcn, self._pch_timeout, self._pch_done_callback)
 
-    def _pch_done_callback(self, results):
+    def _pch_done_callback(self, results, pch_failed):
         arfcn, values = results
+
+        if pch_failed:
+            self._gui.log_line('PCH scan failed (%d)'%arfcn)
+            if not self._user_mode_flag :
+                if self._remaining_pch_arfcns:
+                    self._do_next_pch_scan()
+                else:
+                    self._gui.set_pch_results(self._accumulated_pch_results)
+            else:
+                self._gui.set_user_image(RuleResult.IGNORE)
+            self.pch_active = False
+            return
+
+        for station in self._base_station_list._get_unfiltered_list():
+            if station.arfcn == arfcn and self.pch_scan_integration.is_active:
+                station.imm_ass_non_hop = values['Assignments_non_hopping']
+                station.imm_ass_hop = values['Assignments_hopping']
+                station. pagings = values['Pagings']
+                station.pch_scan_done = True
         self._accumulated_pch_results.append(results)
         self._gui.log_line('Finished PCH scan on ARFCN %d'%arfcn)
         self._pch_scan_running = False
@@ -197,6 +235,7 @@ class PyCatcherController:
             else:
                 self._gui.log_line('Paging/Assignment threshold not met')
                 self._gui.set_user_image(RuleResult.CRITICAL)
+        self.pch_active = False
 
     def _return_normalised_pagings(self, pagings):
         return (float(pagings) / float(USR_timeout))*10
@@ -251,6 +290,7 @@ class PyCatcherController:
             self._location = new_location
             self._local_area_database.load_or_create_database(self._location)
             self._gui.log_line('Location changed to %s'%self._location)
+        self._local_area_database.refresh_object_cache()
 
     def save_project(self, path):
         filehandler = open(path, 'w')
@@ -261,6 +301,13 @@ class PyCatcherController:
     def load_project(self, path):
         filehandler = open(path, 'r')
         base_station_list = pickle.load(filehandler)
+        #bit of a hack to be able to use old scans
+        for station in base_station_list._get_unfiltered_list():
+            if not hasattr(station, 'pagings'):
+                station.imm_ass_hop = 0
+                station.imm_ass_non_hop = 0
+                station.pagings = 0
+                station.pch_scan_done = False
         self._base_station_list = base_station_list
         self.trigger_evaluation()
         filehandler.close()
@@ -297,9 +344,9 @@ class PyCatcherController:
             return
         path = Database_path + self._location + '.csv'
         file = open(path,'w')
-        file.write('Country, Provider, ARFCN, rxlev, BSIC, LAC, Cell ID, Evaluation, Latitude, Longitude, Encryption, DB Status, DB Provider, Neighbours\n')
+        file.write('Country, Provider, ARFCN, rxlev, BSIC, LAC, Cell ID, Evaluation, Latitude, Longitude, DB Status, DB Provider, Neighbours\n')
         for item in self._base_station_list._get_unfiltered_list():
-            file.write('%s, %s, %d, %d, %s, %d, %d, %s, %d, %d, %s, %s, %s, %s\n'%
+            file.write('%s, %s, %d, %d, %s, %d, %d, %s, %d, %d, %s, %s, %s\n'%
             (item.country,
             item.provider,
             item.arfcn,
@@ -310,7 +357,6 @@ class PyCatcherController:
             item.evaluation,
             item.latitude,
             item.longitude,
-            item.encryption,
             item.db_status,
             item.db_provider,
             ' '.join(map(str,item.neighbours))))

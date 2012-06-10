@@ -2,56 +2,47 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Master.aux
 The style file: acm.bst
 Database file #1: ../Content/Bibliography.bib
-Warning--to sort, need author or key in GSM0207
-Warning--to sort, need author or key in ISO7810
-Warning--to sort, need author or key in GSM23003
-Warning--to sort, need author or key in gsm0502
-Warning--to sort, need author or key in GSM0405
-Warning--to sort, need author or key in GSM0406
-Warning--to sort, need author or key in GSM0505
-Warning--to sort, need author or key in GSM23078
+Warning--I didn't find a database entry for "syinfos"
 Warning--can't use both author and editor fields in GSM2009
-Warning--empty journal in mueller
-Warning--empty journal in dennis
-You've used 33 entries,
+You've used 31 entries,
             2253 wiz_defined-function locations,
-            692 strings with 7884 characters,
-and the built_in function-call counts, 6854 in all, are:
-= -- 655
-> -- 184
+            693 strings with 8872 characters,
+and the built_in function-call counts, 7427 in all, are:
+= -- 699
+> -- 255
 < -- 0
-+ -- 86
-- -- 52
-* -- 344
-:= -- 1043
-add.period$ -- 86
-call.type$ -- 33
-change.case$ -- 126
++ -- 107
+- -- 76
+* -- 396
+:= -- 1212
+add.period$ -- 93
+call.type$ -- 31
+change.case$ -- 127
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 273
-empty$ -- 745
-format.name$ -- 52
-if$ -- 1518
+cite$ -- 32
+duplicate$ -- 283
+empty$ -- 746
+format.name$ -- 76
+if$ -- 1596
 int.to.chr$ -- 0
-int.to.str$ -- 33
-missing$ -- 14
-newline$ -- 155
-num.names$ -- 42
-pop$ -- 223
+int.to.str$ -- 31
+missing$ -- 11
+newline$ -- 158
+num.names$ -- 64
+pop$ -- 227
 preamble$ -- 1
-purify$ -- 96
+purify$ -- 99
 quote$ -- 0
-skip$ -- 215
+skip$ -- 218
 stack$ -- 0
-substring$ -- 257
-swap$ -- 53
+substring$ -- 278
+swap$ -- 71
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 126
-warning$ -- 11
-while$ -- 50
-width$ -- 35
-write$ -- 302
-(There were 11 warnings)
+type$ -- 118
+warning$ -- 1
+while$ -- 74
+width$ -- 33
+write$ -- 314
+(There were 2 warnings)

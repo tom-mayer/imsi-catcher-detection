@@ -1,131 +1,138 @@
 \begin{thebibliography}{10}
 
+\bibitem{GSM23003}
+{\sc {3GPP Technical Specification Group Core Network and Terminals}}.
+\newblock {Numbering, addressing and identification}.
+\newblock \emph{TS 23.003}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/archive/23_series/23.003/23003-a30.zip},
+  September 2011.
+
 \bibitem{GSM0405}
-Data link (dl) layer; general aspects.
-\newblock GSM 04.05,
-  \url{http://www.3gpp.org/ftp/Specs/archive/04_series/04.05/0405-802.zip},
-  1999.
-
-\bibitem{GSM0406}
-Mobile station - base station system (ms - bss) interface; data link (dl) layer
-  specification.
-\newblock GSM 04.06,
-  \url{http://www.3gpp.org/ftp/Specs/archive/04_series/04.06/0406-840.zip},
-  1999.
-
-\bibitem{GSM0505}
-Radio access network: Radio transmission and reception.
-\newblock GSM 05.05,
-  \url{http://www.3gpp.org/ftp/Specs/archive/05_series/05.05/0505-8k0.zip},
-  1999.
-
-\bibitem{GSM0207}
-Digital cellular telecommunications system (phase 2+): Mobile stations (ms)
-  features.
-\newblock GSM 02.07,
-  \url{http://www.3gpp.org/ftp/Specs/archive/02_series/02.07/0207-710.zip},
-  2000.
-
-\bibitem{ISO7810}
-Identification cards -- physical characteristics.
-\newblock ISO/IEC 7810:2003,
-  \url{http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?%
-csnumber=31432}, 2003.
+{\sc {3GPP Technical Specification Group GSM/EDGE Radio Access Network}}.
+\newblock {Data link (DL) Layer: General aspects}.
+\newblock \emph{TS 04.05}, \emph{DOC file}
+  \url{http://www.3gpp.org/ftp/Specs/archive/04_series/04.05/0405-802.zip}, May
+  2002.
 
 \bibitem{gsm0502}
-Multiplexing and multiple access on the radio path.
-\newblock GSM 05.02,
+{\sc {3GPP Technical Specification Group GSM/EDGE Radio Access Network}}.
+\newblock {Multiplexing and Multiple Access on the Radio Path}.
+\newblock \emph{TS 05.02}, \emph{DOC file}
   \url{http://www.3gpp.org/ftp/Specs/archive/05_series/05.02/0502-8b0.zip},
-  2003.
+  June 2003.
 
-\bibitem{GSM23078}
-Customised applications for mobile network enhanced logic.
-\newblock GSM 23.078,
-  \url{http://www.3gpp.org/ftp/Specs/archive/23_series/23.078/23078-b00.zip},
-  2011.
+\bibitem{GSM0505}
+{\sc {3GPP Technical Specification Group GSM/EDGE Radio Access Network}}.
+\newblock {Radio Access Network: Radio transmission and reception}.
+\newblock \emph{TS 05.05}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/archive/05_series/05.05/0505-8k0.zip},
+  November 2005.
 
-\bibitem{GSM23003}
-Numbering, addressing and identification.
-\newblock GSM 23.003,
-  \url{http://www.3gpp.org/ftp/Specs/archive/23_series/23.003/23003-a30.zip},
-  2011.
+\bibitem{GSM0406}
+{\sc {3GPP Technical Specification Group GSM/EDGE Radio Access Network}}.
+\newblock {Mobile Station - Base Station System (MS - BSS) interface: Data Link
+  (DL) layer specification}.
+\newblock \emph{TS 04.06}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/archive/04_series/04.06/0406-840.zip},
+  December 2008.
+
+\bibitem{sysinfos}
+{\sc {3GPP Technical Specification Group GSM/EDGE Radio Access Network}}.
+\newblock {Mobile radio interface layer 3 specification: Radio Resource Control
+  (RRC) protocol}.
+\newblock \emph{TS 44.018}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/html-info/25321.htm}, March 2012.
+
+\bibitem{hsupa}
+{\sc {3GPP Technical Specification Group Radio Access Network}}.
+\newblock {Medium Access Control (MAC) protocol specification}.
+\newblock \emph{TS 25.321}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/html-info/25321.htm}, December 2011.
+
+\bibitem{hsdpa}
+{\sc {3GPP Technical Specification Group Radio Access Network}}.
+\newblock {UE Radio Access capabilities}.
+\newblock \emph{TS 25.306}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/html-info/25306.htm}, March 2012.
 
 \bibitem{3gpp_Proposal2000}
 {\sc Chaudhury, P., Mohr, W., and Onoe, S.}
-\newblock The 3gpp proposal for imt-2000.
+\newblock {The 3GPP proposal for IMT-2000}.
 \newblock {\em Communications Magazine, IEEE 37}, 12 (1999), 72--81.
 
 \bibitem{GSM2009}
 {\sc Ebersp\"{a}cher, J., V\"{o}gel, H.-J., Bettstetter, C., and Hartmann, C.}
-\newblock {\em GSM -- Architecture, Protocols and Services}.
+\newblock {\em {GSM -- Architecture, Protocols and Services}}.
 \newblock Wiley, 2009.
+
+\bibitem{GSM0207}
+{\sc ETSI}.
+\newblock {Digital cellular telecommunications system (Phase 2+): Mobile
+  Stations (MS) features}.
+\newblock \emph{TS 02.07}, \emph{DOC file},
+  \url{http://www.3gpp.org/ftp/Specs/archive/02_series/02.07/0207-710.zip},
+  March 2000.
 
 \bibitem{mueller}
 {\sc Federrath, H.}
-\newblock Protection in mobile communications.
+\newblock {Protection in mobile communications}.
+\newblock In {\em {Multilateral Security in Communications – Technology,
+  Infrastructure, Economy}\/} (1999), G.~M\"uller and K.~Rannenberg, Eds.,
+  Addison-Wesley-Longman, pp.~349--364.
 
 \bibitem{fox}
 {\sc Fox, D.}
-\newblock Der imsi-catcher.
+\newblock {Der IMSI-catcher}.
 \newblock {\em Datenschutz und Datensicherheit 26}, 4 (2002), 212--215.
 
 \bibitem{GSM_stats2011}
-Gsm/3g stats.
-\newblock \url{http://www.gsacom.com/news/statistics.php4}, 2011.
-\newblock [Accessed: 28/11/2011].
+{\sc {Global mobile Suppliers Association}}.
+\newblock {GSM/3g Stats}.
+\newblock \emph{WWW document},
+  \url{http://www.gsacom.com/news/statistics.php4}, [Online; Accessed 06.2012].
 
 \bibitem{GSM_history2011}
-Brief history of gsm and the gsma.
-\newblock \url{http://www.gsm.org/about-us/history.htm}, 2011.
-\newblock [Accessed: 28/11/2011].
-
-\bibitem{osmo_slides}
-{\sc Harald~Welte, S.~M.}
-\newblock Osmocombb - running your own gsm stack on a phone.
-\newblock
-  \url{http://events.ccc.de/congress/2010/Fahrplan/attachments/1771_osmocombb-%
-27c3.pdf}, 2010.
+{\sc {GSM Association}}.
+\newblock {Brief History of GSM and the GSMA}.
+\newblock \emph{WWW document}, \url{http://www.gsma.com/aboutus/history/},
+  [Online; Accessed 06.2012].
 
 \bibitem{overview1994}
 {\sc Haug, T.}
-\newblock Overview of gsm: philosophy and results.
+\newblock \emph{Overview of GSM: philosophy and results}.
 \newblock {\em International Journal of Wireless Information Networks 1}, 1
   (1994), 7--16.
 
 \bibitem{protocols1999}
 {\sc Heine, G.}
-\newblock {\em GSM networks: protocols, terminology, and implementation}.
+\newblock {\em {GSM networks: Protocols, Terminology, and Implementation}}.
 \newblock Artech House, 1999.
-
-\bibitem{hsdpa}
-{UE} radio access capabilities.
-\newblock 3GPP TS 25.306,
-  \url{http://www.3gpp.org/ftp/Specs/html-info/25306.htm}, 2011.
-
-\bibitem{hsupa}
-Medium access control (mac) protocol specification.
-\newblock 3GPP TS 25.321,
-  \url{http://www.3gpp.org/ftp/Specs/html-info/25321.htm}, 2011.
 
 \bibitem{catcher_catcher}
 {\sc OsmocomBB}.
-\newblock Catcher catcher.
-\newblock \url{http://opensource.srlabs.de/projects/catcher/wiki}, 2011.
-
-\bibitem{osmo_c123}
-{\sc OsmocomBB}.
-\newblock Motorola c123.
-\newblock \url{http://en.wikipedia.org/wiki/Cell_ID}, 2012.
+\newblock {Catcher Catcher}.
+\newblock \emph{Project Wiki},
+  \url{http://opensource.srlabs.de/projects/catcher/wiki}, [Online; Accessed
+  01.2012].
 
 \bibitem{osmo_wiki_c123}
 {\sc OsmocomBB}.
-\newblock Project rationale.
-\newblock \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, 2012.
+\newblock {Motorola C123}.
+\newblock \emph{Project Wiki},
+  \url{http://bb.osmocom.org/trac/wiki/MotorolaC123}, [Online; Accessed
+  06.2012].
 
 \bibitem{osmo_rationale}
 {\sc OsmocomBB}.
-\newblock Project rationale.
-\newblock \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, 2012.
+\newblock {Project Rationale}.
+\newblock \emph{Project Wiki},
+  \url{http://bb.osmocom.org/trac/wiki/ProjectRationale}, [Online; Accessed
+  06.2012].
+
+\bibitem{def_catcher}
+{\sc Ries, U.}
+\newblock {IMSI-Catcher für 1500 Euro im Eigenbau}.
+\newblock \emph{WWW document}, \url{http://heise.de/-1048919}, August 2010.
 
 \bibitem{criminal_justice}
 {\sc Safferling, C.}
@@ -135,49 +142,59 @@ Medium access control (mac) protocol specification.
 
 \bibitem{kommsys2006}
 {\sc Sauter, M.}
-\newblock {\em Grundkurs mobile Kommunikationssysteme : von UMTS, GSM und GRPS
-  zu Wireless LAN und Bluetooth Piconetzen}.
+\newblock {\em {Grundkurs mobile Kommunikationssysteme : von UMTS, GSM und GRPS
+  zu Wireless LAN und Bluetooth Piconetzen}}.
 \newblock Vieweg, 2006.
 
 \bibitem{overview1996}
 {\sc Scourias, J.}
-\newblock Overview of gsm: The global system for mobile communications.
-\newblock {\em University of Waterloo\/} (1996).
-
-\bibitem{def_catcher}
-{\sc Security, H.}
-\newblock Imsi-catcher für 1500 euro im eigenbau.
-\newblock
-  \url{http://www.heise.de/security/meldung/IMSI-Catcher-fuer-1500-Euro-im-Eig%
-enbau-1048919.html}, 2010.
+\newblock {Overview of GSM: The global system for mobile communications}.
+\newblock \emph{University of Waterloo}, \emph{PDF file},
+  \url{http://ccnga.uwaterloo.ca/publications/pdfs/TR-96-01.pdf}, 1996.
 
 \bibitem{ITU1200}
 {\sc {Telecomunication standardization sector of ITU}}.
-\newblock Intelligent network.
-\newblock {\em SERIES Q: Switching and Signaling Q1200}, 7 (1997).
+\newblock {General series Intelligent Network Recommendation structure}.
+\newblock \emph{Recommendation Q1200}, \emph{DOC file},
+  \url{http://www.itu.int/rec/T-REC-Q.1200-199709-I/en}, September 1997.
 
 \bibitem{ITU212}
 {\sc {Telecomunication standardization sector of ITU}}.
-\newblock List of mobile country or geographical area codes, 2010.
+\newblock {List of Mobile Country or Geographical Area Codes}.
+\newblock \emph{Complements to Recommendation E.212}, \emph{PDF file},
+  \url{http://www.itu.int/itudoc/itu-t/ob-lists/icc/e212_685.html}, January
+  2004.
 
 \bibitem{dennis}
 {\sc Wehrle, D.}
-\newblock Open source imsi catcher.
+\newblock {Open Source IMSI-Catcher}.
+\newblock \emph{Master Thesis at the Chair of Communication Systems at Freiburg
+  University}, October 2009.
+
+\bibitem{osmo_slides}
+{\sc Welte, H., and Markgraf, S.}
+\newblock {OsmocomBB - Running your own GSM stack on a phone}.
+\newblock \emph{PDF file},
+  \url{http://events.ccc.de/congress/2010/Fahrplan/attachments/1771_osmocombb-%
+27c3.pdf}, July 2010.
 
 \bibitem{wiki_cells}
 {\sc Wikipedia}.
-\newblock Cell id.
-\newblock \url{http://bb.osmocom.org/trac/wiki/MotorolaC123}, 2012.
+\newblock {Cell ID}.
+\newblock \emph{WWW document}, \url{http://en.wikipedia.org/wiki/Cell_ID},
+  [Online; Accessed 02.2012].
 
 \bibitem{imsi_wiki}
 {\sc Wikipedia}.
-\newblock Equipment identity register.
-\newblock \url{http://de.wikipedia.org/wiki/IMSI-Catcher}, 2012.
+\newblock {IMSI-Catcher}.
+\newblock \emph{WWW document}, \url{http://de.wikipedia.org/wiki/IMSI-Catcher},
+  [Online; Accessed 02.2012].
 
 \bibitem{blacklisting}
 {\sc Wikipedia}.
-\newblock Equipment identity register.
-\newblock
-  \url{http://en.wikipedia.org/wiki/Central_Equipment_Identity_Register}, 2012.
+\newblock {Equipment Identity Register}.
+\newblock \emph{WWW document},
+  \url{http://en.wikipedia.org/wiki/Central_Equipment_Identity_Register},
+  [Online; Accessed 06.2012].
 
 \end{thebibliography}

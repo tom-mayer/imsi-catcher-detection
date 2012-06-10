@@ -90,7 +90,7 @@ In order to use the Motorola C123 in combination with the OsmocomBB framework th
 This has to be done using a RS332 serial cable that is connected to the 2.5\,mm audio jack.
 The audio jack of the Motorola C123 and other Calypso based mobile phones typically have a 3.3 V serial port on their audio jacks.
 These cables are normally referred to as T191 unlock cables.
-A variety of stores around the internet sell the cables ready made for about \$10--\$15\footnote{FoneFunShop, \url{http://www.fonefunshop.co.uk/table_picker/773_Motorola_T191_W220_W375_OSMOCOM_etc._USB_Unlock_Cable.html} [Online; Accessed 04.2012]}.
+A variety of stores around the internet sell the cables ready made for about \$10--\$15.
 One must be careful when using the PC's serial port to communicate with the phone though.
 Since the phone's serial operates at 3.3\,V and is internally connected to the 2.8\,V IO-pins of the baseband processor, directly connecting it to the computer's 12\,V serial port will destroy the hardware.
 Therefore it is recommended to use a USB serial cable.
@@ -174,11 +174,11 @@ An example of a fully parsed System Information Type 2 can be seen in Figure \re
 The Neighbouring Cell List which is a very valuable source of information is located in inside the highlighted section of the message.
 \begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{../Images/sysinfo2}
+\includegraphics[width=.8\textwidth]{../Images/sysinfo2marked}
 \caption{System Information 2 Message \cite{protocols1999}.}
 \label{fig:si1}
 \end{figure}
-Examples for all the System Information Messages used, along with an interpretation are located in Appendix \ref{sec:system_infos}.
+Examples for all the System Information Messages used, along with an interpretation are located in Appendix \ref{sec:system_infos} and information on how they are interpreted can be found in 3GPP TS 44.018 \cite{sysinfos}.
 As long as scanning mode is active all the available stations are scanned repeatedly and changes in the \glspl{bts} will continuously update the data model inside the \gls{icds} software.
 The parameters harvested so far are:
 \begin{itemize}
@@ -188,7 +188,7 @@ The parameters harvested so far are:
 	\item rxlev: Receiving strength in dB.
 	This parameter is measured by the Motorola C123 and not part of the System Information Messages.
 	Even small changes in the location can have a large impact on this parameter due to shadowing and reflection.
-	\item BSIC: Because of frequency reuse in a cellular network it is possible that two different base stations can sent at the same \gls{arfcn}.
+	\item BSIC: Because of frequency reuse in a cellular network it is possible that two different base stations can send at the same \gls{arfcn}.
 	In order for the \gls{ms} to keep these apart the \gls{bsic} is also broadcasted.
 	It consists of a \gls{ncc} identifying the provider, so the \gls{ms} can filter out messages that it does not need beforehand and the \gls{bcc} that must be unique for a given provider over all base station in a large area.
 	\item LAC: This is the last part of the \gls{lai} (that consists of \gls{mcc} + \gls{mnc} + \gls{lac}) and is a hierarchical identifier for a given base station.
@@ -207,7 +207,7 @@ As mentioned in Section \ref{sec:common_channels} the network contacts the \gls{
 \begin{figure}
 \centering
 \includegraphics{../Images/Paging}
-\caption{Procedure taken when the network has a call/text waiting for a passive subscriber.}
+\caption{Procedure taken when the network has a call\,/\,text waiting for a passive subscriber.}
 \label{fig:paging}
 \end{figure}
 The procedure is outlined in Figure \ref{fig:paging}.
@@ -299,8 +299,8 @@ Pure Neighbourhoods		&Checks whether all found stations in the Neighbouring\\
 						&Cell List share the same provider.\\
 Neighbourhood Structure	&Checks the structure of the Neighbouring Cell List for\\
 						&certain patterns.\\
-Fully Discovered Nbhds. &Checks whether all the cells in the Neighbouring Cell\\
-						&List have actually been found.\\
+Discovered Neighbours. 	&Checks whether a certain amount of the cells in the\\
+						&Neighbouring Cell List have actually been found.\\
 Cell ID Uniqueness 		&Checks whether there are other cells with the same\\
 						&Cell ID.\\
 \bottomrule
@@ -318,7 +318,7 @@ However in none of the scans more than two different \glspl{la} have been found 
 For the Freiburg area a 1\% threshold for the deviation yielded good results.
 
 \paragraph{Neighbourhood Structure}
-The neighbourhood structure is the graph that is described by the Neighbouring Cell List located in the System Inforamtion 2\,/\,2bis\,/\,2ter constructs.
+The Neighbourhood Structure is the graph that is described by the Neighbouring Cell List located in the System Inforamtion 2\,/\,2bis\,/\,2ter constructs.
 Figure \ref{fig:neighbourhood_example} shows an extract of the neighbourhood graphs at the Faculty of Engineering of the University of Freiburg\footnote{Georges Koehler Allee, Freiburg}.
 The E-Plus subgraph has been enlarged.
 \begin{figure}
@@ -329,7 +329,7 @@ The E-Plus subgraph has been enlarged.
 \end{figure}
 It can be seen that for each provider, the neighbourhood forms an isolated, nearly fully connected subgraph.
 Nodes with a green background have an \emph{Ok} rating, while the red node has a \emph{Critical} rating.
-The bordering white nodes have not yet been discovered and evaluated therefore they have no outgoing edges.
+The bordering white nodes have not yet been discovered and evaluated therefore they have no outgoing edges, they were merely found by extracting the neighbourhood lists.
 This could be the case because they are too far away for the Motorola to receive or because of signal damping due to shadowing and reflection effects.
 In the \gls{icds} the aspect of isolated subgraphs for neighbourhoods is captured inside the \emph{Pure Neighbourhoods Rule}.
 
@@ -337,11 +337,12 @@ An interesting fact is that one node inside the E-Plus subgraph on the upper rig
 This is because it is a \gls{bts} of the university's own \gls{gsm} network.
 It was set up to be in a E-Plus neighbourhood but is not consistent with the E-Plus nodes surrounding it.
 Therefore it is marked by the \gls{icds}.
-%TODO: cite richy
-The node was set up inside the E-Plus neighbourhood for another Master project\footnote{Cite Richy} at the Chair of Communication Systems where the goal was to estimate the most probably position of a subscriber given his\,/\,her reception strengths.
+
+The node was set up inside the E-Plus neighbourhood for another Master Thesis \cite{richy} at the Chair of Communication Systems where the goal was to estimate the most probably position of a subscriber given his\,/\,her reception levels.
 
 Some of the attacks discussed in Section \ref{sec:attacks} imply a certain structure of the neighbourhood graph.
 Since the IMSI catcher tries to lock in \glspl{ms} that have connected from switching back to a normal cell, the neighbourhood list of such a catcher cell would either be empty or would only host neighbour cells that have a lower reception strength than itself.
+
 An empty Neighbouring Cell List is represented in the graph by a node that has been discovered and has no outgoing edges.
 A Neighbouring Cell list containing only imaginary nodes serves the same purpose.
 \begin{figure}
@@ -393,6 +394,27 @@ This means that this cell is not known by any other node of the same provider.
 Nevertheless it has some outgoing edges to nodes with significantly less transmission strength to not stick out too much as a completely isolated node.
 Combinations of these two approaches are also possible.
 These thoughts are basically what is captured inside the \emph{Neighbourhood Structure Rule}.
+The procedure the Neighbourhood Structure Rule follows is:
+\begin{enumerate}
+	\item Check if the node in question has neighbours and check if at least one neighbour has been discovered.
+This rules out the cases where IMSI catchers have no neighbours or only an imaginary list.
+	\item If no neighbours have been discovered by the \gls{icds}, check if other nodes share some of the neighbours, if yes yield a \emph{Warning}, else yield \emph{Critical}.
+If the node is question is a legitimate node and the rare case occurs that none of its neighbours are in reach, most of its neighbours should be shared by other nodes of the same provider.
+	\item Check if other nodes of the same provider have the node in question inside their neighbourhood list, \eg if the node in question has incoming edges.
+This would not be the case for example for an IMSI catcher that broadcasts on a new \gls{arfcn}.
+	\item If all the above criteria are met, yield \emph{Ok}.
+\end{enumerate}
+This rule cannot find an IMSI catcher that has in- and outgoing edges, in other words a device that replaced a legitimate base station and copied the neighbourhood list from the original cell.
+Such a catcher would transmit at a very high strength and thus make sure all its neighbours have a worse reception on the target mobile phone than itself.
+It is generally not possible to rule out base stations where all outgoing edges point to base stations with a lower reception, since every legitimate neighbourhood will have one node that excels all other nodes in terms of reception.
+
+The Neighbourhood Structure Rule tests if at least one neighbour has actually be found.to raise this threshold the \emph{Discovered Neighbours Rule} can be used.
+It takes a parameter as an input which is interpreted differently depending on its range.
+If the threshold is in the interval $[0,1]$ it is interpreted as a percentage.
+$0.5$ meaning that at least half the neighbours in the list need to be found for the rule to give an \emph{Ok} rating.
+A threshold in the interval $(1,+\infty)$ means that this absolute number of base stations have to be found, if a floating point number is provided the real part is stripped.
+As an example $3$ and $3.47$ would both mean that at least $3$ neighbours would have to be found.
+This representation cannot cover the 'at least one' case since $1$ equals $100\%$ which is no problem for this case is already covered by the Neighbourhood Structure Rule.
 
 \subsubsection{Database Rules}
 Let us do a quick summary of the situation so far.
@@ -403,9 +425,9 @@ Therefore the Configuration Rules and most of the Context Rules will yield an \e
 The Neighbouring Cell List is a bit different.
 Since the catcher wants to keep lured subscribers it will normally have an empty list or a list pointing only to \glspl{bts} imaginary neighbours. 
 Both of these cases can be detected.
-However the operator \emph{may} also choose to set a list consistent with the neighbouring cells.
-This would lower the chances of success for the catcher but also make it blend better in its environment and thus harder to detect.
- 
+However the operator \emph{may} also choose to set a list consistent with the neighbouring cells, \eg a catcher replacing a cell and copying the neighbourhood list.
+
+A new parameter has to be introduced to yield information in the cases the rules mentioned before fail, the \gls{cid}.
 For the \gls{cid} there are basically two possibilities depending on which attack type is used.
 The first possibility was that the IMSI catcher opens up a new cell and the second one was that it replaces a formerly existent cell.
 In the first case parameters can be chosen in a consistent way although a new \gls{cid} has to be chosen, as the \gls{cid} needs to be unique.
@@ -504,17 +526,15 @@ The \gls{icds} also uses this method on particularly filtered base stations in \
 \label{sec:evaluators}
 All the rules are evaluated for each base station.
 Aggregation of these rule results into a single result is done by modules called \emph{evaluators}.
-Currently there are three different evaluators implemented inside the \gls{icds}, with varying degrees of customisability.
+Currently there are two different evaluators implemented inside the \gls{icds}:
 \begin{itemize}
 	\item Conservative Evaluator: This is a worst-case evaluator.
 	It iterates over all the rule findings and yields the most concerning finding as its result.
 	By default this evaluator is enabled in the system.
-	\item Weighted Evaluator: Using this evaluator the user can give a weight to each rule.
-	This way rules that are more important to the user can have a higher impact on overall evaluation.
 	\item Grouped Evaluator: With this evaluator rules can be grouped together.
 	Inside each group the result for the group is found by majority vote whereas the final result is conservatively found by comparing all the group results.
 \end{itemize}
-The different kinds of evaluators can be used to tweak the whole system more to a specific environment or purpose, if specific rules are given more weight.
+Different kinds of evaluators can be used to tweak the whole system more to a specific environment or purpose, if specific rules are grouped together.
 They are meant more for experimental purpose if the \gls{icds} is used as a toolbox for analysing base stations, to give more freedom in use to the operator.
 In case of the system being used in \emph{User Mode} or for the sole purpose of finding whether an IMSI catcher is active or not, the conservative evaluator should almost always be the evaluator of choice and tweaking should be done on the rule parameters rather than on the evaluator.
 
@@ -670,7 +690,7 @@ Only the provider is to be entered and a final evaluation will be returned once 
 
 \item Base Station List: This list gives an overview of which base stations have been discovered so far along with some distinguishing information including its evaluation.
 A detailed view of a base station can be brought up by selecting it in the list and pressing the enter or return key.
-The report is separated into four main parts, the first being all the harvested parameters, followed by findings the different rules and evaluators yielded and a section with the raw uninterpreted system information data.
+The report is separated into four main parts, the first being all the harvested parameters, followed by findings the different rules and evaluators yielded and a section with the raw uninterpreted System Information data.
  
 \item Log Window: Every important event inside the \gls{icds} is reported in the log together with a time stamp when it occurred.
 
@@ -732,10 +752,13 @@ To enhance the quality of a Local Area Database it is recommended to do multiple
 This raises the probability that all \gls{bts} in the perimeter are found is higher and it solidifies the interval in which the base station signal strength varies.
 
 \paragraph{Conducting a PCH Scan:} A \gls{pch} scan can be conducted in addition to a sweep scan or as a standalone method therefore no scan data needs to be present.
+Since PHC scans and sweep scans use the Motorola C123 a PCH scan can only be done when no sweep scan is active and vice versa.
 The first parameter is a comma separated list of \glspl{arfcn} that will be scanned.
 The second parameter is the timeout. 
 A scan for a particular \gls{arfcn} will tune in on the \gls{pch} of each \gls{arfcn} given and wait there until the timeout is reached gathering all paging messages and \gls{ia} that are sent in that time interval.
 In the lower part of the dialog, after the scan has finished, the statistics for the scanned \glspl{bts} will occur.
+If the checkbox is checked, the data acquired by the scan will also be integrated with the data model and will have an impact on the evaluation displayed in the Base Station Graph.
+The findings can then also be seen in the report for a base station.
 
 \begin{figure}
 \centering
@@ -752,6 +775,7 @@ If the station already has been evaluated as \emph{Critical}, \emph{User Mode} w
 In all other cases it performs an additional \gls{pch} scan on that station to rule out the scenario where a catcher has not been detected by the currently active set of rules.
 
 After the evaluation has been completed, the picture on the bottom will change to reflect the result found.
+Additionally if PCH scan integration is enabled the results from \emph{User Scan} will also carry over to the data model if a PCH scan has been carried out in the process.
 
 \section{Related Projects}
 IMSI catcher detection is a topic that has not emerged until recently therefore not a lot of work and research has been done upon that subject.
