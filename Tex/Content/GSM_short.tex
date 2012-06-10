@@ -700,28 +700,26 @@ More information about these Layer 2 protocols can be found in the respective Te
 As with Layer 2 information, it may be the case that this header needs to be partially rewritten during the transmission of a package.
 Between the \gls{ms}, \gls{bts}, \gls{bsc} and \gls{msc} the \gls{rr} protocol and the information needed to route a call into the \gls{ss7} subsystem are part of Layer 3.
 This protocol handles configuration and allocation of radio channels as well as managing the dedicated channels to the subscribers.
-Therefore in a strict sense \gls{mm} and \gls{cc} information does not belong to Layer 3 functionality but is only transported via \gls{rr} between \gls{ms} and the \gls{nss} \cite{protocols1999}.
 
 \section{IMSI Catcher}
 \label{sec:catcher}
 An IMSI catcher is a device that is used to capture the \gls{imsi} and \gls{imei} numbers of mobile subscribers.
 The knowledge of the \gls{imsi} and \gls{imei} numbers can be exploited to either tap into the participant's calls or pinpoint the location of the subscriber \cite{fox}.
-Another less known functionality is that if catchers do not relay intercepted calls they can be used to suppress mobile communication in a certain area \eg during a police operation \cite{imsi_wiki}.
+Another less known functionality is that if catchers do not relay intercepted calls they can be used to suppress mobile communication in a certain area, \eg during a police operation \cite{imsi_wiki}.
 
 This topic came up in conjunction with crime fighting and prevention with the advent of mobile telephones.
-A mobile phone cannot be tapped in the same way as a landline phone since the subscriber can change places and also phones thus there is no designated line associated with him\,/\,her.
+A mobile phone cannot be tapped in the same way as a landline phone, since the subscriber can change places and also phones thus there is no designated line associated with him\,/\,her.
 This has proven to be a challenge to the authorities.
 
-In 1996 Rohde\,\&\,Schwarz a company based in Munich, Germany has developed a device called \emph{GA 090} which was the first IMSI catcher.
+In 1996, Rohde\,\&\,Schwarz a company based in Munich, Germany has developed a device called \emph{GA 090} which was the first IMSI catcher.
 Its was capable of yielding a list with all the \gls{imsi} numbers in the perimeter as well as pinpointing the location of a subscriber given the \gls{imsi}.
-Short thereafter the \emph{GA 900} was presented which had the additional capability of tapping into calls that originated from a particular \gls{imsi}.
-These commercial versions of catchers produced by Rohde\,\&\,Schwarz were priced between 200.000\,\euro{} and 300.000\,\euro{} in 2001 \cite{fox}.
-Regulations prohibit the use of IMSI catchers for individuals since the frequency bands the \gls{gsm} network uses are registered to providers.
-However it cannot be guaranteed that such a catcher is not used illegally.
-In addition to these commercial products different projects \cite{dennis, def_catcher} have shown that such devices can be built at a very low budget.
+Short thereafter, the \emph{GA 900} was presented, which had the additional capability of tapping into calls that originated from a particular \gls{imsi}.
+These commercial versions of catchers, produced by Rohde\,\&\,Schwarz, were priced between 200.000\,\euro{} and 300.000\,\euro{} in 2001 \cite{fox}.
+Regulations prohibit the use of IMSI catchers for individuals, because the frequency bands the \gls{gsm} network uses are registered to providers.
+In addition to these commercial products, different projects \cite{dennis, def_catcher} have shown that such devices can be built at a very low budget.
 This only intensifies the risk that is imposed by the abusive usage of such a catcher.
 Examples would be curious neighbours eavesdropping, or a jealous husband tapping into phone calls of his wife.
-On a more large scale, these devices are of great value for industrial espionage.
+On a more large scale, these devices are of great value for industrial espionage or private investigators that would not mind breaking the law to gather information.
 Figure \ref{fig:catchers} shows a commercial model side by side with a self built catcher.
 \begin{figure}
 \centering
