@@ -3,78 +3,94 @@
 \glsgroupheading{glssymbols}\relax \glsresetentrylist %
 \glossaryentryfield{3gpp}{\glsnamefont{3GPP}}{Third Generation Partnership Project}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{6\delimN 7}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{27}}}\glsgroupskip
 \glsgroupheading{A}\relax \glsresetentrylist %
-\glossaryentryfield{ac}{\glsnamefont{AC}}{Authentication Center}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{11}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}}}%
 \glossaryentryfield{agch}{\glsnamefont{AGCH}}{Access Grand Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{27}}}%
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{26}}}%
 \glossaryentryfield{arfcn}{\glsnamefont{ARFCN}}{Absolute Radio Frequency Number}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{17\delimN 18}\delimN 
+		\setentrycounter{page}\glsnumberformat{16}\delimN 
+		\setentrycounter{page}\glsnumberformat{31}\delimN 
 		\setentrycounter{page}\glsnumberformat{40}\delimN 
 		\setentrycounter{page}\glsnumberformat{42}\delimN 
-		\setentrycounter{page}\glsnumberformat{44}\delimN 
-		\setentrycounter{page}\glsnumberformat{47}\delimN 
-		\setentrycounter{page}\glsnumberformat{54\delimN 55}\delimN 
-		\setentrycounter{page}\glsnumberformat{57}\delimN 
-		\setentrycounter{page}\glsnumberformat{67}\delimN 
-		\setentrycounter{page}\glsnumberformat{69\delimN 70}}}%
+		\setentrycounter{page}\glsnumberformat{45}\delimN 
+		\setentrycounter{page}\glsnumberformat{48\delimN 49}\delimN 
+		\setentrycounter{page}\glsnumberformat{57\delimN 58}\delimN 
+		\setentrycounter{page}\glsnumberformat{61}\delimN 
+		\setentrycounter{page}\glsnumberformat{69}\delimN 
+		\setentrycounter{page}\glsnumberformat{71}\delimN 
+		\setentrycounter{page}\glsnumberformat{74}\delimN 
+		\setentrycounter{page}\glsnumberformat{76}}}%
 \glossaryentryfield{arib}{\glsnamefont{ARIB}}{Association of Radio Industries and Businesses}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{6}}}%
 \glossaryentryfield{atis}{\glsnamefont{ATIS}}{Alliance for Telecommunications Industry Solutions}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{6}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{6}}}%
+\glossaryentryfield{ac}{\glsnamefont{AuC}}{Authentication Center}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{11}\delimN 
+		\setentrycounter{page}\glsnumberformat{14}}}\glsgroupskip
 \glsgroupheading{B}\relax \glsresetentrylist %
 \glossaryentryfield{bcc}{\glsnamefont{BCC}}{Base Station Color Code}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{42}}}%
 \glossaryentryfield{bcch}{\glsnamefont{BCCH}}{Broadcast Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{25\delimR 27}\delimN 
+		\setentrycounter{page}\glsnumberformat{23}\delimN 
+		\setentrycounter{page}\glsnumberformat{25\delimN 26}\delimN 
 		\setentrycounter{page}\glsnumberformat{39\delimN 40}\delimN 
-		\setentrycounter{page}\glsnumberformat{51}}}%
+		\setentrycounter{page}\glsnumberformat{42}\delimN 
+		\setentrycounter{page}\glsnumberformat{53}\delimN 
+		\setentrycounter{page}\glsnumberformat{66}\delimN 
+		\setentrycounter{page}\glsnumberformat{77}\delimN 
+		\setentrycounter{page}\glsnumberformat{79}}}%
 \glossaryentryfield{bgs}{\glsnamefont{BGS}}{Bundesgrenzschutz}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{32}}}%
 \glossaryentryfield{bka}{\glsnamefont{BKA}}{Bundeskriminalamt}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{32}}}%
-\glossaryentryfield{bmi}{\glsnamefont{BMI}}{Bundesminiterium des Inneren}{\relax }{\glossaryentrynumbers{\relax 
+\glossaryentryfield{bmi}{\glsnamefont{BMI}}{Bundesministerium des Inneren}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{32}}}%
 \glossaryentryfield{bsc}{\glsnamefont{BSC}}{Base Station Controller}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{19\delimN 20}\delimN 
-		\setentrycounter{page}\glsnumberformat{24}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}\delimN 
-		\setentrycounter{page}\glsnumberformat{35}\delimN 
+		\setentrycounter{page}\glsnumberformat{15}\delimN 
+		\setentrycounter{page}\glsnumberformat{18\delimN 19}\delimN 
+		\setentrycounter{page}\glsnumberformat{23}\delimN 
+		\setentrycounter{page}\glsnumberformat{27}\delimN 
 		\setentrycounter{page}\glsnumberformat{40}}}%
 \glossaryentryfield{bsic}{\glsnamefont{BSIC}}{Base Station Identification Code}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{42}}}%
 \glossaryentryfield{bss}{\glsnamefont{BSS}}{Basestation Subsystem}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7\delimN 8}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{19}}}%
-\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Station Transceiver}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{18\delimR 25}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}\delimN 
-		\setentrycounter{page}\glsnumberformat{31}\delimN 
+		\setentrycounter{page}\glsnumberformat{15}\delimN 
+		\setentrycounter{page}\glsnumberformat{18}}}%
+\glossaryentryfield{bts}{\glsnamefont{BTS}}{Base Transceiver Station}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{15\delimR 21}\delimN 
+		\setentrycounter{page}\glsnumberformat{23}\delimN 
+		\setentrycounter{page}\glsnumberformat{27}\delimN 
+		\setentrycounter{page}\glsnumberformat{30\delimN 31}\delimN 
+		\setentrycounter{page}\glsnumberformat{35}\delimN 
 		\setentrycounter{page}\glsnumberformat{39\delimN 40}\delimN 
-		\setentrycounter{page}\glsnumberformat{42\delimR 45}\delimN 
-		\setentrycounter{page}\glsnumberformat{47}\delimN 
+		\setentrycounter{page}\glsnumberformat{42\delimR 46}\delimN 
+		\setentrycounter{page}\glsnumberformat{49}\delimN 
 		\setentrycounter{page}\glsnumberformat{52}\delimN 
-		\setentrycounter{page}\glsnumberformat{54\delimN 55}\delimN 
-		\setentrycounter{page}\glsnumberformat{57}\delimN 
-		\setentrycounter{page}\glsnumberformat{62}\delimN 
-		\setentrycounter{page}\glsnumberformat{70}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{57\delimN 58}\delimN 
+		\setentrycounter{page}\glsnumberformat{60\delimN 61}\delimN 
+		\setentrycounter{page}\glsnumberformat{66}\delimN 
+		\setentrycounter{page}\glsnumberformat{74}\delimN 
+		\setentrycounter{page}\glsnumberformat{76}\delimN 
+		\setentrycounter{page}\glsnumberformat{79}}}\glsgroupskip
 \glsgroupheading{C}\relax \glsresetentrylist %
 \glossaryentryfield{cc}{\glsnamefont{CC}}{Call Control}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{12}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{12}}}%
 \glossaryentryfield{cept}{\glsnamefont{CEPT}}{Conf\'{e}rence Europ\'{e}enne des Administrations des Postes et des T\'{e}l\'{e}communications}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{5}}}%
-\glossaryentryfield{ci}{\glsnamefont{CI}}{Cell Identity}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{18\delimN 19}}}%
+\glossaryentryfield{cid}{\glsnamefont{CID}}{Cell Identity}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{16}\delimN 
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{28}\delimN 
+		\setentrycounter{page}\glsnumberformat{31}\delimN 
+		\setentrycounter{page}\glsnumberformat{42}\delimN 
+		\setentrycounter{page}\glsnumberformat{49\delimN 50}\delimN 
+		\setentrycounter{page}\glsnumberformat{60}\delimN 
+		\setentrycounter{page}\glsnumberformat{73\delimN 74}\delimN 
+		\setentrycounter{page}\glsnumberformat{76}}}%
 \glossaryentryfield{csv}{\glsnamefont{CSV}}{Comma Separated Value}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{54}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{57}}}\glsgroupskip
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossaryentryfield{dcs1800}{\glsnamefont{DCS1800}}{Digital Cellular System 1800}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{5}}}%
@@ -93,19 +109,20 @@
 		\setentrycounter{page}\glsnumberformat{5\delimN 6}}}\glsgroupskip
 \glsgroupheading{F}\relax \glsresetentrylist %
 \glossaryentryfield{facch}{\glsnamefont{FACCH}}{Fast Access Control Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{21}\delimN 
-		\setentrycounter{page}\glsnumberformat{24}\delimN 
-		\setentrycounter{page}\glsnumberformat{26}}}%
+		\setentrycounter{page}\glsnumberformat{19}\delimN 
+		\setentrycounter{page}\glsnumberformat{23}\delimN 
+		\setentrycounter{page}\glsnumberformat{25}}}%
 \glossaryentryfield{fcch}{\glsnamefont{FCCH}}{Frequency Correction Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{25\delimN 26}\delimN 
+		\setentrycounter{page}\glsnumberformat{23}\delimN 
+		\setentrycounter{page}\glsnumberformat{25}\delimN 
 		\setentrycounter{page}\glsnumberformat{40}}}%
 \glossaryentryfield{fdma}{\glsnamefont{FDMA}}{Frequency Division Multiple Access}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{21\delimN 22}}}%
+		\setentrycounter{page}\glsnumberformat{20}}}%
 \glossaryentryfield{fn}{\glsnamefont{FN}}{Frame Number}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{40}}}\glsgroupskip
 \glsgroupheading{G}\relax \glsresetentrylist %
 \glossaryentryfield{gmsk}{\glsnamefont{GMSK}}{Gaussian Minimum Shift Keying}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{26}}}%
 \glossaryentryfield{gprs}{\glsnamefont{GPRS}}{General Packet Radio Service}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}}}%
 \glossaryentryfield{gsm}{\glsnamefont{GSM}}{Global System for Mobile Communications}{\relax }{\glossaryentrynumbers{\relax 
@@ -113,23 +130,26 @@
 		\setentrycounter{page}\glsnumberformat{5}\delimN 
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{9\delimN 10}\delimN 
-		\setentrycounter{page}\glsnumberformat{18}\delimN 
-		\setentrycounter{page}\glsnumberformat{21\delimN 22}\delimN 
-		\setentrycounter{page}\glsnumberformat{29\delimN 30}\delimN 
+		\setentrycounter{page}\glsnumberformat{12}\delimN 
+		\setentrycounter{page}\glsnumberformat{15\delimN 16}\delimN 
+		\setentrycounter{page}\glsnumberformat{20}\delimN 
+		\setentrycounter{page}\glsnumberformat{27\delimN 28}\delimN 
+		\setentrycounter{page}\glsnumberformat{30}\delimN 
 		\setentrycounter{page}\glsnumberformat{35\delimR 38}\delimN 
-		\setentrycounter{page}\glsnumberformat{45}\delimN 
-		\setentrycounter{page}\glsnumberformat{51}\delimN 
-		\setentrycounter{page}\glsnumberformat{61}\delimN 
-		\setentrycounter{page}\glsnumberformat{65}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{46}\delimN 
+		\setentrycounter{page}\glsnumberformat{53}\delimN 
+		\setentrycounter{page}\glsnumberformat{65}\delimN 
+		\setentrycounter{page}\glsnumberformat{69}\delimN 
+		\setentrycounter{page}\glsnumberformat{77}\delimN 
+		\setentrycounter{page}\glsnumberformat{79\delimN 80}}}\glsgroupskip
 \glsgroupheading{H}\relax \glsresetentrylist %
 \glossaryentryfield{hdlc}{\glsnamefont{HDLC}}{High Level Data Link Control}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{26}}}%
 \glossaryentryfield{hlr}{\glsnamefont{HLR}}{Home Location Register}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{11\delimN 12}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{65}}}%
+		\setentrycounter{page}\glsnumberformat{11\delimR 14}\delimN 
+		\setentrycounter{page}\glsnumberformat{69}}}%
 \glossaryentryfield{hni}{\glsnamefont{HNI}}{Home Network Identifier}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{11}}}%
+		\setentrycounter{page}\glsnumberformat{10}}}%
 \glossaryentryfield{hsdpa}{\glsnamefont{HSDPA}}{High Speed Downlink Packet Access}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}}}%
 \glossaryentryfield{hspa}{\glsnamefont{HSPA}}{High Speed Packet Access}{\relax }{\glossaryentrynumbers{\relax 
@@ -137,79 +157,94 @@
 \glossaryentryfield{hsupa}{\glsnamefont{HSUPA}}{High Speed Uplink Packet Access}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
+\glossaryentryfield{ia}{\glsnamefont{IA}}{Immediate Assignment Message}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{43}\delimN 
+		\setentrycounter{page}\glsnumberformat{51\delimN 52}\delimN 
+		\setentrycounter{page}\glsnumberformat{57}\delimN 
+		\setentrycounter{page}\glsnumberformat{61}\delimN 
+		\setentrycounter{page}\glsnumberformat{68}\delimN 
+		\setentrycounter{page}\glsnumberformat{76}\delimN 
+		\setentrycounter{page}\glsnumberformat{79\delimN 80}}}%
 \glossaryentryfield{icds}{\glsnamefont{ICDS}}{IMSI Catcher Detection System}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{2\delimN 3}\delimN 
+		\setentrycounter{page}\glsnumberformat{25}\delimN 
 		\setentrycounter{page}\glsnumberformat{35}\delimN 
 		\setentrycounter{page}\glsnumberformat{38\delimR 40}\delimN 
-		\setentrycounter{page}\glsnumberformat{42\delimN 43}\delimN 
-		\setentrycounter{page}\glsnumberformat{45}\delimN 
-		\setentrycounter{page}\glsnumberformat{47\delimR 52}\delimN 
-		\setentrycounter{page}\glsnumberformat{54\delimN 55}\delimN 
-		\setentrycounter{page}\glsnumberformat{58}\delimN 
-		\setentrycounter{page}\glsnumberformat{61\delimR 65}\delimN 
-		\setentrycounter{page}\glsnumberformat{67\delimR 70}\delimN 
-		\setentrycounter{page}\glsnumberformat{73}}}%
+		\setentrycounter{page}\glsnumberformat{42\delimR 46}\delimN 
+		\setentrycounter{page}\glsnumberformat{48\delimR 55}\delimN 
+		\setentrycounter{page}\glsnumberformat{57\delimN 58}\delimN 
+		\setentrycounter{page}\glsnumberformat{62}\delimN 
+		\setentrycounter{page}\glsnumberformat{65\delimR 69}\delimN 
+		\setentrycounter{page}\glsnumberformat{71}\delimN 
+		\setentrycounter{page}\glsnumberformat{73}\delimN 
+		\setentrycounter{page}\glsnumberformat{76\delimN 77}\delimN 
+		\setentrycounter{page}\glsnumberformat{79\delimN 80}}}%
 \glossaryentryfield{imei}{\glsnamefont{IMEI}}{International Mobile Equipment Identifier}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{9}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}\delimN 
-		\setentrycounter{page}\glsnumberformat{31}\delimN 
-		\setentrycounter{page}\glsnumberformat{58}}}%
+		\setentrycounter{page}\glsnumberformat{27}\delimN 
+		\setentrycounter{page}\glsnumberformat{30}\delimN 
+		\setentrycounter{page}\glsnumberformat{62}}}%
 \glossaryentryfield{imsi}{\glsnamefont{IMSI}}{International Mobile Subscriber Identification}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{10\delimR 12}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{27\delimR 33}}}%
+		\setentrycounter{page}\glsnumberformat{1}\delimN 
+		\setentrycounter{page}\glsnumberformat{10\delimR 14}\delimN 
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{27\delimN 28}\delimN 
+		\setentrycounter{page}\glsnumberformat{30}}}%
 \glossaryentryfield{in}{\glsnamefont{IN}}{Intelligent Network Subsystem}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{8}}}%
 \glossaryentryfield{isdn}{\glsnamefont{ISDN}}{Integrated Services Digital Network}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{12}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}}}%
-\glossaryentryfield{itu}{\glsnamefont{ITU}}{International Telecomunication Union}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{11}\delimN 
-		\setentrycounter{page}\glsnumberformat{27}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{27}}}%
+\glossaryentryfield{itu}{\glsnamefont{ITU}}{International Telecomunication Union}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{6}\delimN 
+		\setentrycounter{page}\glsnumberformat{11}}}\glsgroupskip
 \glsgroupheading{K}\relax \glsresetentrylist %
-\glossaryentryfield{kc}{\glsnamefont{Kc}}{Cyphering Key}{\relax }{\glossaryentrynumbers{\relax 
+\glossaryentryfield{kc}{\glsnamefont{Kc}}{Ciphering Key}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{10}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}}}%
+		\setentrycounter{page}\glsnumberformat{14}\delimN 
+		\setentrycounter{page}\glsnumberformat{19}}}%
 \glossaryentryfield{ki}{\glsnamefont{Ki}}{Secret Key}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{10}\delimN 
 		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{L}\relax \glsresetentrylist %
 \glossaryentryfield{la}{\glsnamefont{LA}}{Location Area}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{12}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}}}%
+		\setentrycounter{page}\glsnumberformat{12\delimN 13}\delimN 
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{46}\delimN 
+		\setentrycounter{page}\glsnumberformat{51}\delimN 
+		\setentrycounter{page}\glsnumberformat{68}}}%
 \glossaryentryfield{lac}{\glsnamefont{LAC}}{Location Area Code}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{42\delimN 43}\delimN 
-		\setentrycounter{page}\glsnumberformat{47}\delimN 
-		\setentrycounter{page}\glsnumberformat{59}\delimN 
-		\setentrycounter{page}\glsnumberformat{67}\delimN 
-		\setentrycounter{page}\glsnumberformat{69\delimN 70}}}%
-\glossaryentryfield{lai}{\glsnamefont{LAI}}{Location Area Identifier}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{29}\delimN 
+		\setentrycounter{page}\glsnumberformat{28}\delimN 
+		\setentrycounter{page}\glsnumberformat{31}\delimN 
 		\setentrycounter{page}\glsnumberformat{42}\delimN 
-		\setentrycounter{page}\glsnumberformat{48}\delimN 
-		\setentrycounter{page}\glsnumberformat{57}}}%
+		\setentrycounter{page}\glsnumberformat{44}\delimN 
+		\setentrycounter{page}\glsnumberformat{50\delimN 51}\delimN 
+		\setentrycounter{page}\glsnumberformat{60}\delimN 
+		\setentrycounter{page}\glsnumberformat{62}\delimN 
+		\setentrycounter{page}\glsnumberformat{68}\delimN 
+		\setentrycounter{page}\glsnumberformat{71}\delimN 
+		\setentrycounter{page}\glsnumberformat{74}\delimN 
+		\setentrycounter{page}\glsnumberformat{76}\delimN 
+		\setentrycounter{page}\glsnumberformat{79}}}%
+\glossaryentryfield{lai}{\glsnamefont{LAI}}{Location Area Identifier}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{28}\delimN 
+		\setentrycounter{page}\glsnumberformat{42}}}%
 \glossaryentryfield{lapd}{\glsnamefont{LAPD}}{Link Access Procedure, D Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{26\delimN 27}}}%
 \glossaryentryfield{lapdm}{\glsnamefont{LAPD$_m$}}{LAPD Mobile}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{27}}}\glsgroupskip
 \glsgroupheading{M}\relax \glsresetentrylist %
 \glossaryentryfield{mcc}{\glsnamefont{MCC}}{Mobile Country Code}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{10\delimN 11}\delimN 
 		\setentrycounter{page}\glsnumberformat{42}}}%
 \glossaryentryfield{me}{\glsnamefont{ME}}{Mobile Equipment}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{9\delimN 10}\delimN 
-		\setentrycounter{page}\glsnumberformat{19\delimN 20}\delimN 
-		\setentrycounter{page}\glsnumberformat{36}\delimN 
-		\setentrycounter{page}\glsnumberformat{42}\delimN 
-		\setentrycounter{page}\glsnumberformat{47}}}%
+		\setentrycounter{page}\glsnumberformat{9}\delimN 
+		\setentrycounter{page}\glsnumberformat{18\delimN 19}\delimN 
+		\setentrycounter{page}\glsnumberformat{36}}}%
 \glossaryentryfield{mm}{\glsnamefont{MM}}{Mobility Management}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{12}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{12}}}%
 \glossaryentryfield{mnc}{\glsnamefont{MNC}}{Mobile Network Code}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{10\delimN 11}\delimN 
 		\setentrycounter{page}\glsnumberformat{42}}}%
@@ -217,35 +252,33 @@
 		\setentrycounter{page}\glsnumberformat{5}}}%
 \glossaryentryfield{ms}{\glsnamefont{MS}}{Mobile Station}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7\delimR 9}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{19\delimR 21}\delimN 
+		\setentrycounter{page}\glsnumberformat{13\delimR 15}\delimN 
+		\setentrycounter{page}\glsnumberformat{18\delimR 21}\delimN 
 		\setentrycounter{page}\glsnumberformat{23}\delimN 
-		\setentrycounter{page}\glsnumberformat{25\delimR 32}\delimN 
+		\setentrycounter{page}\glsnumberformat{25\delimR 28}\delimN 
+		\setentrycounter{page}\glsnumberformat{30\delimN 31}\delimN 
 		\setentrycounter{page}\glsnumberformat{40}\delimN 
-		\setentrycounter{page}\glsnumberformat{42}\delimN 
-		\setentrycounter{page}\glsnumberformat{45}\delimN 
-		\setentrycounter{page}\glsnumberformat{49}\delimN 
-		\setentrycounter{page}\glsnumberformat{58}\delimN 
-		\setentrycounter{page}\glsnumberformat{64\delimN 65}\delimN 
-		\setentrycounter{page}\glsnumberformat{69\delimN 70}}}%
+		\setentrycounter{page}\glsnumberformat{42\delimN 43}\delimN 
+		\setentrycounter{page}\glsnumberformat{46}\delimN 
+		\setentrycounter{page}\glsnumberformat{51\delimN 52}\delimN 
+		\setentrycounter{page}\glsnumberformat{62}\delimN 
+		\setentrycounter{page}\glsnumberformat{68}\delimN 
+		\setentrycounter{page}\glsnumberformat{76}\delimN 
+		\setentrycounter{page}\glsnumberformat{79\delimN 80}}}%
 \glossaryentryfield{msc}{\glsnamefont{MSC}}{Mobile Switching Center}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{11\delimN 12}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{19\delimN 20}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{11\delimR 14}\delimN 
+		\setentrycounter{page}\glsnumberformat{18\delimN 19}\delimN 
+		\setentrycounter{page}\glsnumberformat{27}}}%
 \glossaryentryfield{msin}{\glsnamefont{MSIN}}{Mobile Subscriber Identification Number}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{10\delimN 11}}}%
 \glossaryentryfield{msisdn}{\glsnamefont{MSISDN}}{Mobile Subscriber Integrated Services Digital Network Number}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{12}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}}}%
+		\setentrycounter{page}\glsnumberformat{12\delimN 13}}}%
 \glossaryentryfield{msrn}{\glsnamefont{MSRN}}{Mobile Station Roaming Number}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{14}}}%
+		\setentrycounter{page}\glsnumberformat{12}}}%
 \glossaryentryfield{mtp2}{\glsnamefont{MTP 2/SS7}}{Message Transfer Part 2/SS7}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{27}}}%
 \glossaryentryfield{mvc}{\glsnamefont{MVC}}{Model View Controller}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{51}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{53}}}\glsgroupskip
 \glsgroupheading{N}\relax \glsresetentrylist %
 \glossaryentryfield{ncc}{\glsnamefont{NCC}}{Network Color Code}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{42}}}%
@@ -256,8 +289,7 @@
 \glossaryentryfield{nss}{\glsnamefont{NSS}}{Network Subsystem}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7\delimN 8}\delimN 
 		\setentrycounter{page}\glsnumberformat{11\delimN 12}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{28}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{O}\relax \glsresetentrylist %
 \glossaryentryfield{oms}{\glsnamefont{OMS}}{Operation and Maintainance Subsystem}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{8}}}%
@@ -265,72 +297,80 @@
 		\setentrycounter{page}\glsnumberformat{35}}}\glsgroupskip
 \glsgroupheading{P}\relax \glsresetentrylist %
 \glossaryentryfield{pch}{\glsnamefont{PCH}}{Paging Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{27}\delimN 
-		\setentrycounter{page}\glsnumberformat{49}\delimN 
-		\setentrycounter{page}\glsnumberformat{57\delimN 58}\delimN 
-		\setentrycounter{page}\glsnumberformat{63}}}%
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{25\delimN 26}\delimN 
+		\setentrycounter{page}\glsnumberformat{39}\delimN 
+		\setentrycounter{page}\glsnumberformat{42\delimN 43}\delimN 
+		\setentrycounter{page}\glsnumberformat{51}\delimN 
+		\setentrycounter{page}\glsnumberformat{53}\delimN 
+		\setentrycounter{page}\glsnumberformat{57}\delimN 
+		\setentrycounter{page}\glsnumberformat{61\delimN 62}\delimN 
+		\setentrycounter{page}\glsnumberformat{68}\delimN 
+		\setentrycounter{page}\glsnumberformat{77}\delimN 
+		\setentrycounter{page}\glsnumberformat{79\delimN 80}}}%
 \glossaryentryfield{pin}{\glsnamefont{PIN}}{Personal Identification Number}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{10}}}%
 \glossaryentryfield{plmn}{\glsnamefont{PLMN}}{Public Land Mobile Network}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{9}\delimN 
-		\setentrycounter{page}\glsnumberformat{11\delimN 12}}}%
+		\setentrycounter{page}\glsnumberformat{11}}}%
 \glossaryentryfield{pstn}{\glsnamefont{PSTN}}{Public Standard Telephone Network}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{8}\delimN 
+		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{11\delimN 12}}}\glsgroupskip
 \glsgroupheading{R}\relax \glsresetentrylist %
 \glossaryentryfield{rach}{\glsnamefont{RACH}}{Random Access Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{24\delimN 25}\delimN 
-		\setentrycounter{page}\glsnumberformat{27}}}%
+		\setentrycounter{page}\glsnumberformat{23\delimN 24}\delimN 
+		\setentrycounter{page}\glsnumberformat{26}}}%
 \glossaryentryfield{rr}{\glsnamefont{RR}}{Radio Resource}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{27}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossaryentryfield{sacch}{\glsnamefont{SACCH}}{Slow Access Control Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{26}}}%
+		\setentrycounter{page}\glsnumberformat{25}}}%
 \glossaryentryfield{sch}{\glsnamefont{SCH}}{Signalling Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{22\delimN 23}\delimN 
-		\setentrycounter{page}\glsnumberformat{25\delimN 26}\delimN 
+		\setentrycounter{page}\glsnumberformat{21}\delimN 
+		\setentrycounter{page}\glsnumberformat{23}\delimN 
+		\setentrycounter{page}\glsnumberformat{25}\delimN 
 		\setentrycounter{page}\glsnumberformat{40}}}%
 \glossaryentryfield{scp}{\glsnamefont{SCP}}{Service Control Point}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{8}}}%
 \glossaryentryfield{sdcch}{\glsnamefont{SDCCH}}{Standalone Dedicated Control Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{26\delimN 27}}}%
+		\setentrycounter{page}\glsnumberformat{18\delimN 19}\delimN 
+		\setentrycounter{page}\glsnumberformat{25\delimN 26}}}%
 \glossaryentryfield{sf}{\glsnamefont{SF}}{Stealing Flag}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{24}}}%
+		\setentrycounter{page}\glsnumberformat{23}}}%
 \glossaryentryfield{sim}{\glsnamefont{SIM}}{Subscriber Identity Module}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{9\delimN 10}\delimN 
 		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{30\delimR 32}}}%
+		\setentrycounter{page}\glsnumberformat{19}\delimN 
+		\setentrycounter{page}\glsnumberformat{28}\delimN 
+		\setentrycounter{page}\glsnumberformat{30}\delimN 
+		\setentrycounter{page}\glsnumberformat{32}}}%
 \glossaryentryfield{sms}{\glsnamefont{SMS}}{Short Message Service}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{9}}}%
-\glossaryentryfield{smsc}{\glsnamefont{SMSC}}{Short Message Service Center}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{11}}}%
 \glossaryentryfield{ss7}{\glsnamefont{SS-7}}{Signaling System 7}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{28}}}%
+		\setentrycounter{page}\glsnumberformat{26\delimN 27}}}%
 \glossaryentryfield{stc}{\glsnamefont{STC}}{Sub Technical Committee}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{6}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{5}}}\glsgroupskip
 \glsgroupheading{T}\relax \glsresetentrylist %
 \glossaryentryfield{tacs}{\glsnamefont{TACS}}{Total Access Communication System}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{5}}}%
 \glossaryentryfield{tc}{\glsnamefont{TC}}{Type Code}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{40}}}%
 \glossaryentryfield{tch}{\glsnamefont{TCH}}{Traffic Channel}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{20\delimN 21}\delimN 
-		\setentrycounter{page}\glsnumberformat{26}}}%
-\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{22\delimN 23}\delimN 
+		\setentrycounter{page}\glsnumberformat{19\delimN 20}\delimN 
 		\setentrycounter{page}\glsnumberformat{25}}}%
+\glossaryentryfield{tdma}{\glsnamefont{TDMA}}{Time Division Multiple Access}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{20\delimN 21}\delimN 
+		\setentrycounter{page}\glsnumberformat{23\delimN 24}}}%
 \glossaryentryfield{tmsi}{\glsnamefont{TMSI}}{Temporary IMSI}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{20}\delimN 
-		\setentrycounter{page}\glsnumberformat{27}\delimN 
-		\setentrycounter{page}\glsnumberformat{65}}}%
+		\setentrycounter{page}\glsnumberformat{13}\delimN 
+		\setentrycounter{page}\glsnumberformat{18}\delimN 
+		\setentrycounter{page}\glsnumberformat{25}\delimN 
+		\setentrycounter{page}\glsnumberformat{43}\delimN 
+		\setentrycounter{page}\glsnumberformat{68\delimN 69}\delimN 
+		\setentrycounter{page}\glsnumberformat{79}}}%
 \glossaryentryfield{trau}{\glsnamefont{TRAU}}{Transcoding Rate and Adaption Unit}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{16}\delimN 
-		\setentrycounter{page}\glsnumberformat{65}}}%
+		\setentrycounter{page}\glsnumberformat{15}\delimN 
+		\setentrycounter{page}\glsnumberformat{69}}}%
 \glossaryentryfield{tta}{\glsnamefont{TTA}}{Telecommunications Technology Association}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{6}}}%
 \glossaryentryfield{ttc}{\glsnamefont{TTC}}{Telecommunications Technology Committee}{\relax }{\glossaryentrynumbers{\relax 
@@ -338,16 +378,16 @@
 \glsgroupheading{U}\relax \glsresetentrylist %
 \glossaryentryfield{umts}{\glsnamefont{UMTS}}{Universal Mobile Telecomunications System}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
-		\setentrycounter{page}\glsnumberformat{16}}}%
+		\setentrycounter{page}\glsnumberformat{14\delimN 15}\delimN 
+		\setentrycounter{page}\glsnumberformat{80}}}%
 \glossaryentryfield{usrp}{\glsnamefont{USRP}}{Universal Software Radio Peripheral}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{64\delimN 65}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{69}}}\glsgroupskip
 \glsgroupheading{V}\relax \glsresetentrylist %
 \glossaryentryfield{vas}{\glsnamefont{VAS}}{value-added service}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{8}}}%
 \glossaryentryfield{vlr}{\glsnamefont{VLR}}{Visitor Location Register}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{11}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}\delimN 
-		\setentrycounter{page}\glsnumberformat{65}}}%
+		\setentrycounter{page}\glsnumberformat{11\delimR 13}\delimN 
+		\setentrycounter{page}\glsnumberformat{69}}}%
 \glossaryentryfield{voip}{\glsnamefont{VoIP}}{Voice over IP}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{65}}}%
+		\setentrycounter{page}\glsnumberformat{69}}}%
 \end{theglossary}\glossarypostamble

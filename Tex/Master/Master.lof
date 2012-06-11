@@ -24,7 +24,7 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Normal neighbourhood}}}{48}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tainted neighbourhood}}}{48}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces System architecture of the ICDS. The arrows indicate the flow of data.}}{53}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{54}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Configuration Dictionary in the settings file.}}{55}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces The ICDS main window.}}{56}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Dialogs for different settings.}}{59}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Databases window.}}}{59}
@@ -33,18 +33,18 @@
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {PCH scan window.}}}{59}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces The User Mode window.}}{61}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets.}}{64}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{68}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{68}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Scan durations for the sample data sets. From left to right the datasets are: \texttt {house\_area}, \texttt {ind\_park}, \texttt {cbd}, \texttt {airport}}}{66}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Open Source IMSI Catcher (left) with USRP (black) and external clock (blue) and the ICDS (right) with the Motorola C123 connected.}}{70}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Excerpt of a \texttt {OpenBTS.conf}.}}{71}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces ICDS decision finding process outlined.}}{76}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Serial cable schematics.}}{91}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces ICDS decision finding process outlined.}}{78}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {D.1}{\ignorespaces System Information 1 Message}}{100}
-\contentsline {figure}{\numberline {D.2}{\ignorespaces System Information 2 Message}}{101}
-\contentsline {figure}{\numberline {D.3}{\ignorespaces System Information 3 Message}}{102}
-\contentsline {figure}{\numberline {D.4}{\ignorespaces System Information 4 Message}}{103}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Serial cable schematics.}}{93}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {D.1}{\ignorespaces System Information 1 Message}}{102}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces System Information 2 Message}}{103}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces System Information 3 Message}}{104}
+\contentsline {figure}{\numberline {D.4}{\ignorespaces System Information 4 Message}}{105}
 \addvspace {10\p@ }

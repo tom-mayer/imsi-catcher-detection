@@ -12,21 +12,21 @@
 \contentsline {table}{\numberline {3.5}{\ignorespaces Database Rules implemented inside the ICDS.}}{49}
 \contentsline {table}{\numberline {3.6}{\ignorespaces Scan Rules implemented inside the ICDS.}}{50}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Key values of the data sets used for performance tests.}}{63}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Coverage for Google Mobile Maps and OpenCellID on the data sets with the time needed in seconds for fetching the information.}}{65}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Number of Paging Messages and Immediate Assignments (per 10 seconds) for the four German providers at different locations.}}{66}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Erroneous configurations for the IMSI catcher.}}{70}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Configuration and Context Rule results for Config 1.}}{70}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Results obtained testing the \emph {rx} and \emph {LAC Change rules}.}}{72}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Results of the database evaluation.}}{73}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Consistent parameter configurations in the Freiburg area for the four German providers.}}{73}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Key values of the data sets used for performance tests.}}{65}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Coverage for Google Mobile Maps and OpenCellID on the data sets with the time needed in seconds for fetching the information.}}{67}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Number of Paging Messages and Immediate Assignments (per 10\tmspace +\thinmuskip {.1667em}s) for the four German providers at different locations.}}{69}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Erroneous configurations for the IMSI catcher.}}{72}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Configuration and Context Rule results for Config 1.}}{72}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Results obtained testing the \emph {rx} and \emph {LAC Change rules}.}}{74}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Results of the database evaluation.}}{75}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Consistent parameter configurations in the Freiburg area for the four German providers.}}{75}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Interface found in the GSM network.}}{87}
-\contentsline {table}{\numberline {A.2}{\ignorespaces Possible mappings of channels onto Multiframes}}{88}
+\contentsline {table}{\numberline {A.1}{\ignorespaces Interface found in the GSM network.}}{89}
+\contentsline {table}{\numberline {A.2}{\ignorespaces Possible mappings of channels onto Multiframes}}{90}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {E.1}{\ignorespaces Configurations used for the rx\tmspace +\thinmuskip {.1667em}/\tmspace +\thinmuskip {.1667em}LAC Change Rules test.}}{105}
-\contentsline {table}{\numberline {E.2}{\ignorespaces Configurations used for the Database Rules test.}}{106}
+\contentsline {table}{\numberline {E.1}{\ignorespaces Configurations used for the rx\tmspace +\thinmuskip {.1667em}/\tmspace +\thinmuskip {.1667em}LAC Change Rules test.}}{107}
+\contentsline {table}{\numberline {E.2}{\ignorespaces Configurations used for the Database Rules test.}}{108}

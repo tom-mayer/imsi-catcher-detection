@@ -2,12 +2,22 @@
 % Document Class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper, twoside, 11pt]{book} 
+\documentclass[a4paper,twoside, DIV=10,fontsize=11pt,bibliography=totoc, BCOR=15mm, headinclude=true, 
+	footinclude=false, cleardoubleplain,chapterprefix=false,appendixprefix=true]{scrbook} 
+%chapterprefix=true/false
+%appendixprefix=true/false
+
+%fix ugly koma headings
+\addtokomafont{sectioning}{\rmfamily\bfseries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Includes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{titlepage}
+\usepackage{eurosym}
+%\usepackage{a4wide}
+%\usepackage{caption}
 \usepackage{appendix}
 %\usepackage{ngerman}
 \usepackage[english]{babel}
@@ -20,6 +30,7 @@
 \usepackage{listings}
 %\usepackage{apacite}
 %\usepackage{apacite-deutsch}
+%\usepackage{tablex}
 \usepackage{times, helvet,courier}
 \usepackage{esvect}
 \usepackage[T1]{fontenc}
@@ -28,17 +39,21 @@
 \usepackage{multido}
 \usepackage[acronym=true,toc=true]{glossaries}
 %\usepackage{vaucanson-g}
-%\usepackage{a4wide}
 \usepackage{pstricks}
-%\usepackage{makeidx}
+%\usepackage{makeidx}\begin{axis}
 \usepackage{courier, helvet}
 \usepackage{lipsum}
-\usepackage[
-nonumberlist, %do not show page numbers
-acronym,      %generate acronym listing
-toc,          %show listings as entries in table of contents
-section]      %use section level for toc entries
-{glossaries}
+\usepackage{glossaries}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usetikzlibrary{arrows}
+\usepackage{url}
+\usepackage{breakurl}
+\usepackage{booktabs}
+\usepackage{subfigure}
+\usepackage{xcolor}
+\usepackage[headsepline, automark]{scrpage2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Styles for Programming Language Highlighting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,29 +65,20 @@ section]      %use section level for toc entries
 	frameround=ftff,
 	frame=shadowbox,
 	%keywordstyle=\color{red},
-	numbers=left,
+	%numbers=left,
 	aboveskip=7pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Selfdefined Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% example environment
 \newtheorem{example}{Example}
 
-% python need to be followed by lstlisting env
-%\newcommand{pyhton}{\lstset{language=Python}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%this is not used atm sincee a template for the titlepage has been inclluded and is used
-\author{Thomas Mayer}
-\title{Master Thesis:\\ IMSI Catcher Detection}
-\date{\today}
-
+\newcommand{\eg}{e.g.\ }
+\newcommand{\ie}{i.e.\ }
+\newcommand{\cf}{cf.\ }
+\newcommand{\etc}{etc.\ }
+\newcommand{\MHz}{\,MHz\ }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Glossary and Listings Style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,100 +97,95 @@ section]      %use section level for toc entries
 %Activate glossary commands
 \makeglossaries
 
-%\input{Glossary}
+\input{Glossary}
 
-%Some acronyms
-\newacronym{MS}{MS}{Microsoft}
-\newacronym{CD}{CD}{Compact Disc}
-%An acronym with a glossary entry
-\newacronym{AD}{AD}{Active Directory\protect\glsadd{glos:AD}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Some glossary terms
-\newglossaryentry{glos:AD}{
-name=Active Directory,
-description={Active Directory is the directory service for 
-Windows based networks, that allows central organization and 
-administration of any network resource.
-It allows a single-sign-on concept independent from network 
-topologies or network protocols. As a prerequisite you need 
-a Windows Server acting as Domain Controller. This computer 
-stores all necessary data, e.\,g.~usernames and corresponding 
-passwords.}
-}
-\newglossaryentry{glos:RespF}{name={response file}, description={A file 
-that allows unattended software installation.}}
+%this is not used atm sincee a template for the titlepage has been inclluded and is used
+\author{Thomas Mayer}
+\title{Master Thesis:\\ IMSI Catcher Detection}
+\date{\today}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Titlepage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
 \input{Titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stuff that has to be there %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \pagestyle{empty}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{center}
- \textbf{Abstract:}
-\end{center}
+\phantom{a}
+\newpage
+\pagenumbering{roman}
+\input{../Content/Declaration}
+\clearpage
 \input{../Content/Abstract}
-
-
+\clearpage
+\input{../Content/Acknowledgements}
+\clearpage
+\input{../Content/Dedication}
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create ListOfTables and ListOfFigures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage{\pagestyle{empty}\cleardoublepage}
-\pagestyle{headings}
-\pagenumbering{roman}
-\listoffigures
-%\listoftables
+\clearpage{\thispagestyle{scrplain}\cleardoublepage}
 \tableofcontents
-\clearpage{\pagestyle{empty}\cleardoublepage}
+\clearpage{\thispagestyle{scrplain}\cleardoublepage}
 \pagenumbering{arabic}
-
+\pagestyle{scrheadings}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{blah}
-\section{General information}
-Our network uses \gls{AD}. By using \gls{AD} with \gls{MS} bases clients that
-have been installed using a \gls{glos:RespF} from \gls{CD}, we can expect a 
-high level of standardization.
 
-\section{blubb}
-\chapter{moo}
-\section{mah}
+\input{../Content/Motivation}
+\input{../Content/GSM_short}
+\input{../Content/Detection}
+\input{../Content/Evaluation}
+\input{../Content/Conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Create Glossary and Index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Finish Content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage{\pagestyle{empty}\cleardoublepage} 
-\pagenumbering{Roman}
-
-%Print list of acronyms
-\printglossary[type=\acronymtype,style=long]
-
-%Print the glossary
-\printglossary[style=altlist,title=Glossary]
+%\pagenumbering{Roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliographystyle{acm}
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-% Appendix % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%always remove nocite before compiling final version ***************************************************
+%\nocite{*}
+%*******************************************************************************************************
+\bibliography{../Content/Bibliography}
+\listoffigures
+\listoftables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\listoffigures
+%\listoftables
+\newpage
 \appendix
-\chapter{foo}
-\section{blah}
+\input{../Content/Appendix}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create Glossary and Index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Print list of acronyms
+\printglossary[type=\acronymtype,style=long]
+
+%Print the glossary
+%\printglossary[style=altlist,title=Glossary]
 \end{document}

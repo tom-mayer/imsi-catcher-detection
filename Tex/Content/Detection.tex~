@@ -768,7 +768,7 @@ The findings can then also be seen in the report for a base station.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.45]{../Images/user_window}
+\includegraphics[scale=0.4]{../Images/user_window}
 \caption{The User Mode window.}
 \label{fig:user_mode}
 \end{figure}

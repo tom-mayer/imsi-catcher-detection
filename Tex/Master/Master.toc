@@ -43,57 +43,57 @@
 \contentsline {subsection}{\numberline {3.1.2}Motorola C123}{37}
 \contentsline {subsection}{\numberline {3.1.3}OsmocomBB and ICDS}{38}
 \contentsline {section}{\numberline {3.2}Procedure}{39}
-\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{39}
+\contentsline {subsection}{\numberline {3.2.1}Information Gathering}{40}
 \contentsline {subsection}{\numberline {3.2.2}Information Evaluation}{43}
 \contentsline {subsubsection}{Configuration Rules}{44}
 \contentsline {subsubsection}{Context Rules}{45}
 \contentsline {paragraph}{Neighbourhood Structure}{46}
 \contentsline {subsubsection}{Database Rules}{49}
-\contentsline {subsubsection}{Scan Rules}{50}
+\contentsline {subsubsection}{Scan Rules}{51}
 \contentsline {subsubsection}{Remaining Issues and Paging}{51}
 \contentsline {subsection}{\numberline {3.2.3}Base Station Evaluation}{52}
-\contentsline {section}{\numberline {3.3}Implementation}{52}
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{52}
+\contentsline {section}{\numberline {3.3}Implementation}{53}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{53}
 \contentsline {subsection}{\numberline {3.3.2}Configuration}{54}
 \contentsline {subsection}{\numberline {3.3.3}Graphical User Interface}{55}
-\contentsline {subsection}{\numberline {3.3.4}Usage}{58}
-\contentsline {paragraph}{Conducting sweep scans:}{58}
-\contentsline {paragraph}{Using and obtaining Cell ID Information:}{58}
+\contentsline {subsection}{\numberline {3.3.4}Usage}{60}
+\contentsline {paragraph}{Conducting sweep scans:}{60}
+\contentsline {paragraph}{Using and obtaining CID Information:}{60}
 \contentsline {paragraph}{Building or using a Local Area Database:}{60}
-\contentsline {paragraph}{Conducting a PCH Scan:}{60}
-\contentsline {paragraph}{Utilising User Mode:}{61}
+\contentsline {paragraph}{Conducting a PCH Scan:}{61}
+\contentsline {paragraph}{Utilising User Mode:}{62}
 \contentsline {section}{\numberline {3.4}Related Projects}{62}
-\contentsline {chapter}{\numberline {4}Evaluation}{63}
-\contentsline {section}{\numberline {4.1}Performance Evaluation}{63}
-\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{64}
-\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{65}
-\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{66}
-\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{67}
-\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{67}
-\contentsline {subsubsection}{Modifications to the ICDS Configuration}{69}
-\contentsline {subsection}{\numberline {4.2.2}Configuration and Context Rules Evaluation}{69}
-\contentsline {subsection}{\numberline {4.2.3}Scan Rules Evaluation}{71}
-\contentsline {subsection}{\numberline {4.2.4}Database Rules Evaluation}{71}
-\contentsline {subsection}{\numberline {4.2.5}Realistic Scenarios}{72}
-\contentsline {subsubsection}{IMSI Catcher as a new Cell}{74}
-\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{74}
-\contentsline {chapter}{\numberline {5}Conclusion}{75}
-\contentsline {section}{\numberline {5.1}Summary}{75}
-\contentsline {section}{\numberline {5.2}Future Work}{77}
-\contentsline {paragraph}{}{78}
-\contentsline {chapter}{Bibliography}{79}
-\contentsline {chapter}{\numberline {A}GSM}{87}
-\contentsline {section}{\numberline {A.1}Interfaces}{87}
-\contentsline {section}{\numberline {A.2}Channel Combinations}{88}
-\contentsline {chapter}{\numberline {B}OsmocomBB}{89}
-\contentsline {section}{\numberline {B.1}Installation}{89}
-\contentsline {section}{\numberline {B.2}Usage}{90}
-\contentsline {section}{\numberline {B.3}Serial Cable Schematics}{91}
-\contentsline {chapter}{\numberline {C}IMSI Catcher Detection System}{93}
-\contentsline {section}{\numberline {C.1}Extextions}{93}
-\contentsline {section}{\numberline {C.2}Example Configuration}{95}
-\contentsline {chapter}{\numberline {D}System Information}{99}
-\contentsline {chapter}{\numberline {E}Evaluation Data}{105}
-\contentsline {section}{\numberline {E.1}Rx and LAC Change Test}{105}
-\contentsline {section}{\numberline {E.2}Database Rules Test}{106}
-\contentsline {chapter}{Acronyms}{107}
+\contentsline {chapter}{\numberline {4}Evaluation}{65}
+\contentsline {section}{\numberline {4.1}Performance Evaluation}{65}
+\contentsline {subsection}{\numberline {4.1.1}Scan Duration}{66}
+\contentsline {subsection}{\numberline {4.1.2}Cell ID Databases}{67}
+\contentsline {subsection}{\numberline {4.1.3}PCH Scans}{68}
+\contentsline {section}{\numberline {4.2}IMSI Catcher Detection}{68}
+\contentsline {subsection}{\numberline {4.2.1}Open Source IMSI Catcher}{69}
+\contentsline {subsubsection}{Modifications to the ICDS Configuration}{70}
+\contentsline {subsection}{\numberline {4.2.2}Configuration and Context Rules Evaluation}{71}
+\contentsline {subsection}{\numberline {4.2.3}Scan Rules Evaluation}{73}
+\contentsline {subsection}{\numberline {4.2.4}Database Rules Evaluation}{73}
+\contentsline {subsection}{\numberline {4.2.5}Realistic Scenarios}{74}
+\contentsline {subsubsection}{IMSI Catcher as a new Cell}{76}
+\contentsline {subsubsection}{IMSI Catcher replacing an old Cell}{76}
+\contentsline {chapter}{\numberline {5}Conclusion}{77}
+\contentsline {section}{\numberline {5.1}Summary}{77}
+\contentsline {section}{\numberline {5.2}Future Work}{79}
+\contentsline {paragraph}{}{80}
+\contentsline {chapter}{Bibliography}{81}
+\contentsline {chapter}{\numberline {A}GSM}{89}
+\contentsline {section}{\numberline {A.1}Interfaces}{89}
+\contentsline {section}{\numberline {A.2}Channel Combinations}{90}
+\contentsline {chapter}{\numberline {B}OsmocomBB}{91}
+\contentsline {section}{\numberline {B.1}Installation}{91}
+\contentsline {section}{\numberline {B.2}Usage}{92}
+\contentsline {section}{\numberline {B.3}Serial Cable Schematics}{93}
+\contentsline {chapter}{\numberline {C}IMSI Catcher Detection System}{95}
+\contentsline {section}{\numberline {C.1}Extextions}{95}
+\contentsline {section}{\numberline {C.2}Example Configuration}{97}
+\contentsline {chapter}{\numberline {D}System Information}{101}
+\contentsline {chapter}{\numberline {E}Evaluation Data}{107}
+\contentsline {section}{\numberline {E.1}Rx and LAC Change Test}{107}
+\contentsline {section}{\numberline {E.2}Database Rules Test}{108}
+\contentsline {chapter}{Acronyms}{109}

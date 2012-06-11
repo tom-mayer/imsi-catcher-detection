@@ -312,23 +312,28 @@ USR_timeout = 15
 #This configuration separates the different groups of
 #rules from one another.
 
-Rule_Groups = [
-    ['Provider Check', 'Country Provider Mapping',
-     'ARFCN Mapping', 'LAC Mapping', 'Unique CellID'],  
-    ['LAC Median Deviation', 'Neighbourhood Structure', 
-    'Pure Neighbourhoods', 'Fully Discovered 
-    Neighbourhoods'],   
-    ['Local Area Database','CellID Database'],   
-    ['LAC Change Rule','rx Change Rule'],    
-    ['PCH Scan']
-]
-
 #-------------Continues on next page---------------------
 \end{lstlisting}
 \end{minipage}\\\\
 \hspace*{\dimexpr\fboxsep+\fboxrule}% 
 \begin{minipage}{\dimexpr\textwidth-4\fboxsep-2\fboxrule} 
 \begin{lstlisting}
+
+Rule_Groups = [
+    ['Provider Check', 'Country Provider Mapping',
+     'ARFCN Mapping', 'LAC Mapping', 'Unique CellID'],
+    
+    ['LAC Median Deviation', 'Neighbourhood Structure', 
+    'Pure Neighbourhoods', 'Fully Discovered 
+    Neighbourhoods'],
+    
+    ['Local Area Database','CellID Database'],
+    
+    ['LAC Change Rule','rx Change Rule'],
+    
+    ['PCH Scan']
+]
+
 #Database Configuration --------------------------------
 
 #The API key for OpenCellID.
