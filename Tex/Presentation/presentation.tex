@@ -2,12 +2,15 @@
 
 \usepackage{xspace}
 \usepackage{default}
+\usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{tabularx}
 \usepackage{listings}
 \usepackage{booktabs}
 \usepackage{etex}
 \usepackage{courier}
+\usepackage{subfigure}
+\usepackage{booktabs}
 
 
 \lstset{language=Python,
@@ -16,10 +19,10 @@
 }
 
 
-\title[IMSI Catcher Detection]{IMSI Catcher Detection System using the OsmocomBB Framework}
+\title[IMSI Catcher Detection System]{The IMSI Catcher Detection System\\\small{Final Presentation}}
 \author[Thomas Mayer]{Thomas Mayer\\[3mm]\footnotesize {Advisors: Prof.\ Dr.\ Gerhard Schneider}\\\footnotesize{\hspace{-5mm}Dennis Wehrle}\\\footnotesize{\hspace{-6mm}Konrad Meier}}
 \institute[Uni Freiburg]{Albert-Ludwigs-Universit\"at Freiburg \\ Technische Fakult\"at \\ Institut f\"ur Informatik \\ Lehrstuhl f\"ur Kommunikationssysteme}
-\date{19.\,03.\,2012}
+\date{30.\,07.\,2012}
 
 \mode<presentation>{
   \useoutertheme[width=0pt]{zusatz}
@@ -31,7 +34,7 @@
 \newcommand{\tocsection}[1]{
   \section{#1}
   \begin{frame}{Content}
-    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]
+    \tableofcontents[sectionstyle=show/shaded, subsectionstyle=hide/hide/hide]%show/shaded]%,subsectionstyle=show/show/hide]
   \end{frame}
  }
 
@@ -45,7 +48,7 @@
 \tableofcontents[sectionstyle=show/show,subsectionstyle=show/show/hide]
 \end{frame}
 
-\tocsection{Background}
+\section{Background}
 \subsection{IMSI Catcher}
 \begin{frame}{Mode of Operation}
 \begin{center}
@@ -56,17 +59,17 @@
 \begin{frame}{Threats}
 \begin{block}{Technical Possibilities}
 \begin{itemize}
+	\item Extraction of IMSI and IMEI
 	\item Tapping and recording of phone calls
 	\item Localisation of subscribers
 	\item Suppression of communication
 \end{itemize}
 \end{block}
-Other concerns:
+Main concerns:
 \begin{itemize}
-	\item Cannot target individuals
-	\item No emergency calls possible
-	\item Procedural law situation
 	\item Hard to prove operation in retrospect
+	\item \textcolor{red}{Private abuse (eavesdropping/industrial espionage)}
+	\item Procedural law situation
 \end{itemize}
 ... risk intensified by homebrew IMSI catcher projects!
 \end{frame}
@@ -78,6 +81,7 @@ Main Question: How to detect such a device?
 	\item<1-> Actively connect to the catcher
 	\begin{itemize}
 		\item<1-> Localisation possible once connected
+		\item<1-> IMSI and IMEI already given up
 	\end{itemize}
 	\item<1-> \color<2>{red}Passively gather information
 \end{itemize}
@@ -87,152 +91,241 @@ Main Question: How to detect such a device?
 	\item Broadcast Control Channel
 	\begin{itemize}
 		\item System Information Messages 1-4
-		\item SI 1 and 2 of special interest
+		\item System Information 2 and 3 are of special interest
 	\end{itemize}
+	\item Paging Channel
 	\item Parameters that can be measured
 \end{itemize}
 }
 \end{frame}
 
-\begin{frame}{Parameters}
-Parameters measured:
-\begin{itemize}
-	\item Signal Strength
-\end{itemize}
-\vspace{.3cm}
-Parameters harvested from SI:
+\begin{frame}{Parameters}{Basic Information}
+Parameters for identification harvested from System Information:
 \begin{itemize}
 	\item ARFCN
 	\item Country and Provider Codes
 	\item Cell ID and Location Area Code
 	\item Neighbouring Cell List
-	\item Base Station Identification (not yet used)
 \end{itemize}
 \begin{alertblock}<2>{Main Problem}
 Parameters that can be set, can be forged!
 \end{alertblock}
 \end{frame}
 
-\tocsection{Current State}
+\begin{frame}{Parameters}{Additional Information}
+Paramteres that are measured:
+\begin{itemize}
+    \item Signal Strength
+\end{itemize}
+PCH Parameters:
+\begin{itemize}
+    \item Paging Messages
+    \item Immediate Assignments
+\end{itemize}
+Databases:
+\begin{itemize}
+    \item Track parameters over time for changes
+    \item Compare parameters to static databases (online/offline)
+\end{itemize}
+\end{frame}
+
+\tocsection{The IMSI Catcher Detection System}
 \subsection{Architecture}
 \begin{frame}{Overview}
 \begin{center}
-	\includegraphics[width=\textwidth]{Architecture}
+	\includegraphics[width=\textwidth]{Architecture_software}
 \end{center}
-
-\end{frame}
-
-\begin{frame}{Components}
-Model/View/Controller oriented design with plug-in rules and evaluators
-\begin{itemize}
-	\item Data Model:
-	\begin{itemize}
-		\item Constantly updated by the OsmocomBB Framework
-	\end{itemize}
-	\item Rules:
-	\begin{itemize}
-		\item Mapping: $\text{DataModel}~\rightarrow~\{\text{Ok}\vert\text{Warning}\vert\text{Critical}\}$
-		\item Different kinds of rules
-		\item Constant re-evaluation
-	\end{itemize}
-	\item Evaluators:
-	\begin{itemize}
-		\item Gathers and aggregates rule results for a base station
-		\item Conservative Evaluator
-	\end{itemize}
-\end{itemize}
 \end{frame}
 
 \subsection{Rules}
-\begin{frame}{Rules}{Parameter Mapping and Context Rules}
-Parameter Mappings:
+\begin{frame}{Rules}{Configuration Rules}
+Rules to check parameter integrity:
 \begin{itemize}
-	\item Simple implication rules
-	\item Mapping of parameter to range
-	\item Integrity checks on single base stations
+    \item Country/Provider Mapping
+    \item ARFCN/Provider Mapping 
+    \item LAC/Provider Mapping
 \end{itemize}
-Context Rules:
+\begin{exampleblock}{ARFCN/Provider Mapping}
+Checks whether the ARFCN is registered to the Provider:
 \begin{itemize}
-	\item Compare parameters with surrounding base stations
-	\item See how well a base station fits in its neighbourhood
-\end{itemize}
-\begin{exampleblock}{Examples}
-\begin{itemize}
-	\item Check whether the ARCFN is in the registered range of the respective provider
-	\item Check whether LAC is consistent with neighbouring LACs
+    \item E-Plus: 975-999, 777-863
+    \item T-Mobile: 13-49, 81-102, 122-124, 587-611
+    \item Vodafone: 1-12, 50-80, 103-121, 725-751 
+    \item O2: 1000-1023, 637-723
 \end{itemize}
 \end{exampleblock}
 \end{frame}
 
-\begin{frame}{Rules}{Neighbourhood Rules}
-Analyse the structure of the neighbourhood graph:
+\begin{frame}{Rules}{Context Rules}
+Check how well a station fits in its neighbourhood:
+\begin{itemize}
+    \item Pure Neighbourhoods
+    \item Neighbouhood Structure
+    \item Cell ID Uniqueness
+\end{itemize}
+\begin{exampleblock}{Neighbourhood Structure}
+Analyses the neighbourhood graph for certain structures:
+\begin{itemize}
+    \item Nodes with no outgoing/ingoing edges
+    \item At least one neighbour needs to be discovered
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Rules}{Neighbourhood Structure}
+\begin{figure}
+\centering
+\subfigure[Normal neighbourhood]{
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=2.5cm,
+  thick,main node/.style={circle,fill=blue!10,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {A};
+  \node[main node] (2) [below left of=1] {B};
+  \node[main node] (3) [below right of=1] {C};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge  node {} (2)
+        edge  node {} (3)
+    (2) edge  node {} (1)
+    	edge  node {} (3)
+    (3) edge  node {} (1)
+    	edge  node {} (2);
+\end{tikzpicture}
+}
+\subfigure[Tainted neighbourhood]{
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=2.5cm,
+  thick,main node/.style={circle,fill=blue!10,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {A};
+  \node[main node] (2) [below left of=1] {B};
+  \node[main node, fill=orange!20] (3) [below right of=1] {C};
+  \node[main node, fill=orange!20] (4) [right of=1] {D};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge  node {} (2)
+        edge  node {} (3)
+    (2) edge  node {} (1)
+    	edge  node {} (3)
+    (4) edge  node {} (1)
+    	edge  node {} (2);
+\end{tikzpicture}
+}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Rules}{Database Rules}
+Compare parameters against databases:
+\begin{itemize}
+    \item Cell ID Database
+    \item Local Area Database
+\end{itemize}
+\begin{exampleblock}{Local Area Database}
+Uses a database of the area surrounding the ICDS:
+\begin{itemize}
+    \item Look out for changes in the LAC
+    \item Look out for changes in the reception strengths
+    \item Tracks Cell IDs for offline use
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Rules}{Scan Rules}
+Basically the same idea as Local Area Database Rule on a scan-to-scan basis:
+\begin{itemize}
+    \item Rx Change
+    \item LAC Change
+\end{itemize}
+\end{frame}
+
+\subsection{PCH Scan}
+\begin{frame}{PCH Scan}
+Why an additional method?
+\begin{itemize}
+    \item Perfectly configured IMSI Catcher
+\end{itemize}
+\vspace{.8cm}
+IMSI Catcher is only a proxy for a BTS:
+\begin{itemize}
+    \item Does not get incomming calls for the connected phones
+    \item No Paging Messages
+    \item Immediate Assignments only if other subscribers are connected
+\end{itemize}
+Harvest this information and compare it to base levels.
+\end{frame}
+
+\tocsection{Results}
+\subsection{Results}
+\begin{frame}{Results}{Tests}
+Test scenarios:
+\begin{itemize}
+    \item Isolated tests for the single rules
+    \item Long term test
+    \item Realistic attack scenarios
+\end{itemize}
+IMSI Catcher was detected whenever it was operating\\
+\vspace{.5cm}
+Drawbacks:
+\begin{itemize}
+    \item Can take up to seven minutes for a complete sweep scan
+    \item System relies on local information being present
+    \item PCH scan is not 100\% reliable, IMSI Catcher could fake Paging Messages
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}{Rule Toughness}
+\vspace{-.6cm}
 \begin{center}
-\includegraphics[width=.9\textwidth]{Neighbours}
+\begin{tabular}{lll}
+\toprule
+Rule/Category		&Toughness	    &Limitations\\
+\midrule
+Configuration Rules	&Easy		    &Correct configuration\\
+\midrule
+Context Rules		&Medium		    &Consider surroundings\\
+Neighbourhood Structure	&Medium		    &Reduce attack types\\
+			&		    &and efficiency\\
+\midrule
+Database Rules		&Hard		    &Reduce attack types\\
+Rx Change		&Very Hard	    &Exact transmission power\\
+			&		    &and location\\
+LAC Change		&Easy		    &Mobile phone not\\
+			&		    &announcing itself\\
+\midrule
+PCH Scan		&Hard		    &Need to fake pagings\\
+\bottomrule
+\end{tabular}
 \end{center}
 \end{frame}
 
-\tocsection{To Do}
-\subsection{Rules}
-\begin{frame}{Rules}{Databases}
-\begin{alertblock}{Problem}
-Forged parameters!
-\end{alertblock}
-Possible solution:
+\subsection{Future Work}
+\begin{frame}{Future Work}
+Enhancements:
 \begin{itemize}
-	\item Cell ID Databases:
-	\begin{itemize}
-		\item Many official and open databases (Nokia/OpenCellID)
-		\item Used for localisation, but can also be used vice versa!
-	\end{itemize}
-	\item Local Area Database:
-	\begin{itemize}
-		\item Learn surroundings
-		\item 'Trustworthiness Score'
-		\item Can use signal strength
-	\end{itemize}
+    \item Filters for sweep scan
+    \item Incremental sweep scan
 \end{itemize}
-\end{frame}
-
-\subsection{Evaluators}
-\begin{frame}{Evaluators}{Bayes Filter}
-\begin{block}{Bayesian Filtering}
-A statistical algorithm that can be used to predict the class of an object given certain evaluations and base probabilities.
-Uses Bayes theorem:
-\[P(A\vert B)= \frac{P(B\vert A) \cdot P(A)}{P(B)}\]
-\end{block}
-
-\begin{exampleblock}{Bayes for a single Rule}
-\[P(\text{B1 is catchter}\vert \text{R1 yields warning})\] 
-\[=\frac{P(\text{R1 yields warning}\vert \text{B1 is catchter}) \cdot P(\text{B1 is catchter})}{P(\text{R1 yields warning})}\]
-\end{exampleblock}
-\end{frame}
-
-\begin{frame}{Evaluators}{Bayes Filter (contd.)}
-Bayes Theorem is recursive:
+New Functionality:
 \begin{itemize}
-	\item Evaluate P(B1 is catcher$\vert$R1 yields warning, R2 yields ok, $\ldots$)
-	\item Further refinement possible:
-	\begin{itemize}
-		\item Refine base probabilities (enlarge database)
-		\item Finer grained rule results than only three classes
-		\item $\ldots$
-	\end{itemize}
+    \item Follow Immediate Assignments on the dedicated channel to reveal if encryption is used
+    \item More Rules
+    \begin{itemize}
+	\item Encryption Rule
+	\item GPS location probability Rule
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
 \tocsection{Demo}
-\subsection{Demo}
 \begin{frame}{Demo}
-\begin{center}
-	\huge{Demo}
-\end{center}
+    \centering
+    \includegraphics[width=\textwidth]{replace_attack}
 \end{frame}
 
-\begin{frame}{The End}
+\begin{frame}
 \begin{center}
-	\huge{Thank you for your attention! Questions?}
+\huge{Thank you for your attention.\\Question?}
 \end{center}
-\end{frame} 
-
+\end{frame}
 \end{document}
 

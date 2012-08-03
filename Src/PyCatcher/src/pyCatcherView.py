@@ -130,8 +130,8 @@ class PyCatcherGUI:
         self._catcher_controller.full_discovered_neighbourhoods_rule.is_active = self._builder.get_object('cb_neighbours_discovered').get_active()
         self._catcher_controller.cell_id_db_rule.is_active = self._builder.get_object('cb_cell_id_database').get_active()
         self._catcher_controller.location_area_database_rule.is_active = self._builder.get_object('cb_local_area_database').get_active()
-        self._catcher_controller.lac_change_rule.is_active = self._builder.get_object('cb_lac_change')
-        self._catcher_controller.rx_change_rule.is_active = self._builder.get_object('cb_rx_change')
+        self._catcher_controller.lac_change_rule.is_active = self._builder.get_object('cb_lac_change').get_active()
+        self._catcher_controller.rx_change_rule.is_active = self._builder.get_object('cb_rx_change').get_active()
         self._catcher_controller.trigger_evaluation()
 
     def _update_evaluators(self):

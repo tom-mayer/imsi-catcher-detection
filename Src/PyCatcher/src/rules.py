@@ -225,7 +225,7 @@ class LocationAreaDatabaseRule(Rule):
             if item.arfcn == arfcn:
                 result = self.location_database_object.get_station(item.cell)
                 if not result:
-                    return RuleResult.CRITICAL
+                    return RuleResult.IGNORE
                 rxmin = result.rxmin
                 rxmax = result.rxmax
                 rxmin_thresh = rxmin - math.fabs(rxmin * DB_RX_threshold)

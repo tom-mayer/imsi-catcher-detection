@@ -33,7 +33,7 @@ Provider_Country_list = {
 
 LAC_mapping = {
     'DB Systel GSM-R': [0],
-    'T-Mobile' : [21014,21015],
+    'T-Mobile' : [21013,21014,21015],
     'O2' : [50945],
     'Vodafone' : [793],
     'E-Plus' : [138,588]
@@ -51,13 +51,13 @@ LAC_threshold = 0.05
 
 DB_RX_threshold = 0.1
 
-CH_RX_threshold = 0.07
+CH_RX_threshold = 0.2
 
 Pagings_per_10s_threshold = 20
 
 Assignment_limit = 0
 
-Neighbours_threshold = 4
+Neighbours_threshold = -1
 
 #Evaluator Configuration ---------------------------------------------------------------------------------------
 
